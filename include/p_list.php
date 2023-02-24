@@ -3,8 +3,6 @@
     $select_q="select * from tblhouse";
     $query=mysqli_query($con,$select_q);
     
-
-    
 ?>
 <!DOCTYPE html>
 <html lang="en">
