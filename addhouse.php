@@ -1,10 +1,10 @@
 <?php
     session_start();
     include('./config/config.php');
-    $cid =$_GET['cid'];
-
+    
     if(isset($_POST['QC'])){
         $uid=$_SESSION["uid"];
+        $cid=$_GET['cid'];
         $ptitle=$_POST["ptitle"];
         $ptype=$_POST["ptype"];
         $bhk=$_POST["bhk"];
@@ -52,7 +52,7 @@
 	    if($result)
 		{
 			$msg="<p class='alert alert-success'>Property Inserted Successfully</p>";
-            header('location:./property-list.php');
+            header('location:./user-property.php');
 					
 		}
 		else

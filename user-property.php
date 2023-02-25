@@ -98,8 +98,8 @@
                         <td>image</td>
                         <td><?php echo $data['price']; ?></td>
                         <td><?php echo $data['status']; ?></td>
-                        <td><button type="button" class="btn btn-success"><a href="./update_property.php">Update</a></button></td>
-                        <td><button type="button" class="btn btn-danger"><a href="./delete_property.php">Delete</a></button></td>
+                        <td><button type="button" class="btn btn-success"><a href="./update_property.php?pid=<?php echo $data['pid']?>">Update</a></button></td>
+                        <td><button type="button" class="btn btn-danger"><a href="./delete_property.php?pid=<?php echo $data['pid']?>">Delete</a></button></td>
                     </tr>
                     <?php } ?>
                 </tbody>

@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="p-4 pb-0">
                                     <h5 class="text-tan mb-3">₹ <?php echo $data['price']; ?></h5>
-                                    <a class="d-block h5 mb-2 text-black" href=""><?php echo $data['ptitle']; ?></a>
+                                    <a class="d-block h5 mb-2 text-black" href="./property_details.php?pid=<?php echo $data['pid']?>"><?php echo $data['ptitle']; ?></a>
                                     <p><i class="fa fa-map-marker-alt text-tan me-2"></i><?php echo $data['paddress']; ?></p>
                                 </div>
                                 <div class="d-flex border-top">
