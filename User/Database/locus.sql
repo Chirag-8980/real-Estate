@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2023 at 01:28 PM
+-- Generation Time: Feb 27, 2023 at 02:32 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -65,6 +65,33 @@ INSERT INTO `tblcate` (`cid`, `ctype`, `location`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tblcontact`
+--
+
+CREATE TABLE `tblcontact` (
+  `id` int(255) NOT NULL,
+  `uid` int(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `msg` varchar(255) NOT NULL,
+  `response` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tblcontact`
+--
+
+INSERT INTO `tblcontact` (`id`, `uid`, `name`, `email`, `subject`, `msg`, `response`) VALUES
+(1, 0, '$name', '$email', '$subject', '$message', ''),
+(2, 12, 'Chirag', 'kunj@gmail.com', 'bxdfx', 'nxgnfnxfgnv cvnx', ''),
+(3, 12, 'Chirag', 'kunj@gmail.com', 'bxdfx', 'nxgnfnxfgnv cvnx', ''),
+(4, 12, 'Chirag', 'kunj@gmail.com', 'bxdfx', 'nxgnfnxfgnv cvnx', ''),
+(5, 12, 'Chirag', 'kunj@gmail.com', 'bxdfx', 'nxgnfnxfgnv cvnx', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tblhouse`
 --
 
@@ -104,9 +131,7 @@ CREATE TABLE `tblhouse` (
 
 INSERT INTO `tblhouse` (`pid`, `cid`, `uid`, `ptitle`, `ptype`, `bhk`, `stype`, `bedroom`, `balcony`, `bathroom`, `kitchen`, `hall`, `floor`, `tfloor`, `price`, `sqft`, `paddress`, `city`, `state`, `img1`, `img2`, `img3`, `img4`, `status`, `featured`, `description`, `date`) VALUES
 (1, 0, 1, 'Chirag', 'house', '2', 'Rent', 1, 1, 1, 1, 1, 3, 4, '123', '123', 'fbbfdbxdfb xb', 'surat', '', '', '', '', '', 'Sold', 'Yes', '<p>THis is My First Listing</p>', '2023-02-20 13:34:47'),
-(43, 0, 12, '', 'House', '1', 'Rent', 0, 0, 0, 0, 0, 1, 1, '', '', '', '', '', '', '', '', '', 'Sold', 'Yes', '', '2023-02-23 13:52:31'),
 (44, 0, 0, '$ptitle', '$ptype', '$bhk', '$stype', 0, 0, 0, 0, 0, 0, 0, '$price', '$sqft', '$paddress', '$city', '$state', '', '', '', '', '$status', '$featured', '$description', '2023-02-23 13:53:33'),
-(45, 0, 12, '', 'House', '1', 'Rent', 0, 0, 0, 0, 0, 1, 1, '', '', '', '', '', '', '', '', '', 'Sold', 'Yes', '', '2023-02-23 13:54:40'),
 (46, 0, 16, '', 'House', '1', 'Rent', 0, 0, 0, 0, 0, 1, 1, '', '', '', '', '', '', '', '', '', 'Sold', 'Yes', '', '2023-02-24 04:29:04');
 
 -- --------------------------------------------------------
@@ -134,7 +159,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`uid`, `uname`, `mno`, `email`, `password`, `designation`, `address`, `instagram`, `facebook`, `twitter`) VALUES
 (1, 'Chirag Kachhadiya', '8980750691', 'chiragkachhadiya000@gmail.com', '123123123', 'Agent', '49 MD Park Socity Simada Gam', 'www.instagram.com', 'www.facebook.com', 'www.twitter.com'),
-(12, 'Kunj', '8980750691', 'kunj@gmail.com', '11', 'designation', '', 'instagram', 'facebook', 'twitter'),
+(12, 'Kunj', '8980750691', 'kunj@gmail.com', '11', 'designation', '49 MD Park Socity Simada Gam', 'instagram', 'facebook', 'twitter'),
 (13, 'Chirag', '8980750691', 'chirag@gmail.com', '111', 'designation', '', 'instagram', 'facebook', 'twitter'),
 (14, 'Chirag', '7435904428', 'ckcreation3112@gmail.com', '123123123', 'designation', '', 'instagram', 'facebook', 'twitter'),
 (15, 'Chirag Kachhadiya', '8980750691', 'fena@gmail.com', '12', 'designation', '49,md park', 'instagram 1', 'facebook 3', 'twitter 2'),
@@ -155,6 +180,12 @@ ALTER TABLE `pbook`
 --
 ALTER TABLE `tblcate`
   ADD PRIMARY KEY (`cid`);
+
+--
+-- Indexes for table `tblcontact`
+--
+ALTER TABLE `tblcontact`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tblhouse`
@@ -185,10 +216,16 @@ ALTER TABLE `tblcate`
   MODIFY `cid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `tblcontact`
+--
+ALTER TABLE `tblcontact`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `tblhouse`
 --
 ALTER TABLE `tblhouse`
-  MODIFY `pid` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `pid` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `user`

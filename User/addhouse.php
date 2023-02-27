@@ -1,10 +1,10 @@
 <?php
     session_start();
     include('./config/config.php');
-    
+    // $cid =$_GET['cid'];
+
     if(isset($_POST['QC'])){
         $uid=$_SESSION["uid"];
-        $cid=$_GET['cid'];
         $ptitle=$_POST["ptitle"];
         $ptype=$_POST["ptype"];
         $bhk=$_POST["bhk"];
@@ -24,41 +24,67 @@
         $status=$_POST["status"];
         $featured=$_POST["featured"];
         $description=$_POST["description"];
+        $allow_type=array('png','jpg','jpeg');
 
-        // $image1=$_FILES['img1'];
-        // $image2=$_FILES['img2'];
-        // $image3=$_FILES['img3'];
-        // $image4=$_FILES['img4'];
+        $image1=$_FILES['img1']['name'];
+        $tmp_name1=$_FILES['img1']['tmp_name'];
+        $img_type1=strtolower(pathinfo($image1,PATHINFO_EXTENSION)); 
+        $size=$_FILES['img1']['size'];
+        $tmp_name=$_FILES['img1']['tmp_name'];
+        $destination1="admin/img/property_image/".$image1;
+       
 
-        // $filename1=$image1['name'];
-        // $filename2=$image2['name'];
-        // $filename3=$image3['name'];
-        // $filename4=$image4['name'];
+        $image2=$_FILES['img2']['name'];
+        $tmp_name2=$_FILES['img2']['tmp_name'];
+        $img_type2=strtolower(pathinfo($image2,PATHINFO_EXTENSION));
+        $size=$_FILES['img2']['size'];
+        $tmp_name=$_FILES['img2']['tmp_name'];
+        $destination2="admin/img/property_image/".$image2;
+        
 
-        // $tmp_name1=$_FILES['image1']['tmp_name'];
-        // $tmp_name2=$_FILES['image2']['tmp_name'];
-        // $tmp_name3=$_FILES['image3']['tmp_name'];
-        // $tmp_name4=$_FILES['image4']['tmp_name'];
+        $image3=$_FILES['img3']['name'];
+        $tmp_name3=$_FILES['img3']['tmp_name'];
+        $img_type3=strtolower(pathinfo($image3,PATHINFO_EXTENSION));   
+        $size=$_FILES['img3']['size'];
+        $destination3="admin/img/property_image/".$image3;
+        
 
-        // move_uploaded_file($tmp_name1,"admin/property/$image1");
-        // move_uploaded_file($tmp_name2,"admin/property/$image2");
-        // move_uploaded_file($tmp_name3,"admin/property/$image3");
-        // move_uploaded_file($tmp_name4,"admin/property/$image4");
-
-
-        $insert_qry = "INSERT INTO `tblhouse`(`cid`,`uid`, `ptitle`, `ptype`, `bhk`, `stype`, `bedroom`, `balcony`, `bathroom`, `kitchen`, `hall`, `floor`, `tfloor`, `price`, `sqft`, `paddress`, `city`, `state`,`status`,`featured`,`description`) VALUES ('$cid','$uid','$ptitle','$ptype','$bhk','$stype','$bedroom','$balcony','$bathroom','$kitchen','$hall','$floor','$tfloor','$price','$sqft','$paddress','$city','$state','$status','$featured','$description')";
-
-        $result=mysqli_query($con,$insert_qry);
-	    if($result)
-		{
-			$msg="<p class='alert alert-success'>Property Inserted Successfully</p>";
-            header('location:./user-property.php');
+        $image4=$_FILES['img4']['name'];
+        $tmp_name4=$_FILES['img4']['tmp_name'];
+        $img_type4=strtolower(pathinfo($image4,PATHINFO_EXTENSION));
+        $size=$_FILES['img4']['size'];
+        $destination4="admin/img/property_image/".$image4;
+        
+      
+        if(in_array($img_type1 || $img_type2 || $img_type3 || $img_type4, $allow_type))
+        {
+            if($size <= 2000000)
+            {
+                move_uploaded_file($tmp_name1,$destination1);
+                move_uploaded_file($tmp_name2,$destination2);
+                move_uploaded_file($tmp_name3,$destination3);
+                move_uploaded_file($tmp_name4,$destination4);
+                $insert_qry = "insert into tblhouse(uid, ptitle, ptype, bhk, stype, bedroom, balcony, bathroom, kitchen, hall, floor, tfloor, price, sqft, paddress, city, state, img1, img2, img3, img4, status, featured, description) VALUES ('$uid','$ptitle','$ptype','$bhk','$stype','$bedroom','$balcony','$bathroom','$kitchen','$hall','$floor','$tfloor','$price','$sqft','$paddress','$city','$state', '$image1', '$image2', '$image3', '$image4','$status','$featured','$description')";
+                $result=mysqli_query($con,$insert_qry);
+                if($result)
+		        {
+			        $msg="<p class='alert alert-success'>Property Inserted Successfully</p>";
+                    // header('location:./property-list.php');
 					
-		}
-		else
-		{
-			echo " failed";
-		}
+		        }
+		        else
+		        {
+			        echo " failed";
+		        }
+            }
+            else{
+                echo "File size should not exceed than 2MB";
+            }
+        }
+        else{
+            echo "File type not allowed (Only jpg, jpeg and png type file allowed)";
+        }
+        
     }
 ?>
 <!DOCTYPE html>
@@ -130,7 +156,7 @@
 
         <!-- Add Form Start -->
         <div class="container mt-3 px-5">
-            <form class="row g-3 container" method="post" action="addhouse.php">
+            <form class="row g-3 container" method="post" action="addhouse.php" enctype="multipart/form-data">
                 <!-- Basic Information -->
                 <h2 class="animated text-black fadeIn mb-3" style="border-bottom: 2px solid var(--tan);">Basic
                     Information</h2>

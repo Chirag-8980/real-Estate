@@ -1,6 +1,23 @@
-<?
+<?php
     session_start();
-?>
+    include('./config/config.php');
+    if(isset($_POST['submit'])){
+        $uid=$_SESSION["uid"];
+        $name=$_POST['name'];
+        $email=$_POST['email'];
+        $subject=$_POST['subject'];
+        $message=$_POST['message'];
+
+        $insert_query="INSERT INTO `tblcontact`(`uid`, `name`, `email`, `subject`, `msg`) VALUES ('$uid','$name','$email','$subject','$message')";
+        $run_q =mysqli_query($con,$insert_query);
+
+        if($run_q){
+            echo "Send Success";
+        }else{
+            echo "Send Failed";
+        }
+    }
+?>   
 <!DOCTYPE html>
 <html lang="en">
 

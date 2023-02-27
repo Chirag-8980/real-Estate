@@ -86,16 +86,21 @@
                                     aria-label="Slide 2"></button>
                                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                                     aria-label="Slide 3"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                                    aria-label="Slide 4"></button>
                             </div>
-                            <div class="carousel-inner">
+                            <div class="carousel-inner" style="height: 500px; max-width: 100%;">
                                 <div class="carousel-item active">
-                                    <img src="./img/property-1.jpg" height="" class="d-block  w-100" alt="...">
+                                    <img src="./Admin/Img/Property_image/<?php echo $data['img1']?>" height="600vh" width="600vh" class="d-block " alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="./img/property-2.jpg" class="d-block w-100" alt="...">
+                                    <img src="./Admin/Img/Property_image/<?php echo $data['img2']?>" height="600vh" width="600vh" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="./img/property-3.jpg" class="d-block w-100" alt="...">
+                                    <img src="./Admin/Img/Property_image/<?php echo $data['img3']?>" height="600vh" width="600vh" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="./Admin/Img/Property_image/<?php echo $data['img4']?>" height="600vh" width="600vh" class="d-block w-100" alt="...">
                                 </div>
                             </div>
                             <button class="carousel-control-prev" type="button"
