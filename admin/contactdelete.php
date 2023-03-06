@@ -1,7 +1,7 @@
 <?php
 include("config.php");
 $cid = $_GET['id'];
-$sql = "DELETE FROM contact WHERE cid = {$cid}";
+$sql = "DELETE FROM tblcontact WHERE id = {$cid}";
 $result = mysqli_query($con, $sql);
 if($result == true)
 {

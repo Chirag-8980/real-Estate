@@ -8,7 +8,7 @@ if(!isset($_SESSION['auser']))
 	header("location:index.php");
 }
 
-	$get_data=(mysqli_query($con , "select * from admin"));
+	$get_data=(mysqli_query($con , "select * from tblhouse where qc=0"));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,7 +64,7 @@ if(!isset($_SESSION['auser']))
 								<h3 class="page-title">Admin</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-									<li class="breadcrumb-item active">Admin</li>
+									<li class="breadcrumb-item active">Property Reqestes</li>
 								</ul>
 							</div>
 						</div>
@@ -75,7 +75,7 @@ if(!isset($_SESSION['auser']))
 						<div class="col-sm-12">
 							<div class="card">
 								<div class="card-header">
-									<h4 class="card-title">Admin List</h4>
+									<h4 class="card-title">Reqest List</h4>
 									<?php 
 											if(isset($_GET['msg']))	
 											echo $_GET['msg'];
@@ -87,12 +87,13 @@ if(!isset($_SESSION['auser']))
 									<table id="basic-datatable" class="table">
                                             <thead>
                                                 <tr>
-                                                    <th>ID</th>
-                                                    <th>Name</th>
-                                                    <th>Email</th>
-                                                    <th>Date Of Birth</th>
-                                                    <th>Phone</th>
-                                                    <th>Delete</th>
+                                                    <th>PID</th>
+                                                    <th>Image</th>
+                                                    <th>Title</th>
+                                                    <th>Price</th>
+                                                    <th>Type</th>
+                                                    <th>View</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                         
@@ -104,12 +105,13 @@ if(!isset($_SESSION['auser']))
 													{
 											?>
                                                 <tr>
-                                                    <td><?php echo $data['aid']; ?></td>
-                                                    <td><?php echo $data['name']; ?></td>
-                                                    <td><?php echo $data['email']; ?></td>
-                                                    <td><?php echo $data['dob']; ?></td>
-                                                    <td><?php echo $data['mno']; ?></td>
-                                                    <td><a href="admindelete.php?id=<?php echo $row['0']; ?>">Delete</a></td>
+                                                    <td><?php echo $data['pid']; ?></td>
+                                                    <td><img src='./Img/Property_image/<?php echo $data['img1'];    ?>' style="height: 100px; width: 100px;" alt=""></td>
+                                                    <td><?php echo $data['ptitle']; ?></td>
+                                                    <td><?php echo $data['price']; ?></td>
+                                                    <td><?php echo $data['ptype']; ?></td>
+                                                    <td><a href="property_details.php?pid=<?php echo $data['pid']; ?>">See Details</a></td>
+                                                    <td><a href="req_accept.php?pid=<?php echo $row['pid']; ?>">Accept</a></td>
                                                 </tr>
                                                 <?php
 												} 

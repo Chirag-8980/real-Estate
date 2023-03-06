@@ -31,7 +31,7 @@
         $img_type1=strtolower(pathinfo($image1,PATHINFO_EXTENSION)); 
         $size=$_FILES['img1']['size'];
         $tmp_name=$_FILES['img1']['tmp_name'];
-        $destination1="admin/img/property_image/".$image1;
+        $destination1="../admin/img/property_image/".$image1;
        
 
         $image2=$_FILES['img2']['name'];
@@ -39,21 +39,21 @@
         $img_type2=strtolower(pathinfo($image2,PATHINFO_EXTENSION));
         $size=$_FILES['img2']['size'];
         $tmp_name=$_FILES['img2']['tmp_name'];
-        $destination2="admin/img/property_image/".$image2;
+        $destination2="../admin/img/property_image/".$image2;
         
 
         $image3=$_FILES['img3']['name'];
         $tmp_name3=$_FILES['img3']['tmp_name'];
         $img_type3=strtolower(pathinfo($image3,PATHINFO_EXTENSION));   
         $size=$_FILES['img3']['size'];
-        $destination3="admin/img/property_image/".$image3;
+        $destination3="../admin/img/property_image/".$image3;
         
 
         $image4=$_FILES['img4']['name'];
         $tmp_name4=$_FILES['img4']['tmp_name'];
         $img_type4=strtolower(pathinfo($image4,PATHINFO_EXTENSION));
         $size=$_FILES['img4']['size'];
-        $destination4="admin/img/property_image/".$image4;
+        $destination4="../admin/img/property_image/".$image4;
         
       
         if(in_array($img_type1 || $img_type2 || $img_type3 || $img_type4, $allow_type))
@@ -156,7 +156,7 @@
 
         <!-- Add Form Start -->
         <div class="container mt-3 px-5">
-            <form class="row g-3 container" method="post" action="addhouse.php" enctype="multipart/form-data">
+            <form class="row g-3 container" method="POST" action="addhouse.php" enctype="multipart/form-data">
                 <!-- Basic Information -->
                 <h2 class="animated text-black fadeIn mb-3" style="border-bottom: 2px solid var(--tan);">Basic
                     Information</h2>

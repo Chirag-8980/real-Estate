@@ -41,7 +41,7 @@
 </head>
 
 <body>
-    <div class="container-xxl bg-white p-0">
+    <div class=" bg-white p-0">
         <!-- Spinner Start -->
         <?php include('../User/include/spinner.php')?>
         <!-- Spinner End -->
@@ -79,10 +79,60 @@
 
         <!-- Property List Start -->
         <div class="container table-responsive">
+            
+            <div class="row mb-2">
+                <?php while ($data=mysqli_fetch_array($query)) { ?>
+                <div class="col-md-6">
+                    <div
+                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        <div class="col p-4 d-flex flex-column position-static">
+                            <strong class="d-inline-block mb-2 text-primary"><?php echo $data['ptype']; ?></strong>
+                            <h3 class="mb-0"><?php echo $data['ptitle']; ?></h3>
+                            <span class="mb-1 text-success bold fw-bold">₹<?php echo $data['price']; ?></span>
+                            <p class="card-text mb-auto"></p>
+                            <div class="d-flex text-light">
+                                <button type="button" class="btn me-2 btn-success"><a
+                                        href="./update_property.php?pid=<?php echo $data['pid']?>">Update</a></button>
+                                <button type="button" class="btn ms-2 btn-danger"><a
+                                        href="./delete_property.php?pid=<?php echo $data['pid']?>">Delete</a></button>
+                            </div>
+                        </div>
+                        <div class="col-auto d-none d-lg-block">
+                           <a href="./property_details.php?pid=<?php echo $data['pid']?>">
+                           <img src="../admin/img/Property_image/<?php echo $data['img1']; ?> " width="200"
+                               height="250" alt="">
+                        </a>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
+                <!-- <div class="col-md-6">
+                    <div
+                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        <div class="col p-4 d-flex flex-column position-static">
+                            <strong class="d-inline-block mb-2 text-success">Design</strong>
+                            <h3 class="mb-0">Post title</h3>
+                            <div class="mb-1 text-muted">Nov 11</div>
+                            <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to
+                                additional content.</p>
+                            <a href="#" class="stretched-link">Continue reading</a>
+                        </div>
+                        <div class="col-auto d-none d-lg-block">
+                            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg"
+                                role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
+                                focusable="false">
+                                <title>Placeholder</title>
+                                <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%"
+                                    fill="#eceeef" dy=".3em">Thumbnail</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
 
-            <table class="table text-center align-middle table-striped">
-                <thead >
-                    <tr >
+            <!-- <table class="table text-center align-middle table-striped">
+                <thead>
+                    <tr>
                         <th scope="col">PID</th>
                         <th scope="col">PHOTO</th>
                         <th scope="col">PRICE</th>
@@ -95,14 +145,20 @@
                     <?php while ($data=mysqli_fetch_array($query)) { ?>
                     <tr style="height: 10vh">
                         <th scope="row"><?php echo $data['pid']; ?></th>
-                        <td>image</td>
+                        <td>
+                            <a href="./property_details.php?pid=<?php echo $data['pid']?>">
+                                <img src="../admin/img/Property_image/<?php echo $data['img1']; ?>" style="height: 100px; width: 100px; cursor: pointer;" class="img-thumbnail" alt="">
+                            </a>
+                            </td>
                         <td><?php echo $data['price']; ?></td>
                         <td><?php echo $data['status']; ?></td>
-                        <td><button type="button" class="btn btn-success"><a href="./update_property.php?pid=<?php echo $data['pid']?>">Update</a></button></td>
-                        <td><button type="button" class="btn btn-danger"><a href="./delete_property.php?pid=<?php echo $data['pid']?>">Delete</a></button></td>
+                        <td><button type="button" class="btn btn-success"><a
+                                    href="./update_property.php?pid=<?php echo $data['pid']?>">Update</a></button></td>
+                        <td><button type="button" class="btn btn-danger"><a
+                                    href="./delete_property.php?pid=<?php echo $data['pid']?>">Delete</a></button></td>
                     </tr>
-                    <?php } ?>
-                </tbody>
+                    <?php } ?> -->
+            </tbody>
             </table>
         </div>
         <!-- Property List End-->

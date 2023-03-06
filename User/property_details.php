@@ -41,7 +41,7 @@
 </head>
 
 <body>
-    <div class="container-xxl bg-white p-0">
+    <div class="bg-white p-0">
         <!-- Spinner Start -->
         <?php include('../User/include/spinner.php')?>
         <!-- Spinner End -->
@@ -55,8 +55,8 @@
         <!-- Header Start -->
         <div class="container-fluid header bg-white p-0">
             <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
-                <div class="col-md-6 p-5 mt-lg-5">
-                    <h1 class="display-5 animated fadeIn text-black mb-4">Property Details</h1>
+                <div class="col-md-6 p-5 mt-5 mt-lg-5">
+                    <h1 class="display-5 animated fadeIn mt-5 text-black mb-4">Property Details</h1>
                     <nav aria-label="breadcrumb animated fadeIn">
                         <ol class="breadcrumb text-uppercase">
                             <li class="breadcrumb-item"><a class="text-tan" href="#">Home</a></li>
@@ -65,7 +65,7 @@
                     </nav>
                 </div>
                 <div class="col-md-6 animated fadeIn">
-                    <img class="img-fluid" height="10px" src="img/header.jpg" alt="">
+                    <img class="img-fluid" src="img/header.jpg" alt="" style="height: 44vh; width: 100%;">
                 </div>
             </div>
         </div>
@@ -74,8 +74,8 @@
 
         <!-- property details Start -->
         <div class="container">
-            <div class="row text-center">
-                <div class="col-8">
+            <div class="row text-center border">
+                <div class="col-12 border border-primary">
                     <div class="container mt-5">
 
                         <div id="carouselExampleIndicators" class="carousel slide h-50">
@@ -89,18 +89,22 @@
                                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
                                     aria-label="Slide 4"></button>
                             </div>
-                            <div class="carousel-inner" style="height: 500px; max-width: 100%;">
-                                <div class="carousel-item active">
-                                    <img src="./Admin/Img/Property_image/<?php echo $data['img1']?>" height="600vh" width="600vh" class="d-block " alt="...">
+                            <div class="carousel-inner">
+                                <div class="carousel-item border border-dark active">
+                                    <img src="../admin/img/Property_image/<?php echo $data['img1']?>" height="600vh"
+                                        width="75%" class="d-block " alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="./Admin/Img/Property_image/<?php echo $data['img2']?>" height="600vh" width="600vh" class="d-block w-100" alt="...">
+                                    <img src="../admin/img/Property_image/<?php echo $data['img2']?>" height="600vh"
+                                        width="600vh" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="./Admin/Img/Property_image/<?php echo $data['img3']?>" height="600vh" width="600vh" class="d-block w-100" alt="...">
+                                    <img src="../admin/img/Property_image/<?php echo $data['img3']?>" height="600vh"
+                                        width="600vh" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="./Admin/Img/Property_image/<?php echo $data['img4']?>" height="600vh" width="600vh" class="d-block w-100" alt="...">
+                                    <img src="../admin/img/Property_image/<?php echo $data['img4']?>" height="600vh"
+                                        width="600vh" class="d-block w-100" alt="...">
                                 </div>
                             </div>
                             <button class="carousel-control-prev" type="button"
@@ -116,9 +120,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <!-- <div class="col">
                     2 of 2
-                </div>
+                </div> -->
             </div>
             <div class="row">
                 <div class="col-6">
@@ -200,7 +204,7 @@
                     <h4 class="animated text-black fadeIn mb-3" style="border-bottom: 2px solid var(--tan);">
                         Description</h4>
                     <p>
-                    <?php echo $data['description']?>
+                        <?php echo $data['description']?>
                     </p>
                 </div>
             </div>
@@ -228,8 +232,8 @@
 
         <!-- property details End -->
 
-         <!-- Footer Start -->
-         <?php include('../User/include/footer.php')?>
+        <!-- Footer Start -->
+        <?php include('../User/include/footer.php')?>
         <!-- Footer End -->
 
 

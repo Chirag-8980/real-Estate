@@ -7,6 +7,10 @@ if(!isset($_SESSION['auser']))
 {
 	header("location:index.php");
 }
+
+	$get_user=mysqli_fetch_array(mysqli_query($con ,"SELECT COUNT(*) as total FROM user"));
+	$get_property=mysqli_fetch_array(mysqli_query($con ,"SELECT COUNT(*) as total FROM tblhouse"));
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,7 +82,7 @@ if(!isset($_SESSION['auser']))
 									</div>
 									<div class="dash-widget-info">
 										
-										<h3>1234</h3>
+										<h3><?php echo $get_user['total']?></h3>
 										
 										<h6 class="text-muted">Users</h6>
 										<div class="progress progress-sm">
@@ -99,9 +103,9 @@ if(!isset($_SESSION['auser']))
 									</div>
 									<div class="dash-widget-info">
 										
-										<h3>123</h3>
+										<h3><?php echo $get_property['total']?></h3>
 										
-										<h6 class="text-muted">Request Blood</h6>
+										<h6 class="text-muted">Listed Property</h6>
 										<div class="progress progress-sm">
 											<div class="progress-bar bg-success w-50"></div>
 										</div>

@@ -114,8 +114,9 @@ if(!isset($_SESSION['auser']))
 							<li class="submenu">
 								<a href="#"><i class="fe fe-user"></i> <span> Property</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
-									<li><a href="propertyadd.php"> Add Property</a></li>
 									<li><a href="propertyview.php"> View Property </a></li>
+									<li><a href="property_req.php"> Property Reqest </a></li>
+									<li><a href="propertyadd.php"> Add Reqest </a></li>
 									
 								</ul>
 							</li>

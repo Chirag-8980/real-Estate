@@ -73,7 +73,7 @@
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="property-item rounded overflow-hidden">
                                 <div class="position-relative overflow-hidden">
-                                    <a href=""><img  class="img-fluid" src="./Admin/Img/Property_image/<?php echo $data['img1']; ?>" alt=""></a>
+                                    <a href="./property_details.php?pid='<?php echo $data['pid'] ?>'"><img  class="img-fluid" src="../admin/Img/Property_image/<?php echo $data['img1']; ?>" alt=""></a>
                                     <div
                                         class="bg-black rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
                                         <?php echo $data['stype']; ?></div>
