@@ -88,7 +88,6 @@ if(!isset($_SESSION['auser']))
                                                     <th>ID</th>
                                                     <th>Name</th>
                                                     <th>Email</th>
-                                                    <th>Phone</th>
 													<th>Subject</th>
                                                     <th>Message</th>
                                                     <th>Delete</th>
@@ -99,15 +98,14 @@ if(!isset($_SESSION['auser']))
                                             <tbody>
 											<?php
 													
-												$query=mysqli_query($con,"select * from contact");
+												$query=mysqli_query($con,"select * from tblcontact");
 												$cnt=1;
 												while($row=mysqli_fetch_row($query))
 													{
 											?>
                                                 <tr>
                                                     <td><?php echo $cnt; ?></td>
-                                                    <td><?php echo $row['1']; ?></td>
-                                                    <td><?php echo $row['2']; ?></td>
+                                                    <td  ><?php echo $row['2']; ?></td>
                                                     <td><?php echo $row['3']; ?></td>
                                                     <td><?php echo $row['4']; ?></td>
 													<td><?php echo $row['5']; ?></td>
