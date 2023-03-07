@@ -10,12 +10,7 @@
 		if(!empty($user) && !empty($pass))
 		{
 
-<<<<<<< HEAD
 			$query = "SELECT name, password FROM admin WHERE `name`='$user' AND `password`='$pass'";
-=======
-
-			$query = "SELECT auser, apass FROM admin WHERE auser='$user' AND apass='$pass'";
->>>>>>> 56df2231882adabb89d6134d3b31a183bb277145
 
 			$result = mysqli_query($con,$query)or die(mysqli_error());
 			$num_row = mysqli_num_rows($result);

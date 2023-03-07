@@ -1,6 +1,6 @@
 <?php
     include('./config/config.php');
-    $select_q="select * from tblhouse";
+    $select_q="select * from tblhouse where qc=1";
     $query=mysqli_query($con,$select_q);
     
 ?>

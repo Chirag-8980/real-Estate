@@ -1,8 +1,5 @@
 <?php
-    ini_set('session.cache_limiter','public');
-    session_cache_limiter(false);
     session_start();
-    include("../admin/config.php");	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,17 +35,11 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-    <div class="bg-white p-0">
+    <div class="container-xxl bg-white p-0">
         <!-- Spinner Start -->
         <?php include('../User/include/spinner.php')?>
         <!-- Spinner End -->
 
-=======
-    <div class="container-xxl bg-white p-0">
-      
-    <?php include('../User/include/spinner.php')?>
->>>>>>> 56df2231882adabb89d6134d3b31a183bb277145
 
         <!-- Navbar Start -->
         
@@ -56,52 +47,31 @@
         <!-- Navbar End -->
 
 
+        <!-- Header Start -->
         <div class="container-fluid header bg-white p-0">
-            
-              <!--	About Our Company -->
-        <div class="full-row p-5">
-            <div class="container">
-                
-				
-				<?php 
-					
-					$query=mysqli_query($con,"SELECT * FROM about");
-					while($row=mysqli_fetch_array($query))
-					{
-				?>
-                <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
+            <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
                 <div class="col-md-6 p-5 mt-lg-5">
-                    <!-- <h1 class="display-5 animated text-black fadeIn m-5">About Us</h1>  -->
-                    <h3 class="double-down-line-left position-relative pb-4 mb-4"><?php echo $row['1'];?></h3>
-  
+                    <h1 class="display-5 animated text-black fadeIn mb-4">About Us</h1> 
+                        <nav aria-label="breadcrumb animated fadeIn">
+                        <ol class="breadcrumb text-uppercase">
+                            <li class="breadcrumb-item"><a class="text-tan" href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-tan" href="#">Pages</a></li>
+                            <li class="breadcrumb-item text-body text-black active" aria-current="page">About</li>
+                        </ol>
+                    </nav>
                 </div>
-				
-                <div class="row about-company">
-                    <div class="col-md-12 col-lg-7">
-                        <div class="about-content">
-                            <?php echo $row['2'];?>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-lg-5 ">
-                        <div class="about-img"> <img src="../admin/upload/<?php echo $row['3'];?>" alt="about image"> </div>
-                    </div>
+                <div class="col-md-6 animated fadeIn">
+                    <img class="img-fluid" src="img/header.jpg" alt="">
                 </div>
-				
-				<?php } ?>
-				
-            </div>
-        </div>
-        <!--	About Our Company --> 
             </div>
         </div>
         <!-- Header End -->
 
 
+        <!-- Search Start -->
+        <?php include('../User/include/search.php')?>
+        <!-- Search End -->
 
-
-
-
-        
 
         <!-- About Start -->
         <?php include('../User/include/about.php')?>

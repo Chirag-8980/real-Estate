@@ -92,13 +92,12 @@ if(!isset($_SESSION['auser']))
 											<?php
 													
 													$query=mysqli_query($con,"select * from about");
-													$cnt=1;
 													while($row=mysqli_fetch_row($query))
 														{
 											?>
 											<tbody>
 												<tr>
-													<td><?php echo $cnt; ?></td>
+													<td><?php echo $row['0']; ?></td>
 													<td><?php echo $row['1']; ?></td>
 													<td><?php echo $row['2']; ?></td>
 													<td><img src="upload/<?php echo $row['3']; ?>" height="200px" width="200px"></td>
@@ -107,7 +106,6 @@ if(!isset($_SESSION['auser']))
 												</tr>
 											</tbody>
 												<?php
-												$cnt=$cnt+1;
 												} 
 												?>
 										</table>

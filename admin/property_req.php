@@ -84,7 +84,7 @@ if(!isset($_SESSION['auser']))
 								</div>
 								<div class="card-body">
 
-									<table id="basic-datatable" class="table">
+									<table id="basic-datatable " class="table">
                                             <thead>
                                                 <tr>
                                                     <th>PID</th>
@@ -101,21 +101,17 @@ if(!isset($_SESSION['auser']))
                                             <tbody>
 											<?php
 					
-												while($data=mysqli_fetch_array($get_data))
-													{
-											?>
-                                                <tr>
+												while($data=mysqli_fetch_array($get_data)) { ?>
+                                                <tr >
                                                     <td><?php echo $data['pid']; ?></td>
                                                     <td><img src='./Img/Property_image/<?php echo $data['img1'];    ?>' style="height: 100px; width: 100px;" alt=""></td>
                                                     <td><?php echo $data['ptitle']; ?></td>
                                                     <td><?php echo $data['price']; ?></td>
                                                     <td><?php echo $data['ptype']; ?></td>
                                                     <td><a href="property_details.php?pid=<?php echo $data['pid']; ?>">See Details</a></td>
-                                                    <td><a href="req_accept.php?pid=<?php echo $row['pid']; ?>">Accept</a></td>
+                                                    <td><a href="req_accept.php?pid=<?php echo $data['pid']; ?>">Accept</a></td>
                                                 </tr>
-                                                <?php
-												} 
-												?>
+                                                <?php } ?>
                                                
                                             </tbody>
                                         </table>

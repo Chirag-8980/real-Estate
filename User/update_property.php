@@ -1,21 +1,14 @@
 <?php
     session_start();
     include('./config/config.php');
-<<<<<<< HEAD
         
      if(!isset($_SESSION['uid'])){
         header("location:./login.php");
      }
-    if(isset($_POST['QC'])){
-        $upid=$_REQUEST['pid'];
-=======
-    // $cid =$_GET['cid'];
 
-    if(isset($_POST['Update']))
-    {
-        $prid=$_POST['pid'];
+    if(isset($_POST['Update'])){
+        $upid=$_GET['pid'];
         $uid=$_SESSION["uid"];
->>>>>>> 56df2231882adabb89d6134d3b31a183bb277145
         $ptitle=$_POST["ptitle"];
         $ptype=$_POST["ptype"];
         $bhk=$_POST["bhk"];
@@ -35,7 +28,6 @@
         $status=$_POST["status"];
         $featured=$_POST["featured"];
         $description=$_POST["description"];
-<<<<<<< HEAD
         $img1=$data['img1'];
         $img2=$data['img2'];
         $img3=$data['img3'];
@@ -43,41 +35,6 @@
         $pid=$_GET['pid'];
         $allow_type=array('png','jpg','jpeg');
 
-        $image1=$_FILES['img1']['name'];
-        $tmp_name1=$_FILES['img1']['tmp_name'];
-        $img_type1=strtolower(pathinfo($image1,PATHINFO_EXTENSION)); 
-        $size=$_FILES['img1']['size'];
-        $tmp_name=$_FILES['img1']['tmp_name'];
-        $destination1="../admin/img/property_image/".$image1;
-       
-
-        $image2=$_FILES['img2']['name'];
-        $tmp_name2=$_FILES['img2']['tmp_name'];
-        $img_type2=strtolower(pathinfo($image2,PATHINFO_EXTENSION));
-        $size=$_FILES['img2']['size'];
-        $tmp_name=$_FILES['img2']['tmp_name'];
-        $destination2="../admin/img/property_image/".$image2;
-        
-
-        $image3=$_FILES['img3']['name'];
-        $tmp_name3=$_FILES['img3']['tmp_name'];
-        $img_type3=strtolower(pathinfo($image3,PATHINFO_EXTENSION));   
-        $size=$_FILES['img3']['size'];
-        $destination3="../admin/img/property_image/".$image3;
-        
-
-        $image4=$_FILES['img4']['name'];
-        $tmp_name4=$_FILES['img4']['tmp_name'];
-        $img_type4=strtolower(pathinfo($image4,PATHINFO_EXTENSION));
-        $size=$_FILES['img4']['size'];
-        $destination4="../admin/img/property_image/".$image4;
-        
-      
-        if(in_array($img_type1 || $img_type2 || $img_type3 || $img_type4, $allow_type))
-        {
-            if($size <= 200000000)
-=======
-        $allow_type=array('png','jpg','jpeg');
     
         $image1=$_FILES['img1']['name'];
         $old_img1 = $_POST['old_image1'];
@@ -120,13 +77,11 @@
             $update_fname4 = $_FILES['img4']['name'];
 
             if($size <= 2000000)
->>>>>>> 56df2231882adabb89d6134d3b31a183bb277145
             {
                 move_uploaded_file($tmp_name1,$destination1);
                 move_uploaded_file($tmp_name2,$destination2);
                 move_uploaded_file($tmp_name3,$destination3);
                 move_uploaded_file($tmp_name4,$destination4);
-<<<<<<< HEAD
 
                 $update_qry="UPDATE `tblhouse` SET `ptitle`='$ptitle',`ptype`='$ptype',`bhk`='$bhk',`stype`='$stype',`bedroom`='$bedroom',`balcony`='$balcony',`bathroom`='$bathroom',`kitchen`='$kitchen',`hall`='$hall',`floor`='$floor',`tfloor`='$tfloor',`price`='$price',`sqft`='$sqft',`paddress`='$paddress',`city`='$city',`state`='$state',`status`='$state',`featured`='$featured',`description`='$description' WHERE `pid`='$upid'";
                 $result=mysqli_query($con,$update_qry  );
@@ -135,30 +90,13 @@
 			        $msg="<p class='alert alert-success'>Property Updated Successfully</p>";
                     header('location:./user-property.php');
 					
-		        }
-		        else
-		        {
+		        } else{
 			        echo " failed";
 		        }
-=======
-                $updt_qry = "update tblhouse set uid='$uid', ptitle='$ptitle', ptype='$ptype', bhk='$bhk', stype='$stype', bedroom='$bedroom, balcony='$balcony', bathroom='$bathroom', kitchen='$kitchen', hall='$hall', floor='$floor', tfloor='$tfloor', price='$price', sqft='$sqft', paddress='$paddress', city='$city', state='$state', img1='$image1', img2='$image2', img3='$image3', img4='$image4', status='$status', featured='$featured', description='$description' where pid='$prid'";
-                $result=mysqli_query($con,$updt_qry);
-                if($result)
-                {
-                    $msg="<p class='alert alert-success'>Property Inserted Successfully</p>";
-                    // header('location:./property-list.php');
-                    
-                }
-                else
-                {
-                    echo " failed";
-                }
->>>>>>> 56df2231882adabb89d6134d3b31a183bb277145
             }
             else{
                 echo "File size should not exceed than 2MB";
             }
-<<<<<<< HEAD
         }
         else{
             echo "File type not allowed (Only jpg, jpeg and png type file allowed)";
@@ -168,112 +106,10 @@
         $_SESSION['pid']=$pid;
         $get_data=mysqli_query($con , "select * from tblhouse where pid=$pid");
         $data=mysqli_fetch_array($get_data,MYSQLI_ASSOC);
-        // print_r($data);
-        // print_r($get_data);
-
-    }
-?>
-=======
-
-
-        }else{
-            $update_fname1 = $old_img1;
-            $update_fname2 = $old_img2;
-            $update_fname3 = $old_img3;
-            $update_fname4 = $old_img4;
-
-            echo "File type not allowed (Only jpg, jpeg and png type file allowed)";
-        }
-      
     }
 
-if(isset($_POST['QC'])){
-    $uid=$_SESSION["uid"];
-    $ptitle=$_POST["ptitle"];
-    $ptype=$_POST["ptype"];
-    $bhk=$_POST["bhk"];
-    $stype=$_POST["stype"];
-    $bedroom=$_POST["bedroom"];
-    $balcony=$_POST["balcony"];
-    $bathroom=$_POST["bathroom"];
-    $kitchen=$_POST["kitchen"];
-    $hall=$_POST["hall"];
-    $floor=$_POST["floor"];
-    $tfloor=$_POST["tfloor"];
-    $price=$_POST["price"];
-    $sqft=$_POST["sqft"];
-    $paddress=$_POST["paddress"];
-    $city=$_POST["city"];
-    $state=$_POST["state"];
-    $status=$_POST["status"];
-    $featured=$_POST["featured"];
-    $description=$_POST["description"];
-    $allow_type=array('png','jpg','jpeg');
-
-    $image1=$_FILES['img1']['name'];
-    $tmp_name1=$_FILES['img1']['tmp_name'];
-    $img_type1=strtolower(pathinfo($image1,PATHINFO_EXTENSION)); 
-    $size=$_FILES['img1']['size'];
-    $tmp_name=$_FILES['img1']['tmp_name'];
-    $destination1="admin/img/property_image/".$image1;
-   
-
-    $image2=$_FILES['img2']['name'];
-    $tmp_name2=$_FILES['img2']['tmp_name'];
-    $img_type2=strtolower(pathinfo($image2,PATHINFO_EXTENSION));
-    $size=$_FILES['img2']['size'];
-    $tmp_name=$_FILES['img2']['tmp_name'];
-    $destination2="admin/img/property_image/".$image2;
-    
-
-    $image3=$_FILES['img3']['name'];
-    $tmp_name3=$_FILES['img3']['tmp_name'];
-    $img_type3=strtolower(pathinfo($image3,PATHINFO_EXTENSION));   
-    $size=$_FILES['img3']['size'];
-    $destination3="admin/img/property_image/".$image3;
-    
-
-    $image4=$_FILES['img4']['name'];
-    $tmp_name4=$_FILES['img4']['tmp_name'];
-    $img_type4=strtolower(pathinfo($image4,PATHINFO_EXTENSION));
-    $size=$_FILES['img4']['size'];
-    $destination4="admin/img/property_image/".$image4;
-    
-  
-    if(in_array($img_type1 || $img_type2 || $img_type3 || $img_type4, $allow_type))
-    {
-        if($size <= 2000000)
-        {
-            move_uploaded_file($tmp_name1,$destination1);
-            move_uploaded_file($tmp_name2,$destination2);
-            move_uploaded_file($tmp_name3,$destination3);
-            move_uploaded_file($tmp_name4,$destination4);
-            $insert_qry = "insert into tblhouse(uid, ptitle, ptype, bhk, stype, bedroom, balcony, bathroom, kitchen, hall, floor, tfloor, price, sqft, paddress, city, state, img1, img2, img3, img4, status, featured, description) VALUES ('$uid','$ptitle','$ptype','$bhk','$stype','$bedroom','$balcony','$bathroom','$kitchen','$hall','$floor','$tfloor','$price','$sqft','$paddress','$city','$state', '$image1', '$image2', '$image3', '$image4','$status','$featured','$description')";
-            $result=mysqli_query($con,$insert_qry);
-            if($result)
-            {
-                $msg="<p class='alert alert-success'>Property Inserted Successfully</p>";
-                // header('location:./property-list.php');
-                
-            }
-            else
-            {
-                echo " failed";
-            }
-        }
-        else{
-            echo "File size should not exceed than 2MB";
-        }
-    }
-    else{
-        echo "File type not allowed (Only jpg, jpeg and png type file allowed)";
-    }
-    
-}
 ?>
 
-
->>>>>>> 56df2231882adabb89d6134d3b31a183bb277145
 <!DOCTYPE html>
 <html lang="en">
 
@@ -309,11 +145,7 @@ if(isset($_POST['QC'])){
 </head>
 
 <body>
-<<<<<<< HEAD
     <div class=" bg-white p-0">
-=======
-    <div class="container-xxl bg-white p-0">
->>>>>>> 56df2231882adabb89d6134d3b31a183bb277145
         <!-- Spinner Start -->
         <?php include('../User/include/spinner.php')?>
         <!-- Spinner End -->
@@ -344,47 +176,21 @@ if(isset($_POST['QC'])){
             </div>
         </div>
         <!-- Header End -->
-<<<<<<< HEAD
 
         <!-- Add Form Start -->
         <div class="container">
             <form class="row g-3 container" method="POST" action="update_property.php" enctype="multipart/form-data">
-=======
- <?php
-
-if(isset($_GET['pid']))
-{
-    $prid=$_GET['pid'];
-    $qury = "select * from tblhouse where id ='$prid'";
-    $qury_run = mysqli_query($con,$qury);
-
-    if(mysqli_num_rows($$qury_run) > 0)
-    {
-        $pdetails = mysqli_fetch_array($qury_run);
-    
-    }
-}
-?>
-        <!-- Add Form Start -->
-        <div class="container mt-3 px-5">
-            <form class="row g-3 container" method="post" action="addhouse.php" enctype="multipart/form-data">
->>>>>>> 56df2231882adabb89d6134d3b31a183bb277145
                 <!-- Basic Information -->
                 <h2 class="animated text-black fadeIn mb-3" style="border-bottom: 2px solid var(--tan);">Basic
                     Information</h2>
                 <div class="col-md-12 input-group-lg">
                     <label for="inputEmail4" class="form-label  text-black">Title</label>
-<<<<<<< HEAD
                     <input type="text" name="ptitle" value="<?php echo $data['ptitle']?>" class="form-control"
                         id="inputEmail4">
-=======
-                    <input type="text" name="ptitle" class="form-control" id="inputEmail4" value="<?=$pdetails ['ptitle']?>">
->>>>>>> 56df2231882adabb89d6134d3b31a183bb277145
                 </div>
 
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Property Type</label>
-<<<<<<< HEAD
                     <select id="inputState" name="ptype" class="form-select">
                         <?php if($data['ptype'] == 'House')  { ?>
                         <option value="House" selected>House</option>
@@ -396,22 +202,15 @@ if(isset($_GET['pid']))
                         <option value="Apartment" selected>Apartment</option>z
                         <option value="Flat">Flat</option>
 
-                        <?php } else if($dnata['ptype'] == 'Flat')  { ?>
+                        <?php } else if($data['ptype'] == 'Flat')  { ?>
                         <option value="House">House</option>
                         <option value="Apartment">Apartment</option>
                         <option value="Flat" selected>Flat</option>
                         <?php }?>
-=======
-                    <select id="inputState" name="ptype" class="form-select" >
-                        <option value="House" value="ptype"<?= $ptype['ptype'] == '1' ? 'selected': ''?>>House</option>
-                        <option value="Apartment" value="ptype"<?= $ptype['ptype'] == '1' ? 'selected': ''?>>Apartment</option>
-                        <option value="Flat" value="ptype"<?= $ptype['ptype'] == '1' ? 'selected': ''?>>Flat</option>
->>>>>>> 56df2231882adabb89d6134d3b31a183bb277145
                     </select>
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">BHK</label>
-<<<<<<< HEAD
                     <select id="inputState" name="bhk" class="form-select">
                         <?php if($data['bhk'] == '1')  { ?>
                         <option value="1">1BHK</option>
@@ -434,18 +233,10 @@ if(isset($_GET['pid']))
                         <option value="3">3BHK</option>
                         <option value="4" selected>4BHK</option>
                         <?php } ?>
-=======
-                    <select id="inputState" name="bhk" class="form-select" >
-                        <option value="1" value="bhk"<?= $bhk['bhk'] == '1' ? 'selected': ''?>>1BHK</option>
-                        <option value="2" value="bhk"<?= $bhk['bhk'] == '1' ? 'selected': ''?>>2BHK</option>
-                        <option value="3" value="bhk"<?= $bhk['bhk'] == '1' ? 'selected': ''?>>3BHK</option>
-                        <option value="4" value="bhk"<?= $bhk['bhk'] == '1' ? 'selected': ''?>>4BHK</option>
->>>>>>> 56df2231882adabb89d6134d3b31a183bb277145
                     </select>
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Selling Type</label>
-<<<<<<< HEAD
                     <select id="inputState" name="stype" class="form-select">
                         <?php if($data['stype'] == 'Rent')  { ?>
                         <option value="Rent">Rent</option>
@@ -454,28 +245,17 @@ if(isset($_GET['pid']))
                         <option value="Rent">Rent</option>
                         <option value="Sell">Sell</option>
                         <?php }  ?>
-=======
-                    <select id="inputState" name="stype" class="form-select" >
-                        <option value="Rent">Rent</option>
-                        <option value="Sell">Sell</option>
->>>>>>> 56df2231882adabb89d6134d3b31a183bb277145
                     </select>
 
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Bedroom</label>
-<<<<<<< HEAD
                     <input type="text" name="bedroom" value="<?php echo $data['bedroom']?>" class="form-control"
                         id="inputZip" placeholder="Enter Bedroom (Only 1 to 5)">
-=======
-                    <input type="text" name="bedroom" class="form-control" id="inputZip" value="<?=$pdetails['bedroom'] ?>"
-                        placeholder="Enter Bedroom (Only 1 to 5)" >
->>>>>>> 56df2231882adabb89d6134d3b31a183bb277145
                 </div>
 
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Balcony</label>
-<<<<<<< HEAD
                     <input type="text" name="balcony" value="<?php echo $data['balcony']?>" class="form-control"
                         id="inputZip" placeholder="Enter Balcony (Only 1 to 5)">
                 </div>
@@ -493,25 +273,6 @@ if(isset($_GET['pid']))
                     <label for="inputZip" class="form-label  text-black">Hall</label>
                     <input type="text" name="hall" value="<?php echo $data['hall']?>" class="form-control" id="inputZip"
                         placeholder="Enter Hall (Only 1 to 5)">
-=======
-                    <input type="text" name="balcony" class="form-control" id="inputZip" value="<?=$pdetails['balcony'] ?>"
-                        placeholder="Enter Balcony (Only 1 to 5)" >
-                </div>
-                <div class="col-md-6 input-group-lg">
-                    <label for="inputZip" class="form-label  text-black">Bathroom</label>
-                    <input type="text" name="bathroom" class="form-control" id="inputZip" value="<?=$pdetails['bathroom'] ?>"
-                        placeholder="Enter Bathroom (Only 1 to 5)" >
-                </div>
-                <div class="col-md-6 input-group-lg">
-                    <label for="inputZip" class="form-label  text-black">Kitchen</label>
-                    <input type="text" name="kitchen" class="form-control" id="inputZip" value="<?=$pdetails['kitchen'] ?>"
-                        placeholder="Enter Kitchen (Only 1 to 5)" >
-                </div>
-                <div class="col-md-6 input-group-lg">
-                    <label for="inputZip" class="form-label  text-black">Hall</label>
-                    <input type="text" name="hall" class="form-control" id="inputZip" value="<?=$pdetails['hall'] ?>"
-                        placeholder="Enter Hall (Only 1 to 5)" > 
->>>>>>> 56df2231882adabb89d6134d3b31a183bb277145
                 </div>
 
                 <!-- Price & Location  -->
@@ -519,7 +280,6 @@ if(isset($_GET['pid']))
                     Price & Location</h2>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Floor</label>
-<<<<<<< HEAD
                     <input type="text" name="floor" value="<?php echo $data['floor']?>" class="form-control"
                         id="inputZip" placeholder="Enter Specefic Floor No.">
                 </div>
@@ -552,54 +312,6 @@ if(isset($_GET['pid']))
                     <label for="inputZip" class="form-label  text-black">State</label>
                     <input type="text" class="form-control" name="state" value="<?php echo $data['state']?>"
                         id="inputZip">
-=======
-                    <select id="inputState" name="floor" class="form-select" >
-                        <option value="1">1st Floor</option>
-                        <option value="2">2nd Floor</option>
-                        <option value="3">3rd Floor</option>
-                        <option value="4">4th Floor</option>
-                        <option value="5">5th Floor</option>
-                        <option value="6">6th Floor</option>
-                        <option value="7">7th Floor</option>
-                        <option value="8">8th Floor</option>
-                        <option value="9">9th Floor</option>
-                    </select>
-                </div>
-                <div class="col-md-6 input-group-lg">
-                    <label for="inputState" class="form-label  text-black">Total Floor</label>
-                    <select id="inputState" name="tfloor" class="form-select" >
-                        <option value="1">1 Floor</option>
-                        <option value="2">2 Floor</option>
-                        <option value="3">3 Floor</option>
-                        <option value="4">4 Floor</option>
-                        <option value="5">5 Floor</option>
-                        <option value="6">6 Floor</option>
-                        <option value="7">7 Floor</option>
-                        <option value="8">8 Floor</option>
-                        <option value="9">9 Floor</option>
-
-                    </select>
-                </div>
-                <div class="col-md-6 input-group-lg">
-                    <label for="inputZip" class="form-label  text-black">Price</label>
-                    <input type="text" class="form-control" name="price" id="inputZip" value="<?=$pdetails['price'] ?>">
-                </div>
-                <div class="col-md-6 input-group-lg">
-                    <label for="inputZip" class="form-label  text-black">Area Size</label>
-                    <input type="text" class="form-control" name="sqft" id="inputZip" value="<?=$pdetails['sqft'] ?>">
-                </div>
-                <div class="col-md-12 input-group-lg">
-                    <label for="inputEmail4" class="form-label  text-black">Address</label>
-                    <input type="text" name="paddress" class="form-control" id="inputEmail4" value="<?=$pdetails['paddress'] ?>">
-                </div>
-                <div class="col-md-6 input-group-lg">
-                    <label for="inputZip" class="form-label  text-black">City</label>
-                    <input type="text" class="form-control" name="city" id="inputZip" value="<?=$pdetails['city'] ?>">
-                </div>
-                <div class="col-md-6 input-group-lg">
-                    <label for="inputZip" class="form-label  text-black">State</label>
-                    <input type="text" class="form-control" name="state" id="inputZip" value="<?=$pdetails['state'] ?>">
->>>>>>> 56df2231882adabb89d6134d3b31a183bb277145
                 </div>
                 <!-- Image & Status -->
                 <h2 class="animated text-black fadeIn mt-5 add-header" style="border-bottom: 2px solid var(--tan);">
@@ -607,31 +319,18 @@ if(isset($_GET['pid']))
                 <div class="col-md-6">
                     <label for="formFileLg" class="form-label text-black">Image 1</label>
                     <input class="form-control form-control-lg bg-white" name="img1" id="formFileLg" type="file">
-<<<<<<< HEAD
-=======
-                    <input class="form-control form-control-lg bg-white" name="old_img1" id="formFileLg" type="file" value="<?=$pdetails=['img1'] ?>">
->>>>>>> 56df2231882adabb89d6134d3b31a183bb277145
                 </div>
                 <div class="col-md-6">
                     <label for="formFileLg" class="form-label text-black">Image 2</label>
                     <input class="form-control form-control-lg bg-white" id="formFileLg" name="img2" type="file">
-<<<<<<< HEAD
-=======
-                    <input class="form-control form-control-lg bg-white" name="old_img2" id="formFileLg" type="file" value="<?=$pdetails=['img2'] ?>">
->>>>>>> 56df2231882adabb89d6134d3b31a183bb277145
                 </div>
                 <div class="col-md-6">
                     <label for="formFileLg" class="form-label text-black">Image 3</label>
                     <input class="form-control form-control-lg bg-white" id="formFileLg" name="img3" type="file">
-<<<<<<< HEAD
-=======
-                    <input class="form-control form-control-lg bg-white" name="old_img3" id="formFileLg" type="file" value="<?=$pdetails=['img3'] ?>">
->>>>>>> 56df2231882adabb89d6134d3b31a183bb277145
                 </div>
                 <div class="col-md-6">
                     <label for="formFileLg" class="form-label text-black">Image 4</label>
                     <input class="form-control form-control-lg bg-white" id="formFileLg" name="img4" type="file">
-<<<<<<< HEAD
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Status</label>
@@ -643,20 +342,10 @@ if(isset($_GET['pid']))
                         <option value="Sold">Sold</option>
                         <option value="Unsold" selected>UnSold</option>
                         <?php }  ?>
-=======
-                    <input class="form-control form-control-lg bg-white" name="old_img4" id="formFileLg" type="file" value="<?=$pdetails=['img4'] ?>">
-                </div>
-                <div class="col-md-6 input-group-lg">
-                    <label for="inputState" class="form-label  text-black">Status</label>
-                    <select id="inputState" name="status" class="form-select" >
-                        <option value="Sold">Sold</option>
-                        <option value="Unsold">UnSold</option>
->>>>>>> 56df2231882adabb89d6134d3b31a183bb277145
                     </select>
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Is Featured?</label>
-<<<<<<< HEAD
                     <select id="inputState" class="form-select" name="featured">
                         <?php if($data['featured'] == 'Yes')  { ?>
                         <option value="Yes" selected>Yes</option>
@@ -665,28 +354,17 @@ if(isset($_GET['pid']))
                         <option value="Yes">Yes</option>
                         <option value="No" selected>No</option>
                         <?php } ?>
-=======
-                    <select id="inputState" class="form-select" name="featured" >
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
->>>>>>> 56df2231882adabb89d6134d3b31a183bb277145
                     </select>
                 </div>
 
                 <!-- Description -->
                 <h2 class="animated text-black fadeIn mt-5 mb-4 add-header"
                     style="border-bottom: 2px solid var(--tan);">Description</h2>
-<<<<<<< HEAD
                 <textarea class="tinymce form-control" name="description" rows="10" cols="29">
                 <?php echo $data['description']?>
                 </textarea>
                 <div class="d-flex justify-content-end">
-                    <input type="submit" name="QC" class="btn py-2 px-5 mx-1 bg-black text-tan" value="Send To QC" />
-=======
-                <textarea class="tinymce form-control" name="description" rows="10" cols="29" ></textarea>
-                <div class="d-flex justify-content-end">
-                    <input type="submit" name="Update" class="btn py-2 px-5 mx-1 bg-black text-tan" value="Send To QC" />
->>>>>>> 56df2231882adabb89d6134d3b31a183bb277145
+                    <input type="submit" name="update" class="btn py-2 px-5 mx-1 bg-black text-tan" value="Update" />
                     <input type="submit" name="discard" class="btn py-2 px-5  mx-1 bg-tan text-black" value="Discard" />
                 </div>
 

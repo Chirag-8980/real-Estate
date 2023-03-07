@@ -14,7 +14,7 @@ if(!isset($_SESSION['auser']))
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>LM Homes | Admin</title>
+        <title>Locus | Admin</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
@@ -36,11 +36,6 @@ if(!isset($_SESSION['auser']))
 		
 		<!-- Main CSS -->
         <link rel="stylesheet" href="assets/css/style.css">
-		
-		<!--[if lt IE 9]>
-			<script src="assets/js/html5shiv.min.js"></script>
-			<script src="assets/js/respond.min.js"></script>
-		<![endif]-->
     </head>
     <body>
 	
@@ -90,31 +85,26 @@ if(!isset($_SESSION['auser']))
                                                     <th>Email</th>
 													<th>Subject</th>
                                                     <th>Message</th>
+                                                    <th>Action</th>
                                                     <th>Delete</th>
                                                 </tr>
                                             </thead>
-                                        
-                                        
                                             <tbody>
 											<?php
 													
 												$query=mysqli_query($con,"select * from tblcontact");
-												$cnt=1;
-												while($row=mysqli_fetch_row($query))
-													{
-											?>
+												while($row=mysqli_fetch_array($query))
+													{ ?>
                                                 <tr>
-                                                    <td><?php echo $cnt; ?></td>
-                                                    <td  ><?php echo $row['2']; ?></td>
-                                                    <td><?php echo $row['3']; ?></td>
-                                                    <td><?php echo $row['4']; ?></td>
-													<td><?php echo $row['5']; ?></td>
-                                                    <td><a href="contactdelete.php?id=<?php echo $row['0']; ?>">Delete</a></td>
+                                                    <td><?php echo$row['id']; ?></td>
+                                                    <td  ><?php echo $row['name']; ?></td>
+                                                    <td><?php echo $row['email']; ?></td>
+                                                    <td><?php echo $row['subject']; ?></td>
+													<td><?php echo $row['msg']; ?></td>
+                                                    <td><a href="contactdelete.php?id=<?php echo $row['id']; ?>">Response</a></td>
+                                                    <td><a href="contactdelete.php?id=<?php echo $row['id']; ?>">Delete</a></td>
                                                 </tr>
-                                                <?php
-												$cnt=$cnt+1;
-												} 
-												?>
+                                                <?php } ?>
                                                
                                             </tbody>
                                         </table>
