@@ -17,6 +17,7 @@ if(isset($_POST['reg_btn'])){
         }
         else{
             if($password == $cpassword){
+                $password = password_hash($password , PASSWORD_BCRYPT);
                 $insert_user="INSERT INTO `user`(`uname`, `mno`, `email`, `password`,`designation`,`instagram`,`facebook`,`twitter`) VALUES ('$uname','$mno','$email','$password','designation','instagram','facebook','twitter')";
                 $check = mysqli_query($con , $insert_user);
                     if($check){
@@ -35,27 +36,61 @@ if(isset($_POST['reg_btn'])){
 
 }
 if(isset($_POST['login_btn'])){
-    $email=$_POST['email'];
-    $password=$_POST['password'];
+    $email = $_POST['email'];
+    $inputPassword = $_POST['password'];
 
-    $login_query="select uid from user where email='$email' and password='$password'";
-    $check = mysqli_query($con , $login_query);
+    $query = "SELECT password FROM user WHERE email = '$email'";
+    $result = mysqli_query($con, $query);
 
-    if(mysqli_num_rows($check) > 0){
-        $uname_query="select * from user where email ='$email' and password='$password'";
-        $uname = mysqli_query($con , $uname_query);
-        $uname1 = mysqli_fetch_array($uname);
-        // $uname =mysqli_fetch_array(mysqli_query($con , $uname_query));
-        $_SESSION['uname'] = $uname1['uname'];
-        $_SESSION['uid'] = $uname1['uid'];
-        $_SESSION['email'] = $uname1['email'];
-        header('location: ../index.php');
+        if (mysqli_num_rows($result) == 1) {
+            $row = mysqli_fetch_assoc($result);
+            $storedHashedPassword = $row["password"];
+            
+        if (password_verify($inputPassword, $storedHashedPassword)) {
+            $uname_query="select * from user where email ='$email'";
+            $uname = mysqli_query($con , $uname_query);
+            $uname1 = mysqli_fetch_array($uname);
+            $_SESSION['uname'] = $uname1['uname'];
+            $_SESSION['uid'] = $uname1['uid'];
+            $_SESSION['email'] = $uname1['email'];
+            header('location: ../index.php');
+        } else {
+            $_SESSION['msg']="Invalid password";
+            header('location: ../login.php');
+        }
+    } else {
+    // User not found, deny access
     }
-    else{
-        $_SESSION['msg']="Invalid Information";
-        header('location: ../login.php');
-    }
+
+    // $email=$_POST['email'];
+    // $password=$_POST['password'];
+    // $u_pass = password_hash($password , PASSWORD_BCRYPT);
+
+    // $login_query="select * from user where email='$email' and password='$u_pass'";
+    // $query= mysqli_query($con , $login_query);
+    // $data = mysqli_fetch_array($query);
+
+    // if( mysqli_num_rows($query) > 0){
+    //     $d_pass = $data['password'];
+    //     $pass_check = password_verify($d_pass ,$u_pass );
+    //     if($pass_check){
+    //         $uname_query="select * from user where email ='$email' and password='$password'";
+    //         $uname = mysqli_query($con , $uname_query);
+    //         $uname1 = mysqli_fetch_array($uname);
+    //         $_SESSION['uname'] = $uname1['uname'];
+    //         $_SESSION['uid'] = $uname1['uid'];
+    //         $_SESSION['email'] = $uname1['email'];
+    //         header('location: ../index.php');
+    //     }
+    //     else{
+    //         $_SESSION['msg']="Invalid password";
+    //         header('location: ../login.php');
+    //     }
+    // }
+    // else{
+    //     $_SESSION['msg']="Invalid Information";
+    //     header('location: ../login.php');
+    // }
 }
-
 
 ?>

@@ -41,7 +41,7 @@
 </head>
 
 <body>
-    <div class="container-xxl bg-white p-0">
+    <div class="bg-white p-0">
 
         <!-- Spinner Start -->
         <?php include('../User/include/spinner.php')?>
@@ -56,28 +56,52 @@
         <!-- Header Start -->
         <div class="container-fluid header bg-white p-0">
             <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
-                <div class="col-md-6 p-5 mt-lg-5">
-                    <h1 class="display-5 animated fadeIn text-black mb-4">Select Property Type</h1>
+                <div class="col-md-6 p-5 mt-5 mt-lg-5">
+                    <h1 class="display-5 animated fadeIn mt-5 text-black mb-4">Select Property</h1>
                     <nav aria-label="breadcrumb animated fadeIn">
                         <ol class="breadcrumb text-uppercase">
                             <li class="breadcrumb-item"><a class="text-tan" href="#">Home</a></li>
-                            <li class="breadcrumb-item text-body text-black active" aria-current="page">Select Type</li>
+                            <li class="breadcrumb-item text-body text-black active" aria-current="page">Select</li>
                         </ol>
                     </nav>
                 </div>
                 <div class="col-md-6 animated fadeIn">
-                    <img class="img-fluid" src="img/header.jpg" alt="">
+                    <img class="img-fluid" src="img/header.jpg" alt="" style="height: 44vh; width: 100%;">
                 </div>
             </div>
         </div>
         <!-- Header End -->
 
         <!-- Select Section Start -->
-        <?php while ($data=mysqli_fetch_array($query)) { ?>
-
-        <a href="./<?php echo $data['location']  ?>.php?cid=<?php echo $data['cid']; ?>"><?php echo $data['ctype']  ?></a>
-
-        <?php } ?>
+        <div class=" py-5">
+        <div class="container">
+            <div class="text-center text-black mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s"
+                style="max-width: 600px;">
+                <h1 class="mb-3 text-black">Select Type</h1>
+                <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod
+                    sit. Ipsum diam justo sed rebum vero dolor duo.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-12">
+                    <div class="row gy-4">
+                        <?php while ($data=mysqli_fetch_array($query)) { ?>
+                        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.1s">
+                        <a href="./<?php echo $data['location']  ?>.php?cid=<?php echo $data['cid']; ?>" class="text-light">
+                            <div class="bg-color rounded p-3">
+                                <div class="d-flex align-items-center justify-content-center bg-black text-light rounded p-3"
+                                    style="border: 1px dashed var(--tan)">
+                                    
+                                    <?php echo $data['ctype']  ?>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
         <!-- Select Section End -->
 
     </div>

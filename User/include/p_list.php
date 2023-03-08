@@ -41,7 +41,7 @@
 
 <body>
 
-    <div class="container-xxl py-5">
+    <div class=" py-5">
         <div class="container">
             <div class="row g-0 gx-5 align-items-end">
                 <div class="col-lg-6">
@@ -73,7 +73,7 @@
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="property-item rounded overflow-hidden">
                                 <div class="position-relative overflow-hidden">
-                                    <a href="./property_details.php?pid='<?php echo $data['pid'] ?>'"><img  class="img-fluid" src="../admin/Img/Property_image/<?php echo $data['img1']; ?>" alt=""></a>
+                                    <a href="./property_details.php?pid='<?php echo $data['pid'] ?>'"><img  class="img-fluid" style="height: 330px; width: 100%;" src="../admin/Img/Property_image/<?php echo $data['img1']; ?>" alt=""></a>
                                     <div
                                         class="bg-black rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
                                         <?php echo $data['stype']; ?></div>
@@ -101,7 +101,7 @@
                         <?php } ?>
 
                         <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                            <a class="btn bg-black text-tan py-3 px-5" href="">Browse More Property</a>
+                            <a class="btn bg-black text-tan py-3 px-5" href="./property-list.php">Browse More Property</a>
                         </div>
                     </div>
                 </div>
