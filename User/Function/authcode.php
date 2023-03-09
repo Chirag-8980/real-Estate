@@ -39,6 +39,11 @@ if(isset($_POST['login_btn'])){
     $email = $_POST['email'];
     $inputPassword = $_POST['password'];
 
+    // $check_email=mysqli_query($con , "SELECT uid FROM user WHERE email = '$email'");
+    // if(mysqli_num_rows($check_email) > 0){
+
+    // }
+
     $query = "SELECT password FROM user WHERE email = '$email'";
     $result = mysqli_query($con, $query);
 
@@ -55,11 +60,12 @@ if(isset($_POST['login_btn'])){
             $_SESSION['email'] = $uname1['email'];
             header('location: ../index.php');
         } else {
-            $_SESSION['msg']="Invalid password";
+            $_SESSION['msg']="Invalid Email Or Password";
             header('location: ../login.php');
         }
     } else {
-    // User not found, deny access
+        $_SESSION['msg']="Invalid Email Or Password";
+            header('location: ../login.php');
     }
 
     // $email=$_POST['email'];
