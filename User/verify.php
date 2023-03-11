@@ -32,7 +32,7 @@ session_start();
         <div class="forms">
             <div class="form-content" style="margin-left: 18px ;">
                 <div class="login-form">
-                    <div class="title">Forget Password </div><br>
+                    <div class="title">Email Verification</div><br>
                     <?php if (isset($_SESSION['message'])) 
             { 
               ?>
@@ -48,17 +48,21 @@ session_start();
               ?>
                     <form action="function/res_pass.php" method="post">
                         <div class="input-boxes">
-                            <p>Enter Your email and password.</p>
+                            <p>Enter OTP which is sent in Email</p>
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
-                                <input type="email" name="email" placeholder="Enter your email" required>
+                                <input type="text" name="otp" placeholder="Enter One Time Password" required>
                             </div>
                             <div class="input-box">
                                 <i class="fa-solid fa-mobile"></i>
-                                <input type="text" name="mno" placeholder="Enter your mobile number" required>
+                                <input type="text" name="pass" placeholder="Enter New Password" required>
+                            </div>
+                            <div class="input-box">
+                                <i class="fa-solid fa-mobile"></i>
+                                <input type="text" name="cpass" placeholder="Enter New Confirm Password" required>
                             </div>
                             <div class="button input-box">
-                                <input type="submit" name="btn_otp" value="Send OTP">
+                                <input type="submit" name="btn_res" value="Reset Password">
                             </div>
                             <div class="text sign-up-text"><label><a style="color: #E0A96D;"
                                         href="login.php"> Go Back →</a></label></div>

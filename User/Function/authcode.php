@@ -23,14 +23,13 @@ if(isset($_POST['reg_btn'])){
                     if($check){
                         $get_uid="select * from user where email ='$email' and password='$password'";
                         $uid1 =mysqli_fetch_array( mysqli_query($con , $get_uid));
-                        $_SESSION['msg']="Registration Successfully...";
+                        $_SESSION['message']="Registration Successfully...";
                         $_SESSION['uid'] = $uid1['uid'];
-                        header('location: ../index.php');
+                        header('location: ../login.php');
                     }
             }else{
-                $_SESSION['msg']= "Confirm Password Is Not Match";
-                mysql_error();
-                header('location: ../login.php');
+                $_SESSION['message']= "Confirm Password Is Not Match";
+                header('location: ../register.php');
             }
         }
 
@@ -60,11 +59,11 @@ if(isset($_POST['login_btn'])){
             $_SESSION['email'] = $uname1['email'];
             header('location: ../index.php');
         } else {
-            $_SESSION['msg']="Invalid Email Or Password";
+            $_SESSION['message']="Invalid Email Or Password";
             header('location: ../login.php');
         }
     } else {
-        $_SESSION['msg']="Invalid Email Or Password";
+        $_SESSION['message']="Invalid Email Or Password";
             header('location: ../login.php');
     }
 

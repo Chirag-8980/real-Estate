@@ -164,12 +164,12 @@
                     Information</h2>
                 <div class="col-md-12 input-group-lg">
                     <label for="inputEmail4" class="form-label  text-black">Title</label>
-                    <input type="text" name="ptitle" class="form-control" id="inputEmail4"  required>
+                    <input type="text" name="ptitle" class="form-control" id="inputEmail4"  >
                 </div>
 
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Property Type</label>
-                    <select id="inputState" name="ptype" class="form-select"  required>
+                    <select id="inputState" name="ptype" class="form-select"  >
                         <option value="House">House</option>
                         <option value="Apartment">Apartment</option>
                         <option value="Flat">Flat</option>
@@ -177,16 +177,15 @@
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">BHK</label>
-                    <select id="inputState" name="bhk" class="form-select" required >
-                        <option value="1">1BHK</option>
-                        <option value="2">2BHK</option>
-                        <option value="3">3BHK</option>
-                        <option value="4">4BHK</option>
+                    <select id="inputState" name="bhk" class="form-select"  >
+                        <option value="1">1 BHK</option>
+                        <option value="2">2 BHK</option>
+                        <option value="3">3 BHK</option>
                     </select>
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Selling Type</label>
-                    <select id="inputState" name="stype" class="form-select" required >
+                    <select id="inputState" name="stype" class="form-select"  >
                         <option value="Rent">Rent</option>
                         <option value="Sell">Sell</option>
                     </select>
@@ -195,28 +194,28 @@
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Bedroom</label>
                     <input type="text" name="bedroom" class="form-control" id="inputZip"
-                        placeholder="Enter Bedroom (Only 1 to 5)" required >
+                        placeholder="Enter Bedroom (Only 1 to 5)"  >
                 </div>
 
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Balcony</label>
                     <input type="text" name="balcony" class="form-control" id="inputZip"
-                        placeholder="Enter Balcony (Only 1 to 5)" required >
+                        placeholder="Enter Balcony (Only 1 to 5)"  >
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Bathroom</label>
                     <input type="text" name="bathroom" class="form-control" id="inputZip"
-                        placeholder="Enter Bathroom (Only 1 to 5)" required >
+                        placeholder="Enter Bathroom (Only 1 to 5)"  >
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Kitchen</label>
                     <input type="text" name="kitchen" class="form-control" id="inputZip"
-                        placeholder="Enter Kitchen (Only 1 to 5)"  required>
+                        placeholder="Enter Kitchen (Only 1 to 5)"  >
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Hall</label>
                     <input type="text" name="hall" class="form-control" id="inputZip"
-                        placeholder="Enter Hall (Only 1 to 5)" required >
+                        placeholder="Enter Hall (Only 1 to 5)"  >
                 </div>
 
                 <!-- Price & Location  -->
@@ -224,82 +223,61 @@
                     Price & Location</h2>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Floor</label>
-                    <select id="inputState" name="floor" class="form-select" required >
-                        <option value="1">1st Floor</option>
-                        <option value="2">2nd Floor</option>
-                        <option value="3">3rd Floor</option>
-                        <option value="4">4th Floor</option>
-                        <option value="5">5th Floor</option>
-                        <option value="6">6th Floor</option>
-                        <option value="7">7th Floor</option>
-                        <option value="8">8th Floor</option>
-                        <option value="9">9th Floor</option>
-                    </select>
+                    <input type="text" name="floor" class="form-control" id="inputEmail4"  >
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Total Floor</label>
-                    <select id="inputState" name="tfloor" class="form-select" required >
-                        <option value="1">1 Floor</option>
-                        <option value="2">2 Floor</option>
-                        <option value="3">3 Floor</option>
-                        <option value="4">4 Floor</option>
-                        <option value="5">5 Floor</option>
-                        <option value="6">6 Floor</option>
-                        <option value="7">7 Floor</option>
-                        <option value="8">8 Floor</option>
-                        <option value="9">9 Floor</option>
-
-                    </select>
+                    <input type="text" name="tfloor" class="form-control" id="inputEmail4"  >
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Price</label>
-                    <input type="text" class="form-control" name="price" id="inputZip"  required>
+                    <input type="text" class="form-control" name="price" id="inputZip"  >
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Area Size</label>
-                    <input type="text" class="form-control" name="sqft" id="inputZip" required >
+                    <input type="text" class="form-control" name="sqft" id="inputZip"  >
                 </div>
                 <div class="col-md-12 input-group-lg">
                     <label for="inputEmail4" class="form-label  text-black">Address</label>
-                    <input type="text" name="paddress" class="form-control" id="inputEmail4" required >
+                    <input type="text" name="paddress" class="form-control" id="inputEmail4"  >
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">City</label>
-                    <input type="text" class="form-control" name="city" id="inputZip" required >
+                    <input type="text" class="form-control" name="city" id="inputZip"  >
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">State</label>
-                    <input type="text" class="form-control" name="state" id="inputZip"  required>
+                    <input type="text" class="form-control" name="state" id="inputZip"  >
                 </div>
                 <!-- Image & Status -->
                 <h2 class="animated text-black fadeIn mt-5 add-header" style="border-bottom: 2px solid var(--tan);">
                     Image & Status</h2>
                 <div class="col-md-6">
                     <label for="formFileLg" class="form-label text-black">Image 1</label>
-                    <input class="form-control form-control-lg bg-white" name="img1" id="formFileLg" type="file"  required>
+                    <input class="form-control form-control-lg bg-white" name="img1" id="formFileLg" type="file"  >
                 </div>
                 <div class="col-md-6">
                     <label for="formFileLg" class="form-label text-black">Image 2</label>
-                    <input class="form-control form-control-lg bg-white" id="formFileLg" name="img2" type="file" required >
+                    <input class="form-control form-control-lg bg-white" id="formFileLg" name="img2" type="file"  >
                 </div>
                 <div class="col-md-6">
                     <label for="formFileLg" class="form-label text-black">Image 3</label>
-                    <input class="form-control form-control-lg bg-white" id="formFileLg" name="img3" type="file" required >
+                    <input class="form-control form-control-lg bg-white" id="formFileLg" name="img3" type="file"  >
                 </div>
                 <div class="col-md-6">
                     <label for="formFileLg" class="form-label text-black">Image 4</label>
-                    <input class="form-control form-control-lg bg-white" id="formFileLg" name="img4" type="file" required >
+                    <input class="form-control form-control-lg bg-white" id="formFileLg" name="img4" type="file"  >
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Status</label>
-                    <select id="inputState" name="status" class="form-select" required >
+                    <select id="inputState" name="status" class="form-select" hidden >
                         <option value="Sold">Sold</option>
                         <option value="Unsold">UnSold</option>
                     </select>
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Is Featured?</label>
-                    <select id="inputState" class="form-select" name="featured" required >
+                    <select id="inputState" class="form-select" name="featured"  >
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select>
@@ -308,9 +286,9 @@
                 <!-- Description -->
                 <h2 class="animated text-black fadeIn mt-5 mb-4 add-header"
                     style="border-bottom: 2px solid var(--tan);">Description</h2>
-                <textarea class="tinymce form-control" name="description" rows="10" cols="29" required ></textarea>
+                <textarea class="tinymce form-control" name="description" rows="10" cols="29"  ></textarea>
                 <div class="d-flex justify-content-end">
-                    <input type="submit" name="QC" class="btn py-2 px-5 mx-1 bg-black text-tan" value="Send To QC" />
+                    <input type="submit" name="QC" class="btn py-2 px-5 mx-1 bg-black text-tan" value="Send To QC"  />
                     <input type="submit" name="discard" class="btn py-2 px-5  mx-1 bg-tan text-black" value="Discard" />
                 </div>
 

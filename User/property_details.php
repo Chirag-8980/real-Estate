@@ -230,17 +230,6 @@
             </div>
         </div>
 
-        <!-- property details End -->
-
-        <!-- Footer Start -->
-        <?php include('../User/include/footer.php')?>
-        <!-- Footer End -->
-
-
-        <!-- Back to Top -->
-        <?php include('../User/include/top.php')?>
-    </div>
-
 </body>
 
 <!-- JavaScript Libraries -->

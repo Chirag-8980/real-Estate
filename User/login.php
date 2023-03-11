@@ -1,5 +1,5 @@
 <?php
-session_start();
+    session_start();
 ?>
 <!DOCTYPE html>
 <!-- Created by CodingLab |www.youtube.com/c/CodingLabYT-->
@@ -32,18 +32,18 @@ session_start();
             <div class="form-content" style="margin-left: 18px ;">
                 <div class="login-form">
                     <div class="title">Login </div><br>
-                    <?php if (isset($_SESSION['msg'])) 
+                    <?php if (isset($_SESSION['message'])) 
             { 
               ?>
                     <div class="">
                         <div class="alert alert-warning  alert-dismissible fade show" role="alert">
                             <strong>Oops! </strong>
-                            <?= $_SESSION['msg']; ?>.
+                            <?= $_SESSION['message']; ?>.
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     </div>
                     <?php
-               unset($_SESSION['msg']);
+               unset($_SESSION['message']);
             }
               ?>
                     <!-- Login Form... -->
@@ -57,52 +57,17 @@ session_start();
                                 <i class="fas fa-lock"></i>
                                 <input type="password" name="password" placeholder="Enter your password" required>
                             </div>
-                            <div class="text" style="color: #FFA500 !important"><a href="./resetpass.php">Forgot
+                            <div class="text" style="color: #FFA500 !important"><a style="color: #E0A96D;" href="./resetpass.php">Forgot
                                     password?</a></div>
                             <div class="button input-box">
                                 <input type="submit" name="login_btn" value="Login">
                             </div>
-                            <div class="text sign-up-text">Don't have an account? <label for="flip">Sigup now</label>
+                            <div class="text sign-up-text">Don't have an account? <label for="flip"> <a style="color: #E0A96D;" href="register.php">Sigup now </a> </label>
                             </div>
                         </div>
                     </form>
                 </div>
-                <div class="signup-form">
-                    <div class="title">Signup</div><br>
-                   
-                    
-                    <!-- Registration Form..... -->
-                    <form action="function/authcode.php" method="post">
-                        <div class="input-boxes">
-                            <div class="input-box">
-                                <i class="fas fa-user"></i>
-                                <input type="text" name="uname" placeholder="Enter your name" required>
-                            </div>
-                            <div class="input-box">
-                                <i class="fas fa-envelope"></i>
-                                <input type="email" name="email" placeholder="Enter your email" required>
-                            </div>
-                            <div class="input-box">
-                                <i class="fa fa-phone"></i>
-                                <input type="text" name="mno" placeholder="Enter your phone number" required>
-                            </div>
-                            <div class="input-box">
-                                <i class="fas fa-lock"></i>
-                                <input type="password" name="password" placeholder="Enter your password" required>
-                            </div>
-                            <div class="input-box">
-                                <i class="fas fa-lock"></i>
-                                <input type="password" name="cpassword" placeholder="Enter your Confrim password"
-                                    required>
-                            </div>
-                            <div class="button input-box">
-                                <input type="submit" name="reg_btn" value="Registration">
-                            </div>
-                            <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+               
             </div>
         </div>
     </div>
