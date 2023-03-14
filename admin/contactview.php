@@ -1,12 +1,39 @@
 <?php
 session_start();
 require("config.php");
-////code
- 
 if(!isset($_SESSION['auser']))
 {
 	header("location:index.php");
 }
+$query = "select * from tblcontact where status='0'";
+$query_run = mysqli_query($con , $query);
+	
+if(isset($_POST['res']))
+{
+	$response=$_POST['response'];
+	$status=1;
+	$id = $_SESSION['id']; 
+	if($response)
+	{
+		$sql="UPDATE `tblcontact` SET `response`='$response',`status`='$status' WHERE `id`='$id'";
+		$result=mysqli_query($con,$sql);
+		unset($_SESSION['id']);
+		if($result)
+			{
+				$msg='Response Added Successsfully';		
+			}
+			else
+			{
+				$error='Not Response Added Successsfully';
+			}
+	}
+	else{
+		$error="* Please Fill all the Fields!";
+	}
+	
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +63,7 @@ if(!isset($_SESSION['auser']))
 		
 		<!-- Main CSS -->
         <link rel="stylesheet" href="assets/css/style.css">
+		<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
     </head>
     <body>
 	
@@ -91,17 +119,15 @@ if(!isset($_SESSION['auser']))
                                             </thead>
                                             <tbody>
 											<?php
-													
-												$query=mysqli_query($con,"select * from tblcontact");
-												while($row=mysqli_fetch_array($query))
-													{ ?>
+											
+												while($row = mysqli_fetch_array($query_run)) { ?>
                                                 <tr>
-                                                    <td><?php echo$row['id']; ?></td>
+                                                    <td><?php echo $row['id']; $_SESSION['id'] = $row['id']; ?></td>
                                                     <td  ><?php echo $row['name']; ?></td>
                                                     <td><?php echo $row['email']; ?></td>
                                                     <td><?php echo $row['subject']; ?></td>
 													<td><?php echo $row['msg']; ?></td>
-                                                    <td><a href="contactdelete.php?id=<?php echo $row['id']; ?>">Response</a></td>
+                                                    <td><a  data-bs-toggle="modal" data-bs-target="#exampleModal" href="contactview.php">Response</a></td>
                                                     <td><a href="contactdelete.php?id=<?php echo $row['id']; ?>">Delete</a></td>
                                                 </tr>
                                                 <?php } ?>
@@ -116,7 +142,29 @@ if(!isset($_SESSION['auser']))
 				</div>			
 			</div>
 			<!-- /Main Wrapper -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Contact Response</h5>
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+      </div>
+      <div class="modal-body">
+	  <form method="POST" action="contactview.php">
+	  <div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Write Response</label>
+  <textarea class="form-control" name="response" id="exampleFormControlTextarea1" rows="3"></textarea>
+</div>
 
+  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+  <button type="submit" name="res" class="btn btn-primary">Submit</button>
+</form>
+      </div>
+      
+    </div>
+  </div>
+</div>
 		
 		<!-- jQuery -->
         <script src="assets/js/jquery-3.2.1.min.js"></script>
@@ -144,6 +192,7 @@ if(!isset($_SESSION['auser']))
 		
 		<!-- Custom JS -->
 		<script  src="assets/js/script.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 		
     </body>
 </html>
