@@ -1,15 +1,30 @@
 <?php
+    session_start();
     include('./config/config.php');
-    $select_q="select * from tblhouse where qc=1 limit 3";
-    $query=mysqli_query($con,$select_q);
+    $property_type = $_GET['ptype'];
+    $selling_type = $_GET['stype'];
+    $query = $_GET['query'];
+    $show = true;
+
+    if($property_type == 'Home'){
+
+        $sql = " SELECT * FROM tblhouse WHERE MATCH (ptitle,description) AGAINST ('$query');";
+        $run = mysqli_query($con , $sql);
+    }
+    if($property_type == 'Business'){
+
+    }
+    if($property_type == 'Occasion'){
+
+    }
     
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background: white;">
 
 <head>
     <meta charset="utf-8">
-    <title>Makaan - Real Estate php</title>
+    <title>Makaan - Real Estate HTML Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -20,9 +35,8 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
+    
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -32,45 +46,38 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="../css/style.css" rel="stylesheet">
-    <title>Propety List</title>
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
+    <div class="bg-white p-0">
+        <!-- Spinner Start -->
+        <?php include('../User/include/spinner.php')?>
+        <!-- Spinner End -->
 
-    <div class="container-xxl py-5">
+
+        <!-- Navbar Start -->
+        <?php include('../User/include/header.php')?>
+        <!-- Navbar End -->
+
+
+        <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-0 gx-5 align-items-end">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="text-start text-black mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
-                        <h1 class="mb-3 text-black">Property Listing</h1>
-                        <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero
-                            ipsum sit eirmod sit diam justo sed rebum.</p>
+                        <h1 class="mb-3 text-black">Your Search Result For "<em><?php echo $query?></em>" in "<em><?php echo $property_type?></em>" Category </h1>
                     </div>
                 </div>
-                <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
-                    <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
-                        <li class="nav-item me-2">
-                            <a class="btn text-black bg-tan" data-bs-toggle="pill" href="#tab-1">Featured</a>
-                        </li>
-                        <li class="nav-item me-2">
-                            <a class="btn text-black bg-tan " data-bs-toggle="pill" href="#tab-2">For Sell</a>
-                        </li>
-                        <li class="nav-item me-0">
-                            <a class="btn text-black bg-tan" data-bs-toggle="pill" href="#tab-3">For Rent</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
                 
-       
+            </div>
+            <?php while($data = mysqli_fetch_array($run)) { $show=false; ?>
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane fade show p-0 active">
                     <div class="row g-4">
-                    <?php while ($data=mysqli_fetch_array($query)) { ?>
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="property-item rounded overflow-hidden" style="height: 500px;">
                                 <div class="position-relative overflow-hidden">
@@ -99,26 +106,43 @@
                                 </div>
                             </div>
                         </div>
-                        <?php } ?>
 
-                        <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                            <a class="btn bg-black text-tan py-3 px-5" href="">Browse More Property</a>
-                        </div>
                     </div>
                 </div>
             </div>
+            <?php } ?>
+            <?php if($show) {?>
+            <div class="container mt-2">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                    <h3 class="mb-3  text-muted pb-2">No Result for "<em><?php echo $query;?></em>"</h3>
+                </div>
+            </div>
+            <?php }?>
         </div>
     </div>
+
+
+        
+
+        <!-- Footer Start -->
+        <?php include('../User/include/footer.php')?>
+        <!-- Footer End -->
+
+
+        <!-- Back to Top -->
+        <?php include('../User/include/top.php')?>  
+    </div>
+
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../lib/wow/wow.min.js"></script>
-    <script src="../lib/easing/easing.min.js"></script>
-    <script src="../lib/waypoints/waypoints.min.js"></script>
-    <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="../js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

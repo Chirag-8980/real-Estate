@@ -4,6 +4,7 @@
     $house=mysqli_fetch_array( mysqli_query($con,$select_q));
 ?>
 <body>
+
     <div class="py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 text-black wow fadeInUp" data-wow-delay="0.1s"
@@ -12,6 +13,8 @@
                 <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit
                     eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
             </div>
+
+            
             <div class="row d-flex justify-content-center g-4">
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                     <a class="cat-item d-block bgcolor text-center  rounded p-3" href="">

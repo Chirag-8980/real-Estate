@@ -89,8 +89,6 @@ if(!isset($_SESSION['auser']))
                                                     <th>Name</th>
                                                     <th>Email</th>
                                                     <th>Feedback</th>
-													<th>Status</th>
-                                                    <th>Edit</th>
                                                     <th>Delete</th>
                                                 </tr>
                                             </thead>
@@ -99,22 +97,20 @@ if(!isset($_SESSION['auser']))
                                             <tbody>
 											<?php
 													
-												$query=mysqli_query($con,"select feedback.*, user.* from feedback,user where feedback.uid=user.uid");
-												$cnt=1;
+												$query=mysqli_query($con,"select * from tblfeedback");
+												
 												while($row=mysqli_fetch_array($query))
 													{
 											?>
                                                 <tr>
-                                                    <td><?php echo $cnt; ?></td>
-                                                    <td><?php echo $row['uname']; ?></td>
-                                                    <td><?php echo $row['uemail']; ?></td>
-                                                    <td><?php echo $row['2']; ?></td>
-                                                    <td><?php echo $row['3']; ?></td>
-													<td><a href="feedbackedit.php?id=<?php echo $row['0']; ?>">Edit</a></td>
+                                                    <td><?php echo $row['fid']; ?></td>
+                                                    <td><?php echo $row['name']; ?></td>
+                                                    <td><?php echo $row['email']; ?></td>
+                                                    <td><?php echo $row['4']; ?></td>
                                                     <td><a href="feedbackdelete.php?id=<?php echo $row['0']; ?>">Delete</a></td>
                                                 </tr>
                                                 <?php
-												$cnt=$cnt+1;
+												
 												} 
 												?>
                                                

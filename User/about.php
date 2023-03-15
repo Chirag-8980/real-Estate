@@ -17,8 +17,9 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -35,14 +36,14 @@
 </head>
 
 <body>
-    <div class="container-xxl bg-white p-0">
+    <div class="bg-white p-0">
         <!-- Spinner Start -->
         <?php include('../User/include/spinner.php')?>
         <!-- Spinner End -->
 
 
         <!-- Navbar Start -->
-        
+
         <?php include('../User/include/header.php')?>
         <!-- Navbar End -->
 
@@ -51,8 +52,8 @@
         <div class="container-fluid header bg-white p-0">
             <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
                 <div class="col-md-6 p-5 mt-lg-5">
-                    <h1 class="display-5 animated text-black fadeIn mb-4">About Us</h1> 
-                        <nav aria-label="breadcrumb animated fadeIn">
+                    <h1 class="display-5 animated text-black fadeIn mb-4">About Us</h1>
+                    <nav aria-label="breadcrumb animated fadeIn">
                         <ol class="breadcrumb text-uppercase">
                             <li class="breadcrumb-item"><a class="text-tan" href="#">Home</a></li>
                             <li class="breadcrumb-item"><a class="text-tan" href="#">Pages</a></li>
@@ -79,7 +80,7 @@
 
 
         <!-- Call to Action Start -->
-        
+
         <?php include('../User/include/contact.php')?>
         <!-- Call to Action End -->
 
@@ -87,7 +88,7 @@
         <!-- Team Start -->
         <?php include('../User/include/team.php')?>
         <!-- Team End -->
-        
+
 
         <!-- Footer Start -->
         <?php include('../User/include/footer.php')?>

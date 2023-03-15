@@ -1,7 +1,7 @@
 <?php
 include("config.php");
 $fid = $_GET['id'];
-$sql = "DELETE FROM feedback WHERE fid = {$fid}";
+$sql = "DELETE FROM tblfeedback WHERE fid = {$fid}";
 $result = mysqli_query($con, $sql);
 if($result == true)
 {

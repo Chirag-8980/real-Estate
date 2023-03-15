@@ -87,7 +87,6 @@
         <?php include('../User/include/about.php')?>
         <!-- About End -->
 
-
         <!-- Property List Start -->
         <?php include('../User/include/p_list.php')?>
         <!-- Property List End -->
@@ -105,6 +104,9 @@
 
         <!-- Testimonial Start -->
         <?php include('../User/include/feedback.php')?>
+        <!-- Testimonial End -->
+        <!-- Testimonial Start -->
+        <?php include('../User/include/feedbackus.php')?>
         <!-- Testimonial End -->
 
 

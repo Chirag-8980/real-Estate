@@ -1,5 +1,10 @@
+<?php
+    // session_start();
+    include('./config/config.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Makaan - Real Estate php</title>
@@ -31,61 +36,45 @@
     <link href="../css/style.css" rel="stylesheet">
     <title>Navbar</title>
 </head>
+
 <body>
-    
-<div class="container-xxl py-5">
-            <div class="container">
-                <div class="text-center text-black mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <h1 class="mb-3 text-black">Our Clients Say!</h1>
-                    <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit
-                        eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
-                </div>
-                <div class="owl-carousel testimonial-carousel wow  fadeInUp" data-wow-delay="0.1s">
-                    <div class="testimonial-item bgcolor rounded p-3">
-                        <div class="bg-black text-white border rounded p-4">
-                            <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet
-                                diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
-                            <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded" src="img/testimonial-1.jpg"
-                                    style="width: 45px; height: 45px;">
-                                <div class="ps-3">
-                                    <h6 class="fw-bold text-tan mb-1">Client Name</h6>
-                                    <small>Profession</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item bg-light rounded p-3">
-                        <div class="bg-white border rounded p-4">
-                            <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet
-                                diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
-                            <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded" src="img/testimonial-2.jpg"
-                                    style="width: 45px; height: 45px;">
-                                <div class="ps-3">
-                                    <h6 class="fw-bold mb-1">Client Name</h6>
-                                    <small>Profession</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item bg-light rounded p-3">
-                        <div class="bg-white border rounded p-4">
-                            <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet
-                                diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
-                            <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded" src="img/testimonial-3.jpg"
-                                    style="width: 45px; height: 45px;">
-                                <div class="ps-3">
-                                    <h6 class="fw-bold mb-1">Client Name</h6>
-                                    <small>Profession</small>
-                                </div>
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center text-black mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s"
+                style="max-width: 600px;">
+                <h1 class="mb-3 text-black">Our Clients Say!</h1>
+                <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit
+                    eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
+            </div>
+            <div class="owl-carousel testimonial-carousel wow  fadeInUp">
+                <?php
+	             	$query=mysqli_query($con,"select * from tblfeedback");
+                 	while($row=mysqli_fetch_array($query))
+													{
+												?>
+                <div class="testimonial-item bg-ligh rounded p-3">
+                    <div class="bg-black text-white border rounded p-4">
+                        <p><?php echo $row['message']; ?>
+                        <div class="d-flex align-items-center">
+                            <img class="img-fluid flex-shrink-0 rounded" src="img/testimonial-1.jpg"
+                                style="width: 45px; height: 45px;">
+                            <div class="ps-3">
+                                <h6 class="fw-bold text-tan mb-1"><?php echo $row['name']; ?></h6>
+                                <small><?php echo $row['email']; ?></small>
                             </div>
                         </div>
                     </div>
                 </div>
+                <?php
+												} 
+												?>
             </div>
         </div>
+    </div>
+
+
+
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -93,8 +82,9 @@
     <script src="../lib/easing/easing.min.js"></script>
     <script src="../lib/waypoints/waypoints.min.js"></script>
     <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
-    
+
     <!-- Template Javascript -->
     <script src="../js/main.js"></script>
 </body>
+
 </html>

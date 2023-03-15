@@ -1,6 +1,6 @@
 <?php
     include('./config/config.php');
-    $select_q="select * from tblhouse where qc=1 limit 3";
+    $select_q="select * from tblhouse where qc=1";
     $query=mysqli_query($con,$select_q);
     
 ?>
@@ -42,39 +42,20 @@
 <body>
 
     <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-0 gx-5 align-items-end">
-                <div class="col-lg-6">
-                    <div class="text-start text-black mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
-                        <h1 class="mb-3 text-black">Property Listing</h1>
-                        <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero
-                            ipsum sit eirmod sit diam justo sed rebum.</p>
-                    </div>
-                </div>
-                <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
-                    <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
-                        <li class="nav-item me-2">
-                            <a class="btn text-black bg-tan" data-bs-toggle="pill" href="#tab-1">Featured</a>
-                        </li>
-                        <li class="nav-item me-2">
-                            <a class="btn text-black bg-tan " data-bs-toggle="pill" href="#tab-2">For Sell</a>
-                        </li>
-                        <li class="nav-item me-0">
-                            <a class="btn text-black bg-tan" data-bs-toggle="pill" href="#tab-3">For Rent</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        
                 
-       
+        <div class="text-center mx-auto mb-5 text-black wow fadeInUp" data-wow-delay="0.1s"
+                style="max-width: 600px;">
+                <h1 class="mb-3 text-black border-bottom pb-2 border-2">Listed Business Property</h1>
+            </div>
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane fade show p-0 active">
                     <div class="row g-4">
                     <?php while ($data=mysqli_fetch_array($query)) { ?>
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="property-item rounded overflow-hidden" style="height: 500px;">
+                            <div class="property-item rounded overflow-hidden">
                                 <div class="position-relative overflow-hidden">
-                                    <a href="./property_details.php?pid='<?php echo $data['pid'] ?>'"><img style="height: 307px;" class="img-fluid" src="../admin/Img/Property_image/<?php echo $data['img1']; ?>" alt=""></a>
+                                    <a href="./property_details.php?pid='<?php echo $data['pid'] ?>'"><img  class="img-fluid" src="../admin/Img/Property_image/<?php echo $data['img1']; ?>" alt=""></a>
                                     <div
                                         class="bg-black rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
                                         <?php echo $data['stype']; ?></div>
@@ -101,9 +82,9 @@
                         </div>
                         <?php } ?>
 
-                        <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+                        <!-- <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
                             <a class="btn bg-black text-tan py-3 px-5" href="">Browse More Property</a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

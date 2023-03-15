@@ -78,9 +78,6 @@
         <!-- Property List End -->
 
 
-        <!-- Call to Action Start -->
-        <?php include('../User/include/contact.php')?>
-        <!-- Call to Action End -->
         
 
         <!-- Footer Start -->
@@ -89,7 +86,7 @@
 
 
         <!-- Back to Top -->
-        <?php include('../User/include/top.php')?>
+        <?php include('../User/include/top.php')?>  
     </div>
 
     <!-- JavaScript Libraries -->
