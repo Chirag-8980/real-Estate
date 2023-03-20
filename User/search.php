@@ -7,15 +7,16 @@
     $show = true;
 
     if($property_type == 'Home'){
-
         $sql = " SELECT * FROM tblhouse WHERE MATCH (ptitle,description) AGAINST ('$query');";
         $run = mysqli_query($con , $sql);
     }
     if($property_type == 'Business'){
-
+        $sql = " SELECT * FROM tblbusiness WHERE MATCH (ptitle,description) AGAINST ('$query');";
+        $run = mysqli_query($con , $sql);
     }
     if($property_type == 'Occasion'){
-
+        $sql = " SELECT * FROM tbloccasion WHERE MATCH (ptitle,description) AGAINST ('$query');";
+        $run = mysqli_query($con , $sql);
     }
     
 ?>
@@ -64,11 +65,11 @@
         <!-- Navbar End -->
 
 
-        <div class="container-xxl py-5">
+        <div class="container-xxl py-5" style="height: 100vh;">
         <div class="container">
             <div class="row g-0 gx-5 align-items-end">
                 <div class="col-lg-12">
-                    <div class="text-start text-black mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
+                    <div class="text-start text-black mx-auto mb-5 wow slideInLeft">
                         <h1 class="mb-3 text-black">Your Search Result For "<em><?php echo $query?></em>" in "<em><?php echo $property_type?></em>" Category </h1>
                     </div>
                 </div>

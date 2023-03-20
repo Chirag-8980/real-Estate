@@ -24,6 +24,7 @@
         $status=$_POST["status"];
         $featured=$_POST["featured"];
         $description=$_POST["description"];
+        $facilities=$_POST["facilities"];
         $allow_type=array('png','jpg','jpeg');
 
         $image1=$_FILES['img1']['name'];
@@ -64,7 +65,7 @@
                 move_uploaded_file($tmp_name2,$destination2);
                 move_uploaded_file($tmp_name3,$destination3);
                 move_uploaded_file($tmp_name4,$destination4);
-                $insert_qry = "insert into tblhouse(uid, ptitle, ptype, bhk, stype, bedroom, balcony, bathroom, kitchen, hall, floor, tfloor, price, sqft, paddress, city, state, img1, img2, img3, img4, status, featured, description) VALUES ('$uid','$ptitle','$ptype','$bhk','$stype','$bedroom','$balcony','$bathroom','$kitchen','$hall','$floor','$tfloor','$price','$sqft','$paddress','$city','$state', '$image1', '$image2', '$image3', '$image4','$status','$featured','$description')";
+                $insert_qry = "insert into tblhouse(uid, ptitle, ptype, bhk, stype, bedroom, balcony, bathroom, kitchen, hall, floor, tfloor, price, sqft, paddress, city, state, img1, img2, img3, img4, status, featured, description , facilities) VALUES ('$uid','$ptitle','$ptype','$bhk','$stype','$bedroom','$balcony','$bathroom','$kitchen','$hall','$floor','$tfloor','$price','$sqft','$paddress','$city','$state', '$image1', '$image2', '$image3', '$image4','$status','$featured','$description','$facilities')";
                 $result=mysqli_query($con,$insert_qry);
                 if($result)
 		        {
@@ -269,20 +270,48 @@
                     <input class="form-control form-control-lg bg-white" id="formFileLg" name="img4" type="file"  >
                 </div>
                 <div class="col-md-6 input-group-lg">
-                    <label for="inputState" class="form-label  text-black">Status</label>
-                    <select id="inputState" name="status" class="form-select" hidden >
-                        <option value="Sold">Sold</option>
-                        <option value="Unsold">UnSold</option>
-                    </select>
-                </div>
-                <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Is Featured?</label>
                     <select id="inputState" class="form-select" name="featured"  >
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select>
+                    </div>
+                    <div class="col-md-6 input-group-lg">
+                    <select id="inputState" name="status" class="form-select" hidden >
+                        <option value="Sold">Sold</option>
+                        <option value="Unsold" seleceted>UnSold</option>
+                    </select>
                 </div>
-
+                <!-- Facility -->
+                <h2 class="animated text-black fadeIn mt-5 mb-2 add-header"
+                    style="border-bottom: 2px solid var(--tan);">Facilities</h2>
+                <small class="text-danger">* Important Please Do Not Remove Below Content Only Change <b>Yes</b> Or
+                    <b>No</b></small>
+                <textarea class="tinymce form-control" name="facilities" rows="10" cols="29">
+                <div class="col-md-4">
+				 	<ul>
+				 	<li class="mb-3"><span class="text-secondary font-weight-bold">Property Age : </span>10 Years</li>
+				 	<li class="mb-3"><span class="text-secondary font-weight-bold">Parking : </span>Yes</li>
+				 	<li class="mb-3"><span class="text-secondary font-weight-bold">Maintanace : </span>Yes</li>
+				 	</ul>
+				 </div>
+				 <div class="col-md-4">
+				 	<ul>
+				 	<li class="mb-3"><span class="text-secondary font-weight-bold">Type : </span>Apartment</li>
+				 	<li class="mb-3"><span class="text-secondary font-weight-bold">Security : </span>Yes</li>
+				 	<li class="mb-3"><span class="text-secondary font-weight-bold">Wifi Plan : </span>Yes</li>
+				 	
+				 	</ul>
+				 </div>
+				 <div class="col-md-4">
+				 	<ul>
+				 	<li class="mb-3"><span class="text-secondary font-weight-bold">3rd Party : </span>No</li>
+				 	<li class="mb-3"><span class="text-secondary font-weight-bold">Elevator : </span>Yes</li>
+				 	<li class="mb-3"><span class="text-secondary font-weight-bold">CCTV : </span>Yes</li>
+				 	<li class="mb-3"><span class="text-secondary font-weight-bold">Water Supply : </span>Ground Water / Tank</li>
+				 	</ul>
+			    </div>
+                </textarea>
                 <!-- Description -->
                 <h2 class="animated text-black fadeIn mt-5 mb-4 add-header"
                     style="border-bottom: 2px solid var(--tan);">Description</h2>

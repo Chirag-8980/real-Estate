@@ -1,7 +1,8 @@
 <?php
     include('./config/config.php');
-    $select_q="select count(*) as total from tblhouse";
-    $house=mysqli_fetch_array( mysqli_query($con,$select_q));
+    $house=mysqli_fetch_array( mysqli_query($con,"select count(*) as total from tblhouse"));
+    $business=mysqli_fetch_array( mysqli_query($con,"select count(*) as total from tblbusiness"));
+    $occasion=mysqli_fetch_array( mysqli_query($con,"select count(*) as total from tbloccasion"));
 ?>
 <body>
 
@@ -22,7 +23,7 @@
                             <div class="icon mb-3">
                                 <img class="img-fluid" src="img/icon-apartment.png" alt="Icon">
                             </div>
-                            <h6>Total House</h6>
+                            <h6>House Property</h6>
                             <span><?php echo $house['total']?>+ Houses</span>
                         </div>
                     </a>
@@ -33,8 +34,8 @@
                             <div class="icon mb-3">
                                 <img class="img-fluid" src="img/icon-villa.png" alt="Icon">
                             </div>
-                            <h6>Villa</h6>
-                            <span>123 Properties</span>
+                            <h6>Business Property</h6>
+                            <span><?php echo $business['total']?>+ Properties</span>
                         </div>
                     </a>
                 </div>
@@ -44,8 +45,8 @@
                             <div class="icon mb-3">
                                 <img class="img-fluid" src="img/icon-house.png" alt="Icon">
                             </div>
-                            <h6>Home</h6>
-                            <span>123 Properties</span>
+                            <h6>Occasion Property</h6>
+                            <span><?php echo $occasion['total']?>+ Properties</span>
                         </div>
                     </a>
                 </div>

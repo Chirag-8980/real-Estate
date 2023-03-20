@@ -1,14 +1,21 @@
 <?php
 session_start();
 require("config.php");
-////code
+$type = $_GET['type'];
+$show = true;
  
 if(!isset($_SESSION['auser']))
 {
 	header("location:index.php");
 }
 
+if($type == 'home'){
 	$get_data=(mysqli_query($con , "select * from tblhouse where qc=0"));
+}elseif($type == 'business'){
+	$get_data=(mysqli_query($con , "select * from tblbusiness where qc=0"));
+}elseif ($type == 'occasion') {
+	$get_data=(mysqli_query($con , "select * from tbloccasion where qc=0"));
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,6 +72,7 @@ if(!isset($_SESSION['auser']))
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
 									<li class="breadcrumb-item active">Property Reqestes</li>
+									<li class="breadcrumb-item active"><?php echo $type;?></li>
 								</ul>
 							</div>
 						</div>
@@ -101,17 +109,23 @@ if(!isset($_SESSION['auser']))
                                             <tbody>
 											<?php
 					
-												while($data=mysqli_fetch_array($get_data)) { ?>
+												while($data=mysqli_fetch_array($get_data)) { $show = false; ?>
                                                 <tr >
                                                     <td><?php echo $data['pid']; ?></td>
-                                                    <td><img src='./Img/Property_image/<?php echo $data['img1'];    ?>' style="height: 100px; width: 100px;" alt=""></td>
+                                                    <td><img src='./Img/Property_image/<?php echo $data['img1'];?>' style="height: 100px; width: 100px;" alt=""></td>
                                                     <td><?php echo $data['ptitle']; ?></td>
                                                     <td><?php echo $data['price']; ?></td>
                                                     <td><?php echo $data['ptype']; ?></td>
-                                                    <td><a href="property_details.php?pid=<?php echo $data['pid']; ?>">See Details</a></td>
-                                                    <td><a href="req_accept.php?pid=<?php echo $data['pid']; ?>">Accept</a></td>
+                                                    <td><a href="property_details.php?pid=<?php echo $data['pid'];?>&type=<?php echo $type;?>">See Details</a></td>
+                                                    <td><a href="req_accept.php?pid=<?php echo $data['pid'];?>&type=<?php echo $type;?>">Accept</a></td>
                                                 </tr>
                                                 <?php } ?>
+												<?php
+												if($show){
+													echo '<tr class="odd"><td valign="top" colspan="7" class="dataTables_empty text-center">No data available in table</td></tr>';
+												}
+												?>
+												
                                                
                                             </tbody>
                                         </table>
@@ -151,6 +165,7 @@ if(!isset($_SESSION['auser']))
 		
 		<!-- Custom JS -->
 		<script  src="assets/js/script.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 		
     </body>
 </html>

@@ -226,7 +226,8 @@
                 <!-- Facility -->
                 <h2 class="animated text-black fadeIn mt-5 mb-2 add-header"
                     style="border-bottom: 2px solid var(--tan);">Facilities</h2>
-                    <small class="text-danger">* Important Please Do Not Remove Below Content Only Change <b>Yes</b> Or <b>No</b></small>
+                <small class="text-danger">* Important Please Do Not Remove Below Content Only Change <b>Yes</b> Or
+                    <b>No</b></small>
                 <textarea class="tinymce form-control" name="facilities" rows="10" cols="29">
                 <div class="col-md-4">
 				 	<ul>
