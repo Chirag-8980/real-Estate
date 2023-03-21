@@ -65,7 +65,7 @@
         <!-- Navbar End -->
 
 
-        <div class="container-xxl py-5" style="height: 100vh;">
+        <div class="container-xxl py-5" style="height: auto;">
         <div class="container">
             <div class="row g-0 gx-5 align-items-end">
                 <div class="col-lg-12">
@@ -75,10 +75,10 @@
                 </div>
                 
             </div>
-            <?php while($data = mysqli_fetch_array($run)) { $show=false; ?>
             <div class="tab-content">
-                <div id="tab-1" class="tab-pane fade show p-0 active">
+                <div id="tab-1" class="tab-pane fade h-autp show p-0 active">
                     <div class="row g-4">
+                        <?php while($data = mysqli_fetch_array($run)) { $show=false; ?>
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="property-item rounded overflow-hidden" style="height: 500px;">
                                 <div class="position-relative overflow-hidden">
@@ -107,11 +107,10 @@
                                 </div>
                             </div>
                         </div>
-
+                        <?php } ?>
                     </div>
                 </div>
             </div>
-            <?php } ?>
             <?php if($show) {?>
             <div class="container mt-2">
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s">
@@ -126,7 +125,7 @@
         
 
         <!-- Footer Start -->
-        <?php include('../User/include/footer.php')?>
+            <?php include('../User/include/footer.php')?>
         <!-- Footer End -->
 
 

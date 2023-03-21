@@ -1,3 +1,5 @@
+<?php
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +21,7 @@
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
@@ -105,6 +108,17 @@
                 </div>
             </div>
         </div>
+        
+        <?php if(isset($_SESSION['msg'])) {
+        ?>
+        <script>
+        swal("<?php echo  $_SESSION['status'] ?>", "<?php echo $_SESSION['msg'] ?>", "<?php echo $_SESSION['status'] ?>");
+        </script>
+        <?php
+        unset($_SESSION['msg']);
+        unset($_SESSION['status']);
+    }?>
+
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

@@ -17,6 +17,7 @@
                 <div class="navbar-nav ms-auto text-white">
                     <a href="index.php" class="nav-item nav-link ">Home</a>
                     <a href="about.php" class="nav-item nav-link">About</a>
+                    <a href="contact.php" class="nav-item nav-link">Contact</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Property</a>
                         <div class="dropdown-menu rounded-0 m-0">
@@ -26,13 +27,12 @@
                         </div>
                     </div>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Manage Property</a>
                         <div class="dropdown-menu rounded-0 m-0">
-                            <a href="testimonial.php" class="dropdown-item">Testimonial</a>
-                            <a href="404.php" class="dropdown-item">404 Error</a>
+                            <a href="book_property.php" class="dropdown-item">Booked Property</a>
+                            <a href="property_order.php" class="dropdown-item">Property Order</a>
                         </div>
                     </div>
-                    <a href="contact.php" class="nav-item nav-link">Contact</a>
                     <?php
                     if(isset($_SESSION['uid'])){
                         echo '<div class="nav-item dropdown">
@@ -40,6 +40,7 @@
                         <div class="dropdown-menu rounded-0 m-0">
                             <a href="profile.php" class="dropdown-item">My Profile</a>
                             <a href="user-property.php" class="dropdown-item">My Property</a>
+                            <a href="book_property.php" class="dropdown-item">Booked Property</a>
                             <a href="logout.php" class="dropdown-item">Logout</a>    
                         </div>
                     </div>';

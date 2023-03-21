@@ -69,21 +69,25 @@
                 $result=mysqli_query($con,$insert_qry);
                 if($result)
 		        {
-			        $msg="<p class='alert alert-success'>Property Inserted Successfully</p>";
+			        $_SESSION['msg'] = "Property Insert Successful";
+			        $_SESSION['status'] = "success";
                     // header('location:./property-list.php');
 					
 		        }
 		        else
 		        {
-			        echo " failed";
+			        $_SESSION['msg'] = "Property Insert Failed";
+			        $_SESSION['status'] = "error";
 		        }
             }
             else{
-                echo "File size should not exceed than 2MB";
+                $_SESSION['msg'] = "Photo Size should be Less then 2MB";
+			    $_SESSION['status'] = "error";
             }
         }
         else{
-            echo "File type not allowed (Only jpg, jpeg and png type file allowed)";
+            $_SESSION['msg'] = "File type not allowed (Only jpg, jpeg and png type file allowed)";
+			        $_SESSION['status'] = "error";
         }
         
     }else{

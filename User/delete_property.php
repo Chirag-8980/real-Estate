@@ -5,11 +5,13 @@
     
     $delete_q = mysqli_query($con ,"DELETE FROM `tblhouse` WHERE pid='$pid'");
     if($delete_q){
-        echo "Success";
+        $_SESSION['msg'] = "Property Delete Successful";
+		 $_SESSION['status'] = "success";
         header('location:user-property.php');
     }
     else{
-        echo "Failed";
+        $_SESSION['msg'] = "Property Delete Failed";
+	    $_SESSION['status'] = "error";
     }
     
     
