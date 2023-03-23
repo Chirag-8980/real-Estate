@@ -2,14 +2,15 @@
     session_start();
     include('./config/config.php');
     if(isset($_POST['pbooking'])){
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $cindate = $_POST['cindate'];
-        $coutdate = $_POST['coutdate'];
-        $message = $_POST['message'];
-        $buyerid = $_SESSION['uid'];
-        $sellerid = $_SESSION['sellerid'];
-        $pid = $_SESSION['pid'];
+        try {
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $cindate = $_POST['cindate'];
+            $coutdate = $_POST['coutdate'];
+            $message = $_POST['message'];
+            $buyerid = $_SESSION['uid'];
+            $sellerid = $_SESSION['sellerid'];
+            $pid = $_SESSION['pid'];
 
         if($buyerid != $sellerid){
             $query = "INSERT INTO `tblpbooking`(`name`, `pid`, `seller_id`, `buyer_id`, `email`, `cindate`, `coutdate`,`details`) VALUES ('$name','$pid','$sellerid','$buyerid','$email','$cindate','$coutdate','$message')";
@@ -26,6 +27,11 @@
             $_SESSION['msg'] = "Buyer And Seller Is Same";
 		    $_SESSION['status'] = "error";
         }
+          }
+          
+          catch(Exception $e) {
+            echo 'Message: ' .$e->getMessage();
+          }
     }
 ?>
 <!DOCTYPE html>
@@ -74,49 +80,57 @@
         <!-- Navbar End -->
 
         <div class="container mt-5 px-5">
-            
-        <form action="booking.php" method="POST">
-            <div class="row g-3">
-                <div class="col-md-6">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Your Name">
-                        <label for="name">Your Name</label>
+
+            <form action="booking.php" method="POST">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name">
+                            <label for="name">Your Name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Your Email">
+                            <label for="email">Your Email</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <input type="date" class="form-control" id="dateChecker" name="cindate"
+                                placeholder="Enter Check In Date">
+                            <label for="subject">Check In Date</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <input type="date" class="form-control" id="dateChecker" name="coutdate"
+                                placeholder="Enter Check Out Date">
+                            <label for="subject">Check Out Date</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a message here" name="message"
+                                id="message" style="height: 100px"></textarea>
+                            <label for="message">Message</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn bg-tan text-black w-100 py-3" name="pbooking" type="submit">Reqest For
+                            Booking</button>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-floating">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Your Email">
-                        <label for="email">Your Email</label>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="form-floating">
-                        <input type="date" class="form-control" id="subject" name="cindate"
-                            placeholder="Enter Check In Date">
-                        <label for="subject">Check In Date</label>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="form-floating">
-                        <input type="date" class="form-control" id="subject" name="coutdate"
-                            placeholder="Enter Check Out Date">
-                        <label for="subject">Check Out Date</label>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="form-floating">
-                        <textarea class="form-control" placeholder="Leave a message here" name="message" id="message"
-                            style="height: 100px"></textarea>
-                        <label for="message">Message</label>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <button class="btn bg-tan text-black w-100 py-3" name="pbooking" type="submit">Reqest For
-                        Booking</button>
-                </div>
-            </div>
-        </form>
-        
+            </form>
+            <?php if(isset($_SESSION['msg'])) { ?>
+            <script>
+            swal("<?php echo  $_SESSION['status'] ?>", "<?php echo $_SESSION['msg'] ?>",
+                "<?php echo $_SESSION['status'] ?>");
+            </script>
+            <?php
+                unset($_SESSION['msg']);
+                unset($_SESSION['status']); }?>
+
         </div>
 
 
@@ -136,7 +150,25 @@
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var dtToday =   new Date();
+            var month = dtToday.getMonth() + 1;
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear();
 
+            if(month < 10){
+                month = '0' + month.toString();
+            }
+            if(day < 10){
+                day = '0' + day.toString();
+            }
+
+            var maxDate = year + '-' + month + '-' + day ;
+            $('#dateChecker').attr('min', maxDate);
+
+        })
+    </script>
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>

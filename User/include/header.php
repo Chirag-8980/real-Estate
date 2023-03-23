@@ -6,9 +6,11 @@
         <nav class="navbar navbar-expand-lg bg-black navbar-light py-0 px-4">
             <a href="index.php" class="navbar-brand d-flex align-items-center text-center">
                 <div class="icon p-2 me-2">
-                    <img class="img-fluid" src="../../icon-building.png" alt="Icon" style="width: 30px; height: 30px;">
+                    <!-- <img class="img-fluid" src="../../icon-building.png" alt="Icon" style="width: 30px; height: 30px;"> -->
+                    <!-- <i class="fa-regular text-light fa-house-building" style="width: 30px; height: 30px;" ></i> -->
+                    <i class="bi bi-house text-light " style="width: 30px; height: 30px;"></i>
                 </div>
-                <h1 class="m-0 text-tan">Makaan</h1>
+                <h1 class="m-0 text-tan">Locus</h1>
             </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>

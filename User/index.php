@@ -1,8 +1,9 @@
 <?php
     session_start();
     include('./config/config.php');
-    $select_q="select * from tblhouse where qc=1 limit 3 ";
+    $select_q="select * from tblhouse where qc='Success' limit 3 ";
     $query=mysqli_query($con,$select_q);
+    $show = true;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -120,11 +121,11 @@
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane fade show p-0 active">
                     <div class="row g-4">
-                    <?php while ($data=mysqli_fetch_array($query)) { ?>
+                    <?php while ($data=mysqli_fetch_array($query)) { $show = false;?>
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="property-item rounded overflow-hidden" style="height: 500px;">
                                 <div class="position-relative overflow-hidden">
-                                    <a href="./property_details.php?pid='<?php echo $data['pid'] ?>'"><img style="height: 307px;" class="img-fluid" src="../admin/Img/Property_image/<?php echo $data['img1']; ?>" alt=""></a>
+                                    <a href="./property_details.php?pid='<?php echo $data['pid'] ?>'"><img style="height: 307px;" class="img-fluid" src="../admin/Img/Property_image/house/<?php echo $data['img1']; ?>" alt=""></a>
                                     <div
                                         class="bg-black rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
                                         <?php echo $data['stype']; ?></div>
@@ -134,8 +135,12 @@
                                 </div>
                                 <div class="p-4 pb-0">
                                     <h5 class="text-tan mb-3">₹ <?php echo $data['price']; ?></h5>
-                                    <a class="d-block h5 mb-2 text-black" href="./property_details.php?pid=<?php echo $data['pid']?>"><?php echo $data['ptitle']; ?></a>
+                                    <a class="d-block h5 mb-2 text-black" href="./property_details.php?pid=<?php echo $data['pid']?>"><?php echo substr($data['ptitle'] ,0 , 35) ; ?>...</a>
                                     <p><i class="fa fa-map-marker-alt text-tan me-2"></i><?php echo $data['paddress']; ?></p>
+                                    
+                                </div>
+                                <div>
+                                <small class="fs-">Listaed Date</small>
                                 </div>
                                 <div class="d-flex border-top">
                                     <small class="flex-fill text-center text-black border-end py-2"><i
@@ -151,9 +156,17 @@
                         </div>
                         <?php } ?>
 
-                        <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                            <a class="btn bg-black text-tan py-3 px-5" href="">Browse More Property</a>
-                        </div>
+                        <?php if ($show) { ?>
+                            <div class="container mt-2">
+                                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                                    <h3 class="mb-3  text-muted pb-2">No Property Listed Here...</h3>
+                                </div>
+                            </div>
+                        <?php } else { ?>
+                            <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+                                <a class="btn bg-black text-tan py-3 px-5" href="">Browse More Property</a>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

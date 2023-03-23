@@ -9,16 +9,16 @@
 
     function SendMail($email , $sub , $msg){
             $mail = new PHPMailer(true);
-    
+            $body = '' ;
             $mail->isSMTP();
             $mail->Host ='smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'chiragkachhadiya000@gmail.com';
-            $mail->Password = 'crgqqugelaglbosr';
+            $mail->Username = 'locus466@gmail.com';
+            $mail->Password = 'pknpemzpfomyiyrz';
             $mail->SMTPSecure = 'ssl';  
             $mail->Port = 465;
             
-            $mail->setFrom('chiragkachhadiya000@gmail.com');
+            $mail->setFrom('locus466@gmail.com');
     
             $mail->addAddress($email);
     

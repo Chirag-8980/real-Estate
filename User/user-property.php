@@ -89,12 +89,23 @@
                     $show = false;   ?>
                 <div class="col-md-6">
                     <div
-                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                         <div class="col p-4 d-flex flex-column position-static">
                             <strong class="d-inline-block mb-2 text-primary"><?php echo $data['ptype']; ?></strong>
-                            <h3 class="mb-0"><?php echo $data['ptitle']; ?></h3>
+                            <h3 class="mb-0" id="title" ><?php echo substr($data['ptitle'] ,0 , 35) ; ?>...</h3>
                             <span class="mb-1 text-success bold fw-bold">₹<?php echo $data['price']; ?></span>
-                            <p class="card-text mb-auto"></p>
+                            <p class="card-text mb-auto">
+                                
+                            <?php if($data['qc'] == 'Success') {
+                             echo '<b>Listing : </b> <span class="mb-1 text-success bold fw-bold">Success</span> '; 
+                            }elseif($data['qc'] == 'Reject'){
+                                echo '<b>Listing : </b> <span class="mb-1 text-danger bold fw-bold">Reject</span> ';
+                            }else{
+                                echo '<b>Listing : </b> <span class="mb-1 text-warning bold fw-bold">Pending</span> ';
+                            }
+                                ?>
+                            
+                            
                             <div class="d-flex text-light">
                                 <button type="button" class="btn me-2 btn-success"><a
                                         href="./update_property.php?pid=<?php echo $data['pid']?>">Update</a></button>
@@ -104,7 +115,7 @@
                         </div>
                         <div class="col-auto d-none d-lg-block">
                             <a href="./property_details.php?pid=<?php echo $data['pid']?>">
-                                <img src="../admin/img/Property_image/<?php echo $data['img1']; ?> " width="200"
+                                <img src="../admin/img/Property_image/house/<?php echo $data['img1']; ?> " width="200"
                                     height="250" alt="">
                             </a>
                         </div>
@@ -143,6 +154,11 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+        var Title = document.getElementById('title').value;
+
+
+    </script>
 </body>
 
 </html>

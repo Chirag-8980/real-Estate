@@ -49,7 +49,7 @@
             </div>
             <div class="owl-carousel testimonial-carousel wow  fadeInUp">
                 <?php
-	             	$query=mysqli_query($con,"select * from tblfeedback");
+	             	$query=mysqli_query($con,"select * from tblfeedback where status='1'");
                  	while($row=mysqli_fetch_array($query))
 													{
 												?>

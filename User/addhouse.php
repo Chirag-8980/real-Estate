@@ -32,7 +32,7 @@
         $img_type1=strtolower(pathinfo($image1,PATHINFO_EXTENSION)); 
         $size=$_FILES['img1']['size'];
         $tmp_name=$_FILES['img1']['tmp_name'];
-        $destination1="../admin/img/property_image/".$image1;
+        $destination1="../admin/img/property_image/house/".$image1;
        
 
         $image2=$_FILES['img2']['name'];
@@ -40,26 +40,26 @@
         $img_type2=strtolower(pathinfo($image2,PATHINFO_EXTENSION));
         $size=$_FILES['img2']['size'];
         $tmp_name=$_FILES['img2']['tmp_name'];
-        $destination2="../admin/img/property_image/".$image2;
+        $destination2="../admin/img/property_image/house/".$image2;
         
 
         $image3=$_FILES['img3']['name'];
         $tmp_name3=$_FILES['img3']['tmp_name'];
         $img_type3=strtolower(pathinfo($image3,PATHINFO_EXTENSION));   
         $size=$_FILES['img3']['size'];
-        $destination3="../admin/img/property_image/".$image3;
+        $destination3="../admin/img/property_image/house/".$image3;
         
 
         $image4=$_FILES['img4']['name'];
         $tmp_name4=$_FILES['img4']['tmp_name'];
         $img_type4=strtolower(pathinfo($image4,PATHINFO_EXTENSION));
         $size=$_FILES['img4']['size'];
-        $destination4="../admin/img/property_image/".$image4;
+        $destination4="../admin/img/property_image/house/".$image4;
         
       
         if(in_array($img_type1 || $img_type2 || $img_type3 || $img_type4, $allow_type))
         {
-            if($size <= 2000000)
+            if($size <= 20000000)
             {
                 move_uploaded_file($tmp_name1,$destination1);
                 move_uploaded_file($tmp_name2,$destination2);
@@ -294,25 +294,25 @@
                 <textarea class="tinymce form-control" name="facilities" rows="10" cols="29">
                 <div class="col-md-4">
 				 	<ul>
-				 	<li class="mb-3"><span class="text-secondary font-weight-bold">Property Age : </span>10 Years</li>
-				 	<li class="mb-3"><span class="text-secondary font-weight-bold">Parking : </span>Yes</li>
-				 	<li class="mb-3"><span class="text-secondary font-weight-bold">Maintanace : </span>Yes</li>
+				 	<li class="mb-3"><span class="text-black fw-bold">Property Age : </span>10 Years</li>
+				 	<li class="mb-3"><span class="text-black fw-bold">Parking : </span>Yes</li>
+				 	<li class="mb-3"><span class="text-black fw-bold">Maintanace : </span>Yes</li>
 				 	</ul>
 				 </div>
 				 <div class="col-md-4">
 				 	<ul>
-				 	<li class="mb-3"><span class="text-secondary font-weight-bold">Type : </span>Apartment</li>
-				 	<li class="mb-3"><span class="text-secondary font-weight-bold">Security : </span>Yes</li>
-				 	<li class="mb-3"><span class="text-secondary font-weight-bold">Wifi Plan : </span>Yes</li>
+				 	<li class="mb-3"><span class="text-black fw-bold">Type : </span>Apartment</li>
+				 	<li class="mb-3"><span class="text-black fw-bold">Security : </span>Yes</li>
+				 	<li class="mb-3"><span class="text-black fw-bold">Wifi Plan : </span>Yes</li>
 				 	
 				 	</ul>
 				 </div>
 				 <div class="col-md-4">
 				 	<ul>
-				 	<li class="mb-3"><span class="text-secondary font-weight-bold">3rd Party : </span>No</li>
-				 	<li class="mb-3"><span class="text-secondary font-weight-bold">Elevator : </span>Yes</li>
-				 	<li class="mb-3"><span class="text-secondary font-weight-bold">CCTV : </span>Yes</li>
-				 	<li class="mb-3"><span class="text-secondary font-weight-bold">Water Supply : </span>Ground Water / Tank</li>
+				 	<li class="mb-3"><span class="text-black fw-bold">3rd Party : </span>No</li>
+				 	<li class="mb-3"><span class="text-black fw-bold">Elevator : </span>Yes</li>
+				 	<li class="mb-3"><span class="text-black fw-bold">CCTV : </span>Yes</li>
+				 	<li class="mb-3"><span class="text-black fw-bold">Water Supply : </span>Ground Water / Tank</li>
 				 	</ul>
 			    </div>
                 </textarea>

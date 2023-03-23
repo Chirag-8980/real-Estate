@@ -75,7 +75,7 @@
                     <tbody class="text-tan">
                         <?php $cnt = 1; while($data = mysqli_fetch_array($query)) {
                             $pid = $data['pid'];
-                            $property = mysqli_fetch_array(mysqli_query($con , "select * from tblhouse where pid=$pid"));
+                            $property = mysqli_fetch_array(mysqli_query($con , "select * from tblhouse where pid='$pid'"));
                             $img = $property['img1'];
                             $uid = $property['uid'];
                             

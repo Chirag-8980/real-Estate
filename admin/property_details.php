@@ -1,7 +1,8 @@
 <?php
 session_start();
 require("config.php");
-////code
+
+$type = $_GET['type'];
  
 if(!isset($_SESSION['auser']))
 {
@@ -225,14 +226,14 @@ $msg="";
                                         <div class="form-group row">
                                             <label class="col-lg-3 col-form-label">Image 1</label>
                                             <div class="col-lg-9">
-                                                <img src="./Img/Property_Image/<?php echo $data['img1'];?>" style="height: 300px; width: 400px;"
+                                                <img src="./Img/Property_Image/house/<?php echo $data['img1'];?>" style="height: 300px; width: 400px;"
                                                     class="img-thumbnail" alt="...">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-lg-3 col-form-label">Image 3</label>
                                             <div class="col-lg-9">
-                                                <img src="./Img/Property_Image/<?php echo $data['img2'];?>" style="height: 300px; width: 400px;"
+                                                <img src="./Img/Property_Image/house/<?php echo $data['img2'];?>" style="height: 300px; width: 400px;"
                                                     class="img-thumbnail" alt="...">
                                             </div>
                                         </div>
@@ -248,14 +249,14 @@ $msg="";
                                         <div class="form-group row">
                                             <label class="col-lg-3 col-form-label">Image 2</label>
                                             <div class="col-lg-9">
-                                                <img src="./Img/Property_Image/<?php echo $data['img3'];?>" style="height: 300px; width: 400px;"
+                                                <img src="./Img/Property_Image/house/<?php echo $data['img3'];?>" style="height: 300px; width: 400px;"
                                                     class="img-thumbnail" alt="...">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-lg-3 col-form-label">Image 4</label>
                                             <div class="col-lg-9">
-                                                <img src="./Img/Property_Image/<?php echo $data['img4'];?>" style="height: 300px; width: 400px;">
+                                                <img src="./Img/Property_Image/house/<?php echo $data['img4'];?>" style="height: 300px; width: 400px;">
                                             </div>
                                         </div>
 
@@ -264,7 +265,8 @@ $msg="";
 
 
 								<div style="display: flex; justify-content: end;">
-									<input type="submit" value="Accept" class="btn btn-primary py-2 px-5" name="reqest">
+                                <a class="btn btn-primary" href="req_accept.php?pid=<?php echo $data['pid'];?>&type=<?php echo $type;?>">Accept</a>
+									<input type="submit" value="Reject" class="btn btn-danger mx-2 py-2 px-5" name="reqest">
 								</div>
 
                             </div>

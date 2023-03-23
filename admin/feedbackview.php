@@ -89,7 +89,8 @@ if(!isset($_SESSION['auser']))
                                                     <th>Name</th>
                                                     <th>Email</th>
                                                     <th>Feedback</th>
-                                                    <th>Delete</th>
+                                                    <th >Delete</th>
+													<th>Status</th>
                                                 </tr>
                                             </thead>
                                         
@@ -106,8 +107,18 @@ if(!isset($_SESSION['auser']))
                                                     <td><?php echo $row['fid']; ?></td>
                                                     <td><?php echo $row['name']; ?></td>
                                                     <td><?php echo $row['email']; ?></td>
-                                                    <td><?php echo $row['4']; ?></td>
-                                                    <td><a href="feedbackdelete.php?id=<?php echo $row['0']; ?>">Delete</a></td>
+                                                    <td ><?php echo $row['4']; ?></td>
+                                                    <td><a class="btn btn-danger" href="feedbackdelete.php?id=<?php echo $row['0']; ?>">Delete</a></td>
+													<td>
+														<?php
+														if($row["status"]==1){
+															echo '<p><a class="btn btn-success" href="feedbackstatus.php?fid='.$row['fid'].'&status=0">Enable</a></p>';
+														}else{
+															
+															echo '<p><a class="btn btn-danger" href="feedbackstatus.php?fid='.$row['fid'].'&status=1">Disable</a></p>';
+														}
+														?>
+													</td>
                                                 </tr>
                                                 <?php
 												

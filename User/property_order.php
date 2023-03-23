@@ -74,6 +74,7 @@
                         <tr>
                             <th scope="col">Photo</th>
                             <th scope="col">Title</th>
+                            <th scope="col">Price</th>
                             <th scope="col">Buyer Details</th>
                             <th scope="col">Check In Date</th>
                             <th scope="col">Check Out Date</th>
@@ -94,7 +95,8 @@
                                     src="../admin/img/Property_image/house/<?php echo $img ?>" class="img-thumbnail"
                                     alt="..."></td>
                             <td><?php echo $property['ptitle']?></td>
-                            <td><?php echo $data['name']?></td>
+                            <td>₹ <?php echo $property['price']?></td>
+                            <td><?php echo $data['name']?><br><?php echo $data['email']?></td>
                             <td><?php echo $data['cindate']?></td>
                             <td><?php echo $data['coutdate']?></td>
                             <td class="text-danger fw-bold"><?php echo $data['status']?></td>

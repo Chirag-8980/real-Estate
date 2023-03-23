@@ -86,19 +86,19 @@
                             </div>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="../admin/img/Property_image/<?php echo $data['img1']?>" height="600vh"
+                                    <img src="../admin/img/Property_image/house/<?php echo $data['img1']?>" height="600vh"
                                         width="100%" class="d-block " alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="../admin/img/Property_image/<?php echo $data['img2']?>" height="600vh"
+                                    <img src="../admin/img/Property_image/house/<?php echo $data['img2']?>" height="600vh"
                                         width="100%" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="../admin/img/Property_image/<?php echo $data['img3']?>" height="600vh"
+                                    <img src="../admin/img/Property_image/house/<?php echo $data['img3']?>" height="600vh"
                                         width="100%" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="../admin/img/Property_image/<?php echo $data['img4']?>" height="600vh"
+                                    <img src="../admin/img/Property_image/house/<?php echo $data['img4']?>" height="600vh"
                                         width="100%" class="d-block w-100" alt="...">
                                 </div>
                             </div>
@@ -118,14 +118,13 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="p-4 text-start">
-                            <a class="d-block h5 mb-2 text-black" href=""><?php echo $data['ptitle']?></a>
+                            <a class="d-block h5 mb-2 text-black"><?php echo $data['ptitle']?></a>
                             <p><i class="fa fa-map-marker-alt text-tan me-2"></i><?php echo $data['paddress']?></p>
                         </div>
                     </div>
                     <div class="col-2">
                         <div class="p-4 text-end">
-                            <a class="d-block h5 mb-2 text-black" style="padding-left: 525px;"> ₹
-                                <?php echo $data['price']?></a>
+                            <a class="d-block h5 mb-2 text-black" style="padding-left: 525px;"> ₹ <?php echo $data['price']?></a>
                             <p style="padding-left: 525px;"></i>Price</p>
                         </div>
                     </div>
@@ -195,6 +194,15 @@
                 <div class="row container">
                     <div class="col-12 mt-4" style="width: 100%;">
                         <h4 class="animated text-black fadeIn mb-3" style="border-bottom: 2px solid var(--tan);">
+                            Facilities</h4>
+                        <p>
+                            <?php echo $data['facilities']?>
+                        </p>
+                    </div>
+                </div>
+                <div class="row container">
+                    <div class="col-12 mt-4" style="width: 100%;">
+                        <h4 class="animated text-black fadeIn mb-3" style="border-bottom: 2px solid var(--tan);">
                             Description</h4>
                         <p>
                             <?php echo $data['description']?>
@@ -210,7 +218,7 @@
                     </div>
                 </div> -->
 
-                <div class="container">
+                <!-- <div class="container">
                     <div class="col-8 mt-4">
                         <h4 class="animated text-black fadeIn mb-3" style="border-bottom: 2px solid var(--tan);">
                             Contact
@@ -230,7 +238,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-3 container">
                     <a class="btn  bg-tan text-black w-100 py-3 my-4"
                         href="booking.php?pid=<?php echo $_GET['pid']?>&sellerid=<?php echo $data['uid']?>">Request For
