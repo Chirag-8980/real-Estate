@@ -1,98 +1,94 @@
 <?php
-    session_start();
-    include('./config/config.php');
-    // $cid =$_GET['cid'];
+session_start();
+include('./config/config.php');
+// $cid =$_GET['cid'];
 
-    if(isset($_POST['QC'])){
-        $uid=$_SESSION["uid"];
-        $ptitle=$_POST["ptitle"];
-        $ptype=$_POST["ptype"];
-        $bhk=$_POST["bhk"];
-        $stype=$_POST["stype"];
-        $bedroom=$_POST["bedroom"];
-        $balcony=$_POST["balcony"];
-        $bathroom=$_POST["bathroom"];
-        $kitchen=$_POST["kitchen"];
-        $hall=$_POST["hall"];
-        $floor=$_POST["floor"];
-        $tfloor=$_POST["tfloor"];
-        $price=$_POST["price"];
-        $sqft=$_POST["sqft"];
-        $paddress=$_POST["paddress"];
-        $city=$_POST["city"];
-        $state=$_POST["state"];
-        $status=$_POST["status"];
-        $featured=$_POST["featured"];
-        $description=$_POST["description"];
-        $facilities=$_POST["facilities"];
-        $allow_type=array('png','jpg','jpeg');
+if (isset($_POST['QC'])) {
+    $uid = $_SESSION["uid"];
+    $ptitle = $_POST["ptitle"];
+    $ptype = $_POST["ptype"];
+    $bhk = $_POST["bhk"];
+    $stype = $_POST["stype"];
+    $bedroom = $_POST["bedroom"];
+    $balcony = $_POST["balcony"];
+    $bathroom = $_POST["bathroom"];
+    $kitchen = $_POST["kitchen"];
+    $hall = $_POST["hall"];
+    $floor = $_POST["floor"];
+    $tfloor = $_POST["tfloor"];
+    $price = $_POST["price"];
+    $sqft = $_POST["sqft"];
+    $paddress = $_POST["paddress"];
+    $city = $_POST["city"];
+    $state = $_POST["state"];
+    $status = $_POST["status"];
+    $featured = $_POST["featured"];
+    $description = $_POST["description"];
+    $allow_type = array('png', 'jpg', 'jpeg');
 
-        $image1=$_FILES['img1']['name'];
-        $tmp_name1=$_FILES['img1']['tmp_name'];
-        $img_type1=strtolower(pathinfo($image1,PATHINFO_EXTENSION)); 
-        $size=$_FILES['img1']['size'];
-        $tmp_name=$_FILES['img1']['tmp_name'];
-        $destination1="../admin/img/property_image/house/".$image1;
-       
+    $destination1 = "../admin/img/property_image/house";
+    $image1 = $_FILES['img1']['name'];
+    $tmp_name1 = $_FILES['img1']['tmp_name'];
+    $size = $_FILES['img1']['size'];
+    $path = $destination1 . $image1;
+    $target_file1 = $destination1 . basename($image1);
+    $img_type1 = pathinfo($target_file1, PATHINFO_EXTENSION);
 
-        $image2=$_FILES['img2']['name'];
-        $tmp_name2=$_FILES['img2']['tmp_name'];
-        $img_type2=strtolower(pathinfo($image2,PATHINFO_EXTENSION));
-        $size=$_FILES['img2']['size'];
-        $tmp_name=$_FILES['img2']['tmp_name'];
-        $destination2="../admin/img/property_image/house/".$image2;
-        
+    $destination2 = "../admin/img/property_image/house";
+    $image2 = $_FILES['img2']['name'];
+    $tmp_name2 = $_FILES['img2']['tmp_name'];
+    $size = $_FILES['img2']['size'];
+    $path = $destination2 . $image2;
+    $target_file2 = $destination2 . basename($image2);
+    $img_type2 = pathinfo($target_file2, PATHINFO_EXTENSION);
 
-        $image3=$_FILES['img3']['name'];
-        $tmp_name3=$_FILES['img3']['tmp_name'];
-        $img_type3=strtolower(pathinfo($image3,PATHINFO_EXTENSION));   
-        $size=$_FILES['img3']['size'];
-        $destination3="../admin/img/property_image/house/".$image3;
-        
+    $destination3 = "../admin/img/property_image/house";
+    $image3 = $_FILES['img3']['name'];
+    $tmp_name3 = $_FILES['img3']['tmp_name'];
+    $size = $_FILES['img3']['size'];
+    $path = $destination3 . $image3;
+    $target_file3 = $destination3 . basename($image3);
+    $img_type3 = pathinfo($target_file3, PATHINFO_EXTENSION);
 
-        $image4=$_FILES['img4']['name'];
-        $tmp_name4=$_FILES['img4']['tmp_name'];
-        $img_type4=strtolower(pathinfo($image4,PATHINFO_EXTENSION));
-        $size=$_FILES['img4']['size'];
-        $destination4="../admin/img/property_image/house/".$image4;
-        
-      
-        if(in_array($img_type1 || $img_type2 || $img_type3 || $img_type4, $allow_type))
-        {
-            if($size <= 20000000)
-            {
-                move_uploaded_file($tmp_name1,$destination1);
-                move_uploaded_file($tmp_name2,$destination2);
-                move_uploaded_file($tmp_name3,$destination3);
-                move_uploaded_file($tmp_name4,$destination4);
-                $insert_qry = "insert into tblhouse(uid, ptitle, ptype, bhk, stype, bedroom, balcony, bathroom, kitchen, hall, floor, tfloor, price, sqft, paddress, city, state, img1, img2, img3, img4, status, featured, description , facilities) VALUES ('$uid','$ptitle','$ptype','$bhk','$stype','$bedroom','$balcony','$bathroom','$kitchen','$hall','$floor','$tfloor','$price','$sqft','$paddress','$city','$state', '$image1', '$image2', '$image3', '$image4','$status','$featured','$description','$facilities')";
-                $result=mysqli_query($con,$insert_qry);
-                if($result)
-		        {
-			        $_SESSION['msg'] = "Property Insert Successful";
+    $destination4 = "../admin/img/property_image/house";
+    $image4 = $_FILES['img4']['name'];
+    $tmp_name4 = $_FILES['img4']['tmp_name'];
+    $size = $_FILES['img4']['size'];
+    $path = $destination4 . $image4;
+    $target_file4 = $destination4 . basename($image4);
+    $img_type4 = pathinfo($target_file4, PATHINFO_EXTENSION);
+
+    //Allow only JPG, JPEG, PNG etc formats
+
+    if (in_array($img_type1 || $img_type2 || $img_type3 || $img_type4, $allow_type)) {
+        if ($size <= 20000000) {
+            move_uploaded_file($tmp_name1, $target_file1);
+            move_uploaded_file($tmp_name2, $target_file2);
+            move_uploaded_file($tmp_name3, $target_file3);
+            move_uploaded_file($tmp_name4, $target_file4);
+
+            $insert_qry = "insert into tblhouse(uid, ptitle, ptype, bhk, stype, bedroom, balcony, bathroom, kitchen, hall, floor, tfloor, price, sqft, paddress, city, state, img1, img2, img3, img4, status, featured, description) VALUES ('$uid','$ptitle','$ptype','$bhk','$stype','$bedroom','$balcony','$bathroom','$kitchen','$hall','$floor','$tfloor','$price','$sqft','$paddress','$city','$state', '$image1', '$image2', '$image3', '$image4','$status','$featured','$description')";
+            $result = mysqli_query($con, $insert_qry);
+
+            if ($result) {
+                    $_SESSION['msg'] = "Property Insert Successful";
 			        $_SESSION['status'] = "success";
                     // header('location:./property-list.php');
-					
-		        }
-		        else
-		        {
-			        $_SESSION['msg'] = "Property Insert Failed";
+            } else {
+                    $_SESSION['msg'] = "Property Insert Failed";
 			        $_SESSION['status'] = "error";
-		        }
             }
-            else{
+        } else {
                 $_SESSION['msg'] = "Photo Size should be Less then 2MB";
 			    $_SESSION['status'] = "error";
-            }
         }
-        else{
+    } else {
                     $_SESSION['msg'] = "File type not allowed (Only jpg, jpeg and png type file allowed)";
 			        $_SESSION['status'] = "error";
-        }
-        
-    }else{
-        // echo "Plese Enter Value";
     }
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -131,12 +127,12 @@
 <body>
     <div class=" bg-white p-0">
         <!-- Spinner Start -->
-        <?php include('../User/include/spinner.php')?>
+        <?php include('../User/include/spinner.php') ?>
         <!-- Spinner End -->
 
 
         <!-- Navbar Start -->
-        <?php include('../User/include/header.php')?>
+        <?php include('../User/include/header.php') ?>
         <!-- Navbar End -->
 
 
@@ -169,20 +165,22 @@
                     Information</h2>
                 <div class="col-md-12 input-group-lg">
                     <label for="inputEmail4" class="form-label  text-black">Title</label>
-                    <input type="text" name="ptitle" class="form-control" id="inputEmail4"  >
+                    <input type="text" name="ptitle" class="form-control" id="inputEmail4">
                 </div>
 
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Property Type</label>
-                    <select id="inputState" name="ptype" class="form-select"  >
-                        <option value="House">House</option>
-                        <option value="Apartment">Apartment</option>
-                        <option value="Flat">Flat</option>
+                    <select id="inputState" name="ptype" class="form-select">
+                                <option selected value="House">House</option>
+                                <option value="Flat">Flat</option>
+                                <option value="Banglow">Banglow</option>
+                                <option value="Farm House">Farm House</option>
+                                <option value="Farm House">Farm House</option>
                     </select>
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">BHK</label>
-                    <select id="inputState" name="bhk" class="form-select"  >
+                    <select id="inputState" name="bhk" class="form-select">
                         <option value="1">1 BHK</option>
                         <option value="2">2 BHK</option>
                         <option value="3">3 BHK</option>
@@ -190,7 +188,7 @@
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Selling Type</label>
-                    <select id="inputState" name="stype" class="form-select"  >
+                    <select id="inputState" name="stype" class="form-select">
                         <option value="Rent">Rent</option>
                         <option value="Sell">Sell</option>
                     </select>
@@ -199,28 +197,28 @@
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Bedroom</label>
                     <input type="text" name="bedroom" class="form-control" id="inputZip"
-                        placeholder="Enter Bedroom (Only 1 to 5)"  >
+                        placeholder="Enter Bedroom (Only 1 to 5)">
                 </div>
 
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Balcony</label>
                     <input type="text" name="balcony" class="form-control" id="inputZip"
-                        placeholder="Enter Balcony (Only 1 to 5)"  >
+                        placeholder="Enter Balcony (Only 1 to 5)">
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Bathroom</label>
                     <input type="text" name="bathroom" class="form-control" id="inputZip"
-                        placeholder="Enter Bathroom (Only 1 to 5)"  >
+                        placeholder="Enter Bathroom (Only 1 to 5)">
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Kitchen</label>
                     <input type="text" name="kitchen" class="form-control" id="inputZip"
-                        placeholder="Enter Kitchen (Only 1 to 5)"  >
+                        placeholder="Enter Kitchen (Only 1 to 5)">
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Hall</label>
                     <input type="text" name="hall" class="form-control" id="inputZip"
-                        placeholder="Enter Hall (Only 1 to 5)"  >
+                        placeholder="Enter Hall (Only 1 to 5)">
                 </div>
 
                 <!-- Price & Location  -->
@@ -228,100 +226,84 @@
                     Price & Location</h2>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Floor</label>
-                    <input type="text" name="floor" class="form-control" id="inputEmail4"  >
+                    <input type="text" name="floor" class="form-control" id="inputEmail4">
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Total Floor</label>
-                    <input type="text" name="tfloor" class="form-control" id="inputEmail4"  >
+                    <input type="text" name="tfloor" class="form-control" id="inputEmail4">
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Price</label>
-                    <input type="text" class="form-control" name="price" id="inputZip"  >
+                    <input type="text" class="form-control" name="price" id="inputZip">
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Area Size</label>
-                    <input type="text" class="form-control" name="sqft" id="inputZip"  >
+                    <input type="text" class="form-control" name="sqft" id="inputZip">
                 </div>
                 <div class="col-md-12 input-group-lg">
                     <label for="inputEmail4" class="form-label  text-black">Address</label>
-                    <input type="text" name="paddress" class="form-control" id="inputEmail4"  >
-                </div>
-                <div class="col-md-6 input-group-lg">
-                    <label for="inputZip" class="form-label  text-black">City</label>
-                    <input type="text" class="form-control" name="city" id="inputZip"  >
+                    <input type="text" name="paddress" class="form-control" id="inputEmail4">
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">State</label>
-                    <input type="text" class="form-control" name="state" id="inputZip"  >
+                    <select id="state" name="state" class="form-select">
+                        <option value="" selected>Select</option>
+                        <option value="1">Gujarat</option>
+                        <option value="2">Apartment</option>
+                        <option value="3">Flat</option>
+                    </select>
                 </div>
+                <div class="col-md-6 input-group-lg">
+                    <label for="inputZip" class="form-label  text-black">City</label>
+                    <select id="city" name="city" class="form-select">
+                        <option value="" selected>Select</option>
+                        <option value="1">Vadodara</option>
+                        <option value="2">Surat</option>
+                        <option value="3">Ahmedabad</option>
+                    </select>
+                </div>
+
+
                 <!-- Image & Status -->
                 <h2 class="animated text-black fadeIn mt-5 add-header" style="border-bottom: 2px solid var(--tan);">
                     Image & Status</h2>
                 <div class="col-md-6">
                     <label for="formFileLg" class="form-label text-black">Image 1</label>
-                    <input class="form-control form-control-lg bg-white" name="img1" id="formFileLg" type="file"  >
+                    <input class="form-control form-control-lg bg-white" name="img1" id="formFileLg" type="file">
                 </div>
                 <div class="col-md-6">
                     <label for="formFileLg" class="form-label text-black">Image 2</label>
-                    <input class="form-control form-control-lg bg-white" id="formFileLg" name="img2" type="file"  >
+                    <input class="form-control form-control-lg bg-white" id="formFileLg" name="img2" type="file">
                 </div>
                 <div class="col-md-6">
                     <label for="formFileLg" class="form-label text-black">Image 3</label>
-                    <input class="form-control form-control-lg bg-white" id="formFileLg" name="img3" type="file"  >
+                    <input class="form-control form-control-lg bg-white" id="formFileLg" name="img3" type="file">
                 </div>
                 <div class="col-md-6">
                     <label for="formFileLg" class="form-label text-black">Image 4</label>
-                    <input class="form-control form-control-lg bg-white" id="formFileLg" name="img4" type="file"  >
+                    <input class="form-control form-control-lg bg-white" id="formFileLg" name="img4" type="file">
+                </div>
+                <div class="col-md-6 input-group-lg">
+                    <label for="inputState" class="form-label  text-black">Status</label>
+                    <select id="inputState" name="status" class="form-select" hidden>
+                        <option value="Sold">Sold</option>
+                        <option value="Unsold">UnSold</option>
+                    </select>
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Is Featured?</label>
-                    <select id="inputState" class="form-select" name="featured"  >
+                    <select id="inputState" class="form-select" name="featured">
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select>
-                    </div>
-                    <div class="col-md-6 input-group-lg">
-                    <select id="inputState" name="status" class="form-select" hidden >
-                        <option value="Sold">Sold</option>
-                        <option value="Unsold" seleceted>UnSold</option>
-                    </select>
                 </div>
-                <!-- Facility -->
-                <h2 class="animated text-black fadeIn mt-5 mb-2 add-header"
-                    style="border-bottom: 2px solid var(--tan);">Facilities</h2>
-                <small class="text-danger">* Important Please Do Not Remove Below Content Only Change <b>Yes</b> Or
-                    <b>No</b></small>
-                <textarea class="tinymce form-control" name="facilities" rows="10" cols="29">
-                <div class="col-md-4">
-				 	<ul>
-				 	<li class="mb-3"><span class="text-black fw-bold">Property Age : </span>10 Years</li>
-				 	<li class="mb-3"><span class="text-black fw-bold">Parking : </span>Yes</li>
-				 	<li class="mb-3"><span class="text-black fw-bold">Maintanace : </span>Yes</li>
-				 	</ul>
-				 </div>
-				 <div class="col-md-4">
-				 	<ul>
-				 	<li class="mb-3"><span class="text-black fw-bold">Type : </span>Apartment</li>
-				 	<li class="mb-3"><span class="text-black fw-bold">Security : </span>Yes</li>
-				 	<li class="mb-3"><span class="text-black fw-bold">Wifi Plan : </span>Yes</li>
-				 	
-				 	</ul>
-				 </div>
-				 <div class="col-md-4">
-				 	<ul>
-				 	<li class="mb-3"><span class="text-black fw-bold">3rd Party : </span>No</li>
-				 	<li class="mb-3"><span class="text-black fw-bold">Elevator : </span>Yes</li>
-				 	<li class="mb-3"><span class="text-black fw-bold">CCTV : </span>Yes</li>
-				 	<li class="mb-3"><span class="text-black fw-bold">Water Supply : </span>Ground Water / Tank</li>
-				 	</ul>
-			    </div>
-                </textarea>
+
                 <!-- Description -->
                 <h2 class="animated text-black fadeIn mt-5 mb-4 add-header"
                     style="border-bottom: 2px solid var(--tan);">Description</h2>
-                <textarea class="tinymce form-control" name="description" rows="10" cols="29"  ></textarea>
+                <textarea class="tinymce form-control" name="description" rows="10" cols="29"></textarea>
                 <div class="d-flex justify-content-end">
-                    <input type="submit" name="QC" class="btn py-2 px-5 mx-1 bg-black text-tan" value="Send To QC"  />
+                    <input type="submit" name="QC" class="btn py-2 px-5 mx-1 bg-black text-tan" value="Send To QC" />
                     <input type="submit" name="discard" class="btn py-2 px-5  mx-1 bg-tan text-black" value="Discard" />
                 </div>
 
@@ -330,12 +312,12 @@
         <!-- Add Form End -->
 
         <!-- Footer Start -->
-        <?php include('../User/include/footer.php')?>
+        <?php include('../User/include/footer.php') ?>
         <!-- Footer End -->
 
 
         <!-- Back to Top -->
-        <?php include('../User/include/top.php')?>
+        <?php include('../User/include/top.php') ?>
     </div>
 </body>
 <!-- Tinymce Lib -->
@@ -348,6 +330,7 @@
 <script src="lib/easing/easing.min.js"></script>
 <script src="lib/waypoints/waypoints.min.js"></script>
 <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
 
 <!-- Template Javascript -->
 <script src="js/main.js"></script>

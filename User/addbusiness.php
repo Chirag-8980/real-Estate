@@ -269,7 +269,9 @@
         <!-- Footer Start -->
         <?php include('../User/include/footer.php')?>
         <!-- Footer End -->
-
+        <!-- alert start -->
+        <?php include('./alert.php')?>
+        <!-- alert end -->
 
         <!-- Back to Top -->
         <?php include('../User/include/top.php')?>

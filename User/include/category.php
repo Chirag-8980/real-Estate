@@ -1,6 +1,6 @@
 <?php
     include('./config/config.php');
-    $house=mysqli_fetch_array( mysqli_query($con,"select count(*) as total from tblhouse"));
+    $house=mysqli_fetch_array( mysqli_query($con,"select count(*) as total from tblhouse where `ptype`='House'"));
     $business=mysqli_fetch_array( mysqli_query($con,"select count(*) as total from tblbusiness"));
     $occasion=mysqli_fetch_array( mysqli_query($con,"select count(*) as total from tbloccasion"));
 ?>
@@ -34,8 +34,8 @@
                             <div class="icon mb-3">
                                 <img class="img-fluid" src="img/icon-villa.png" alt="Icon">
                             </div>
-                            <h6>Business Property</h6>
-                            <span><?php echo $business['total']?>+ Properties</span>
+                            <h6>Banglow Property</h6>
+                            <span><?php echo $business['total']?>+ Banglows</span>
                         </div>
                     </a>
                 </div>
@@ -45,8 +45,30 @@
                             <div class="icon mb-3">
                                 <img class="img-fluid" src="img/icon-house.png" alt="Icon">
                             </div>
-                            <h6>Occasion Property</h6>
-                            <span><?php echo $occasion['total']?>+ Properties</span>
+                            <h6>Flat Property</h6>
+                            <span><?php echo $occasion['total']?>+ Flats</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <a class="cat-item d-block bgcolor text-center rounded p-3" href="">
+                        <div class="rounded p-4">
+                            <div class="icon mb-3">
+                                <img class="img-fluid" src="img/icon-house.png" alt="Icon">
+                            </div>
+                            <h6>Pent-House </h6>
+                            <span><?php echo $occasion['total']?>+ Pent-Houses</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <a class="cat-item d-block bgcolor text-center rounded p-3" href="">
+                        <div class="rounded p-4">
+                            <div class="icon mb-3">
+                                <img class="img-fluid" src="img/icon-house.png" alt="Icon">
+                            </div>
+                            <h6>Farm Houses</h6>
+                            <span><?php echo $occasion['total']?>+ Farm Houses</span>
                         </div>
                     </a>
                 </div>

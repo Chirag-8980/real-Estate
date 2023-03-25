@@ -2,22 +2,22 @@
     session_start();
     include('./config/config.php');
     $property_type = $_GET['ptype'];
-    $selling_type = $_GET['stype'];
+    $city = $_GET['location'];
     $query = $_GET['query'];
     $show = true;
 
-    if($property_type == 'Home'){
-        $sql = " SELECT * FROM tblhouse WHERE MATCH (ptitle,description) AGAINST ('$query');";
+    // if($property_type == 'Home'){
+        $sql = " SELECT * FROM tblhouse WHERE MATCH (ptitle,description,ptype,city,state) AGAINST ('$query') or `city`='$city' and `ptype`='$property_type'";
         $run = mysqli_query($con , $sql);
-    }
-    if($property_type == 'Business'){
-        $sql = " SELECT * FROM tblbusiness WHERE MATCH (ptitle,description) AGAINST ('$query');";
-        $run = mysqli_query($con , $sql);
-    }
-    if($property_type == 'Occasion'){
-        $sql = " SELECT * FROM tbloccasion WHERE MATCH (ptitle,description) AGAINST ('$query');";
-        $run = mysqli_query($con , $sql);
-    }
+    // }
+    // if($property_type == 'Business'){
+    //     $sql = " SELECT * FROM tblbusiness WHERE MATCH (ptitle,description) AGAINST ('$query');";
+    //     $run = mysqli_query($con , $sql);
+    // }
+    // if($property_type == 'Occasion'){
+    //     $sql = " SELECT * FROM tbloccasion WHERE MATCH (ptitle,description) AGAINST ('$query');";
+    //     $run = mysqli_query($con , $sql);
+    // }
     
 ?>
 <!DOCTYPE html>
@@ -92,8 +92,8 @@
                                 </div>
                                 <div class="p-4 pb-0">
                                     <h5 class="text-tan mb-3">₹ <?php echo $data['price']; ?></h5>
-                                    <a class="d-block h5 mb-2 text-black" href="./property_details.php?pid=<?php echo $data['pid']?>"><?php echo $data['ptitle']; ?></a>
-                                    <p><i class="fa fa-map-marker-alt text-tan me-2"></i><?php echo $data['paddress']; ?></p>
+                                    <a class="d-block h5 mb-2 text-black" href="./property_details.php?pid=<?php echo $data['pid']?>"><?php echo substr($data['ptitle'], 0, 35); ?>...</a>
+                                    <p><i class="fa fa-map-marker-alt text-tan me-2"></i><?php echo $data['paddress'] ?>,<?php echo $data['city'] ?>,<?php echo $data['state'] ?></p>
                                 </div>
                                 <div class="d-flex border-top">
                                     <small class="flex-fill text-center text-black border-end py-2"><i

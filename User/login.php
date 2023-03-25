@@ -37,7 +37,7 @@
               ?>
                     <div class="">
                         <div class="alert alert-warning  alert-dismissible fade show" role="alert">
-                            <strong>Oops! </strong>
+                            <strong> </strong>
                             <?= $_SESSION['message']; ?>.
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
@@ -51,11 +51,11 @@
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
-                                <input type="text" name="email" placeholder="Enter your email" required>
+                                <input type="text" name="email" placeholder="Enter your email" required oninvalid="setCustomValidity('Please enter a valid Email ID')" oninput="setCustomValidity('')">
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" name="password" placeholder="Enter your password" required>
+                                <input type="password" minlength="8" name="password" placeholder="Enter your password" required required oninvalid="setCustomValidity('Please enter valid Password')" oninput="setCustomValidity('')">
                             </div>
                             <div class="text" style="color: #FFA500 !important"><a style="color: #E0A96D;" href="./resetpass.php">Forgot
                                     password?</a></div>

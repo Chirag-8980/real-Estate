@@ -41,28 +41,12 @@ $show = true;
 
 <body>
 
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-1">
         <div class="container">
-            <div class="row g-0 gx-5 align-items-end">
-                <div class="col-lg-6">
-                    <div class="text-start text-black mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
-                        <h1 class="mb-3 text-black">Property Listing</h1>
-                        <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero
-                            ipsum sit eirmod sit diam justo sed rebum.</p>
-                    </div>
-                </div>
-                <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
-                    <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
-                        <li class="nav-item me-2">
-                            <a class="btn text-black bg-tan" data-bs-toggle="pill" href="#tab-1">Featured</a>
-                        </li>
-                        <li class="nav-item me-2">
-                            <a class="btn text-black bg-tan " data-bs-toggle="pill" href="#tab-2">For Sell</a>
-                        </li>
-                        <li class="nav-item me-0">
-                            <a class="btn text-black bg-tan" data-bs-toggle="pill" href="#tab-3">For Rent</a>
-                        </li>
-                    </ul>
+            <div class="container">
+                <div class="text-center mx-auto mb-5 text-black wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                    <h1 class="mb-3 text-black pb-2" style="border-bottom: 2px solid var(--tan);">Property Listing</h1>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga quae sint asperiores architecto quisquam exercitationem rerum facere in iste nisi!</p>
                 </div>
             </div>
 
@@ -70,7 +54,8 @@ $show = true;
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane fade show p-0 active">
                     <div class="row g-4">
-                        <?php while ($data = mysqli_fetch_array($query)) { $show = false; ?>
+                        <?php while ($data = mysqli_fetch_array($query)) {
+                            $show = false; ?>
                             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="property-item rounded overflow-hidden" style="height: 500px;">
                                     <div class="position-relative overflow-hidden">
@@ -82,8 +67,8 @@ $show = true;
                                     </div>
                                     <div class="p-4 pb-0">
                                         <h5 class="text-tan mb-3">₹ <?php echo $data['price']; ?></h5>
-                                        <a class="d-block h5 mb-2 text-black" href="./property_details.php?pid=<?php echo $data['pid'] ?>"><?php echo $data['ptitle']; ?></a>
-                                        <p><i class="fa fa-map-marker-alt text-tan me-2"></i><?php echo $data['paddress']; ?></p>
+                                        <a class="d-block h5 mb-2 text-black" href="./property_details.php?pid=<?php echo $data['pid'] ?>"><?php echo substr($data['ptitle'], 0, 35); ?>...</a>
+                                        <p><i class="fa fa-map-marker-alt text-tan me-2"></i><?php echo $data['paddress'] ?>,<?php echo $data['city'] ?>,<?php echo $data['state'] ?></p>
                                     </div>
                                     <div class="d-flex border-top">
                                         <small class="flex-fill text-center text-black border-end py-2"><i class="fa fa-ruler-combined text-tan me-2"></i><?php echo $data['sqft']; ?> SQFT</small>
@@ -99,10 +84,6 @@ $show = true;
                                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s">
                                     <h3 class="mb-3  text-muted pb-2">No Property Listed Here...</h3>
                                 </div>
-                            </div>
-                        <?php } else { ?>
-                            <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                                <a class="btn bg-black text-tan py-3 px-5" href="">Browse More Property</a>
                             </div>
                         <?php } ?>
                     </div>

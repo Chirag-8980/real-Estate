@@ -52,17 +52,17 @@
                             </div>
                             <div class="col-md-3">
                                 <select name="ptype" class="form-select border-0 py-3">
-                                    <option selected>Property Type</option>
-                                    <?php while($result = mysqli_fetch_array($data))   {?>
-                                    <option value="<?php echo $result['ctype']?>"><?php echo $result['ctype']?></option>
-                                    <?php }?>
+                                <option selected value="House">House</option>
+                                <option value="Flat">Flat</option>
+                                <option value="Banglow">Banglow</option>
+                                <option value="Farm House">Farm House</option>
+                                <option value="Farm House">Farm House</option>
+                                    
                                 </select>
                             </div>
                             <div class="col-md-3">
-                                <select name="stype" class="form-select border-0 py-3">
-                                    <option value="Sale">Selling</option>
-                                    <option value="Rent" selected>Renting</option>
-                                </select>
+                            <input type="text" name="location" class="form-control border-0 py-3"
+                                    placeholder="eg: surat , gujrat..">
                             </div>
                             <div class="col-md-3">
                             <button class="btn bg-tan text-black border-0  w-100 ">

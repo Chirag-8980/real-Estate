@@ -61,7 +61,7 @@
                     </nav>
                 </div>
                 <div class="col-md-6 animated fadeIn">
-                    <img class="img-fluid" src="img/header.jpg" alt="">
+                    <img class="img-fluid" src="img/header.jpg" alt="" style="width: 100%; height: 340px;">
                 </div>
             </div>
         </div>

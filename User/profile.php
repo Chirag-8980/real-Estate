@@ -1,13 +1,13 @@
 <?php
-    session_start();
-    include('./config/config.php');
-    $uid = $_SESSION['uid'];
-    $select_qur="select * from user where uid='$uid'";
-    $query = mysqli_query($con , $select_qur);
-    $data=mysqli_fetch_array($query);
+session_start();
+include('./config/config.php');
+$uid = $_SESSION['uid'];
+$select_qur = "select * from user where uid='$uid'";
+$query = mysqli_query($con, $select_qur);
+$data = mysqli_fetch_array($query);
 ?>
 <!DOCTYPE html>
-<html lang="en"  style="background: white;">
+<html lang="en" style="background: white;">
 
 <head>
     <meta charset="utf-8">
@@ -32,6 +32,7 @@
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -44,16 +45,16 @@
 
     <div class=" bg-white p-0">
         <!-- Spinner Start -->
-        <?php include('../User/include/spinner.php')?>
+        <?php include('../User/include/spinner.php') ?>
         <!-- Spinner End -->
 
 
         <!-- Navbar Start -->
-        <?php include('../User/include/header.php')?>
+        <?php include('../User/include/header.php') ?>
         <!-- Navbar End -->
 
 
-        
+
         <div class="container mt-5">
             <div class="text-center mx-auto mb-5 text-black wow fadeInUp" data-wow-delay="0.1s"
                 style="max-width: 600px;">
@@ -72,30 +73,29 @@
                                         <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
                                             class="rounded-circle" width="150">
                                         <div class="mt-3">
-                                            <h4><?php echo $data['uname']?></h4>
+                                            <h4><?php echo $data['uname'] ?></h4>
                                             <p class="text-dark mb-1"></p>
-                                            <p class="text-muted font-size-sm"><?php echo $data['designation']?></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="card mt-3">
                                 <ul class="list-group list-group-flush">
-                                    
+
                                     <li
                                         class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                         <h6 class="mb-0">Twitter</h6>
-                                        <span class="text-dark"><?php echo $data['twitter']?></span>
+                                        <span class="text-dark"><?php echo $data['twitter'] ?></span>
                                     </li>
                                     <li
                                         class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                         <h6 class="mb-0">Instagram</h6>
-                                        <span class="text-dark"><?php echo $data['instagram']?></span>
+                                        <span class="text-dark"><?php echo $data['instagram'] ?></span>
                                     </li>
                                     <li
                                         class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                         <h6 class="mb-0">Facebook</h6>
-                                        <span class="text-dark"><?php echo $data['facebook']?></span>
+                                        <span class="text-dark"><?php echo $data['facebook'] ?></span>
                                     </li>
                                 </ul>
                             </div>
@@ -108,7 +108,7 @@
                                             <h6 class="mb-0">User Id</h6>
                                         </div>
                                         <div class="col-sm-9 text-dark">
-                                        <?php echo $data['uid']?>
+                                            <?php echo $data['uid'] ?>
                                         </div>
                                     </div>
                                     <hr>
@@ -117,7 +117,7 @@
                                             <h6 class="mb-0">Full Name</h6>
                                         </div>
                                         <div class="col-sm-9 text-dark">
-                                        <?php echo $data['uname']?>
+                                            <?php echo $data['uname'] ?>
                                         </div>
                                     </div>
                                     <hr>
@@ -125,9 +125,13 @@
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Email</h6>
                                         </div>
-                                        <div class="col-sm-9 text-dark">
-                                        <?php echo $data['email']?>
+                                        <div class="col-sm-6 text-dark">
+                                            <?php echo $data['email'] ?>
                                         </div>
+                                        <!-- <div class="col-sm-3 text-end text-dark">
+                                            <small role="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                class="text-black pointer-cursor">Change Email...</small>
+                                        </div> -->
                                     </div>
                                     <hr>
                                     <div class="row">
@@ -135,7 +139,7 @@
                                             <h6 class="mb-0">Mobile</h6>
                                         </div>
                                         <div class="col-sm-9 text-dark">
-                                            <?php echo $data['mno']?>
+                                            <?php echo $data['mno'] ?>
                                         </div>
                                     </div>
                                     <hr>
@@ -144,14 +148,13 @@
                                             <h6 class="mb-0">Address</h6>
                                         </div>
                                         <div class="col-sm-9 text-dark">
-                                        <?php echo $data['address']?>
+                                            <?php echo $data['address'] ?>
                                         </div>
                                     </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <a class="btn btn-info "
-                                                href="edit_profile.php">Edit</a>
+                                            <a class="btn bg-tan text-black " href="edit_profile.php">Edit</a>
                                         </div>
                                     </div>
                                 </div>
@@ -162,8 +165,12 @@
                 </div>
             </div>
         </div>
-
+        <!-- alert start -->
+        <?php include('./alert.php')?>
+        <!-- alert end -->
     </div>
+
+   
 
 
     <!-- JavaScript Libraries -->

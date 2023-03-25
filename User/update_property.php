@@ -1,56 +1,11 @@
 <?php
-    session_start();
-    include('./config/config.php');
-    if(!isset($_SESSION['uid'])){
-        header("location:./login.php");
-     }
-    
+session_start();
+include('./config/config.php');
+$pid = $_GET['pid'];
+$data = mysqli_fetch_array(mysqli_query($con, "select * from tblhouse where pid='$pid'"));
 
-    if(isset($_POST['update'])){
-        $upid =$_GET['pid'];
-        $ptitle=$_POST["ptitle"];
-        $ptype=$_POST["ptype"];
-        $bhk=$_POST["bhk"];
-        $stype=$_POST["stype"];
-        $bedroom=$_POST["bedroom"];
-        $balcony=$_POST["balcony"];
-        $bathroom=$_POST["bathroom"];
-        $kitchen=$_POST["kitchen"];
-        $hall=$_POST["hall"];
-        $floor=$_POST["floor"];
-        $tfloor=$_POST["tfloor"];
-        $price=$_POST["price"];
-        $sqft=$_POST["sqft"];
-        $paddress=$_POST["paddress"];
-        $city=$_POST["city"];
-        $state=$_POST["state"];
-        $featured=$_POST["featured"];
-        $description=$_POST["description"];
-
-        $query ="update tblhouse set 'ptitle'='$ptitle','ptype'='$ptype','bhk'='$bhk','stype'='$stype','bedroom'='$bedroom','balcony'='$balcony','bathroom'='$bathroom','kitchen'='$kitchen','hall'='$hall','floor'='$floor','tfloor'='$tfloor','price'='$price','sqft'='$sqft','paddress'='$paddress','city'='$city','state'='$state','featured'='$featured','description'='$description' where 'pid'='$upid' ";
-
-        $result = mysqli_query($con,$query );
-                if($result)
-		        {
-                    echo
-                    '<script>
-                        alert("success")
-                    </script>';
-			        // $msg="<p class='alert alert-success'>Property Updated Successfully</p>";
-                    echo($ptitle);
-                    header('location:./user-property.php');
-					
-		        } else{
-			        mysqli_error($con);
-                }
-
-
-    }else{
-        $pid =$_GET['pid'];
-        $query = "select * from tblhouse where pid=$pid";
-        $data=mysqli_fetch_array(mysqli_query($con , $query));
-    }   
-
+$uid = $data['uid'];
+$user_data = mysqli_fetch_array(mysqli_query($con, "select * from user where uid='$uid'"));
 
 ?>
 <!DOCTYPE html>
@@ -68,8 +23,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -90,12 +44,12 @@
 <body>
     <div class=" bg-white p-0">
         <!-- Spinner Start -->
-        <?php include('../User/include/spinner.php')?>
+        <?php include('../User/include/spinner.php') ?>
         <!-- Spinner End -->
 
 
         <!-- Navbar Start -->
-        <?php include('../User/include/header.php')?>
+        <?php include('../User/include/header.php') ?>
         <!-- Navbar End -->
 
 
@@ -122,99 +76,95 @@
 
         <!-- Add Form Start -->
         <div class="container mt-3 px-5">
-            <form class="row g-3 container" method="POST" action="update_property.php" enctype="multipart/form-data">
+            <form class="row g-3 container" method="POST" action="upcode.php" enctype="multipart/form-data">
                 <!-- Basic Information -->
                 <h2 class="animated text-black fadeIn mb-3" style="border-bottom: 2px solid var(--tan);">Basic
                     Information</h2>
                 <div class="col-md-12 input-group-lg">
+                    <input type="hidden" name="prid" value="<?= $data['pid'] ?>">
                     <label for="inputEmail4" class="form-label  text-black">Title</label>
-                    <input type="text" name="ptitle" class="form-control" Value="<?php echo $data['ptitle']?>" id="inputEmail4"  >
+                    <input type="text" name="ptitle" class="form-control" Value="<?php echo $data['ptitle'] ?>" id="inputEmail4">
                 </div>
 
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Property Type</label>
                     <select id="inputState" name="ptype" class="form-select">
-                        <?php if($data['ptype'] == 'House')  { ?>
-                        <option value="House" selected>House</option>
-                        <option value="Apartment">Apartment</option>
-                        <option value="Flat">Flat</option>
+                        <?php if ($data['ptype'] == 'House') { ?>
+                            <option value="House" selected>House</option>
+                            <option value="Apartment">Apartment</option>
+                            <option value="Flat">Flat</option>
 
-                        <?php } else if($data['ptype'] == 'Apartment')  { ?>
-                        <option value="House">House</option>
-                        <option value="Apartment" selected>Apartment</option>z
-                        <option value="Flat">Flat</option>
+                        <?php } else if ($data['ptype'] == 'Apartment') { ?>
+                            <option value="House">House</option>
+                            <option value="Apartment" selected>Apartment</option>z
+                            <option value="Flat">Flat</option>
 
-                        <?php } else if($data['ptype'] == 'Flat')  { ?>
-                        <option value="House">House</option>
-                        <option value="Apartment">Apartment</option>
-                        <option value="Flat" selected>Flat</option>
-                        <?php }?>
+                        <?php } else if ($data['ptype'] == 'Flat') { ?>
+                            <option value="House">House</option>
+                            <option value="Apartment">Apartment</option>
+                            <option value="Flat" selected>Flat</option>
+                        <?php } ?>
                     </select>
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">BHK</label>
                     <select id="inputState" name="bhk" class="form-select">
-                        <?php if($data['bhk'] == '1')  { ?>
-                        <option value="1">1BHK</option>
-                        <option value="2">2BHK</option>
-                        <option value="3">3BHK</option>
-                        <option value="4">4BHK</option>
-                        <?php } else if($data['bhk'] == '2')  { ?>
-                        <option value="1">1BHK</option>
-                        <option value="2" selected>2BHK</option>
-                        <option value="3">3BHK</option>
-                        <option value="4">4BHK</option>
-                        <?php } else if($data['bhk'] == '3')  { ?>
-                        <option value="1">1BHK</option>
-                        <option value="2">2BHK</option>
-                        <option value="3" selected>3BHK</option>
-                        <option value="4">4BHK</option>
-                        <?php } else if($data['bhk'] == '4')  { ?>
-                        <option value="1">1BHK</option>
-                        <option value="2">2BHK</option>
-                        <option value="3">3BHK</option>
-                        <option value="4" selected>4BHK</option>
+                        <?php if ($data['bhk'] == '1') { ?>
+                            <option value="1">1BHK</option>
+                            <option value="2">2BHK</option>
+                            <option value="3">3BHK</option>
+                            <option value="4">4BHK</option>
+                        <?php } else if ($data['bhk'] == '2') { ?>
+                            <option value="1">1BHK</option>
+                            <option value="2" selected>2BHK</option>
+                            <option value="3">3BHK</option>
+                            <option value="4">4BHK</option>
+                        <?php } else if ($data['bhk'] == '3') { ?>
+                            <option value="1">1BHK</option>
+                            <option value="2">2BHK</option>
+                            <option value="3" selected>3BHK</option>
+                            <option value="4">4BHK</option>
+                        <?php } else if ($data['bhk'] == '4') { ?>
+                            <option value="1">1BHK</option>
+                            <option value="2">2BHK</option>
+                            <option value="3">3BHK</option>
+                            <option value="4" selected>4BHK</option>
                         <?php } ?>
                     </select>
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Selling Type</label>
                     <select id="inputState" name="stype" class="form-select">
-                        <?php if($data['stype'] == 'Rent')  { ?>
-                        <option value="Rent">Rent</option>
-                        <option value="Sell">Sell</option>
-                        <?php } else if($data['stype'] == 'Sell')  { ?>
-                        <option value="Rent">Rent</option>
-                        <option value="Sell">Sell</option>
+                        <?php if ($data['stype'] == 'Rent') { ?>
+                            <option value="Rent">Rent</option>
+                            <option value="Sell">Sell</option>
+                        <?php } else if ($data['stype'] == 'Sell') { ?>
+                            <option value="Rent">Rent</option>
+                            <option value="Sell">Sell</option>
                         <?php }  ?>
                     </select>
 
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Bedroom</label>
-                    <input type="text" name="bedroom" value="<?php echo $data['bedroom']?>" class="form-control"
-                        id="inputZip" placeholder="Enter Bedroom (Only 1 to 5)">
+                    <input type="text" name="bedroom" value="<?php echo $data['bedroom'] ?>" class="form-control" id="inputZip" placeholder="Enter Bedroom (Only 1 to 5)">
                 </div>
 
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Balcony</label>
-                    <input type="text" name="balcony" class="form-control" value="<?php echo $data['balcony']?>" id="inputZip"
-                        placeholder="Enter Balcony (Only 1 to 5)"  >
+                    <input type="text" name="balcony" class="form-control" value="<?php echo $data['balcony'] ?>" id="inputZip" placeholder="Enter Balcony (Only 1 to 5)">
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Bathroom</label>
-                    <input type="text" name="bathroom" value="<?php echo $data['bathroom']?>" class="form-control"
-                        id="inputZip" placeholder="Enter Balcony (Only 1 to 5)">
+                    <input type="text" name="bathroom" value="<?php echo $data['bathroom'] ?>" class="form-control" id="inputZip" placeholder="Enter Balcony (Only 1 to 5)">
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Kitchen</label>
-                    <input type="text" name="kitchen" value="<?php echo $data['kitchen']?>" class="form-control" id="inputZip"
-                        placeholder="Enter Kitchen (Only 1 to 5)"  >
+                    <input type="text" name="kitchen" value="<?php echo $data['kitchen'] ?>" class="form-control" id="inputZip" placeholder="Enter Kitchen (Only 1 to 5)">
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Hall</label>
-                    <input type="text" name="hall" class="form-control" value="<?php echo $data['hall']?>" id="inputZip"
-                        placeholder="Enter Hall (Only 1 to 5)"  >
+                    <input type="text" name="hall" class="form-control" value="<?php echo $data['hall'] ?>" id="inputZip" placeholder="Enter Hall (Only 1 to 5)">
                 </div>
 
                 <!-- Price & Location  -->
@@ -222,68 +172,68 @@
                     Price & Location</h2>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Floor</label>
-                    <input type="text" name="floor" class="form-control" value="<?php echo $data['floor']?>" id="inputEmail4"  >
+                    <input type="text" name="floor" class="form-control" value="<?php echo $data['floor'] ?>" id="inputEmail4">
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Total Floor</label>
-                    <input type="text" name="tfloor" class="form-control" value="<?php echo $data['tfloor']?>" id="inputEmail4"  >
+                    <input type="text" name="tfloor" class="form-control" value="<?php echo $data['tfloor'] ?>" id="inputEmail4">
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Price</label>
-                    <input type="text" class="form-control" name="price" value="<?php echo $data['price']?>" id="inputZip"  >
+                    <input type="text" class="form-control" name="price" value="<?php echo $data['price'] ?>" id="inputZip">
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Area Size</label>
-                    <input type="text" class="form-control" name="sqft" value="<?php echo $data['sqft']?>" id="inputZip"  >
+                    <input type="text" class="form-control" name="sqft" value="<?php echo $data['sqft'] ?>" id="inputZip">
                 </div>
                 <div class="col-md-12 input-group-lg">
                     <label for="inputEmail4" class="form-label  text-black">Address</label>
-                    <input type="text" name="paddress" class="form-control" value="<?php echo $data['paddress']?>" id="inputEmail4"  >
+                    <input type="text" name="paddress" class="form-control" value="<?php echo $data['paddress'] ?>" id="inputEmail4">
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">City</label>
-                    <input type="text" class="form-control" name="city" id="inputZip" value="<?php echo $data['city']?>" >
+                    <input type="text" class="form-control" name="city" id="inputZip" value="<?php echo $data['city'] ?>">
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">State</label>
-                    <input type="text" class="form-control" name="state" id="inputZip" value="<?php echo $data['state']?>"  >
+                    <input type="text" class="form-control" name="state" id="inputZip" value="<?php echo $data['state'] ?>">
                 </div>
                 <!-- Image & Status -->
                 <h2 class="animated text-black fadeIn mt-5 add-header" style="border-bottom: 2px solid var(--tan);">
                     Image & Status</h2>
                 <div class="col-md-6">
                     <label for="formFileLg" class="form-label text-black">Image 1</label>
-                    <img src="../admin/Img/Property_image/<?php echo $data['img1']?>" style="height: 400px;" class="img-thumbnail" alt="...">
-                    <input class="form-control form-control-lg mt-1 bg-white" name="img1" id="formFileLg" type="file"  >
+                    <img src="../admin/Img/Property_image/house/<?php echo $data['img1'] ?>" style="height: 400px;" class="img-thumbnail" alt="...">
+                    <input class="form-control form-control-lg mt-1 bg-white" name="img1" id="formFileLg" type="file">
                 </div>
                 <div class="col-md-6">
                     <label for="formFileLg" class="form-label text-black">Image 2</label>
-                    <img src="../admin/Img/Property_image/<?php echo $data['img2']?>" style="height: 400px;" class="img-thumbnail" alt="...">
-                    <input class="form-control form-control-lg mt-1 bg-white" id="formFileLg" name="img2" type="file"  >
+                    <img src="../admin/Img/Property_image/house/<?php echo $data['img2'] ?>" style="height: 400px;" class="img-thumbnail" alt="...">
+                    <input class="form-control form-control-lg mt-1 bg-white" id="formFileLg" name="img2" type="file">
                 </div>
                 <div class="col-md-6">
                     <label for="formFileLg" class="form-label text-black">Image 3</label>
-                    <img src="../admin/Img/Property_image/<?php echo $data['img3']?>" style="height: 400px;" class="img-thumbnail" alt="...">
-                    <input class="form-control form-control-lg mt-1 bg-white" id="formFileLg" name="img3" type="file"  >
+                    <img src="../admin/Img/Property_image/house/<?php echo $data['img3'] ?>" style="height: 400px;" class="img-thumbnail" alt="...">
+                    <input class="form-control form-control-lg mt-1 bg-white" id="formFileLg" name="img3" type="file">
                 </div>
                 <div class="col-md-6">
                     <label for="formFileLg" class="form-label text-black">Image 4</label>
-                    <img src="../admin/Img/Property_image/<?php echo $data['img4']?>" style="height: 400px;" class="img-thumbnail" alt="...">
-                    <input class="form-control form-control-lg mt-1 bg-white" id="formFileLg" name="img4" type="file"  >
+                    <img src="../admin/Img/Property_image/house/<?php echo $data['img4'] ?>" style="height: 400px;" class="img-thumbnail" alt="...">
+                    <input class="form-control form-control-lg mt-1 bg-white" id="formFileLg" name="img4" type="file">
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Is Featured?</label>
                     <select id="inputState" class="form-select" name="featured">
-                        <?php if($data['featured'] == 'Yes')  { ?>
-                        <option value="Yes" selected>Yes</option>
-                        <option value="No">No</option>
-                        <?php } else if($data['featured'] == 'No')  { ?>
-                        <option value="Yes">Yes</option>
-                        <option value="No" selected>No</option>
+                        <?php if ($data['featured'] == 'Yes') { ?>
+                            <option value="Yes" selected>Yes</option>
+                            <option value="No">No</option>
+                        <?php } else if ($data['featured'] == 'No') { ?>
+                            <option value="Yes">Yes</option>
+                            <option value="No" selected>No</option>
                         <?php } ?>
                     </select>
                     <div class="col-md-6 input-group-lg">
-                        <select id="inputState" name="status" class="form-select" hidden >
+                        <select id="inputState" name="status" class="form-select" hidden>
                             <option value="Sold">Sold</option>
                             <option value="Unsold">UnSold</option>
                         </select>
@@ -291,10 +241,9 @@
                 </div>
 
                 <!-- Description -->
-                <h2 class="animated text-black fadeIn mt-5 mb-4 add-header"
-                    style="border-bottom: 2px solid var(--tan);">Description</h2>
+                <h2 class="animated text-black fadeIn mt-5 mb-4 add-header" style="border-bottom: 2px solid var(--tan);">Description</h2>
                 <textarea class="tinymce form-control" name="description" rows="10" cols="29">
-                <?php echo $data['description']?>
+                <?php echo $data['description'] ?>
                 </textarea>
                 <div class="d-flex justify-content-end">
                     <input type="submit" name="update" class="btn py-2 px-5 mx-1 bg-black text-tan" value="Update Property" />
@@ -306,12 +255,12 @@
         <!-- Add Form End -->
 
         <!-- Footer Start -->
-        <?php include('../User/include/footer.php')?>
+        <?php include('../User/include/footer.php') ?>
         <!-- Footer End -->
 
 
         <!-- Back to Top -->
-        <?php include('../User/include/top.php')?>
+        <?php include('../User/include/top.php') ?>
     </div>
 </body>
 <!-- Tinymce Lib -->

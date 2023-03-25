@@ -16,7 +16,7 @@
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <title>Connect With Us..</title>
 </head>
-
+<style></style>
 <body>
     <div class="container">
         <input type="checkbox" id="flip">
@@ -37,7 +37,7 @@
               ?>
                     <div class="">
                         <div class="alert alert-warning  alert-dismissible fade show" role="alert">
-                            <strong>Oops! </strong>
+                            <!-- <strong>Oops! </strong> -->
                             <?= $_SESSION['message']; ?>.
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
@@ -52,24 +52,23 @@
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-user"></i>
-                                <input type="text" name="uname" placeholder="Enter your name" required>
+                                <input type="text" name="uname" placeholder="Enter your name" required oninvalid="setCustomValidity('Please enter a valid name')" oninput="setCustomValidity('')">
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
-                                <input type="email" name="email" placeholder="Enter your email" required>
+                                <input type="email" name="email" placeholder="Enter your email" required oninvalid="setCustomValidity('Please enter a valid Email ID')" oninput="setCustomValidity('')">
                             </div>
                             <div class="input-box">
                                 <i class="fa fa-phone"></i>
-                                <input type="text" name="mno" placeholder="Enter your phone number" required>
+                                <input type="tel" name="mno" pattern="[0-9]{10}"  placeholder="Enter your phone number" required  oninvalid="setCustomValidity('Please enter a valid 10-digit phone number')" oninput="setCustomValidity('')">
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" name="password" placeholder="Enter your password" required>
+                                <input type="password" name="password" minlength="8" placeholder="Enter your password" required oninvalid="setCustomValidity('Please enter Password')" oninput="setCustomValidity('')">
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" name="cpassword" placeholder="Enter your Confrim password"
-                                    required>
+                                <input type="password" name="cpassword" minlength="8" placeholder="Enter your Confrim password" required oninvalid="setCustomValidity('Please enter Confirm Password')" oninput="setCustomValidity('')">
                             </div>
                             <div class="button input-box">
                                 <input type="submit" name="reg_btn" value="Registration">

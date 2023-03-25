@@ -1,7 +1,9 @@
 <?php
 
 ?>
+
 <body>
+
     <div class="container-fluid nav-bar bg-transparent">
         <nav class="navbar navbar-expand-lg bg-black navbar-light py-0 px-4">
             <a href="index.php" class="navbar-brand d-flex align-items-center text-center">
@@ -13,7 +15,7 @@
                 <h1 class="m-0 text-tan">Locus</h1>
             </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
+                <span class=""><i class="bi bi-chevron-bar-contract text-white fs-3"></i></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto text-white">
@@ -36,24 +38,33 @@
                         </div>
                     </div>
                     <?php
-                    if(isset($_SESSION['uid'])){
+                    if (isset($_SESSION['uid'])) {
                         echo '<div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">My Account</a>
                         <div class="dropdown-menu rounded-0 m-0">
                             <a href="profile.php" class="dropdown-item">My Profile</a>
-                            <a href="user-property.php" class="dropdown-item">My Property</a>
+                            <a href="user-property.php?filter=all" class="dropdown-item">My Property</a>
                             <a href="book_property.php" class="dropdown-item">Booked Property</a>
                             <a href="logout.php" class="dropdown-item">Logout</a>    
                         </div>
                     </div>';
-                    }
-                    else{
+                    } else {
                         echo '<a href="logout.php" class="nav-item nav-link">Login</a>';
                     }
                     ?>
-                    
+
                 </div>
                 <a href="addproperty.php" class="btn text-black bg-tan px-3 d-none d-lg-flex">Add Property</a>
             </div>
         </nav>
     </div>
+    <?php if (isset($_SESSION['msg'])) { ?>
+        <script>
+            swal("<?php echo  $_SESSION['status'] ?>", "<?php echo $_SESSION['msg'] ?>",
+                "<?php echo $_SESSION['status'] ?>");
+        </script>
+    <?php
+        unset($_SESSION['msg']);
+        unset($_SESSION['status']);
+    } ?>
+</body>

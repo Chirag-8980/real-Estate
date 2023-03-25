@@ -9,11 +9,23 @@ if(isset($_POST['reg_btn'])){
     $password=$_POST['password'];
     $cpassword=$_POST['cpassword'];
 
+ // Validate the email field
+ if (empty($email)) {
+    $_SESSION['message'] = 'Email is required.';
+    header('Location: ../register.php');
+    exit();
+} else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $_SESSION['message'] = 'Invalid email format';
+    header('Location: ../register.php');
+    exit();
+}
+
+
     $check_email="select uid from user where email='$email'";
     $check_email_run=mysqli_num_rows( mysqli_query($con , $check_email));
         if($check_email_run > 0){
-            $_SESSION['msg']= "Email Already Exist";
-            header('location: ../login.php');
+            $_SESSION['message']= "Email Already Exist";
+            header('location: ../register.php');
         }
         else{
             if($password == $cpassword){
@@ -33,15 +45,23 @@ if(isset($_POST['reg_btn'])){
             }
         }
 
+
 }
 if(isset($_POST['login_btn'])){
     $email = $_POST['email'];
     $inputPassword = $_POST['password'];
 
-    // $check_email=mysqli_query($con , "SELECT uid FROM user WHERE email = '$email'");
-    // if(mysqli_num_rows($check_email) > 0){
 
-    // }
+     // Validate the email field
+     if (empty($email)) {
+        $_SESSION['message'] = 'Email is required.';
+        header('Location: ../login.php');
+        exit();
+    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['message'] = 'Invalid email format';
+        header('Location: ../login.php');
+        exit();
+    }
 
     $query = "SELECT password FROM user WHERE email = '$email'";
     $result = mysqli_query($con, $query);
@@ -67,35 +87,7 @@ if(isset($_POST['login_btn'])){
             header('location: ../login.php');
     }
 
-    // $email=$_POST['email'];
-    // $password=$_POST['password'];
-    // $u_pass = password_hash($password , PASSWORD_BCRYPT);
-
-    // $login_query="select * from user where email='$email' and password='$u_pass'";
-    // $query= mysqli_query($con , $login_query);
-    // $data = mysqli_fetch_array($query);
-
-    // if( mysqli_num_rows($query) > 0){
-    //     $d_pass = $data['password'];
-    //     $pass_check = password_verify($d_pass ,$u_pass );
-    //     if($pass_check){
-    //         $uname_query="select * from user where email ='$email' and password='$password'";
-    //         $uname = mysqli_query($con , $uname_query);
-    //         $uname1 = mysqli_fetch_array($uname);
-    //         $_SESSION['uname'] = $uname1['uname'];
-    //         $_SESSION['uid'] = $uname1['uid'];
-    //         $_SESSION['email'] = $uname1['email'];
-    //         header('location: ../index.php');
-    //     }
-    //     else{
-    //         $_SESSION['msg']="Invalid password";
-    //         header('location: ../login.php');
-    //     }
-    // }
-    // else{
-    //     $_SESSION['msg']="Invalid Information";
-    //     header('location: ../login.php');
-    // }
+    
 }
 
 ?>

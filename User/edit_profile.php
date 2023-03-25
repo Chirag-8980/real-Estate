@@ -16,13 +16,16 @@
         $twitter = $_POST['twitter'];
         $facebook = $_POST['facebook'];
 
-        $update_q = "UPDATE `user` SET `uname`='$uname',`mno`='$mno',`email`='$email',`address`='$address',`instagram`='$instagram',`facebook`='$facebook',`twitter`='$twitter' WHERE `uid`='$uid' ";
+        $update_q = "UPDATE `user` SET `uname`='$uname',`mno`='$mno',`address`='$address',`instagram`='$instagram',`facebook`='$facebook',`twitter`='$twitter' WHERE `uid`='$uid' ";
         $update_q_run =mysqli_query($con , $update_q);
         if($update_q_run){
-            echo "<script type='text/javascript'>alert('Success')</script>";
+            $_SESSION['msg'] = "Profile Update Successful";
+            $_SESSION['status'] = "success";
             header('location:profile.php');
         }else{
-            echo "failed";
+            $_SESSION['msg'] = "Profile Update Failed";
+            $_SESSION['status'] = "error";
+            header('location:edit_profile.php');
         }
 
     }
@@ -53,6 +56,7 @@
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -61,9 +65,9 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body class=" bg-white" >
 
-    <div class="container-xxl bg-white p-0">
+    <div class="bg-white p-0">
         <!-- Spinner Start -->
         <?php include('../User/include/spinner.php')?>
         <!-- Spinner End -->
@@ -74,26 +78,7 @@
         <!-- Navbar End -->
 
 
-        <!-- Header Start -->
-        <div class="container-fluid header bg-white p-0">
-            <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
-                <div class="col-md-6 p-5 mt-lg-5">
-                    <h1 class="display-5 animated text-black fadeIn mb-4">Profile</h1>
-                    <nav aria-label="breadcrumb animated fadeIn">
-                        <ol class="breadcrumb text-uppercase">
-                            <li class="breadcrumb-item"><a class="text-tan" href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a class="text-tan" href="#">Profile</a></li>
-                            <li class="breadcrumb-item text-body text-black active" aria-current="page">Edit Profile
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-                <div class="col-md-6 animated fadeIn">
-                    <img class="img-fluid" src="img/header.jpg" alt="">
-                </div>
-            </div>
-        </div>
-        <!-- Header End -->
+        
         <div class="container mt-5">
             <div class="text-center mx-auto mb-5 text-black wow fadeInUp" data-wow-delay="0.1s"
                 style="max-width: 600px;">
@@ -114,7 +99,6 @@
                                         <div class="mt-3">
                                             <h4><?php echo $data['uname']?></h4>
                                             <p class="text-dark mb-1"></p>
-                                            <p class="text-muted font-size-sm"><?php echo $data['designation']?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -153,15 +137,7 @@
                                                     value="<?php echo $data['uname']?>">
                                             </div>
                                         </div>
-                                        <div class="row mb-3">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0">Email</h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                <input type="text" class="form-control" name="email"
-                                                    value="<?php echo $data['email']?>">
-                                            </div>
-                                        </div>
+                                        
                                         <div class="row mb-3">
                                             <div class="col-sm-3">
                                                 <h6 class="mb-0">Mobile</h6>
@@ -224,7 +200,11 @@
 
         </div>
 
+        <!-- alert start -->
+        <?php include('./alert.php')?>
+        <!-- alert end -->
 
+        
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
