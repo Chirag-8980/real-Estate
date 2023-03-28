@@ -165,9 +165,6 @@ $data = mysqli_fetch_array($query);
                 </div>
             </div>
         </div>
-        <!-- alert start -->
-        <?php include('./alert.php')?>
-        <!-- alert end -->
     </div>
 
    

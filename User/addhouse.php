@@ -1,98 +1,92 @@
 <?php
-    session_start();
-    include('./config/config.php');
-    // $cid =$_GET['cid'];
+session_start();
+include('./config/config.php');
+if(!isset($_SESSION['uid'])){
+    header("location:login.php");
+}
 
-    if(isset($_POST['QC'])){
-        $uid=$_SESSION["uid"];
-        $ptitle=$_POST["ptitle"];
-        $ptype=$_POST["ptype"];
-        $bhk=$_POST["bhk"];
-        $stype=$_POST["stype"];
-        $bedroom=$_POST["bedroom"];
-        $balcony=$_POST["balcony"];
-        $bathroom=$_POST["bathroom"];
-        $kitchen=$_POST["kitchen"];
-        $hall=$_POST["hall"];
-        $floor=$_POST["floor"];
-        $tfloor=$_POST["tfloor"];
-        $price=$_POST["price"];
-        $sqft=$_POST["sqft"];
-        $paddress=$_POST["paddress"];
-        $city=$_POST["city"];
-        $state=$_POST["state"];
-        $status=$_POST["status"];
-        $featured=$_POST["featured"];
-        $description=$_POST["description"];
-        $facilities=$_POST["facilities"];
-        $allow_type=array('png','jpg','jpeg');
+if (isset($_POST['QC'])) {
+    $uid = $_SESSION["uid"];
+    $ptitle = $_POST["ptitle"];
+    $ptype = $_POST["ptype"];
+    $bhk = $_POST["bhk"];
+    $stype = $_POST["stype"];
+    $bedroom = $_POST["bedroom"];
+    $balcony = $_POST["balcony"];
+    $bathroom = $_POST["bathroom"];
+    $kitchen = $_POST["kitchen"];
+    $hall = $_POST["hall"];
+    $floor = $_POST["floor"];
+    $tfloor = $_POST["tfloor"];
+    $price = $_POST["price"];
+    $sqft = $_POST["sqft"];
+    $paddress = $_POST["paddress"];
+    $city = $_POST["city"];
+    $state = $_POST["state"];
+    $status = $_POST["status"];
+    $featured = $_POST["featured"];
+    $description = $_POST["description"];
+    $facilities = $_POST["facilities"];
+    $allow_type = array('png', 'jpg', 'jpeg');
 
-        $image1=$_FILES['img1']['name'];
-        $tmp_name1=$_FILES['img1']['tmp_name'];
-        $img_type1=strtolower(pathinfo($image1,PATHINFO_EXTENSION)); 
-        $size=$_FILES['img1']['size'];
-        $tmp_name=$_FILES['img1']['tmp_name'];
-        $destination1="../admin/img/property_image/house/".$image1;
-       
+    $image1 = $_FILES['img1']['name'];
+    $tmp_name1 = $_FILES['img1']['tmp_name'];
+    $img_type1 = strtolower(pathinfo($image1, PATHINFO_EXTENSION));
+    $size = $_FILES['img1']['size'];
+    $tmp_name = $_FILES['img1']['tmp_name'];
+    $destination1 = "../admin/img/property_image/house/" . $image1;
 
-        $image2=$_FILES['img2']['name'];
-        $tmp_name2=$_FILES['img2']['tmp_name'];
-        $img_type2=strtolower(pathinfo($image2,PATHINFO_EXTENSION));
-        $size=$_FILES['img2']['size'];
-        $tmp_name=$_FILES['img2']['tmp_name'];
-        $destination2="../admin/img/property_image/house/".$image2;
-        
 
-        $image3=$_FILES['img3']['name'];
-        $tmp_name3=$_FILES['img3']['tmp_name'];
-        $img_type3=strtolower(pathinfo($image3,PATHINFO_EXTENSION));   
-        $size=$_FILES['img3']['size'];
-        $destination3="../admin/img/property_image/house/".$image3;
-        
+    $image2 = $_FILES['img2']['name'];
+    $tmp_name2 = $_FILES['img2']['tmp_name'];
+    $img_type2 = strtolower(pathinfo($image2, PATHINFO_EXTENSION));
+    $size = $_FILES['img2']['size'];
+    $tmp_name = $_FILES['img2']['tmp_name'];
+    $destination2 = "../admin/img/property_image/house/" . $image2;
 
-        $image4=$_FILES['img4']['name'];
-        $tmp_name4=$_FILES['img4']['tmp_name'];
-        $img_type4=strtolower(pathinfo($image4,PATHINFO_EXTENSION));
-        $size=$_FILES['img4']['size'];
-        $destination4="../admin/img/property_image/house/".$image4;
-        
-      
-        if(in_array($img_type1 || $img_type2 || $img_type3 || $img_type4, $allow_type))
-        {
-            if($size <= 20000000)
-            {
-                move_uploaded_file($tmp_name1,$destination1);
-                move_uploaded_file($tmp_name2,$destination2);
-                move_uploaded_file($tmp_name3,$destination3);
-                move_uploaded_file($tmp_name4,$destination4);
-                $insert_qry = "insert into tblhouse(uid, ptitle, ptype, bhk, stype, bedroom, balcony, bathroom, kitchen, hall, floor, tfloor, price, sqft, paddress, city, state, img1, img2, img3, img4, status, featured, description , facilities) VALUES ('$uid','$ptitle','$ptype','$bhk','$stype','$bedroom','$balcony','$bathroom','$kitchen','$hall','$floor','$tfloor','$price','$sqft','$paddress','$city','$state', '$image1', '$image2', '$image3', '$image4','$status','$featured','$description','$facilities')";
-                $result=mysqli_query($con,$insert_qry);
-                if($result)
-		        {
-			        $_SESSION['msg'] = "Property Insert Successful";
-			        $_SESSION['status'] = "success";
-                    // header('location:./property-list.php');
-					
-		        }
-		        else
-		        {
-			        $_SESSION['msg'] = "Property Insert Failed";
-			        $_SESSION['status'] = "error";
-		        }
+
+    $image3 = $_FILES['img3']['name'];
+    $tmp_name3 = $_FILES['img3']['tmp_name'];
+    $img_type3 = strtolower(pathinfo($image3, PATHINFO_EXTENSION));
+    $size = $_FILES['img3']['size'];
+    $destination3 = "../admin/img/property_image/house/" . $image3;
+
+
+    $image4 = $_FILES['img4']['name'];
+    $tmp_name4 = $_FILES['img4']['tmp_name'];
+    $img_type4 = strtolower(pathinfo($image4, PATHINFO_EXTENSION));
+    $size = $_FILES['img4']['size'];
+    $destination4 = "../admin/img/property_image/house/" . $image4;
+
+
+    if (in_array($img_type1 || $img_type2 || $img_type3 || $img_type4, $allow_type)) {
+        if ($size <= 20000000) {
+            move_uploaded_file($tmp_name1, $destination1);
+            move_uploaded_file($tmp_name2, $destination2);
+            move_uploaded_file($tmp_name3, $destination3);
+            move_uploaded_file($tmp_name4, $destination4);
+            $insert_qry = "insert into tblhouse(uid, ptitle, ptype, bhk, stype, bedroom, balcony, bathroom, kitchen, hall, floor, tfloor, price, sqft, paddress, city, state, img1, img2, img3, img4, status, featured, description , facilities) VALUES ('$uid','$ptitle','$ptype','$bhk','$stype','$bedroom','$balcony','$bathroom','$kitchen','$hall','$floor','$tfloor','$price','$sqft','$paddress','$city','$state', '$image1', '$image2', '$image3', '$image4','$status','$featured','$description','$facilities')";
+            $result = mysqli_query($con, $insert_qry);
+            if ($result) {
+                $_SESSION['msg'] = "Property Insert Successful";
+                $_SESSION['status'] = "success";
+                header('location:./user-property.php?filter=all');
+
+            } else {
+                $_SESSION['msg'] = "Property Insert Failed";
+                $_SESSION['status'] = "error";
             }
-            else{
-                $_SESSION['msg'] = "Photo Size should be Less then 2MB";
-			    $_SESSION['status'] = "error";
-            }
+        } else {
+            $_SESSION['msg'] = "Photo Size should be Less then 2MB";
+            $_SESSION['status'] = "error";
         }
-        else{
-                    $_SESSION['msg'] = "File type not allowed (Only jpg, jpeg and png type file allowed)";
-			        $_SESSION['status'] = "error";
-        }
-        
-    }else{
-        // echo "Plese Enter Value";
+    } else {
+        $_SESSION['msg'] = "File type not allowed (Only jpg, jpeg and png type file allowed)";
+        $_SESSION['status'] = "error";
     }
+} else {
+    // echo "Plese Enter Value";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -109,8 +103,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -131,12 +124,12 @@
 <body>
     <div class=" bg-white p-0">
         <!-- Spinner Start -->
-        <?php include('../User/include/spinner.php')?>
+        <?php include('../User/include/spinner.php') ?>
         <!-- Spinner End -->
 
 
         <!-- Navbar Start -->
-        <?php include('../User/include/header.php')?>
+        <?php include('../User/include/header.php') ?>
         <!-- Navbar End -->
 
 
@@ -169,20 +162,23 @@
                     Information</h2>
                 <div class="col-md-12 input-group-lg">
                     <label for="inputEmail4" class="form-label  text-black">Title</label>
-                    <input type="text" name="ptitle" class="form-control" id="inputEmail4"  >
+                    <input type="text" name="ptitle" id="ptitle" oninput="validatePtitle()" class="form-control" id="inputEmail4">
                 </div>
+                <div class="text-danger mt-1" id="error-ptitle"></div>
 
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Property Type</label>
-                    <select id="inputState" name="ptype" class="form-select"  >
+                    <select id="inputState" name="ptype" class="form-select">
                         <option value="House">House</option>
-                        <option value="Apartment">Apartment</option>
                         <option value="Flat">Flat</option>
+                        <option value="Banglow">Banglow</option>
+                        <option value="Pent-House">Pent-House</option>
+                        <option value="Farm-House">Farm-House</option>
                     </select>
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">BHK</label>
-                    <select id="inputState" name="bhk" class="form-select"  >
+                    <select id="inputState" name="bhk" class="form-select">
                         <option value="1">1 BHK</option>
                         <option value="2">2 BHK</option>
                         <option value="3">3 BHK</option>
@@ -190,7 +186,7 @@
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Selling Type</label>
-                    <select id="inputState" name="stype" class="form-select"  >
+                    <select id="inputState" name="stype" class="form-select">
                         <option value="Rent">Rent</option>
                         <option value="Sell">Sell</option>
                     </select>
@@ -198,29 +194,32 @@
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Bedroom</label>
-                    <input type="text" name="bedroom" class="form-control" id="inputZip"
-                        placeholder="Enter Bedroom (Only 1 to 5)"  >
+                    <input type="text" name="bedroom" oninput="validateBedroom()" class="form-control" id="bedroom" placeholder="Enter Bedroom (Only 1 to 5)">
+                    <div class="text-danger  mt-1" id="error-bedroom"></div>
                 </div>
 
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Balcony</label>
-                    <input type="text" name="balcony" class="form-control" id="inputZip"
-                        placeholder="Enter Balcony (Only 1 to 5)"  >
+                    <input type="text" name="balcony" oninput="validateBalcony()" class="form-control" id="balcony" placeholder="Enter Balcony (Only 1 to 5)">
+                    <div class="text-danger mt-1" id="error-balcony"></div>
                 </div>
+
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Bathroom</label>
-                    <input type="text" name="bathroom" class="form-control" id="inputZip"
-                        placeholder="Enter Bathroom (Only 1 to 5)"  >
+                    <input type="text" name="bathroom" oninput="validateBathroom()" class="form-control" id="bathroom" placeholder="Enter Bathroom (Only 1 to 5)">
+                    <div class="text-danger mt-1" id="error-bathroom"></div>
                 </div>
+
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Kitchen</label>
-                    <input type="text" name="kitchen" class="form-control" id="inputZip"
-                        placeholder="Enter Kitchen (Only 1 to 5)"  >
+                    <input type="text" name="kitchen" oninput="validateKitchen()" class="form-control" id="kitchen" placeholder="Enter Kitchen (Only 1 to 5)">
+                    <div class="text-danger mt-1" id="error-kitchen"></div>
                 </div>
+
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Hall</label>
-                    <input type="text" name="hall" class="form-control" id="inputZip"
-                        placeholder="Enter Hall (Only 1 to 5)"  >
+                    <input type="text" name="hall" oninput="validateHall()" class="form-control" id="hall" placeholder="Enter Hall (Only 1 to 5)">
+                    <div class="text-danger mt-1" id="error-hall"></div>
                 </div>
 
                 <!-- Price & Location  -->
@@ -228,68 +227,78 @@
                     Price & Location</h2>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Floor</label>
-                    <input type="text" name="floor" class="form-control" id="inputEmail4"  >
+                    <input type="text" name="floor" class="form-control" oninput="validateFloor()" id="floor">
+                    <div class="text-danger mt-1" id="error-floor"></div>
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Total Floor</label>
-                    <input type="text" name="tfloor" class="form-control" id="inputEmail4"  >
+                    <input type="text" name="tfloor" class="form-control" oninput="validateTfloor()" id="tfloor">
+                    <div class="text-danger mt-1" id="error-tfloor"></div>
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Price</label>
-                    <input type="text" class="form-control" name="price" id="inputZip"  >
+                    <input type="text" class="form-control" name="price" oninput="validatePrice()" id="price">
+                    <div class="text-danger mt-1" id="error-price"></div>
                 </div>
                 <div class="col-md-6 input-group-lg">
-                    <label for="inputZip" class="form-label  text-black">Area Size</label>
-                    <input type="text" class="form-control" name="sqft" id="inputZip"  >
+                    <label for="inputZip" class="form-label  text-black">Area Size (sqft)</label>
+                    <input type="text" class="form-control" name="sqft" oninput="validateSqft()" id="sqft">
+                    <div class="text-danger mt-1" id="error-sqft"></div>
                 </div>
                 <div class="col-md-12 input-group-lg">
                     <label for="inputEmail4" class="form-label  text-black">Address</label>
-                    <input type="text" name="paddress" class="form-control" id="inputEmail4"  >
+                    <input type="text" name="paddress" class="form-control" oninput="validatePaddress()" id="paddress">
+                    <div class="text-danger mt-1" id="error-paddress"></div>
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">City</label>
-                    <input type="text" class="form-control" name="city" id="inputZip"  >
+                    <input type="text" class="form-control" name="city" oninput="validateCity()" id="city">
+                    <div class="text-danger mt-1" id="error-city"></div>
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">State</label>
-                    <input type="text" class="form-control" name="state" id="inputZip"  >
+                    <input type="text" class="form-control" name="state" oninput="validateState()" id="state">
+                    <div class="text-danger mt-1" id="error-state"></div>
                 </div>
                 <!-- Image & Status -->
                 <h2 class="animated text-black fadeIn mt-5 add-header" style="border-bottom: 2px solid var(--tan);">
                     Image & Status</h2>
                 <div class="col-md-6">
                     <label for="formFileLg" class="form-label text-black">Image 1</label>
-                    <input class="form-control form-control-lg bg-white" name="img1" id="formFileLg" type="file"  >
+                    <input class="form-control form-control-lg bg-white" name="img1" id="image" accept=".jpg,.jpeg,.png,.gif"  type="file">
+                    <div id="image-error"></div>
                 </div>
                 <div class="col-md-6">
                     <label for="formFileLg" class="form-label text-black">Image 2</label>
-                    <input class="form-control form-control-lg bg-white" id="formFileLg" name="img2" type="file"  >
+                    <input class="form-control form-control-lg bg-white" id="image" accept=".jpg,.jpeg,.png,.gif"  name="img2" type="file">
+                    <div id="image-error"></div>
                 </div>
                 <div class="col-md-6">
                     <label for="formFileLg" class="form-label text-black">Image 3</label>
-                    <input class="form-control form-control-lg bg-white" id="formFileLg" name="img3" type="file"  >
+                    <input class="form-control form-control-lg bg-white" id="image" accept=".jpg,.jpeg,.png,.gif" name="img3" type="file">
+                    <div id="image-error"></div>
                 </div>
                 <div class="col-md-6">
                     <label for="formFileLg" class="form-label text-black">Image 4</label>
-                    <input class="form-control form-control-lg bg-white" id="formFileLg" name="img4" type="file"  >
+                    <input class="form-control form-control-lg bg-white" id="image" accept=".jpg,.jpeg,.png,.gif" name="img4" type="file">
+                    <div id="image-error"></div>
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Is Featured?</label>
-                    <select id="inputState" class="form-select" name="featured"  >
+                    <select id="inputState" class="form-select" name="featured">
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select>
-                    </div>
-                    <div class="col-md-6 input-group-lg">
-                    <select id="inputState" name="status" class="form-select" hidden >
+                </div>
+                <div class="col-md-6 input-group-lg">
+                    <select id="inputState" name="status" class="form-select" hidden>
                         <option value="Sold">Sold</option>
                         <option value="Unsold" seleceted>UnSold</option>
                     </select>
                 </div>
                 <!-- Facility -->
-                <h2 class="animated text-black fadeIn mt-5 mb-2 add-header"
-                    style="border-bottom: 2px solid var(--tan);">Facilities</h2>
-                <small class="text-danger">* Important Please Do Not Remove Below Content Only Change <b>Yes</b> Or
+                <h2 class="animated text-black fadeIn mt-5 mb-2 add-header" style="border-bottom: 2px solid var(--tan);">Facilities</h2>
+                <small class="text-danger mt-1">* Important Please Do Not Remove Below Content Only Change <b>Yes</b> Or
                     <b>No</b></small>
                 <textarea class="tinymce form-control" name="facilities" rows="10" cols="29">
                 <div class="col-md-4">
@@ -317,11 +326,12 @@
 			    </div>
                 </textarea>
                 <!-- Description -->
-                <h2 class="animated text-black fadeIn mt-5 mb-4 add-header"
-                    style="border-bottom: 2px solid var(--tan);">Description</h2>
-                <textarea class="tinymce form-control" name="description" rows="10" cols="29"  ></textarea>
+                <h2 class="animated text-black fadeIn mt-5 mb-4 add-header" style="border-bottom: 2px solid var(--tan);">Description</h2>
+                
+                <textarea class="tinymce form-control" name="description"  id="description" rows="10" cols="29"></textarea>
+                <div class="text-danger mt-1" id="error-description"></div>
                 <div class="d-flex justify-content-end">
-                    <input type="submit" name="QC" class="btn py-2 px-5 mx-1 bg-black text-tan" value="Send To QC"  />
+                    <input type="submit" id="submit-button" name="QC" class="btn py-2 px-5 mx-1 bg-black text-tan" value="Send To QC" />
                     <input type="submit" name="discard" class="btn py-2 px-5  mx-1 bg-tan text-black" value="Discard" />
                 </div>
 
@@ -330,14 +340,295 @@
         <!-- Add Form End -->
 
         <!-- Footer Start -->
-        <?php include('../User/include/footer.php')?>
+        <?php include('../User/include/footer.php') ?>
         <!-- Footer End -->
 
 
         <!-- Back to Top -->
-        <?php include('../User/include/top.php')?>
+        <?php include('../User/include/top.php') ?>
     </div>
 </body>
+
+<script>
+    function validatePtitle() {
+        var nameInput = document.getElementById("ptitle");
+        var ptitle = nameInput.value.trim();
+        var errorMessage = document.getElementById("error-ptitle");
+
+        if (ptitle == "") {
+            errorMessage.innerHTML = "title field cannot be empty";
+            document.getElementById("ptitle").required = true;
+            return false;
+        }else if (!/^[a-zA-Z\s,'-]*$/.test(ptitle)) {
+            errorMessage.innerHTML = "title field can only contain letter";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            document.getElementById("ptitle").required = true;
+            return true;
+        }
+    }
+
+    function validateBedroom() {
+        var nameInput = document.getElementById("bedroom");
+        var bedroom = nameInput.value.trim();
+        var errorMessage = document.getElementById("error-bedroom");
+
+        if (bedroom == "") {
+            errorMessage.innerHTML = "bedroom field cannot be empty";
+            document.getElementById("bedroom").required = true;
+            return false;
+        } else if (!/^\d+$/.test(bedroom)) {
+            errorMessage.innerHTML = "bedroom field can only contain digits";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            document.getElementById("bedroom").required = true;
+            return true;
+        }
+    }
+
+    function validateBalcony() {
+        var nameInput = document.getElementById("balcony");
+        var balcony = nameInput.value.trim();
+        var errorMessage = document.getElementById("error-balcony");
+
+        if (balcony == "") {
+            errorMessage.innerHTML = "balcony field cannot be empty";
+            document.getElementById("balcony").required = true;
+            return false;
+        } else if (!/^\d+$/.test(balcony)) {
+            errorMessage.innerHTML = "balcony field can only contain digits";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            document.getElementById("balcony").required = true;
+            return true;
+        }
+    }
+
+    function validateBathroom() {
+        var nameInput = document.getElementById("bathroom");
+        var bathroom = nameInput.value.trim();
+        var errorMessage = document.getElementById("error-bathroom");
+
+        if (bathroom == "") {
+            errorMessage.innerHTML = "bathroom field cannot be empty";
+            document.getElementById("bathroom").required = true;
+            return false;
+        } else if (!/^\d+$/.test(bathroom)) {
+            errorMessage.innerHTML = "bathroom field can only contain digits";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            document.getElementById("bathroom").required = true;
+            return true;
+        }
+    }
+
+    function validateKitchen() {
+        var nameInput = document.getElementById("kitchen");
+        var kitchen = nameInput.value.trim();
+        var errorMessage = document.getElementById("error-kitchen");
+
+        if (kitchen == "") {
+            errorMessage.innerHTML = "kitchen field cannot be empty";
+            document.getElementById("kitchen").required = true;
+            return false;
+        } else if (!/^\d+$/.test(kitchen)) {
+            errorMessage.innerHTML = "kitchen field can only contain digits";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            document.getElementById("kitchen").required = true;
+            return true;
+        }
+    }
+
+    function validateHall() {
+        var nameInput = document.getElementById("hall");
+        var hall = nameInput.value.trim();
+        var errorMessage = document.getElementById("error-hall");
+
+        if (hall == "") {
+            errorMessage.innerHTML = "hall field cannot be empty";
+            document.getElementById("hall").required = true;
+            return false;
+        } else if (!/^\d+$/.test(hall)) {
+            errorMessage.innerHTML = "hall field can only contain digits";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            document.getElementById("hall").required = true;
+            return true;
+        }
+    }
+
+    function validateFloor() {
+        var nameInput = document.getElementById("floor");
+        var floor = nameInput.value.trim();
+        var errorMessage = document.getElementById("error-floor");
+
+        if (floor == "") {
+            errorMessage.innerHTML = "floor field cannot be empty";
+            document.getElementById("floor").required = true;
+            return false;
+        } else if (!/^\d+$/.test(floor)) {
+            errorMessage.innerHTML = "floor field can only contain digits";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            document.getElementById("floor").required = true;
+            return true;
+        }
+    }
+
+    function validateTfloor() {
+        var nameInput = document.getElementById("tfloor");
+        var tfloor = nameInput.value.trim();
+        var errorMessage = document.getElementById("error-tfloor");
+
+        if (tfloor == "") {
+            errorMessage.innerHTML = "total floor field cannot be empty";
+            document.getElementById("tfloor").required = true;
+            return false;
+        } else if (!/^\d+$/.test(tfloor)) {
+            errorMessage.innerHTML = "total floor field can only contain digits";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            document.getElementById("tfloor").required = true;
+            return true;
+        }
+    }
+
+    function validatePrice() {
+        var nameInput = document.getElementById("price");
+        var price = nameInput.value.trim();
+        var errorMessage = document.getElementById("error-price");
+
+        if (price == "") {
+            errorMessage.innerHTML = "price field cannot be empty";
+            document.getElementById("price").required = true;
+            return false;
+        } else if (!/^\d+$/.test(price)) {
+            errorMessage.innerHTML = "price field can only contain digits";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            document.getElementById("price").required = true;
+            return true;
+        }
+    }
+
+    function validateSqft() {
+        var nameInput = document.getElementById("sqft");
+        var sqft = nameInput.value.trim();
+        var errorMessage = document.getElementById("error-sqft");
+
+        if (sqft == "") {
+            errorMessage.innerHTML = "sqft field cannot be empty";
+            document.getElementById("sqft").required = true;
+            return false;
+        } else if (!/^\d+$/.test(sqft)) {
+            errorMessage.innerHTML = "sqft field can only contain digits";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            document.getElementById("sqft").required = true;
+            return true;
+        }
+    }
+
+    function validatePaddress() {
+        var input = document.getElementById("paddress");
+        var paddress = input.value.trim();
+        var errorMessage = document.getElementById("error-paddress");
+
+        if (paddress === "") {
+            errorMessage.innerHTML = "Address field cannot be empty";
+            return false;
+        } else if (!/^[a-zA-Z0-9\s,'-]*$/.test(paddress)) {
+            errorMessage.innerHTML = "Address contains invalid characters";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            return true;
+        }
+    }
+    
+    function validateCity() {
+        var cityInput = document.getElementById("city");
+        var city = cityInput.value.trim();
+        var errorMessage = document.getElementById("error-city");
+
+        if (city == "") {
+            errorMessage.innerHTML = "City field cannot be empty";
+            // cityInput.classList.add("invalid");
+            return false;
+        } else if (!/^[a-zA-Z ]+$/.test(city)) {
+            errorMessage.innerHTML = "City can only contain letters and spaces";
+            // cityInput.classList.add("invalid");
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            // cityInput.classList.remove("invalid");
+            return true;
+        }
+    }
+
+    function validateState() {
+        var stateInput = document.getElementById("state");
+        var state = stateInput.value.trim();
+        var errorMessage = document.getElementById("error-state");
+
+        if (state == "") {
+            errorMessage.innerHTML = "State field cannot be empty";
+            // stateInput.classList.add("invalid");
+            return false;
+        } else if (!/^[a-zA-Z ]+$/.test(state)) {
+            errorMessage.innerHTML = "State can only contain letters and spaces";
+            // stateInput.classList.add("invalid");
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            // stateInput.classList.remove("invalid");
+            return true;
+        }
+    }
+    var imageInput = document.getElementById("image");
+    var errorMessage = document.getElementById("image-error");
+
+    imageInput.addEventListener("change", function() {
+        var file = imageInput.files[0];
+        var fileType = file.type;
+        if (fileType != "image/jpeg" && fileType != "image/png" && fileType != "image/gif") {
+            errorMessage.innerHTML = "Please select a valid image file (JPG, PNG, GIF).";
+            imageInput.value = "";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            return true;
+        }
+    });
+    
+    function validateForm() {
+    if (validatePtitle() && validateBedroom() && validateBalcony() && validateBathroom() && validateKitchen() && validateHall() && validateFloor() && validateTfloor() && validatePrice() && validateSqft() && validatePaddress() && validateCity() && validateState()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// Attach this function to the submit button
+document.getElementById("submit-button").addEventListener("click", function(event) {
+    if (!validateForm()) {
+        event.preventDefault();
+    }
+});
+
+</script>
+
 <!-- Tinymce Lib -->
 <script src="js/tinymce/tinymce.min.js"></script>
 <script src="js/tinymce/init-tinymce.min.js"></script>

@@ -89,7 +89,7 @@
                             <td><?php echo $data['email']?></td> -->
                             <td><?php echo $data['cindate']?></td>
                             <td><?php echo $data['coutdate']?></td>
-                            <td class="text-danger fw-bold"><?php echo $data['status']?></td>
+                            <td class="text-<?php if($data['status'] == "Pending"){echo 'warning' ;} if($data['status'] == "Success"){echo 'success';}if($data['status'] == "Reject"){echo 'danger' ;}?> fw-bold"><?php echo $data['status']?></td>
                             <td class="text-success fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">View
                                 Details</td>
 

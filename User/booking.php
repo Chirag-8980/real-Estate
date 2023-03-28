@@ -1,6 +1,12 @@
 <?php
     session_start();
     include('./config/config.php');
+    require './Function/sendmail.php';
+    if(!isset($_SESSION['uid'])){
+        header("location:login.php");
+    }
+    $uid = $_SESSION['uid'];
+     $u_data = mysqli_fetch_array(mysqli_query($con , "select * from user where uid=$uid"));
     if(isset($_POST['pbooking'])){
         try {
             $name = $_POST['name'];
@@ -11,21 +17,30 @@
             $buyerid = $_SESSION['uid'];
             $sellerid = $_SESSION['sellerid'];
             $pid = $_SESSION['pid'];
-
+            $_SESSION['b_email'] = $email;
+            
         if($buyerid != $sellerid){
             $query = "INSERT INTO `tblpbooking`(`name`, `pid`, `seller_id`, `buyer_id`, `email`, `cindate`, `coutdate`,`details`) VALUES ('$name','$pid','$sellerid','$buyerid','$email','$cindate','$coutdate','$message')";
             $run = mysqli_query($con , $query);
             if($run){
+                $s_email = mysqli_fetch_array(mysqli_query($con , "select * from user where uid = $sellerid"));
+                $email = $s_email['email'];
+                $sub = "Booking Reqest From Buyre";
+                $msg = "Booking Req";
+                SendMail_With_PDF($email , $sub , $msg , $pid);
+                
                 $_SESSION['msg'] = "Booking Reqest Sent Success";
 		        $_SESSION['status'] = "Success";
                 header("location:book_property.php?pid=$pid");
             }else{
                 $_SESSION['msg'] = "Booking Reqest Sent Failed";
-		        $_SESSION['status'] = "error";    
+		        $_SESSION['status'] = "error";
+                header("location:property_details.php?pid=$pid");
             }
         }else{
             $_SESSION['msg'] = "Buyer And Seller Is Same";
 		    $_SESSION['status'] = "error";
+            header("location:property_details.php?pid=$pid");
         }
           }
           
@@ -63,6 +78,8 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
@@ -85,24 +102,24 @@
                 <div class="row g-3">
                     <div class="col-md-6">
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name">
+                            <input type="text" class="form-control" id="name" value="<?php echo $u_data['uname']?>" disabled name="name" placeholder="Your Name">
                             <label for="name">Your Name</label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating">
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Your Email">
+                            <input type="email" class="form-control" id="email" name="email" disabled value="<?php echo $u_data['email']?>" placeholder="Your Email">
                             <label for="email">Your Email</label>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-6">
                         <div class="form-floating">
                             <input type="date" class="form-control" id="dateChecker" name="cindate"
                                 placeholder="Enter Check In Date">
                             <label for="subject">Check In Date</label>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-6">
                         <div class="form-floating">
                             <input type="date" class="form-control" id="dateChecker" name="coutdate"
                                 placeholder="Enter Check Out Date">
@@ -133,12 +150,6 @@
 
         </div>
 
-
-
-
-
-
-
         <!-- Back to Top -->
         <?php include('../User/include/top.php')?>
     </div>
@@ -151,23 +162,23 @@
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <script>
-        $(document).ready(function(){
-            var dtToday =   new Date();
-            var month = dtToday.getMonth() + 1;
-            var day = dtToday.getDate();
-            var year = dtToday.getFullYear();
+    $(document).ready(function() {
+        var dtToday = new Date();
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
 
-            if(month < 10){
-                month = '0' + month.toString();
-            }
-            if(day < 10){
-                day = '0' + day.toString();
-            }
+        if (month < 10) {
+            month = '0' + month.toString();
+        }
+        if (day < 10) {
+            day = '0' + day.toString();
+        }
 
-            var maxDate = year + '-' + month + '-' + day ;
-            $('#dateChecker').attr('min', maxDate);
+        var maxDate = year + '-' + month + '-' + day;
+        $('#dateChecker').attr('min', maxDate);
 
-        })
+    })
     </script>
     <!-- Template Javascript -->
     <script src="js/main.js"></script>

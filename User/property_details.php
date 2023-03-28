@@ -239,11 +239,19 @@
                         </div>
                     </div>
                 </div> -->
+                <?php if($data['stype'] == "Rent") {?>
                 <div class="col-3 container">
                     <a class="btn  bg-tan text-black w-100 py-3 my-4"
-                        href="booking.php?pid=<?php echo $_GET['pid']?>&sellerid=<?php echo $data['uid']?>">Request For
-                        Booking</a>
+                        href="booking.php?pid=<?php echo $_GET['pid']?>&sellerid=<?php echo $data['uid']?>&stype=<?php echo $data['stype']?>">Request For
+                        Rent</a>
                 </div>
+                <?php } else{?>
+                    <div class="col-3 container">
+                    <a class="btn  bg-tan text-black w-100 py-3 my-4"
+                        href="booking.php?pid=<?php echo $_GET['pid']?>&sellerid=<?php echo $data['uid']?>&stype=<?php echo $data['stype']?>">Request For
+                        Buy</a>
+                </div>
+                <?php }?>
             </div>
             <?php if(isset($_SESSION['msg'])) { ?>
             <script>

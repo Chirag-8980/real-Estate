@@ -1,8 +1,10 @@
 <?php
     include('./config/config.php');
     $house=mysqli_fetch_array( mysqli_query($con,"select count(*) as total from tblhouse where `ptype`='House'"));
-    $business=mysqli_fetch_array( mysqli_query($con,"select count(*) as total from tblbusiness"));
-    $occasion=mysqli_fetch_array( mysqli_query($con,"select count(*) as total from tbloccasion"));
+    $Banglow=mysqli_fetch_array( mysqli_query($con,"select count(*) as total from tblhouse where `ptype`='Banglow'"));
+    $Flat=mysqli_fetch_array( mysqli_query($con,"select count(*) as total from tblhouse where `ptype`='Flat'"));
+    $PHouse=mysqli_fetch_array( mysqli_query($con,"select count(*) as total from tblhouse where `ptype`='Pent-House'"));
+    $FHouse=mysqli_fetch_array( mysqli_query($con,"select count(*) as total from tblhouse where `ptype`='Farm-House'"));
 ?>
 <body>
 
@@ -35,7 +37,7 @@
                                 <img class="img-fluid" src="img/icon-villa.png" alt="Icon">
                             </div>
                             <h6>Banglow Property</h6>
-                            <span><?php echo $business['total']?>+ Banglows</span>
+                            <span><?php echo $Banglow['total']?>+ Banglows</span>
                         </div>
                     </a>
                 </div>
@@ -46,7 +48,7 @@
                                 <img class="img-fluid" src="img/icon-house.png" alt="Icon">
                             </div>
                             <h6>Flat Property</h6>
-                            <span><?php echo $occasion['total']?>+ Flats</span>
+                            <span><?php echo $Flat['total']?>+ Flats</span>
                         </div>
                     </a>
                 </div>
@@ -57,7 +59,7 @@
                                 <img class="img-fluid" src="img/icon-house.png" alt="Icon">
                             </div>
                             <h6>Pent-House </h6>
-                            <span><?php echo $occasion['total']?>+ Pent-Houses</span>
+                            <span><?php echo $PHouse['total']?>+ Pent-Houses</span>
                         </div>
                     </a>
                 </div>
@@ -68,7 +70,7 @@
                                 <img class="img-fluid" src="img/icon-house.png" alt="Icon">
                             </div>
                             <h6>Farm Houses</h6>
-                            <span><?php echo $occasion['total']?>+ Farm Houses</span>
+                            <span><?php echo $FHouse['total']?>+ Farm Houses</span>
                         </div>
                     </a>
                 </div>

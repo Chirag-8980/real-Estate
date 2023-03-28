@@ -1,19 +1,12 @@
 <?php
     session_start();
     include('./config/config.php');
+    require './Function/sendmail.php';
     $uid = $_SESSION['uid'];
     $select_q="select * from tblpbooking where seller_id=$uid";
     $query=mysqli_query($con,$select_q);
 
-    if(isset($_POST['submit'])){
-        $status = $_POST['status'];
-        $reason = $_POST['reason'];
-        $bid = $_GET['bid'];
-        $queary = mysqli_query($con , "UPDATE `tblpbooking` SET `status`='$status',`reason`='$reason' WHERE bid = $bid");
-        if($queary){
-            header('location:property_order.php');
-        }
-    }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">

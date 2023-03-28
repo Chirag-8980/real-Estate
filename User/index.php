@@ -61,7 +61,6 @@
                     <p class="animated fadeIn mb-4 text-black pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed
                         stet
                         sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
-                    <a href="" class="btn py-3 bg-tan text-black px-5 me-3 animated fadeIn">Get Started</a>
                 </div>
                 <div class="col-md-6 animated fadeIn">
                     <div class="owl-carousel header-carousel">

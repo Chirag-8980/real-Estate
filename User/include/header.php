@@ -27,7 +27,6 @@
                         <div class="dropdown-menu rounded-0 m-0">
                             <a href="property-list.php" class="dropdown-item">Property List</a>
                             <a href="property-type.php" class="dropdown-item">Property Type</a>
-                            <a href="property-agent.php" class="dropdown-item">Property Agent</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
@@ -44,7 +43,6 @@
                         <div class="dropdown-menu rounded-0 m-0">
                             <a href="profile.php" class="dropdown-item">My Profile</a>
                             <a href="user-property.php?filter=all" class="dropdown-item">My Property</a>
-                            <a href="book_property.php" class="dropdown-item">Booked Property</a>
                             <a href="logout.php" class="dropdown-item">Logout</a>    
                         </div>
                     </div>';
@@ -54,7 +52,7 @@
                     ?>
 
                 </div>
-                <a href="addproperty.php" class="btn text-black bg-tan px-3 d-none d-lg-flex">Add Property</a>
+                <a href="addhouse.php" class="btn text-black bg-tan px-3 d-none d-lg-flex">Add Property</a>
             </div>
         </nav>
     </div>

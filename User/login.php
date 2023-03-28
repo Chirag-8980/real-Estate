@@ -47,20 +47,20 @@
             }
               ?>
                     <!-- Login Form... -->
-                    <form action="function/authcode.php" method="post">
+                    <form action="function/authcode.php"  method="post">
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
-                                <input type="text" name="email" placeholder="Enter your email" required oninvalid="setCustomValidity('Please enter a valid Email ID')" oninput="setCustomValidity('')">
+                                <input type="text" name="email" id="email" placeholder="Enter your email"  oninvalid="setCustomValidity('Please enter a valid Email ID')" oninput="setCustomValidity('')">
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" minlength="8" name="password" placeholder="Enter your password" required required oninvalid="setCustomValidity('Please enter valid Password')" oninput="setCustomValidity('')">
+                                <input type="password" id="password" minlength="8" name="password" placeholder="Enter your password"   oninvalid="setCustomValidity('Please enter valid Password','Please Enter mini')" oninput="setCustomValidity('')">
                             </div>
                             <div class="text" style="color: #FFA500 !important"><a style="color: #E0A96D;" href="./resetpass.php">Forgot
                                     password?</a></div>
                             <div class="button input-box">
-                                <input type="submit" name="login_btn" value="Login">
+                                <input type="submit" onclick="myFunction()" name="login_btn" value="Login">
                             </div>
                             <div class="text sign-up-text">Don't have an account? <label for="flip"> <a style="color: #E0A96D;" href="register.php">Sigup now </a> </label>
                             </div>
@@ -71,7 +71,12 @@
             </div>
         </div>
     </div>
-
+    <script>
+        function myFunction() {
+            document.getElementById("email").required = true;
+            document.getElementById("password").required = true;
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
     </script>
