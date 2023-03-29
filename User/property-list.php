@@ -72,6 +72,8 @@
         <?php include('../User/include/search.php')?>
         <!-- Search End -->
 
+        
+
 
         <!-- Property List Start -->
         <?php include('../User/include/p_list.php')?>

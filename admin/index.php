@@ -1,34 +1,38 @@
 <?php 
-	session_start();
 	include("config.php");
-	$error="";
-	if(isset($_POST['login']))
-	{
-		$user=$_REQUEST['user'];
-		$pass=$_REQUEST['pass'];
+	session_start();
+	 
+	if (isset($_POST['login'])) {
+		$user = $_POST['user'];
+		$inputPassword = $_POST['password'];
 		
-		if(!empty($user) && !empty($pass))
-		{
-
-			$query = "SELECT name, password FROM admin WHERE `name`='$user' AND `password`='$pass'";
-
-			$result = mysqli_query($con,$query)or die(mysqli_error());
-			$num_row = mysqli_num_rows($result);
-			$row=mysqli_fetch_array($result);
-			if( $num_row ==1 )
-			{
+		$query = "SELECT password FROM `admin` WHERE name = '$user'";
+		$result = mysqli_query($con, $query);
+	
+		if (mysqli_num_rows($result) == 1) {
+			$row = mysqli_fetch_assoc($result);
+			$storedHashedPassword = $row["password"];
+	
+			if (password_verify($inputPassword, $storedHashedPassword)) {
+				$uname_query = "select * from admin where name ='$user'";
+				$uname = mysqli_query($con, $uname_query);
 				$_SESSION['auser']=$user;
 				header("Location: dashboard.php");
+				// header('location: register.php');
+
+
+			} else {
+				// $error='* Invalid User Name and Password';
+			$_SESSION['message'] = "* Invalid User Name and Password";
+				header('location: ./index.php');
 			}
-			else
-			{
-				$error='* Invalid User Name and Password';
-			}
-		}else{
-			$error="* Please Fill all the Fileds!";
+		} else {
+			// $error="* Please Fill all the Fileds!";
+			$_SESSION['message'] = "* Please Fill all the Fileds!";
+			header('location: index.php');
 		}
-		
-	}   
+	}
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,6 +50,7 @@
 		
 		<!-- Fontawesome CSS -->
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		
 		<!-- Main CSS -->
         <link rel="stylesheet" href="assets/css/style.css">
@@ -67,17 +72,29 @@
 							<div class="login-right-wrap">
 								<h1>Login</h1>
 								<p class="account-subtitle">Access to our dashboard</p>
-								<p style="color:red;"><?php echo $error; ?></p>
+								<?php if (isset($_SESSION['message'])) {
+							?>
+								<div class="">
+									<div class="alert alert-warning  alert-dismissible fade show" role="alert">
+										<!-- <strong>Oops! </strong> -->
+										<?= $_SESSION['message']; ?>.
+										<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+									</div>
+								</div>
+							<?php
+								unset($_SESSION['message']);
+							}
+							?>
 								<!-- Form -->
 								<form method="post">
 									<div class="form-group">
-										<input class="form-control" name="user" type="text" placeholder="User Name">
+										<input class="form-control" name="user" type="text" placeholder="User Name" id="user"   oninvalid="setCustomValidity('Please enter a valid Email ID')" oninput="setCustomValidity('')">
 									</div>
 									<div class="form-group">
-										<input class="form-control" type="password" name="pass" placeholder="Password">
+										<input class="form-control" type="password" name="password" placeholder="Password" id="password" oninvalid="setCustomValidity('Please enter valid Password')" oninput="setCustomValidity('')">
 									</div>
 									<div class="form-group">
-										<button class="btn btn-primary btn-block" name="login" type="submit">Login</button>
+										<button class="btn btn-primary btn-block"  onclick="myFunction()" name="login" type="submit">Login</button>
 									</div>
 								</form>
 								
@@ -105,7 +122,12 @@
             </div>
         </div>
 		<!-- /Main Wrapper -->
-		
+		<script>
+        function myFunction() {
+            document.getElementById("user").required = true;
+            document.getElementById("password").required = true;
+        }
+    </script>
 		<!-- jQuery -->
         <script src="assets/js/jquery-3.2.1.min.js"></script>
 		<!-- Bootstrap Core JS -->

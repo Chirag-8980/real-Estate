@@ -65,9 +65,9 @@ if(!isset($_SESSION['auser']))
 					
 					<div class="row">
 						<?php
-						
+		
 						$id=$_SESSION['auser'];
-						$sql="select * from admin where auser='$id'";
+						$sql="select * from admin where name='$id'";
 						$result=mysqli_query($con,$sql);
 						while($row=mysqli_fetch_array($result))
 						{
@@ -82,7 +82,6 @@ if(!isset($_SESSION['auser']))
 									</div>
 									<div class="col ml-md-n2 profile-user-info">
 										<h4 class="user-name mb-2 text-uppercase"><?php echo $row['1']; ?></h4>
-										<h6 class="text-muted"><?php echo $row['2']; ?></h6>
 										<div class="user-Location"><i class="fa fa-id-badge" aria-hidden="true"></i>
 											<?php echo $row['4']; ?></div>
 										<div class="about-text"></div>
@@ -116,20 +115,20 @@ if(!isset($_SESSION['auser']))
 													</div>
 													<div class="row">
 														<p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Date of Birth</p>
-														<p class="col-sm-9"><?php echo $row['4']; ?></p>
-													</div>
-													<div class="row">
-														<p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Email ID</p>
-														<p class="col-sm-9"><a href="#"><?php echo $row['2']; ?></a></p>
-													</div>
-													<div class="row">
-														<p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Mobile</p>
 														<p class="col-sm-9"><?php echo $row['5']; ?></p>
 													</div>
 													<div class="row">
+														<p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Email ID</p>
+														<p class="col-sm-9"><a href="#"><?php echo $row['3']; ?></a></p>
+													</div>
+													<div class="row">
+														<p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Mobile</p>
+														<p class="col-sm-9"><?php echo $row['4']; ?></p>
+													</div>
+													<div class="row">
 														<p class="col-sm-3 text-muted text-sm-right mb-0">Address</p>
-														<p class="col-sm-9 mb-0">4663  Agriculture Lane,<br>
-														Miami,<br>
+														<p class="col-sm-9 mb-0">Mota Varachha<br>
+														Surat,<br>
 														Gujarat - 33165,<br>
 														India.</p>
 													</div>

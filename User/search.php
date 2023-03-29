@@ -6,21 +6,23 @@
     $query = $_GET['query'];
     $show = true;
 
-    // if($property_type == 'Home'){
-        $sql = " SELECT * FROM tblhouse WHERE MATCH (ptitle,description,ptype,city,state) AGAINST ('$query') or `city`='$city' and `ptype`='$property_type'";
+    if(!$property_type == null AND !$city == null ){
+        $sql = " SELECT * FROM tblhouse WHERE `city`='$city' and `ptype`='$property_type'";
         $run = mysqli_query($con , $sql);
-    // }
-    // if($property_type == 'Business'){
-    //     $sql = " SELECT * FROM tblbusiness WHERE MATCH (ptitle,description) AGAINST ('$query');";
-    //     $run = mysqli_query($con , $sql);
-    // }
-    // if($property_type == 'Occasion'){
-    //     $sql = " SELECT * FROM tbloccasion WHERE MATCH (ptitle,description) AGAINST ('$query');";
-    //     $run = mysqli_query($con , $sql);
-    // }
+    }elseif(!$property_type == null AND !$query == null){
+        $sql = " SELECT * FROM tblhouse WHERE MATCH (ptitle,description,ptype,city,state) AGAINST ('$query') and `ptype`='$property_type'";
+        $run = mysqli_query($con , $sql);
+    }elseif(!$city == null AND !$query == null){
+        $sql = " SELECT * FROM tblhouse WHERE MATCH (ptitle,description,ptype,city,state) AGAINST ('$query') and `city`='$city'";
+        $run = mysqli_query($con , $sql);
+    }elseif(!$property_type == null){
+        $sql = " SELECT * FROM tblhouse WHERE `ptype`='$property_type'";
+        $run = mysqli_query($con , $sql);
+    }
+
     
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en" style="background: white;">
 
 <head>

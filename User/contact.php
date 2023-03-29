@@ -12,9 +12,11 @@
         $run_q =mysqli_query($con,$insert_query);
 
         if($run_q){
-            echo "Send Success";
+                $_SESSION['msg'] = "Your issue solve as soon as possible";
+                $_SESSION['status'] = "success";
         }else{
-            echo "Send Failed";
+                $_SESSION['msg'] = "Something Wrong...";
+                $_SESSION['status'] = "error";
         }
     }
 ?>   
@@ -102,6 +104,15 @@
 
         <!-- Back to Top -->
         <?php include('../User/include/top.php')?>
+        <?php if (isset($_SESSION['msg'])) { ?>
+        <script>
+            swal("<?php echo  $_SESSION['status'] ?>", "<?php echo $_SESSION['msg'] ?>",
+                "<?php echo $_SESSION['status'] ?>");
+        </script>
+    <?php
+        unset($_SESSION['msg']);
+        unset($_SESSION['status']);
+    } ?>
     </div>
 
     <!-- JavaScript Libraries -->
