@@ -3,6 +3,7 @@
 ?>
 
 <body>
+    
 
     <div class="container-fluid nav-bar bg-transparent">
         <nav class="navbar navbar-expand-lg bg-black navbar-light py-0 px-4">
@@ -14,10 +15,10 @@
                 </div>
                 <h1 class="m-0 text-tan">Locus</h1>
             </a>
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class=""><i class="bi bi-chevron-bar-contract text-white fs-3"></i></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="navbar-nav ms-auto text-white">
                     <a href="index.php" class="nav-item nav-link ">Home</a>
                     <a href="about.php" class="nav-item nav-link">About</a>
@@ -57,12 +58,14 @@
         </nav>
     </div>
     <?php if (isset($_SESSION['msg'])) { ?>
-        <script>
-            swal("<?php echo  $_SESSION['status'] ?>", "<?php echo $_SESSION['msg'] ?>",
-                "<?php echo $_SESSION['status'] ?>");
-        </script>
+    <script>
+    swal("<?php echo  $_SESSION['status'] ?>", "<?php echo $_SESSION['msg'] ?>",
+        "<?php echo $_SESSION['status'] ?>");
+    </script>
     <?php
         unset($_SESSION['msg']);
         unset($_SESSION['status']);
     } ?>
 </body>
+<script>
+</script>

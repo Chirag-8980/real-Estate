@@ -76,6 +76,12 @@
             }
         }
     });
-    
+            // $('#btnadd').click(function() {
+            //     $('img').addClass('show');
+            // });
+            $('#btnremove').click(function() {
+                console.log("Cliked")
+                $('#navbarSupportedContent').removeClass('ṣhow');
+            });
 })(jQuery);
 

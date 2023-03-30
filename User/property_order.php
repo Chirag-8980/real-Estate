@@ -1,6 +1,9 @@
 <?php
     session_start();
     include('./config/config.php');
+    if(!isset($_SESSION['uid'])){
+        header("location:login.php");
+    }
     require './Function/sendmail.php';
     $uid = $_SESSION['uid'];
     $select_q="select * from tblpbooking where seller_id=$uid";
@@ -62,39 +65,40 @@
                 <h1 class="mb-3 text-black">Property Booking Order</h1>
             </div>
             <div class="mb-5 text-cneter  align-middle">
-                <table id="myTable" class="table fs-6 text-black align-middle text-center table-striped table-bordered">
+                <table id="myTable" class="table  text-black align-middle text-center table-striped table-bordered" style="font-size: 0.8rem;">
                     <thead class="text-center">
                         <tr>
+                            <th scope="col">BID</th>
                             <th scope="col">Photo</th>
                             <th scope="col">Title</th>
                             <th scope="col">Price</th>
                             <th scope="col">Buyer Details</th>
-                            <th scope="col">Check In Date</th>
-                            <th scope="col">Check Out Date</th>
+                            <th scope="col">Selling Type</th>
+                            <th scope="col">Booking Date</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
-                    <tbody class="text-tan">
+                    <tbody class="text-black">
                         <?php $cnt = 1; while($data = mysqli_fetch_array($query)) {
                             $pid = $data['pid'];
                             $property = mysqli_fetch_array(mysqli_query($con , "select * from tblhouse where pid=$pid"));
                             $img = $property['img1'];
                             $uid = $property['uid'];
-                            
                            ?>
                         <tr>
-                            <td><img style="height: 200; width: 200px;"
+                            <td><?php echo $data['bid']?></td>
+                            <td><img style="height: 100px; width: 100px;"
                                     src="../admin/img/Property_image/house/<?php echo $img ?>" class="img-thumbnail"
                                     alt="..."></td>
                             <td><?php echo $property['ptitle']?></td>
                             <td>₹ <?php echo $property['price']?></td>
                             <td><?php echo $data['name']?><br><?php echo $data['email']?></td>
-                            <td><?php echo $data['cindate']?></td>
-                            <td><?php echo $data['coutdate']?></td>
-                            <td class="text-danger fw-bold"><?php echo $data['status']?></td>
-                            <td class="text-success fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">Take
-                                Action</td>
+                            <td><?php echo $property['stype']?></td>
+                            <td><?php echo $data['bdate']?></td>
+
+                            <td class="text-<?php if($data['status'] == "Pending"){echo 'warning' ;} if($data['status'] == "Success"){echo 'success';}if($data['status'] == "Reject"){echo 'danger' ;}?> fw-bold"><?php echo $data['status']?></td>
+                            <td class="text-black fw-bold " style="cursor: <?php if($data['status'] == "Success"){echo "not-allowed";} else{ echo "pointer";}?>;" data-bs-toggle="modal" data-bs-target="<?php if($data['status'] == "Success"){echo "";} else{ echo "#exampleModal";}?>">Take Action</td>
 
                         </tr>
                         <!-- Modal -->
@@ -110,11 +114,12 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="row g-3">
-                                                <form action="function/order.php?bid=<?php echo $data['bid'];?>" method="post">
+                                                <form action="function/order.php?bid=<?php echo $data['bid'];?>&pid=<?php echo $data['pid'];?>" method="post">
 
                                                 <div class="col-12">
                                                     <div class="form-floating">
                                                         <select name="status" id="" class="form-select">
+                        
                                                             <option value="Success">Success</option>
                                                             <option value="Reject">Reject</option>
                                                         </select>

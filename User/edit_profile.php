@@ -200,10 +200,6 @@
 
         </div>
 
-        <!-- alert start -->
-        <?php include('./alert.php')?>
-        <!-- alert end -->
-
         
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -216,6 +212,4 @@
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
 </body>
-
-
 </html>

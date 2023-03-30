@@ -1,5 +1,8 @@
 <?php
     session_start();
+    if(!isset($_SESSION['uid'])){
+        header("location:login.php");
+    }
     include('./config/config.php');
     $uid = $_SESSION['uid'];
     $select_q="select * from tblpbooking where buyer_id=$uid";
@@ -59,16 +62,18 @@
                 <h1 class="mb-3 text-black">Property Booking Reqest</h1>
             </div>
             <div class="mb-5 text-cneter  align-middle">
-                <table id="myTable" class="table text-black align-middle text-center table-striped table-bordered">
+                <table id="myTable" class="table text-black align-middle text-center table-striped table-bordered" style="font-size: 0.8rem;">
                     <thead class="text-center">
                         <tr>
+                            <th scope="col">BID</th>
                             <th scope="col">Photo</th>
                             <th scope="col">Title</th>
                             <!-- <th scope="col">Buyer Name</th>
                             <th scope="col">Email</th> -->
-                            <th scope="col">Check In Date</th>
-                            <th scope="col">Check Out Date</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Selling Type</th>
                             <th scope="col">Status</th>
+                            <th scope="col">Booking Date</th>
                             <th scope="col">View</th>
                         </tr>
                     </thead>
@@ -78,18 +83,19 @@
                             $property = mysqli_fetch_array(mysqli_query($con , "select * from tblhouse where pid='$pid'"));
                             $img = $property['img1'];
                             $uid = $property['uid'];
-                            
                            ?>
                         <tr>
-                            <td><img style="height: 200; width: 200px;"
+                            <td><?php echo $data['bid']?></td>
+                            <td><img style="height: 100px; width: 100px;"
                                     src="../admin/img/Property_image/house/<?php echo $img ?>" class="img-thumbnail"
                                     alt="..."></td>
                             <td><?php echo $property['ptitle']?></td>
                             <!-- <td><?php echo $data['name']?></td>
                             <td><?php echo $data['email']?></td> -->
-                            <td><?php echo $data['cindate']?></td>
-                            <td><?php echo $data['coutdate']?></td>
+                            <td><?php echo $property['price']?></td>
+                            <td><?php echo $property['stype']?></td>
                             <td class="text-<?php if($data['status'] == "Pending"){echo 'warning' ;} if($data['status'] == "Success"){echo 'success';}if($data['status'] == "Reject"){echo 'danger' ;}?> fw-bold"><?php echo $data['status']?></td>
+                            <td><?php echo $data['bdate']?></td>
                             <td class="text-success fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">View
                                 Details</td>
 
@@ -151,7 +157,9 @@
         <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
         <script>
         $(document).ready(function() {
-            $('#myTable').DataTable();
+            $('#myTable').DataTable({
+                responsive: true
+            });
         });
         </script>
 

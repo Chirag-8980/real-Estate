@@ -98,7 +98,7 @@
                 <td class="text-start">'.$u_data['mno'].'</td>
             </tr>
             <tr>
-                <td class="fw-bold text-end">'.$u_data['address'].'</td>
+                <td class="fw-bold text-end">Address</td>
                 <td class="text-start">'.$u_data['address'].'</td>
             </tr>
         </table>

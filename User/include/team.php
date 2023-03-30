@@ -35,7 +35,7 @@
 <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center text-black mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <h1 class="mb-3 text-black">Property Agents</h1>
+                    <h1 class="mb-3 text-black">Our Team</h1>
                     <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit
                         eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
                 </div>
@@ -43,68 +43,68 @@
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-item rounded overflow-hidden">
                             <div class="position-relative">
-                                <img class="img-fluid" src="img/team-1.jpg" alt="">
+                                <img class="" src="img/chiku.jpg" width="100%" height="400px" alt="image">
                                 <div
                                     class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
-                                    <a class="btn btn-square bg-black  mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
+                                    <a class="btn btn-square bg-black  mx-1" href="https://www.linkedin.com/in/chirag-kachhadiya-4a2b0b229/?trk=public_profile_samename-profile&originalSubdomain=in"><i class="fab fa-linkedin"></i></a>
+                                    <a class="btn btn-square mx-1" href="https://twitter.com/chirag3112"><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square mx-1" href="https://www.instagram.com/chirag_kachhadiya._/"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
                             <div class="text-center p-4 mt-3">
-                                <h5 class="fw-bold mb-0">Full Name</h5>
-                                <small>Designation</small>
+                                <h5 class="fw-bold mb-0"> Chirag Kachhadiya</h5>
+                                <small>Back-End Developer</small>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="team-item rounded overflow-hidden">
                             <div class="position-relative">
-                                <img class="img-fluid" src="img/team-2.jpg" alt="">
+                                <img class="img-fluid" width="100%" src="img/Jaimil.jpg" alt="image">
                                 <div
                                     class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
-                                    <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
+                                    <a class="btn btn-square mx-1" href="https://www.linkedin.com/in/jaimil-kanejeeya-6879371b8/?originalSubdomain=in"><i class="fab fa-linkedin"></i></a>
+                                    <a class="btn btn-square mx-1" href="https://twitter.com/j_kanejeeya"><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square mx-1" href="https://www.instagram.com/jaimilkanejeeya/"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
                             <div class="text-center p-4 mt-3">
-                                <h5 class="fw-bold mb-0">Full Name</h5>
-                                <small>Designation</small>
+                                <h5 class="fw-bold mb-0">Jaimil Kanejeeya</h5>
+                                <small>Front-End Developer</small>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="team-item rounded overflow-hidden">
                             <div class="position-relative">
-                                <img class="img-fluid" src="img/team-3.jpg" alt="">
+                                <img class="img-fluid" src="img/harsh.jpeg" width="100%" alt="image">
                                 <div
                                     class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
-                                    <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
+                                    <a class="btn btn-square mx-1" href="https://www.linkedin.com/in/harsh-munjapara-b08a5b217/"><i class="fab fa-linkedin"></i></a>
+                                    <a class="btn btn-square mx-1" href="https://twitter.com/harsh_munjapara"><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square mx-1" href="https://www.instagram.com/harsh_munjapara_09/"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
                             <div class="text-center p-4 mt-3">
-                                <h5 class="fw-bold mb-0">Full Name</h5>
-                                <small>Designation</small>
+                                <h5 class="fw-bold mb-0">Harsh Munjapara</h5>
+                                <small>Front-End Developer</small>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
                         <div class="team-item rounded overflow-hidden">
                             <div class="position-relative">
-                                <img class="img-fluid" src="img/team-4.jpg" alt="">
+                                <img class="img-fluid" src="img/Prasant.jpg" width="100%"  alt="image">
                                 <div
                                     class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
-                                    <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
+                                    <a class="btn btn-square mx-1" href="https://www.linkedin.com/in/prashant-mandaviya-05a38520a/?trk=public_profile_browsemap&originalSubdomain=in"><i class="fab fa-linkedin"></i></a>
+                                    <a class="btn btn-square mx-1" href="https://mobile.twitter.com/prashan64554186"><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square mx-1" href="https://www.instagram.com/prashantmandaviya/"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
                             <div class="text-center p-4 mt-3">
-                                <h5 class="fw-bold mb-0">Full Name</h5>
-                                <small>Designation</small>
+                                <h5 class="fw-bold mb-0">Prasant Mandviya</h5>
+                                <small>Back-End Developer</small>
                             </div>
                         </div>
                     </div>

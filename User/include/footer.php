@@ -80,16 +80,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="text-beige col-lg-3 col-md-6">
-                        <h5 class="text-tan mb-4">Subscribe</h5>
-                        <p>Join us and get daily updates.</p>
-                        <div class="position-relative mx-auto" style="max-width: 400px;">
-                            <input class="form-control bg-white text-black w-100 py-3 ps-4 pe-5" type="text"
-                                placeholder="Your email">
-                            <button type="button"
-                                class="btn bg-tan text-black py-2 position-absolute top-0 end-0 mt-2 me-2">Subscribe</button>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
             <div class="container">

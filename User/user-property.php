@@ -26,7 +26,8 @@ switch ($_GET['filter']) {
         $query = mysqli_query($con, $select_q);
         break;
     case 'booked':
-
+        $select_q = "select * from tblhouse where uid='$uid' AND status='Inactive'";
+        $query = mysqli_query($con, $select_q);
         break;
     default:
         $select_q = "select * from tblhouse where uid='$uid'";
@@ -89,8 +90,8 @@ switch ($_GET['filter']) {
             </div>
         </div>
         <div class="container my-4">
-            <ul class="navbar-nav d-flex flex-row justify-content-around">
-                <div class="d-flex flex-row justify-content-around border border-2 rounded-pill p-2 border-dark">
+            <ul class="navbar-nav d-flex flex-row flex-wrap justify-content-around">
+                <div class="d-flex flex-row mb-2 justify-content-around border border-2 rounded-pill p-2 border-dark">
                     <li class="">
                         <a class="btn border border-2 rounded-pill border-dark text-black  <?php if ($_GET['filter'] == 'all') {
                                                                                                 echo "bg-tan";
@@ -98,7 +99,7 @@ switch ($_GET['filter']) {
                             aria-current="page" href="user-property.php?filter=all">All</a>
                     </li>
                 </div>
-                <div class="d-flex flex-row justify-content-around border border-2 rounded-pill p-2 border-dark">
+                <div class="d-flex flex-row  mb-2  justify-content-around border border-2 rounded-pill p-2 border-dark">
 
                     <li class=" ">
                         <a class="btn border border-2 mx-1 rounded-pill border-dark  text-black <?php if ($_GET['filter'] == 'success') {
@@ -119,7 +120,7 @@ switch ($_GET['filter']) {
                             style="width: 8rem;" href="user-property.php?filter=reject">Rejected</a>
                     </li>
                 </div>
-                <div class="d-flex flex-row justify-content-around border border-2 rounded-pill p-2 border-dark">
+                <div class="d-flex flex-row  mb-2 justify-content-around border border-2 rounded-pill p-2 border-dark">
                     <li class=" ">
                         <a class="btn border border-2 mx-1 rounded-pill border-dark  text-black  <?php if ($_GET['filter'] == 'sell') {
                                                                                                         echo "bg-tan";
@@ -133,7 +134,7 @@ switch ($_GET['filter']) {
                             style="width: 8rem;" href="user-property.php?filter=rent">Rent</a>
                     </li>
                 </div>
-                <div class="d-flex flex-row justify-content-around border border-2 rounded-pill p-2 border-dark">
+                <div class="d-flex flex-row mb-2 justify-content-around border border-2 rounded-pill p-2 border-dark">
                     <li class=" ">
                         <a class="btn border border-2 rounded-pill border-dark  text-black <?php if ($_GET['filter'] == 'booked') {
                                                                                                 echo "bg-tan";
@@ -156,7 +157,7 @@ switch ($_GET['filter']) {
                     <div
                         class="row g-0 border  rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
 
-                        <div class="col p-4 d-flex flex-column position-static">
+                        <div class="col p-4 d-flex flex-column flex-wrap position-static">
                             <div class="d-flex flex-row">
                                 <strong class="d-inline-block mb-2 text-primary"><?php echo $data['ptype']; ?></strong>
                                 <span
@@ -166,7 +167,6 @@ switch ($_GET['filter']) {
                                 <?php echo substr($data['ptitle'], 0, 35); ?>...</h4>
                             <span class="my-1 text-success bold fw-bold">₹<?php echo $data['price']; ?></span>
                             <p class="card-text mb-auto">
-
                                 <?php if ($data['qc'] == 'Success') {
                                         echo '<b>Listing : </b> <span class="mb-1 text-success bold fw-bold">Success <i class="fa-duotone fa fa-check"></i></span> ';
                                     } elseif ($data['qc'] == 'Reject') {
@@ -174,13 +174,20 @@ switch ($_GET['filter']) {
                                     } else {
                                         echo '<b>Listing : </b> <span class="mb-1 text-warning bold fw-bold">Pending</span> ';
                                     }
-                                    ?>
-
-
-                            <div class="d-flex text-light">
-                                <button type="button" class="btn me-2 btn-success"><a
+                                ?>
+                            </p>
+                            <p class="card-text mb-auto">
+                                <?php if ($data['status'] == 'Active') {
+                                        echo '<b>Order : </b> <span class="mb-1 text-success bold fw-bold">Open</span> ';
+                                    }else {
+                                        echo '<b>Order : </b> <span class="mb-1 text-danger bold fw-bold">Booked</span> ';
+                                    }
+                                ?>
+                            </p>
+                            <div class="d-flex">
+                                <button type="button" class="btn me-2 bg-tan"><a
                                         href="./update_property.php?pid=<?php echo $data['pid'] ?>">Update</a></button>
-                                <button type="button" class="btn ms-2 btn-danger"><a
+                                <button type="button" class="btn ms-2 bg-black "><a class=" text-tan"
                                         href="./delete_property.php?pid=<?php echo $data['pid'] ?>">Delete</a></button>
                             </div>
                         </div>
@@ -191,7 +198,7 @@ switch ($_GET['filter']) {
                             </a>
                         </div>
                     </div>
-                    
+
                 </div>
                 <?php } ?>
             </div>

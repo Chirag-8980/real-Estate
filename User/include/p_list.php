@@ -1,7 +1,5 @@
 <?php
 include('./config/config.php');
-$select_q = "select * from tblhouse where qc='Success' ";
-$query = mysqli_query($con, $select_q);
 $show = true;
 
     switch ($_GET['filter']) {
@@ -32,7 +30,7 @@ $show = true;
                 $query = mysqli_query($con, $select_q);
             break;
             default:
-                $select_q = "select * from tblhouse where qc='success'";
+                $select_q = "select * from tblhouse where qc='success' and status='Active'";
                 $query = mysqli_query($con, $select_q);
                         }
                  
@@ -87,8 +85,8 @@ $show = true;
             </div>
 
             <div class="container my-4">
-                <ul class="navbar-nav d-flex flex-row justify-content-around">
-                    <div class="d-flex flex-row justify-content-around border border-2 rounded-pill p-2 border-dark">
+                <ul class="navbar-nav d-flex flex-wrap flex-row justify-content-around">
+                    <div class="d-flex flex-row m-1 justify-content-around border border-2 rounded-pill p-2 border-dark">
                         <li class="">
                             <a class="btn border border-2 rounded-pill border-dark text-black  <?php if ($_GET['filter'] == 'all') {
                                                                                                     echo "bg-tan";
@@ -96,7 +94,7 @@ $show = true;
                                 style="width: 8rem;" aria-current="page" href="property-list.php?filter=all">All</a>
                         </li>
                     </div>
-                    <div class="d-flex flex-row justify-content-around border border-2 rounded-pill p-2 border-dark">
+                    <div class="d-flex flex-row m-1 justify-content-around border border-2 rounded-pill p-2 border-dark">
 
                         <li class=" ">
                             <a class="btn border border-2 mx-1 rounded-pill border-dark  text-black <?php if ($_GET['filter'] == 'new') {
@@ -105,13 +103,13 @@ $show = true;
                                 style="width: 8rem;" href="property-list.php?filter=new">New Property</a>
                         </li>
                         <li class=" ">
-                            <a class="btn border border-2 mx-1 rounded-pill border-dark  text-black <?php if ($_GET['filter'] == 'old') {
+                            <a class="btn border  border-2 mx-1 rounded-pill border-dark  text-black <?php if ($_GET['filter'] == 'old') {
                                                                                                         echo "bg-tan";
                                                                                                     } ?> "
                                 style="width: 8rem;" href="property-list.php?filter=old">Old Property</a>
                         </li>
                     </div>
-                    <div class="d-flex flex-row justify-content-around border border-2 rounded-pill p-2 border-dark">
+                    <div class="d-flex flex-row m-1 justify-content-around border border-2 rounded-pill p-2 border-dark">
                         <li class=" ">
                             <a class="btn border border-2 mx-1 rounded-pill border-dark  text-black  <?php if ($_GET['filter'] == 'sell') {
                                                                                                             echo "bg-tan";
@@ -125,7 +123,7 @@ $show = true;
                                 style="width: 8rem;" href="property-list.php?filter=rent">Rent</a>
                         </li>
                     </div>
-                    <div class="d-flex flex-row justify-content-around border border-2 rounded-pill p-2 border-dark">
+                    <div class="d-flex flex-row m-1 justify-content-around border border-2 rounded-pill p-2 border-dark">
                         <li class=" ">
                             <a class="btn border border-2 rounded-pill border-dark  text-black <?php if ($_GET['filter'] == 'featured') {
                                                                                                     echo "bg-tan";
@@ -136,7 +134,7 @@ $show = true;
                 </ul>
 
             </div>
-            <div class="container-fluid mb-5 bg-black wow fadeIn rounded-pill" data-wow-delay="0.1s"
+            <div class="container-fluid mb-5 bg-black wow fadeIn rounded-3" data-wow-delay="0.1s"
                 style="padding: 20px; ">
                 <div class="container ">
                     <div class="row justify-content-md-center">
@@ -145,22 +143,23 @@ $show = true;
                                 <div class="row g-4">
                                     <div class="col-md-4">
                                         <input type="text" name="tprice"
-                                            class=" text-center form-control border-0 rounded-pill py-3"
+                                            class=" text-center form-control border-0 rounded-3 py-3"
                                             placeholder="To Price">
 
                                     </div>
                                     <div class="col-md-4">
                                         <input type="text" name="fprice"
-                                            class=" text-center form-control border-0 rounded-pill py-3"
+                                            class=" text-center form-control border-0 rounded-3 py-3"
                                             placeholder="From Price">
                                     </div>
-                                        <input type="text" name="filter" value="price"
-                                            class=" text-center form-control border-0 rounded-pill py-3"
-                                            placeholder="From Price" hidden>
+                                    <input type="text" name="filter" value="price"
+                                        class=" text-center form-control border-0 rounded-3 py-3"
+                                        placeholder="From Price" hidden>
                                     <div class="col-md-4">
-                                        <button class="btn bg-tan text-black rounded-pill border-0  w-100 ">
+                                        <button class="btn bg-tan text-black rounded-3 border-0  w-100 ">
                                             <input type="submit" name="btn_filter"
-                                                class="btn bg-tan mb-2 text-black border-0  w-100" value="Filter Price" />
+                                                class="btn bg-tan mb-2 text-black border-0  w-100"
+                                                value="Filter Price" />
                                         </button>
                                     </div>
                                 </div>
@@ -213,10 +212,16 @@ $show = true;
                                         Bathroom</small>
                                 </div>
                             </div>
+                            <div class="text-center text-black  bg-white mt-1 shadow p-1 bg-body-tertiary rounded">
+                                Listed Date :
+                                <span class="text-muted">
+                                    <?php echo $data['date'] ?>
+                                </span>
+                            </div>
                         </div>
                         <?php } ?>
                         <?php if ($show) { ?>
-                        <div class="container mt-2">
+                        <div class="container mt-5">
                             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s">
                                 <h3 class="mb-3  text-muted pb-2">No Property Listed Here...</h3>
                             </div>

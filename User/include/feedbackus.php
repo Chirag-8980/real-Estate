@@ -1,17 +1,10 @@
 <?php
 include('./config/config.php');
-// session_start();
-// if (!isset($_SESSION['uid'])) {
-//     header("location:./login.php");
-// }
-// if(!$_SESSION['user']){ 
-//     exit; 
-// } 
 error_reporting(E_ERROR | E_PARSE);
-if (!isset($_SESSION['uid'])) {
-    
-}else{
 if (isset($_POST['feedback_submit'])) {
+    if (isset($_SESSION['uid'])) {
+        header("location:login.php");
+    }
     $uid = $_SESSION['uid'];
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -26,7 +19,7 @@ if (isset($_POST['feedback_submit'])) {
         // echo "Send Failed";
     }
 }
-}
+
 
 ?>
 <!DOCTYPE html>

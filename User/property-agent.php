@@ -35,7 +35,7 @@
 </head>
 
 <body>
-    <div class="container-xxl bg-white p-0">
+    <div class="container-fuild bg-white p-0">
         <!-- Spinner Start -->
         <?php include('../User/include/spinner.php')?>
         <!-- Spinner End -->
@@ -50,12 +50,12 @@
         <div class="container-fluid header bg-white p-0">
             <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
                 <div class="col-md-6 p-5 mt-lg-5">
-                    <h1 class="display-5 animated fadeIn text-black mb-4">Property Agent</h1> 
+                    <h1 class="display-5 animated fadeIn text-black mb-4">Our Team</h1> 
                         <nav aria-label="breadcrumb animated fadeIn">
                         <ol class="breadcrumb text-uppercase">
                             <li class="breadcrumb-item"><a class="text-tan" href="#">Home</a></li>
                             <li class="breadcrumb-item"><a class="text-tan" href="#">Pages</a></li>
-                            <li class="breadcrumb-item text-body text-black active" aria-current="page">Property Agent</li>
+                            <li class="breadcrumb-item text-body text-black active" aria-current="page">Our Team</li>
                         </ol>
                     </nav>
                 </div>

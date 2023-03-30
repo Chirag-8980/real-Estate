@@ -23,7 +23,6 @@ if (isset($_POST['QC'])) {
     $paddress = $_POST["paddress"];
     $city = $_POST["city"];
     $state = $_POST["state"];
-    $status = $_POST["status"];
     $featured = $_POST["featured"];
     $description = $_POST["description"];
     $facilities = $_POST["facilities"];
@@ -65,7 +64,7 @@ if (isset($_POST['QC'])) {
             move_uploaded_file($tmp_name2, $destination2);
             move_uploaded_file($tmp_name3, $destination3);
             move_uploaded_file($tmp_name4, $destination4);
-            $insert_qry = "insert into tblhouse(uid, ptitle, ptype, bhk, stype, bedroom, balcony, bathroom, kitchen, hall, floor, tfloor, price, sqft, paddress, city, state, img1, img2, img3, img4, status, featured, description , facilities) VALUES ('$uid','$ptitle','$ptype','$bhk','$stype','$bedroom','$balcony','$bathroom','$kitchen','$hall','$floor','$tfloor','$price','$sqft','$paddress','$city','$state', '$image1', '$image2', '$image3', '$image4','$status','$featured','$description','$facilities')";
+            $insert_qry = "insert into tblhouse(uid, ptitle, ptype, bhk, stype, bedroom, balcony, bathroom, kitchen, hall, floor, tfloor, price, sqft, paddress, city, state, img1, img2, img3, img4, , featured, description , facilities) VALUES ('$uid','$ptitle','$ptype','$bhk','$stype','$bedroom','$balcony','$bathroom','$kitchen','$hall','$floor','$tfloor','$price','$sqft','$paddress','$city','$state', '$image1', '$image2', '$image3', '$image4','$featured','$description','$facilities')";
             $result = mysqli_query($con, $insert_qry);
             if ($result) {
                 $_SESSION['msg'] = "Property Insert Successful";
