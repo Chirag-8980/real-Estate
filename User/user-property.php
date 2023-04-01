@@ -5,220 +5,263 @@ $uid = $_SESSION['uid'];
 $show = true;
 
 switch ($_GET['filter']) {
-    case 'pending':
-        $select_q = "select * from tblhouse where uid='$uid' AND qc='pending'";
-        $query = mysqli_query($con, $select_q);
-        break;
-    case 'success':
-        $select_q = "select * from tblhouse where uid='$uid' AND qc='success'";
-        $query = mysqli_query($con, $select_q);
-        break;
-    case 'reject':
-        $select_q = "select * from tblhouse where uid='$uid' AND qc='reject'";
-        $query = mysqli_query($con, $select_q);
-        break;
-    case 'sell':
-        $select_q = "select * from tblhouse where uid='$uid' AND stype='sell'";
-        $query = mysqli_query($con, $select_q);
-        break;
-    case 'rent':
-        $select_q = "select * from tblhouse where uid='$uid' AND stype='rent'";
-        $query = mysqli_query($con, $select_q);
-        break;
-    case 'booked':
-        $select_q = "select * from tblhouse where uid='$uid' AND status='Inactive'";
-        $query = mysqli_query($con, $select_q);
-        break;
-    default:
-        $select_q = "select * from tblhouse where uid='$uid'";
-        $query = mysqli_query($con, $select_q);
+  case 'pending':
+    $select_q = "select * from tblhouse where uid='$uid' AND qc='pending'";
+    $query = mysqli_query($con, $select_q);
+    break;
+  case 'success':
+    $select_q = "select * from tblhouse where uid='$uid' AND qc='success'";
+    $query = mysqli_query($con, $select_q);
+    break;
+  case 'reject':
+    $select_q = "select * from tblhouse where uid='$uid' AND qc='reject'";
+    $query = mysqli_query($con, $select_q);
+    break;
+  case 'sell':
+    $select_q = "select * from tblhouse where uid='$uid' AND stype='sell'";
+    $query = mysqli_query($con, $select_q);
+    break;
+  case 'rent':
+    $select_q = "select * from tblhouse where uid='$uid' AND stype='rent'";
+    $query = mysqli_query($con, $select_q);
+    break;
+  case 'booked':
+    $select_q = "select * from tblhouse where uid='$uid' AND status='Inactive'";
+    $query = mysqli_query($con, $select_q);
+    break;
+  default:
+    $select_q = "select * from tblhouse where uid='$uid'";
+    $query = mysqli_query($con, $select_q);
 }
 
 ?>
 <!DOCTYPE html>
-<html lang="en" style="background: white;">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>Locus - Find Your Dream</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap"
-        rel="stylesheet">
-
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css.css">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/alert.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+<!-- Favicon -->
+<link href="img/favicon.ico" rel="icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<!-- Google Web Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
 
-<body>
-    <div class=" bg-white p-0">
-        <!-- Spinner Start -->
-        <?php include('../User/include/spinner.php') ?>
-        <!-- Spinner End -->
+<!-- Icon Font Stylesheet -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+<!-- Libraries Stylesheet -->
+<link href="lib/animate/animate.min.css" rel="stylesheet">
+<link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css.css">
+
+<!-- Customized Bootstrap Stylesheet -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Template Stylesheet -->
+<link href="css/style.css" rel="stylesheet">
+<link rel="stylesheet" href="css/alert.css">
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+<style>
+  @media (max-width: 767.98px) {
+    .border-sm-start-none {
+      border-left: none !important;
+    }
+  }
+</style>
+
+<body class="bg-white">
+  <div class=" bg-white p-0">
 
 
-        <!-- Navbar Start -->
-        <?php include('../User/include/header.php') ?>
-        <!-- Navbar End -->
+    <!-- Spinner Start -->
+    <?php include('../User/include/spinner.php') ?>
+    <!-- Spinner End -->
 
 
-        <div class="container mt-5">
-            <div class="text-center mx-auto mb-5 text-black wow fadeInUp" data-wow-delay="0.1s"
-                style="max-width: 600px;">
-                <h1 class="mb-3 text-black pb-2" style="border-bottom: 2px solid var(--tan);">Listed Property</h1>
-            </div>
+    <!-- Navbar Start -->
+    <?php include('../User/include/header.php') ?>
+    <!-- Navbar End -->
+    <!-- Header Start -->
+    <div class="container-fluid header bg-white p-0">
+      <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
+        <div class="col-md-6 p-5 mt-5 mt-lg-5">
+
+
         </div>
-        <div class="container my-4">
-            <ul class="navbar-nav d-flex flex-row flex-wrap justify-content-around">
-                <div class="d-flex flex-row mb-2 justify-content-around border border-2 rounded-pill p-2 border-dark">
-                    <li class="">
-                        <a class="btn border border-2 rounded-pill border-dark text-black  <?php if ($_GET['filter'] == 'all') {
-                                                                                                echo "bg-tan";
-                                                                                            } ?> " style="width: 8rem;"
-                            aria-current="page" href="user-property.php?filter=all">All</a>
-                    </li>
-                </div>
-                <div class="d-flex flex-row  mb-2  justify-content-around border border-2 rounded-pill p-2 border-dark">
+      </div>
+      <!-- Header End -->
 
-                    <li class=" ">
-                        <a class="btn border border-2 mx-1 rounded-pill border-dark  text-black <?php if ($_GET['filter'] == 'success') {
-                                                                                                    echo "bg-tan";
-                                                                                                } ?> "
-                            style="width: 8rem;" href="user-property.php?filter=success">Success</a>
-                    </li>
-                    <li class=" ">
-                        <a class="btn border border-2 mx-1 rounded-pill border-dark  text-black <?php if ($_GET['filter'] == 'pending') {
-                                                                                                    echo "bg-tan";
-                                                                                                } ?> "
-                            style="width: 8rem;" href="user-property.php?filter=pending">Pending</a>
-                    </li>
-                    <li class="  ">
-                        <a class="btn border border-2 rounded-pill mx-1 border-dark  text-black <?php if ($_GET['filter'] == 'reject') {
-                                                                                                    echo "bg-tan";
-                                                                                                } ?> "
-                            style="width: 8rem;" href="user-property.php?filter=reject">Rejected</a>
-                    </li>
-                </div>
-                <div class="d-flex flex-row  mb-2 justify-content-around border border-2 rounded-pill p-2 border-dark">
-                    <li class=" ">
-                        <a class="btn border border-2 mx-1 rounded-pill border-dark  text-black  <?php if ($_GET['filter'] == 'sell') {
-                                                                                                        echo "bg-tan";
-                                                                                                    } ?>"
-                            style="width: 8rem;" href="user-property.php?filter=sell">Sell</a>
-                    </li>
-                    <li class="">
-                        <a class="btn border border-2 rounded-pill mx-1 border-dark  text-black <?php if ($_GET['filter'] == 'rent') {
-                                                                                                    echo "bg-tan";
-                                                                                                } ?> "
-                            style="width: 8rem;" href="user-property.php?filter=rent">Rent</a>
-                    </li>
-                </div>
-                <div class="d-flex flex-row mb-2 justify-content-around border border-2 rounded-pill p-2 border-dark">
-                    <li class=" ">
-                        <a class="btn border border-2 rounded-pill border-dark  text-black <?php if ($_GET['filter'] == 'booked') {
-                                                                                                echo "bg-tan";
-                                                                                            } ?> " style="width: 8rem;"
-                            href="user-property.php?filter=booked">Booked</a>
-                    </li>
-                </div>
-            </ul>
+      <div class="container mt-5">
+        <div class="text-center mx-auto mb-5 text-black wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+          <h1 class="mb-3 text-black pb-2" style="border-bottom: 2px solid var(--tan);">Listed Property</h1>
         </div>
+      </div>
+      <div class="container my-4">
+        <ul class="navbar-nav d-flex flex-row flex-wrap justify-content-around">
+          <div class="d-flex flex-row mb-2 justify-content-around ">
+            <li class="">
+              <a class="btn border border-2 rounded-pill border-dark text-black  <?php if ($_GET['filter'] == 'all') {
+                                                                                    echo "bg-tan";
+                                                                                  } ?> " style="width: 8rem;" aria-current="page" href="user-property.php?filter=all">All</a>
+            </li>
+          </div>
+          <div class="d-flex flex-row  mb-2  justify-content-around ">
 
-        <!-- Property List Start -->
-        <div class="container table-responsive">
+            <li class=" ">
+              <a class="btn border border-2 mx-1 rounded-pill border-dark  text-black <?php if ($_GET['filter'] == 'success') {
+                                                                                        echo "bg-tan";
+                                                                                      } ?> " style="width: 8rem;" href="user-property.php?filter=success">Success</a>
+            </li>
+            <li class=" ">
+              <a class="btn border border-2 mx-1 rounded-pill border-dark  text-black <?php if ($_GET['filter'] == 'pending') {
+                                                                                        echo "bg-tan";
+                                                                                      } ?> " style="width: 8rem;" href="user-property.php?filter=pending">Pending</a>
+            </li>
+            <li class="  ">
+              <a class="btn border border-2 rounded-pill mx-1 border-dark  text-black <?php if ($_GET['filter'] == 'reject') {
+                                                                                        echo "bg-tan";
+                                                                                      } ?> " style="width: 8rem;" href="user-property.php?filter=reject">Rejected</a>
+            </li>
+          </div>
+          <div class="d-flex flex-row  mb-2 justify-content-around ">
+            <li class=" ">
+              <a class="btn border border-2 mx-1 rounded-pill border-dark  text-black  <?php if ($_GET['filter'] == 'sell') {
+                                                                                          echo "bg-tan";
+                                                                                        } ?>" style="width: 8rem;" href="user-property.php?filter=sell">Sell</a>
+            </li>
+            <li class="">
+              <a class="btn border border-2 rounded-pill mx-1 border-dark  text-black <?php if ($_GET['filter'] == 'rent') {
+                                                                                        echo "bg-tan";
+                                                                                      } ?> " style="width: 8rem;" href="user-property.php?filter=rent">Rent</a>
+            </li>
+          </div>
+          <div class="d-flex flex-row mb-2 justify-content-around ">
+            <li class=" ">
+              <a class="btn border border-2 rounded-pill border-dark  text-black <?php if ($_GET['filter'] == 'booked') {
+                                                                                    echo "bg-tan";
+                                                                                  } ?> " style="width: 8rem;" href="user-property.php?filter=booked">Booked</a>
+            </li>
+          </div>
+        </ul>
+      </div>
 
-            <div class="row mb-2">
-                <?php
 
-                while ($data = mysqli_fetch_array($query)) {
-                    $show = false;   ?>
-                <div class="col-md-6">
-                    <div
-                        class="row g-0 border  rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <section style="background-color: white;" class="mb-3">
+        <?php
 
-                        <div class="col p-4 d-flex flex-column flex-wrap position-static">
-                            <div class="d-flex flex-row">
-                                <strong class="d-inline-block mb-2 text-primary"><?php echo $data['ptype']; ?></strong>
-                                <span
-                                    class="badge bg-info text-dark d-inline-block mb-3 ms-2 text-primary"><?php echo $data['stype']; ?>
+        while ($data = mysqli_fetch_array($query)) {
+          $show = false;
+          $oldprice = $data['price'] + $data['price'] / 2;   ?>
+          <div class="container py-4">
+            <div class="row justify-content-center mb-3">
+              <div class="col-md-12 col-xl-10">
+                <div class="card shadow-0 border rounded-3">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                      <div class="mask">
+                              <div class="position-absolute top-2 start-2 translate-middle badge rounded-pill " id="bedge">
+                                <h5>
+                                  <span class="badge bg-tan pt-2 ms-3 mt-5 ml-4 text-black">
+                                  <?php echo $data['stype']; ?></span>
+                                </h5>
+                              </div>
+                          </div>
+                        <div class="bg-image hover-zoom ripple rounded ripple-surface" >
+                      
+                        <a href="#!">
+                          <img src="../admin/img/Property_image/house/<?php echo $data['img1']; ?> " class="w-100" />
+                            <div class="hover-overlay">
+                              <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                             </div>
-                            <h4 class="mb-0" class="text-black" id="title">
-                                <?php echo substr($data['ptitle'], 0, 35); ?>...</h4>
-                            <span class="my-1 text-success bold fw-bold">₹<?php echo $data['price']; ?></span>
-                            <p class="card-text mb-auto">
-                                <?php if ($data['qc'] == 'Success') {
-                                        echo '<b>Listing : </b> <span class="mb-1 text-success bold fw-bold">Success <i class="fa-duotone fa fa-check"></i></span> ';
-                                    } elseif ($data['qc'] == 'Reject') {
-                                        echo '<b>Listing : </b> <span class="mb-1 text-danger bold fw-bold">Reject</span> ';
-                                    } else {
-                                        echo '<b>Listing : </b> <span class="mb-1 text-warning bold fw-bold">Pending</span> ';
-                                    }
-                                ?>
-                            </p>
-                            <p class="card-text mb-auto">
-                                <?php if ($data['status'] == 'Active') {
+                          </a>
+                          <!-- <div class="mask">
+                              <div class="d-flex justify-content-end align-items-end h-100">
+                                <h5>
+                                  <span class="badge bg-tan pt-2 ms-3 mt-3 text-light">
+                                  <?php echo $data['stype']; ?></span>
+                                </h5>
+                              </div>
+                          </div> -->
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 col-lg-6 col-xl-6">
+                        <h5 id="title"><?php echo substr($data['ptitle'], 0, 35); ?></h5>
+
+                        <div class="mt-1 mb-0 text-muted small">
+                          <strong class="d-inline-block mb-2 text-success"><?php echo $data['ptype']; ?></strong>
+                        </div>
+                        <div class="mb-2 text-muted small">
+                          <span><?php echo $data['bhk']; ?> bhk</span>
+                          <span class="text-primary"> • </span>
+                          <span><?php echo $data['sqft']; ?> sqft</span>
+                          <span class="text-primary"> • </span>
+                          <span><?php echo $data['date']; ?> <br /></span>
+                        </div>
+                        <p class="text-truncate mb-4 mb-md-0"><i class="fa fa-map-marker-alt text-tan me-2"></i>
+                          <?php echo $data['paddress']; ?>
+                        </p>
+                      </div>
+                      <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
+                        <div class="d-flex flex-row align-items-center mb-1">
+                          <h4 class="mb-1 me-1">₹<?php echo $data['price']; ?></h4>
+                          <span class="text-danger"><s>₹<?php echo $oldprice; ?></s></span>
+                          
+                        </div>
+                        <h6 class=""> <?php if ($data['qc'] == 'Success') {
+                                        echo '<b>Listing : </b> <span class="mb-1 text-success bold fw-bold">Success <i class="bi bi-check-circle-fill"></i></span> ';
+                                      } elseif ($data['qc'] == 'Reject') {
+                                        echo '<b>Listing : </b> <span class="mb-1 text-danger bold fw-bold">Reject <i class="fas fa-times"></i></span> ';
+                                      } else {
+                                        echo '<b>Listing : </b> <span class="mb-1 text-warning bold fw-bold">Pending <i class="fas fa-hourglass-half"></i></span> ';
+                                      }
+                                      ?></h6>
+                        <h6 class=""><?php if ($data['status'] == 'Active') {
                                         echo '<b>Order : </b> <span class="mb-1 text-success bold fw-bold">Open</span> ';
-                                    }else {
+                                      } else {
                                         echo '<b>Order : </b> <span class="mb-1 text-danger bold fw-bold">Booked</span> ';
-                                    }
-                                ?>
-                            </p>
-                            <div class="d-flex">
-                                <button type="button" class="btn me-2 bg-tan"><a
-                                        href="./update_property.php?pid=<?php echo $data['pid'] ?>">Update</a></button>
-                                <button type="button" class="btn ms-2 bg-black "><a class=" text-tan"
-                                        href="./delete_property.php?pid=<?php echo $data['pid'] ?>">Delete</a></button>
-                            </div>
+                                      }
+                                      ?> </h6>
+                        <div class="d-flex flex-column mt-4">
+                        
+                          <button type="button" class="btn  bg-tan btn-sm"><a class="text-light" href="./update_property.php?pid=<?php echo $data['pid'] ?>">Update</a></button>
+                                    <button type="button"class="btn  btn-sm mt-2"><a class=" text-dark " href="./delete_property.php?pid=<?php echo $data['pid'] ?>">Delete</a></button>
                         </div>
-                        <div class="col-auto d-none d-lg-block">
-                            <a href="./property_details.php?pid=<?php echo $data['pid'] ?>">
-                                <img src="../admin/img/Property_image/house/<?php echo $data['img1']; ?> " width="200"
-                                    height="250" alt="">
-                            </a>
-                        </div>
+                      </div>
+                      <div class="text-danger text-center  " ><span>
+                        <b ><?php
+                          if($data['response']){?>
+                            <span class="mb-4 text-center"> Reject Reason : <?php echo $data['response'];?></span>
+                            <?php 
+                          } ?></b>
+                        </span>
+                      </div>
                     </div>
-
+                  </div>
                 </div>
-                <?php } ?>
+              </div>
             </div>
-            <?php if ($show) { ?>
-            <div class="container mt-2">
-                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s">
-                    <h3 class="mb-3  text-muted pb-2">No Property Listed Here...</h3>
-                </div>
+
+          </div>
+        <?php } ?>
+        <?php if ($show) { ?>
+          <div class="container mt-2">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s">
+              <h3 class="mb-3  text-muted pb-2">No Property Listed Here...</h3>
             </div>
-            <?php } ?>
-        </div>
-        <!-- Property List End-->
-
-
-        <!-- Back to Top -->
-        <?php include('../User/include/top.php') ?>
+          </div>
+        <?php } ?>
+      </section>
     </div>
-
-
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -231,7 +274,7 @@ switch ($_GET['filter']) {
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script>
-    var Title = document.getElementById('title').value;
+      var Title = document.getElementById('title').value;
     </script>
 </body>
 

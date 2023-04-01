@@ -1,24 +1,28 @@
 <?php
     session_start();
     include('./config/config.php');
-    if(isset($_POST['submit'])){
-        $uid=$_SESSION["uid"];
-        $name=$_POST['name'];
-        $email=$_POST['email'];
-        $subject=$_POST['subject'];
-        $message=$_POST['message'];
-
-        $insert_query="INSERT INTO `tblcontact`(`uid`, `name`, `email`, `subject`, `msg`) VALUES ('$uid','$name','$email','$subject','$message')";
-        $run_q =mysqli_query($con,$insert_query);
-
-        if($run_q){
-                $_SESSION['msg'] = "Your issue solve as soon as possible";
-                $_SESSION['status'] = "success";
-        }else{
-                $_SESSION['msg'] = "Something Wrong...";
-                $_SESSION['status'] = "error";
+ini_set('display_errors', 0);
+ 
+        if(isset($_POST['submit'])){
+            $uid=$_SESSION["uid"];
+            $name=$_POST['name'];
+            $email=$_POST['email'];
+            $subject=$_POST['subject'];
+            $message=$_POST['message'];
+    
+            $insert_query="INSERT INTO `tblcontact`(`uid`, `name`, `email`, `subject`, `msg`) VALUES ('$uid','$name','$email','$subject','$message')";
+            $run_q =mysqli_query($con,$insert_query);
+    
+            if($run_q){
+                // echo "Send Success";
+            }else{
+                // echo "Send Failed";
+            }
         }
-    }
+        
+    
+
+    
 ?>   
 <!DOCTYPE html>
 <html lang="en">
@@ -104,15 +108,6 @@
 
         <!-- Back to Top -->
         <?php include('../User/include/top.php')?>
-        <?php if (isset($_SESSION['msg'])) { ?>
-        <script>
-            swal("<?php echo  $_SESSION['status'] ?>", "<?php echo $_SESSION['msg'] ?>",
-                "<?php echo $_SESSION['status'] ?>");
-        </script>
-    <?php
-        unset($_SESSION['msg']);
-        unset($_SESSION['status']);
-    } ?>
     </div>
 
     <!-- JavaScript Libraries -->

@@ -4,7 +4,11 @@ include('./config/config.php');
 if(!isset($_SESSION['uid'])){
     header("location:login.php");
 }
-
+$uid = $_SESSION['uid'];
+$user = mysqli_fetch_array(mysqli_query($con , "select credit from user where uid=$uid"));
+if($user['credit'] == 0){
+    header("location:pricing.php");
+} else{
 if (isset($_POST['QC'])) {
     $uid = $_SESSION["uid"];
     $ptitle = $_POST["ptitle"];
@@ -64,12 +68,15 @@ if (isset($_POST['QC'])) {
             move_uploaded_file($tmp_name2, $destination2);
             move_uploaded_file($tmp_name3, $destination3);
             move_uploaded_file($tmp_name4, $destination4);
-            $insert_qry = "insert into tblhouse(uid, ptitle, ptype, bhk, stype, bedroom, balcony, bathroom, kitchen, hall, floor, tfloor, price, sqft, paddress, city, state, img1, img2, img3, img4, , featured, description , facilities) VALUES ('$uid','$ptitle','$ptype','$bhk','$stype','$bedroom','$balcony','$bathroom','$kitchen','$hall','$floor','$tfloor','$price','$sqft','$paddress','$city','$state', '$image1', '$image2', '$image3', '$image4','$featured','$description','$facilities')";
+            $insert_qry = "INSERT INTO `tblhouse`( `uid`, `ptitle`, `ptype`, `bhk`, `stype`, `bedroom`, `balcony`, `bathroom`, `kitchen`, `hall`, `floor`, `tfloor`, `price`, `sqft`, `paddress`, `city`, `state`, `img1`, `img2`, `img3`, `img4`, `featured`, `description`, `facilities`) VALUES ('$uid','$ptitle','$ptype','$bhk','$stype','$bedroom','$balcony','$bathroom','$kitchen','$hall','$floor','$tfloor','$price','$sqft','$paddress','$city','$state','$image1','$image2','$image3','$image4','$featured','$description','$facilities')";
             $result = mysqli_query($con, $insert_qry);
             if ($result) {
-                $_SESSION['msg'] = "Property Insert Successful";
-                $_SESSION['status'] = "success";
-                header('location:./user-property.php?filter=all');
+                $res = mysqli_query($con , "UPDATE user SET credit = credit - 1 WHERE `uid` = $uid");
+                if ($res) {
+                    $_SESSION['msg'] = "Property Insert Successful";
+                    $_SESSION['status'] = "success";
+                    header('location:./user-property.php?filter=all');
+                }
 
             } else {
                 $_SESSION['msg'] = "Property Insert Failed";
@@ -85,6 +92,7 @@ if (isset($_POST['QC'])) {
     }
 } else {
     // echo "Plese Enter Value";
+}
 }
 ?>
 <!DOCTYPE html>
@@ -110,6 +118,7 @@ if (isset($_POST['QC'])) {
 
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
@@ -595,21 +604,21 @@ if (isset($_POST['QC'])) {
             return true;
         }
     }
-    var imageInput = document.getElementById("image");
-    var errorMessage = document.getElementById("image-error");
+    // var imageInput = document.getElementById("image");
+    // var errorMessage = document.getElementById("image-error");
 
-    imageInput.addEventListener("change", function() {
-        var file = imageInput.files[0];
-        var fileType = file.type;
-        if (fileType != "image/jpeg" && fileType != "image/png" && fileType != "image/gif") {
-            errorMessage.innerHTML = "Please select a valid image file (JPG, PNG, GIF).";
-            imageInput.value = "";
-            return false;
-        } else {
-            errorMessage.innerHTML = "";
-            return true;
-        }
-    });
+    // imageInput.addEventListener("change", function() {
+    //     var file = imageInput.files[0];
+    //     var fileType = file.type;
+    //     if (fileType != "image/jpeg" && fileType != "image/png" && fileType != "image/gif") {
+    //         errorMessage.innerHTML = "Please select a valid image file (JPG, PNG, GIF).";
+    //         imageInput.value = "";
+    //         return false;
+    //     } else {
+    //         errorMessage.innerHTML = "";
+    //         return true;
+    //     }
+    // });
     
     function validateForm() {
     if (validatePtitle() && validateBedroom() && validateBalcony() && validateBathroom() && validateKitchen() && validateHall() && validateFloor() && validateTfloor() && validatePrice() && validateSqft() && validatePaddress() && validateCity() && validateState()) {

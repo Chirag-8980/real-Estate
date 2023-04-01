@@ -82,11 +82,11 @@ if(!isset($_SESSION['auser']))
                     <a href="dashboard.php"><i class="fe fe-home"></i> <span>Dashboard</span></a>
                 </li>
 
-                <li class="menu-title">
+                <!-- <li class="menu-title">
                     <span>Authentication</span>
-                </li>
+                </li> -->
 
-                <li class="submenu">
+                <!-- <li class="submenu">
                     <a href="#"><i class="fe fe-user"></i> <span> Authentication </span> <span
                             class="menu-arrow"></span></a>
                     <ul style="display: none;">
@@ -94,7 +94,7 @@ if(!isset($_SESSION['auser']))
                         <li><a href="register.php"> Register </a></li>
 
                     </ul>
-                </li>
+                </li> -->
                 <li class="menu-title">
                     <span>Users</span>
                 </li>
@@ -119,13 +119,24 @@ if(!isset($_SESSION['auser']))
                                     class="menu-arrow"></span></a>
                             <ul style="display: none;">
                                 <li><a href="property_req.php?type=home">House Property</a></li>
-                                <li><a href="property_req.php?type=business">Business Property </a></li>
-                                <li><a href="property_req.php?type=occasion">Ocassion Property</a></li>
+                                <!-- <li><a href="property_req.php?type=business">Business Property </a></li>
+                                <li><a href="property_req.php?type=occasion">Ocassion Property</a></li> -->
 
                             </ul>
                         </li>
-                        <li><a href="propertyadd.php"> Add Reqest </a></li>
+                        <!-- <li><a href="propertyadd.php"> Add Reqest </a></li> -->
 
+                    </ul>
+                </li>
+                <li class="menu-title">
+                    <span>Plan</span>
+                </li>
+                <li class="submenu">
+                    <a href="#"><i class="fe fe-user"></i> <span> Manage Plan</span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="view_plan.php"> View Plan </a></li>
+                        <li><a href="add_plan.php"> Add Plan </a></li>
+                        <li><a href="update_plan.php"> Update Plan </a></li>
                     </ul>
                 </li>
 

@@ -1,7 +1,7 @@
 <?php
     session_start();
     include('./config/config.php');
-    $select_q="select * from tblhouse where qc='Success' limit 3 ";
+    $select_q="select * from tblhouse where qc='Success' and status='Active' limit 3 ";
     $query=mysqli_query($con,$select_q);
     $show = true;
 ?>
@@ -90,6 +90,9 @@
         <!-- About Start -->
         <?php include('../User/include/about.php')?>
         <!-- About End -->
+        <!-- Pricing Templates Start -->
+        <?php include('../User/include/pricing_t.php')?>
+        <!-- Pricing Templates End -->
 
         <!-- Property List Start -->
         <div class="container-xxl py-5">

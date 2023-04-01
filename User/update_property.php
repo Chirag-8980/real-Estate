@@ -89,21 +89,11 @@ $user_data = mysqli_fetch_array(mysqli_query($con, "select * from user where uid
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Property Type</label>
                     <select id="inputState" name="ptype" class="form-select">
-                        <?php if ($data['ptype'] == 'House') { ?>
-                            <option value="House" selected>House</option>
-                            <option value="Apartment">Apartment</option>
-                            <option value="Flat">Flat</option>
-
-                        <?php } else if ($data['ptype'] == 'Apartment') { ?>
-                            <option value="House">House</option>
-                            <option value="Apartment" selected>Apartment</option>z
-                            <option value="Flat">Flat</option>
-
-                        <?php } else if ($data['ptype'] == 'Flat') { ?>
-                            <option value="House">House</option>
-                            <option value="Apartment">Apartment</option>
-                            <option value="Flat" selected>Flat</option>
-                        <?php } ?>
+                        <option value="House">House</option>
+                        <option value="Flat">Flat</option>
+                        <option value="Banglow">Banglow</option>
+                        <option value="Pent-House">Pent-House</option>
+                        <option value="Farm-House">Farm-House</option>
                     </select>
                 </div>
                 <div class="col-md-6 input-group-lg">

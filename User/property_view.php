@@ -34,6 +34,7 @@ $oldprice = $data['price'] + $data['price'] / 2;
 
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
@@ -52,7 +53,7 @@ $oldprice = $data['price'] + $data['price'] / 2;
 }
 </style>
 
-<body class="bg-white">
+<body>
     <div class="bg-white p-0">
         <!-- Spinner Start -->
         <?php include('../User/include/spinner.php') ?>
@@ -122,24 +123,15 @@ $oldprice = $data['price'] + $data['price'] / 2;
 
                     </div>
                     <!-- card right -->
-                    <div class="  product-content">
-                        <h2 class="  product-title"><?php echo $data['ptitle'] ?></h2>
+                    <div class=" container product-content">
+                        <h2 class=" container product-title"><?php echo $data['ptitle'] ?></h2>
                         <a href="#" class="product "><i class="fa fa-map-marker-alt text-tan me-2"></i>
                             <?php echo $data['paddress'] ?></a>
 
-
-                        <div class="  product-price">
+                            <div class="  product-price">
                             <h6 class="last-price"> <span>₹ <?php echo $oldprice ?></span></h6>
                             <h5 class="new-price text-black"> Price:  <span style="color: green;">₹ <?php echo $data['price']?>/- 
-                                    <small style="color: black;size:10px;"><?php if($data['stype'] == "Rent"){echo "Per Month";}elseif($data['ptype'] == "Farm-House" && $data['stype'] == 'rent'){echo 'Per Day(24 hour)';} ?></small></span></h5>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table table-bordered  text-center table-white text-black table-striped">
-                                <tr >
-                                    <td class="text-black"><b>Selling Type : </b><?php echo  $data['stype']?></td>
-                                    <td class="text-black"><b>Featured : </b><?php echo  $data['featured']?></td>
-                                </tr>
-                            </table>
+                                    <small style="color: black;size:10px;"><?php if($data['stype'] == "rent"){echo "Per Month";}elseif($data['ptype'] == "Farm-House" && $data['stype'] == 'rent'){echo 'Per Day(24 hour)';} ?></small></span></h5>
                         </div>
 
                         <div class="row container-fuid d-flex justify-content-center ">
@@ -227,19 +219,8 @@ $oldprice = $data['price'] + $data['price'] / 2;
                         </p>
                     </div>
                 </div>
-                <div class="container mt-4">
-                                <a class="btn  bg-tan text-black w-100 py-3 my-4"
-                                    href="booking.php?pid=<?php echo $_GET['pid'] ?>&sellerid=<?php echo $data['uid'] ?>&stype=<?php echo $data['stype'] ?>">Request
-                                    For
-                                    Booking</a>
-                            </div>
             </div>
             
-
-
-
-
-
             <?php if (isset($_SESSION['msg'])) { ?>
             <script>
             swal("<?php echo  $_SESSION['status'] ?>", "<?php echo $_SESSION['msg'] ?>",

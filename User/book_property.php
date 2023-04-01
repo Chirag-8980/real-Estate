@@ -96,40 +96,10 @@
                             <td><?php echo $property['stype']?></td>
                             <td class="text-<?php if($data['status'] == "Pending"){echo 'warning' ;} if($data['status'] == "Success"){echo 'success';}if($data['status'] == "Reject"){echo 'danger' ;}?> fw-bold"><?php echo $data['status']?></td>
                             <td><?php echo $data['bdate']?></td>
-                            <td class="text-success fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">View
-                                Details</td>
+                            <td ><a href="property_view.php?pid=<?php echo $property['pid']?>" class="text-black fw-bold">View Details </a></td>
 
                         </tr>
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog modal-lg modal-dialog-centered">
-                                <div class="modal-content ">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5 text-black" id="exampleModalLabel">Booking Details</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div
-                                            class="row g-0 border rounded overflow-hidden flex-md-row mb-2 shadow-sm h-md-250 position-relative">
-                                            <div class="col p-4 d-flex flex-column position-static">
-                                                <strong class="d-inline-block mb-2 text-success"><?php echo $property['ptype']?></strong>
-                                                <h3 class="mb-0 text-black"><?php echo $property['ptitle']?></h3>
-                                                <div class="mb-1 text-muted mt-2"><?php echo $data['bdate']?></div>
-                                                <p class="mb-auto mt-4"><?php echo $data['details']?></p>
-                                            </div>
-                                            <div class="col-auto d-none d-lg-block">
-                                                <img src="../admin/img/Property_image/house/<?php echo $img ?>" width="300px"
-                                                    height="300px" class="rounded mx-auto d-block" alt="...">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn  bg-tan text-black" data-bs-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <?php 
                     
                     $cnt = $cnt + 1;

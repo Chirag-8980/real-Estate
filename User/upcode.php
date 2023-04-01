@@ -82,7 +82,7 @@ if (isset($_POST['update'])) {
                 if ($result) {
                     $_SESSION['msg'] = "Property Update Successful";
 			        $_SESSION['status'] = "success";
-                    header('location:user-property.php');
+                    header('location:user-property.php?filter=all');
                 } else {
                     $_SESSION['msg'] = "Property Update Failed";
 			        $_SESSION['status'] = "error";

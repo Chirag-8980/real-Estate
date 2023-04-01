@@ -22,6 +22,10 @@ if (isset($_POST['feedback_submit'])) {
 
 
 ?>
+<?php
+if(isset($_SESSION['uid'])) {
+  // User is logged in, show feedback form
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,7 +82,7 @@ if (isset($_POST['feedback_submit'])) {
             <div class="col-md-12">
                 <div class="wow fadeInUp" data-wow-delay="0.5s">
                     <p class="mb-4">Feedback for us</a>.</p>
-                    <form method="POST">
+                    <form method="POST" onsubmit="return validateForm()">
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
@@ -86,8 +90,11 @@ if (isset($_POST['feedback_submit'])) {
                                                                                                     echo $data['uname'];
                                                                                                 } else {
                                                                                                     echo "";
-                                                                                                }  ?>" name="name" placeholder="Your Name">
+                                                                                                }  ?>" name="name" placeholder="Your Name"
+                                     oninvalid="setCustomValidity('Please enter a valid name')" onblur="setCustomValidity('')" oninput="validateName()">
                                     <label for="name">Your Name</label>
+                                    <div class="mt-1 text-danger" id="error-name"></div>
+
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -96,19 +103,24 @@ if (isset($_POST['feedback_submit'])) {
                                                                                                     echo $data['email'];
                                                                                                 } else {
                                                                                                     echo "";
-                                                                                                }  ?>" name="email" placeholder="Your Email">
+                                                                                                }  ?>" name="email" id="email" placeholder="Your Email"
+                                      oninvalid="setCustomValidity('Please enter a valid Email ID')" onblur="setCustomValidity('')" oninput="validateEmail()">
                                     <label for="email">Your Email</label>
+                                    <div class="mt-1 text-danger" id="error-email"></div>
+
                                 </div>
                             </div>
 
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a message here" name="message" id="message" style="height: 150px"></textarea>
+                                    <textarea class="form-control" placeholder="Leave a message here" name="message" id="message" style="height: 150px" oninvalid="setCustomValidity('Please enter Message for Contact Us')" onblur="setCustomValidity('')" oninput="validateMessage()"></textarea>
                                     <label for="message">Message</label>
+                                    <div class="mt-1 text-danger" id="error-message"></div>
+
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn bg-tan text-black w-100 py-3" name="feedback_submit" type="submit">Send
+                                <button class="btn bg-tan text-black w-100 py-3" onclick="myFunction()" name="feedback_submit" type="submit">Send
                                     Message</button>
                             </div>
                         </div>
@@ -119,6 +131,88 @@ if (isset($_POST['feedback_submit'])) {
         </div>
     </div>
     <!-- JavaScript Libraries -->
+    <script>
+         function validateName() {
+            var nameInput = document.getElementById("name");
+            var name = nameInput.value.trim();
+            var errorMessage = document.getElementById("error-name");
+
+            if (name == "") {
+                errorMessage.innerHTML = "Name field cannot be empty";
+                // nameInput.classList.add("invalid");
+                nameInput.setAttribute("required", true); // Add required attribute
+                return false;
+            } else if (!/^[a-zA-Z ]+$/.test(name)) {
+                errorMessage.innerHTML = "Name can only contain letters and spaces";
+                // nameInput.classList.add("invalid");
+                nameInput.removeAttribute("required"); // Remove required attribute
+                return false;
+            } else {
+                errorMessage.innerHTML = "";
+                // nameInput.classList.remove("invalid");
+                nameInput.setAttribute("required", true); // Add required attribute
+                return true;
+            }
+        }
+
+
+        function validateEmail() {
+            var emailInput = document.getElementById("email");
+            var email = emailInput.value.trim();
+            var errorMessage = document.getElementById("error-email");
+
+            if (email == "") {
+                errorMessage.innerHTML = "Email field cannot be empty";
+                // emailInput.classList.add("invalid");
+                return false;
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                errorMessage.innerHTML = "Please enter a valid email address";
+                // emailInput.classList.add("invalid");
+                return false;
+            } else {
+                errorMessage.innerHTML = "";
+                // emailInput.classList.remove("invalid");
+                return true;
+            }
+        }
+
+        function validateMessage() {
+            var input = document.getElementById("message");
+        var message = input.value.trim();
+        var errorMessage = document.getElementById("error-message");
+
+        if (message === "") {
+            errorMessage.innerHTML = "Message field cannot be empty";
+            return false;
+        } else if (!/^[a-zA-Z0-9\s,'-]*$/.test(message)) {
+            errorMessage.innerHTML = "Message contains invalid characters";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            return true;
+        }
+        }
+
+        function validateForm() {
+            // Call all validation functions
+            var isNameValid = validateName();
+            var isEmailValid = validateEmail();
+            var isMessageValid = validateMessage();
+            // Check if all validation functions returned true
+            if (isNameValid && isEmailValid  && isMessageValid ) {
+                // All validation functions passed, submit the form
+                return true;
+            } else {
+                // At least one validation function failed, prevent form submission
+                return false;
+            }
+        }
+        function myFunction() {
+            document.getElementById("name").required = true;
+            document.getElementById("email").required = true;
+            document.getElementById("message").required = true;
+        }
+    </script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/wow/wow.min.js"></script>
@@ -128,6 +222,12 @@ if (isset($_POST['feedback_submit'])) {
 
     <!-- Template Javascript -->
     <script src="../js/main.js"></script>
+    <?php
+} else {
+  // User is not logged in, show message
+//   echo "Please login to submit feedback.";
+}
+?>
 </body>
 
 </html>

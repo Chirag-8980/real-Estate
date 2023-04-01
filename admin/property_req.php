@@ -159,7 +159,7 @@ $get_data = (mysqli_query($con, "select * from tblhouse where qc='Pending'"));
                                                         <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form method="POST" action="property_reject.php?pid=<?php echo $data['pid']; ?>">
+                                                        <form method="POST" action="property_reject.php?pid=<?php echo $data['pid']; ?>&uid=<?php echo $data['uid']; ?>">
                                                             <div class="mb-3">
                                                                 <label for="exampleFormControlTextarea1" class="form-label">Write Response</label>
                                                                 <textarea class="form-control" name="response" id="exampleFormControlTextarea1" rows="3"></textarea>
