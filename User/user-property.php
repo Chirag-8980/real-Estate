@@ -166,18 +166,18 @@ switch ($_GET['filter']) {
                   <div class="card-body">
                     <div class="row">
                       <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
-                      <div class="mask">
-                              <div class="position-absolute top-2 start-2 translate-middle badge rounded-pill " id="bedge">
-                                <h5>
-                                  <span class="badge bg-tan pt-2 ms-3 mt-5 ml-4 text-black">
-                                  <?php echo $data['stype']; ?></span>
-                                </h5>
-                              </div>
+                        <div class="mask">
+                          <div class="position-absolute top-2 start-2 translate-middle badge rounded-pill " id="bedge">
+                            <h5>
+                              <span class="badge bg-tan pt-2 ms-3 mt-5 ml-4 text-black">
+                                <?php echo $data['stype']; ?></span>
+                            </h5>
                           </div>
-                        <div class="bg-image hover-zoom ripple rounded ripple-surface" >
-                      
-                        <a href="#!">
-                          <img src="../admin/img/Property_image/house/<?php echo $data['img1']; ?> " class="w-100" />
+                        </div>
+                        <div class="bg-image hover-zoom ripple rounded ripple-surface">
+
+                          <a href="#!">
+                            <img src="../admin/img/Property_image/house/<?php echo $data['img1']; ?> " class="w-100" />
                             <div class="hover-overlay">
                               <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                             </div>
@@ -209,12 +209,17 @@ switch ($_GET['filter']) {
                         <p class="text-truncate mb-4 mb-md-0"><i class="fa fa-map-marker-alt text-tan me-2"></i>
                           <?php echo $data['paddress']; ?>
                         </p>
+                        <?php if($data['featured'] == 'Yes') {?>
+                        <div class="bg-success d-inline-block py-1 px-2 text-white rounded mt-2">
+                          Featured Property
+                        </div>
+                        <?php }?>
                       </div>
                       <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
                         <div class="d-flex flex-row align-items-center mb-1">
                           <h4 class="mb-1 me-1">₹<?php echo $data['price']; ?></h4>
                           <span class="text-danger"><s>₹<?php echo $oldprice; ?></s></span>
-                          
+
                         </div>
                         <h6 class=""> <?php if ($data['qc'] == 'Success') {
                                         echo '<b>Listing : </b> <span class="mb-1 text-success bold fw-bold">Success <i class="bi bi-check-circle-fill"></i></span> ';
@@ -231,22 +236,22 @@ switch ($_GET['filter']) {
                                       }
                                       ?> </h6>
                         <div class="d-flex flex-column mt-4">
-                        
-                          <button type="button" class="btn  bg-tan btn-sm"><a class="text-light" href="./update_property.php?pid=<?php echo $data['pid'] ?>">Update</a></button>
-                                    <button type="button"class="btn  btn-sm mt-2"><a class=" text-dark " href="./delete_property.php?pid=<?php echo $data['pid'] ?>">Delete</a></button>
+
+                          <button type="button" class="btn  bg-tan btn-sm"><a class="text-black" href="./update_property.php?pid=<?php echo $data['pid'] ?>">Update</a></button>
+                          <button type="button" class="btn  bg-black btn-sm mt-2"><a class=" text-light " href="./delete_property.php?pid=<?php echo $data['pid'] ?>">Delete</a></button>
                         </div>
-                      </div>
-                      <div class="text-danger text-center  " ><span>
-                        <b ><?php
-                          if($data['response']){?>
-                            <span class="mb-4 text-center"> Reject Reason : <?php echo $data['response'];?></span>
-                            <?php 
-                          } ?></b>
-                        </span>
                       </div>
                     </div>
                   </div>
                 </div>
+                <?php if ($data['response']) { ?>
+                <div class="text-danger text-center my-2 bg-white border shadow p-3 mb-5 bg-body-tertiary rounded py-2 "><span>
+                    <b>
+                        <span class="mb-4 text-center"> Reject Reason : <?php echo $data['response']; ?></span>
+                      </b>
+                    </span>
+                  </div>
+                  <?php  } ?>
               </div>
             </div>
 

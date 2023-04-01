@@ -176,6 +176,7 @@ if (isset($_POST['QC'])) {
 
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Property Type</label>
+                    
                     <select id="inputState" name="ptype" class="form-select">
                         <option value="House">House</option>
                         <option value="Flat">Flat</option>

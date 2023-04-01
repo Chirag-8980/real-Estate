@@ -89,18 +89,44 @@ $user_data = mysqli_fetch_array(mysqli_query($con, "select * from user where uid
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Property Type</label>
                     <select id="inputState" name="ptype" class="form-select">
-                        <option value="House">House</option>
+                        <?php if ($data['ptype'] == 'House') { ?>
+                        <option value="House" selected>House</option>
                         <option value="Flat">Flat</option>
                         <option value="Banglow">Banglow</option>
                         <option value="Pent-House">Pent-House</option>
                         <option value="Farm-House">Farm-House</option>
+                        <?php } if ($data['ptype'] == 'Flat') { ?>
+                        <option value="House">House</option>
+                        <option value="Flat" selected>Flat</option>
+                        <option value="Banglow">Banglow</option>
+                        <option value="Pent-House">Pent-House</option>
+                        <option value="Farm-House">Farm-House</option>
+                        <?php }if ($data['ptype'] == 'Banglow') { ?>
+                        <option value="House">House</option>
+                        <option value="Flat">Flat</option>
+                        <option value="Banglow" selected>Banglow</option>
+                        <option value="Pent-House">Pent-House</option>
+                        <option value="Farm-House">Farm-House</option>
+                        <?php } if ($data['ptype'] == 'Pent-House') { ?>
+                        <option value="House">House</option>
+                        <option value="Flat">Flat</option>
+                        <option value="Banglow">Banglow</option>
+                        <option value="Pent-House" selected>Pent-House</option>
+                        <option value="Farm-House">Farm-House</option>
+                        <?php } if ($data['ptype'] == 'Farm-House') { ?>
+                        <option value="House">House</option>
+                        <option value="Flat">Flat</option>
+                        <option value="Banglow">Banglow</option>
+                        <option value="Pent-House">Pent-House</option>
+                        <option value="Farm-House" selected>Farm-House</option>
+                        <?php }  ?>
                     </select>
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">BHK</label>
                     <select id="inputState" name="bhk" class="form-select">
                         <?php if ($data['bhk'] == '1') { ?>
-                            <option value="1">1BHK</option>
+                            <option value="1" selected>1BHK</option>
                             <option value="2">2BHK</option>
                             <option value="3">3BHK</option>
                             <option value="4">4BHK</option>
