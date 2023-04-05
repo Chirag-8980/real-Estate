@@ -1,27 +1,27 @@
 <?php
-    session_start();
-    include('../config/config.php');
-    require './sendmail.php';
+session_start();
+include('../config/config.php');
+require './sendmail.php';
 
-    if(isset($_POST['submit'])){
-        $status = $_POST['status'];
-        $reason = $_POST['reason'];
-        $bid = $_GET['bid'];
-        $queary = mysqli_query($con , "UPDATE `tblpbooking` SET `status`='$status',`reason`='$reason' WHERE bid = $bid");
-        if($queary){
-                if($status == "Success"){
-                        $pid = $_GET['pid'];
-                        $Status_Update = mysqli_query($con , "UPDATE `tblhouse` SET `status`='Inactive' WHERE pid = $pid");
-                        
-                        if($Status_Update){
-                            $b_email = mysqli_fetch_array(mysqli_query($con , "select * from tblpbooking where bid = $bid"));  
-                            $email = $b_email['email'];
+if (isset($_POST['submit'])) {
+  $status = $_POST['status'];
+  $reason = $_POST['reason'];
+  $bid = $_GET['bid'];
+  if ($status == "Success") {
+    $queary = mysqli_query($con, "UPDATE `tblpbooking` SET `status`='$status',`reason`='$reason' WHERE `bid`= '$bid'");
+    if ($queary) {
+      $pid = $_GET['pid'];
+      $Status_Update = mysqli_query($con, "UPDATE `tblhouse` SET `status`='Inactive' WHERE pid = $pid");
 
-                            if($status == "Success"){
-                                $sub = "Congratulation You Got The Deal";
-                                $msg = '<!DOCTYPE html>
+      if ($Status_Update) {
+        $b_email = mysqli_fetch_array(mysqli_query($con, "select * from tblpbooking where bid = $bid"));
+        $email = $b_email['email'];
 
-                                <html lang="en" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+        if ($status == "Success") {
+          $sub = "Congratulation You Got The Deal";
+          $msg = '<!DOCTYPE html>
+
+                              <html lang="en" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
                                 
                                 <head>
                                   <title></title>
@@ -1233,12 +1233,28 @@
                                 </body>
                                 
                                 </html>';
-                                $sendmail = SendMail($email , $sub , $msg);
-                                header('location:../property_order.php');
-                            }else{
-
-                            }
-                        }
-                    }
-                }
+          $sendmail = SendMail($email, $sub, $msg);
+          header('location:../property_order.php');
         }
+      }
+    }
+  }elseif ($status == "Reject") {
+    $queary = mysqli_query($con, "UPDATE `tblpbooking` SET `status`='Reject',`reason`=  '$reason' WHERE `bid`= '$bid'");
+    if ($queary) {
+      // $pid = $_GET['pid'];
+      // $Status_Update = mysqli_query($con, "UPDATE `tblhouse` SET `status`='Inactive' WHERE pid = $pid");
+
+      // if ($Status_Update) {
+        $b_email = mysqli_fetch_array(mysqli_query($con, "select * from tblpbooking where bid = $bid"));
+        $email = $b_email['email'];
+
+        if ($status == "Reject") {
+          $sub = "Reject";
+          $msg = "Your Property Reqest Has Been Rejated...";
+          $sendmail = SendMail($email, $sub, $msg);
+          header('location:../property_order.php');
+        }
+      // }  
+    }
+  }
+}

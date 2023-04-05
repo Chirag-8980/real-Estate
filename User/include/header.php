@@ -1,5 +1,10 @@
 <?php
 
+    include('./config/config.php');
+    if(isset($_SESSION['uid'])){
+        $uid = $_SESSION['uid'];
+        $book_property = mysqli_fetch_array(mysqli_query($con , "select count(*) as total from tblpbooking where seller_id=$uid and status = 'Pending' "));
+    }
 ?>
 
 <body>
@@ -30,6 +35,26 @@
                             <a href="property-type.php" class="dropdown-item">Property Type</a>
                         </div>
                     </div>
+                    <?php if(isset($_SESSION['uid'])) {?>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Manage Property
+                            <?php if($book_property['total'] > 0) {?>
+                        <span class="position-absolute top-80 start-80 translate-middle p-1 bg-danger border border-danger rounded-circle">
+                                <span class="visually-hidden">New alerts</span>
+                        </span>
+                        <?php }?>
+                        </a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="book_property.php" class="dropdown-item">Booked Property</a>
+                            <a href="property_order.php" class="dropdown-item">Property Order
+                                <?php if($book_property['total'] > 0 ) {?>
+                                 <span class="badge bg-danger rounded-circle"><?php echo $book_property['total']?></span>
+                                 <?php }?>
+                                </a>
+                           
+                        </div>
+                    </div>
+                    <?php } else{?>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Manage Property</a>
                         <div class="dropdown-menu rounded-0 m-0">
@@ -37,7 +62,7 @@
                             <a href="property_order.php" class="dropdown-item">Property Order</a>
                         </div>
                     </div>
-                    <?php
+                    <?php }
                     if (isset($_SESSION['uid'])) {
                         echo '<div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">My Account</a>

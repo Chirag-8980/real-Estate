@@ -90,10 +90,8 @@
         <!-- About Start -->
         <?php include('../User/include/about.php')?>
         <!-- About End -->
-        <!-- Pricing Templates Start -->
-        <?php include('../User/include/pricing_t.php')?>
-        <!-- Pricing Templates End -->
 
+        
         <!-- Property List Start -->
         <div class="container-xxl py-5">
             <div class="container">
@@ -172,6 +170,10 @@
             </div>
         </div>
         <!-- Property List End -->
+
+        <!-- Pricing Templates Start -->
+        <?php include('../User/include/pricing_t.php')?>
+        <!-- Pricing Templates End -->
 
 
         <!-- Call to Action Start -->

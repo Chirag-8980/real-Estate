@@ -1,26 +1,28 @@
 <?php
 session_start();
 require("config.php");
- 
-if(!isset($_SESSION['auser']))
-{
-	header("location:index.php");
+
+if (!isset($_SESSION['auser'])) {
+    header("location:index.php");
 }
 ?>
+
 <div class="header">
 
+    
     <!-- Logo -->
-    <div class="header-left" style="color:rgb(221, 195, 165)">
-        <a href="dashboard.php" class="logo">
-            <img src="assets/img/logo.png" alt="Logo">
+    <div class="header-left text-light" >
+        <a href="dashboard.php" class="logo text-light ">
+            <img src="assets/img/locus.png"  alt="Logo" > 
+            <img src="assets/img/locus1.png"  alt="Logo" class="m-2"> 
+
         </a>
-        <a href="dashboard.php" class="logo logo-small">
-            <img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
+        <a href="dashboard.php" class="logo logo-small text-light">
+            <img src="assets/img/locus.png" alt="Logo" width="30" height="30">
         </a>
     </div>
     <!-- /Logo -->
-
-    <a href="javascript:void(0);" id="toggle_btn">
+    <a href="javascript:void(0);" id="toggle_btn" >
         <i class="fe fe-text-align-left"></i>
     </a>
 
@@ -37,11 +39,10 @@ if(!isset($_SESSION['auser']))
 
 
         <!-- User Menu -->
-        <h4 style="color:white;margin-top:13px;text-transform:capitalize;"><?php echo $_SESSION['auser'];?></h4>
+        <h4 style="color:white;margin-top:13px;text-transform:capitalize;"><?php echo $_SESSION['auser']; ?></h4>
         <li class="nav-item dropdown app-dropdown">
             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                <span class="user-img"><img class="rounded-circle" src="assets/img/profiles/avatar-01.png" width="31"
-                        alt="Ryan Taylor"></span>
+                <span class="user-img"><img class="rounded-circle" src="assets/img/profiles/avatar-01.png" width="31" alt="Ryan Taylor"></span>
             </a>
 
             <div class="dropdown-menu">
@@ -50,7 +51,7 @@ if(!isset($_SESSION['auser']))
                         <img src="assets/img/profiles/avatar-01.png" alt="User Image" class="avatar-img rounded-circle">
                     </div>
                     <div class="user-text">
-                        <h6><?php echo $_SESSION['auser'];?></h6>
+                        <h6><?php echo $_SESSION['auser']; ?></h6>
                         <p class="text-muted mb-0">Administrator</p>
                     </div>
                 </div>
@@ -111,12 +112,20 @@ if(!isset($_SESSION['auser']))
                     <span>Property</span>
                 </li>
                 <li class="submenu">
-                    <a href="#"><i class="fe fe-user"></i> <span> Property</span> <span class="menu-arrow"></span></a>
+                    <a href="#"> <i data-feather="home"></i>
+                        <span> Property</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
-                        <li><a href="propertyview.php"> View Property </a></li>
                         <li class="submenu">
-                            <a href="#"><span>Property Reqestes</span> <span
-                                    class="menu-arrow"></span></a>
+                            <a href="#"><span>View Property </span> <span class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                                <li><a href="propertyview_success.php">Listed Property</a></li>
+                                <li><a href="propertyview_pending.php">Pending Property</a></li>
+                                <li><a href="propertyview_reject.php">Reject Property</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><span>Property Reqestes</span> <span class="menu-arrow"></span></a>
                             <ul style="display: none;">
                                 <li><a href="property_req.php?type=home">House Property</a></li>
                                 <!-- <li><a href="property_req.php?type=business">Business Property </a></li>
@@ -132,11 +141,22 @@ if(!isset($_SESSION['auser']))
                     <span>Plan</span>
                 </li>
                 <li class="submenu">
-                    <a href="#"><i class="fe fe-user"></i> <span> Manage Plan</span> <span class="menu-arrow"></span></a>
+                    <a href="#"><i data-feather="calendar"></i>
+                        <span> Manage Plan</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="view_plan.php"> View Plan </a></li>
                         <li><a href="add_plan.php"> Add Plan </a></li>
                         <li><a href="update_plan.php"> Update Plan </a></li>
+                    </ul>
+                </li>
+                <li class="menu-title">
+                    <span>Payment</span>
+                </li>
+                <li class="submenu">
+                    <a href="#"> <i data-feather="credit-card"></i>
+                        <span> Payment</span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="payment_details.php"> View Payment </a></li>
                     </ul>
                 </li>
 
@@ -145,8 +165,7 @@ if(!isset($_SESSION['auser']))
                 </li>
 
                 <li class="submenu">
-                    <a href="#"><i class="fe fe-user"></i> <span>State & City</span> <span
-                            class="menu-arrow"></span></a>
+                    <a href="#"><i class="fe fe-home"></i></i> <span>State & City</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="stateadd.php"> State </a></li>
                         <li><a href="cityadd.php"> City </a></li>
@@ -157,7 +176,8 @@ if(!isset($_SESSION['auser']))
                     <span>Query</span>
                 </li>
                 <li class="submenu">
-                    <a href="#"><i class="fe fe-user"></i> <span> Query </span> <span class="menu-arrow"></span></a>
+                    <a href="#"><i data-feather="mail"></i>
+                        <span> Query </span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="contactview.php"> Contact </a></li>
                         <li><a href="feedbackview.php"> Feedback </a></li>
@@ -167,7 +187,8 @@ if(!isset($_SESSION['auser']))
                     <span>About</span>
                 </li>
                 <li class="submenu">
-                    <a href="#"><i class="fe fe-user"></i> <span> About </span> <span class="menu-arrow"></span></a>
+                    <a href="#"><i data-feather="heart"></i>
+                        <span> About </span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="aboutadd.php"> About </a></li>
                         <li><a href="aboutview.php"> View About </a></li>
@@ -178,4 +199,9 @@ if(!isset($_SESSION['auser']))
         </div>
     </div>
 </div>
+<script src="https://unpkg.com/feather-icons"></script>
+<script>
+    feather.replace()
+</script>
+
 <!-- /Sidebar -->
