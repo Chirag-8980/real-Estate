@@ -18,6 +18,9 @@
     }elseif(!$property_type == null){
         $sql = " SELECT * FROM tblhouse WHERE `ptype`='$property_type'";
         $run = mysqli_query($con , $sql);
+    }elseif(!$query == null){
+        $sql = " SELECT * FROM tblhouse WHERE  MATCH (ptitle,description,ptype,city,state) AGAINST ('$query') ";
+        $run = mysqli_query($con , $sql);
     }
 
     
@@ -82,9 +85,9 @@
                     <div class="row g-4">
                         <?php while($data = mysqli_fetch_array($run)) { $show=false; ?>
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="property-item rounded overflow-hidden" style="height: 500px;">
+                            <div class="property-item rounded overflow-hidden" >
                                 <div class="position-relative overflow-hidden">
-                                    <a href="./property_details.php?pid='<?php echo $data['pid'] ?>'"><img style="height: 307px;" class="img-fluid" src="../admin/Img/Property_image/<?php echo $data['img1']; ?>" alt=""></a>
+                                    <a href="./property_details.php?pid='<?php echo $data['pid'] ?>'"><img style="height: 307px;" class="img-fluid" src="../admin/Img/Property_image/house/<?php echo $data['img1']; ?>" alt=""></a>
                                     <div
                                         class="bg-black rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
                                         <?php echo $data['stype']; ?></div>

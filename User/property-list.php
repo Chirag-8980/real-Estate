@@ -35,7 +35,7 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="bg-white">
     <div class="bg-white p-0">
         <!-- Spinner Start -->
         <?php include('../User/include/spinner.php')?>
@@ -48,7 +48,7 @@
 
 
         <!-- Header Start -->
-        <div class="container-fluid header bg-white p-0">
+        <!-- <div class="container-fluid header bg-white p-0">
             <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
                 <div class="col-md-6 p-5 mt-lg-5">
                     <h1 class="display-5 animated text-black fadeIn mb-4">Property List</h1> 
@@ -64,12 +64,11 @@
                     <img class="img-fluid" src="img/header.jpg" alt="" style="width: 100%; height: 340px;">
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Header End -->
 
 
         <!-- Search Start -->
-        <?php include('../User/include/search.php')?>
         <!-- Search End -->
 
         

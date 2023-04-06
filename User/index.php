@@ -111,7 +111,7 @@
                         <div class="row g-4">
                             <?php while ($data=mysqli_fetch_array($query)) { $show = false;?>
                             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="property-item rounded overflow-hidden" style="height: 500px;">
+                                <div class="property-item rounded overflow-hidden">
                                     <div class="position-relative overflow-hidden">
                                         <a href="./property_details.php?pid='<?php echo $data['pid'] ?>'"><img
                                                 style="height: 307px;" class="img-fluid"

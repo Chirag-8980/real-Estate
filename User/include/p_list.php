@@ -4,34 +4,42 @@ $show = true;
 
     switch ($_GET['filter']) {
         case 'new':
-                $select_q = "select * from tblhouse where qc='success' order by date desc";
+                $select_q = "select * from tblhouse where qc='success' and status='Active' order by date";
                 $query = mysqli_query($con, $select_q);
+                $total = mysqli_fetch_array(mysqli_query($con , "select count(*) as total from tblhouse where  qc='success' and status='Active'"));
             break;
             case 'old':
-                $select_q = "select * from tblhouse where qc='success' order by date desc";
+                $select_q = "select * from tblhouse where qc='success' and status='Active' order by date desc";
                 $query = mysqli_query($con, $select_q);
+                $total = mysqli_fetch_array(mysqli_query($con , "select count(*) as total from tblhouse where  qc='success' and status='Active'order by date desc"));
+
             break;
             case 'sell':
-                $select_q = "select * from tblhouse where qc='success' AND stype='sell'";
+                $select_q = "select * from tblhouse where qc='success' and status='Active' AND stype='sell'";
                 $query = mysqli_query($con, $select_q);
+                $total = mysqli_fetch_array(mysqli_query($con , "select count(*) as total from tblhouse where  qc='success' and status='Active'  AND stype='sell'"));
             break;
             case 'rent':
-                $select_q = "select * from tblhouse where qc='success'  AND stype='rent'";
+                $select_q = "select * from tblhouse where qc='success' and status='Active'  AND stype='rent'";
                 $query = mysqli_query($con, $select_q);
+                $total = mysqli_fetch_array(mysqli_query($con , "select count(*) as total from tblhouse where  qc='success' and status='Active'  AND stype='rent'"));
             break;
             case 'featured':
-                $select_q = "select * from tblhouse where qc='success'  AND featured='Yes'";
+                $select_q = "select * from tblhouse where qc='success' and status='Active'  AND featured='Yes'";
                 $query = mysqli_query($con, $select_q);
+                $total = mysqli_fetch_array(mysqli_query($con , "select count(*) as total from tblhouse where  qc='success' and status='Active'  AND featured='Yes' "));
             break;
             case 'price':
                 $tprice = $_GET['tprice'];
                 $fprice = $_GET['fprice'];
                 $select_q = "select * from tblhouse where qc='success'  AND price Between '$tprice' and '$fprice'";
                 $query = mysqli_query($con, $select_q);
+                $total = mysqli_fetch_array(mysqli_query($con , "select count(*) as total from tblhouse where qc='success'  AND price Between '$tprice' and '$fprice'"));
             break;
             default:
                 $select_q = "select * from tblhouse where qc='success' and status='Active'";
                 $query = mysqli_query($con, $select_q);
+                $total = mysqli_fetch_array(mysqli_query($con , "select count(*) as total from tblhouse where  qc='success' and status='Active'"));
                         }
                  
 
@@ -78,7 +86,8 @@ $show = true;
             <div class="container">
                 <div class="text-center mx-auto mb-5 text-black wow fadeInUp" data-wow-delay="0.1s"
                     style="max-width: 600px;">
-                    <h1 class="mb-3 text-black pb-2" style="border-bottom: 2px solid var(--tan);">Property Listing</h1>
+                    <h1 class="mb-3 text-black pb-2 mt-5
+                    " style="border-bottom: 2px solid var(--tan);">Property Listing</h1>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga quae sint asperiores architecto
                         quisquam exercitationem rerum facere in iste nisi!</p>
                 </div>
@@ -134,7 +143,7 @@ $show = true;
                 </ul>
 
             </div>
-            <div class="container-fluid mb-5 bg-black wow fadeIn rounded-3" data-wow-delay="0.1s"
+            <div class="container-fluid mb-4 bg-black wow fadeIn rounded-3" data-wow-delay="0.1s"
                 style="padding: 20px; ">
                 <div class="container ">
                     <div class="row justify-content-md-center">
@@ -170,13 +179,16 @@ $show = true;
                     </div>
                 </div>
             </div>
+            <div class="mb-4">
+                <p class="text-muted">Total <b class="text-black"><?php echo $total['total']?></b> property show here...</p>
+            </div>
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane fade show p-0 active">
                     <div class="row g-4">
                         <?php while ($data = mysqli_fetch_array($query)) {
                             $show = false; ?>
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="property-item rounded overflow-hidden" style="height: 500px;">
+                            <div class="property-item rounded overflow-hidden">
                                 <div class="position-relative overflow-hidden">
                                     <a href="./property_details.php?pid=<?php echo $data['pid'] ?>"><img
                                             style="height: 307px;" class="img-fluid"

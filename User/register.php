@@ -120,11 +120,7 @@ input.invalid {
 
     </script>
     <script>
-    // function SendOTP(e){
-    //     var email = document.getElementById('email').value
-    //     console.log(email);
-    //     console.log("Clicked");
-    // }
+   
     function myFunction() {
         document.getElementById("uname").required = true;
         document.getElementById("email").required = true;
