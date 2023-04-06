@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2023 at 12:53 PM
+-- Generation Time: Apr 06, 2023 at 08:01 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -95,7 +95,9 @@ INSERT INTO `tblcontact` (`id`, `uid`, `name`, `email`, `subject`, `msg`, `respo
 (21, 31, 'Chirag', 'chiragkachhadiya000@gmail.com', 'Kai MAja No avi', 'Bov Maja No avi', 'Hamare Yaha Isa hi  hota jai', 1, '0000-00-00'),
 (22, 30, 'Chirag', 'chiragkachhadiya000@gmail.com', 'Problem In Listing', 'dfghdfbg fgnhhfgbnh dsfbg', 'dfghmj,k sfdghmj', 1, '0000-00-00'),
 (23, 30, 'Kunj', 'kunj@gmail.com', 'sfdghjm', 'sdfghmj', 'fghnjm', 1, '0000-00-00'),
-(24, 30, 'Harsh', 'harsh@gmail.com', 'Prolem In Booking Property', 'fdghjk fghmj frgthjm', 'Your Prolbem Solve in 3 hours', 1, '2023-03-28');
+(24, 30, 'Harsh', 'harsh@gmail.com', 'Prolem In Booking Property', 'fdghjk fghmj frgthjm', 'Your Prolbem Solve in 3 hours', 1, '2023-03-28'),
+(26, 37, 'Harsh Munjpara', 'harshmunjapara005@gmail.com', 'Payments Related issues', 'bkjvkfn vnjv', 'Your Problem Is Solves', 1, '2023-04-03'),
+(27, 37, 'Harsh Munjpara', 'harshmunjapara005@gmail.com', 'Payment Related issue', 'nhmdvfbgn', 'Done', 1, '2023-04-03');
 
 -- --------------------------------------------------------
 
@@ -111,6 +113,16 @@ CREATE TABLE `tblfeedback` (
   `message` varchar(250) NOT NULL,
   `status` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblfeedback`
+--
+
+INSERT INTO `tblfeedback` (`fid`, `uid`, `name`, `email`, `message`, `status`) VALUES
+(73, 37, 'Harsh Munjpara', 'harshmunjapara005@gmail.com', 'Your Website IS Good', 1),
+(74, 37, 'Harsh Munjpara', 'harshmunjapara005@gmail.com', 'Your Website IS Good', NULL),
+(75, 37, 'Harsh Munjpara', 'harshmunjapara005@gmail.com', 'Good', 1),
+(76, 37, 'Harsh Munjpara', 'harshmunjapara005@gmail.com', 'Good', NULL);
 
 -- --------------------------------------------------------
 
@@ -141,7 +153,7 @@ CREATE TABLE `tblhouse` (
   `img2` varchar(250) NOT NULL,
   `img3` varchar(250) NOT NULL,
   `img4` varchar(250) NOT NULL,
-  `status` enum('Active','Inactive','','') NOT NULL DEFAULT 'Active',
+  `status` enum('Active','Inactive','','') NOT NULL DEFAULT 'Inactive',
   `featured` longtext NOT NULL,
   `description` longtext NOT NULL,
   `facilities` longtext NOT NULL,
@@ -155,10 +167,9 @@ CREATE TABLE `tblhouse` (
 --
 
 INSERT INTO `tblhouse` (`pid`, `uid`, `ptitle`, `ptype`, `bhk`, `stype`, `bedroom`, `balcony`, `bathroom`, `kitchen`, `hall`, `floor`, `tfloor`, `price`, `sqft`, `paddress`, `city`, `state`, `img1`, `img2`, `img3`, `img4`, `status`, `featured`, `description`, `facilities`, `date`, `qc`, `response`) VALUES
-(111, 33, 'New Home', 'House', '1', 'Sell', 1, 1, 1, 1, 1, 1, 13, 12100, '123', 'Simada Gam', 'Surat', 'Gujarat', 'images (6).jpg', 'images (5).jpg', 'images (4).jpg', 'images (2).jpg', 'Active', 'Yes', '<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.</p>\r\n<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham</p>', '<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Property Age : </span>10 Years</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Parking : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Maintanace : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Type : </span>Apartment</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Security : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Wifi Plan : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">3rd Party : </span>No</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Elevator : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">CCTV : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Water Supply : </span>Ground Water / Tank</li>\r\n</ul>\r\n</div>', '2023-04-01 10:49:05', 'Pending', ''),
-(112, 35, 'Jems House urfe Jaimil Bhai No Zapo', 'House', '1', 'Rent', 1, 1, 1, 1, 1, 1, 13, 12100, '123', '49 md park socity simada gam ', 'Surat', 'Gujarat', 'images (6).jpg', 'images (5).jpg', 'images (3).jpg', 'images (2).jpg', 'Inactive', 'Yes', '<p>zxcvbnm,fghfj,k. werthj,k. werthfj, wefghmj wdeghmj&nbsp;</p>', '<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Property Age : </span>10 Years</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Parking : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Maintanace : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Type : </span>Apartment</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Security : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Wifi Plan : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">3rd Party : </span>No</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Elevator : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">CCTV : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Water Supply : </span>Ground Water / Tank</li>\r\n</ul>\r\n</div>', '2023-03-31 12:47:52', 'Reject', 'this is not possible'),
-(113, 34, 'New Flat Near Vesu For Rent With Ceap Rental Price', 'Farm-House', '2', 'Rent', 1, 1, 1, 5, 5, 13, 1, 999, '123   ', '49 md park socity simada gam surat3', 'Surat', 'Gujarat', 'images (1).jpg', 'download (2).jpg', 'download (1).jpg', 'download (2).jpg', 'Active', 'Yes', '<div>\r\n<div>\r\n<div>\r\n<div>\r\n<div>\r\n<div>sdfgnhm dsfbgn sdfbgn dsfgn</div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>', '<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Property Age : </span>10 Years</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Parking : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Maintanace : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Type : </span>Apartment</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Security : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Wifi Plan : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">3rd Party : </span>No</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Elevator : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">CCTV : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Water Supply : </span>Ground Water / Tank</li>\r\n</ul>\r\n</div>', '2023-03-31 12:49:26', 'Reject', 'sfg'),
-(115, 33, 'New Farm House Near Vesu Road', 'Farm-House', '2', 'Rent', 1, 1, 1, 5, 1, 1, 13, 1459, '123', 'VIP Road Vesu', 'Surat', 'Gujarat', 'download.jpg', 'images (2).jpg', 'download (1).jpg', 'download.jpg', 'Active', 'Yes', '<p><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong><strong class=\"d-inline-block mb-2 text-primary\">New Property Near Vesu Road</strong></p>', '<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Property Age : </span>10 Years</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Parking : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Maintanace : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Type : </span>Apartment</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Security : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Wifi Plan : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">3rd Party : </span>No</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Elevator : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">CCTV : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Water Supply : </span>Ground Water / Tank</li>\r\n</ul>\r\n</div>', '2023-03-31 13:00:52', 'Reject', 'This is Fack Listing');
+(116, 37, 'Harsh No Zapo', 'Pent-House', '3', 'Rent', 10, 5, 3, 5, 5, 5, 6, 999, '2199', 'VIP Road Vesu', 'Surat', 'Gujarat', 'images (4).jpg', 'images (3).jpg', 'images (2).jpg', 'download (2).jpg', 'Active', 'Yes', '<p>asdfbgnhmj,k./ sadfghjk.l sdfghjkl/ sdrdtfhjkl dfsfrgthjkl</p>', '<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Property Age : </span>10 Years</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Parking : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Maintanace : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Type : </span>Apartment</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Security : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Wifi Plan : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">3rd Party : </span>No</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Elevator : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">CCTV : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Water Supply : </span>Ground Water / Tank</li>\r\n</ul>\r\n</div>', '2023-04-05 13:12:07', 'Reject', 'sdfgnh'),
+(117, 37, 'Harsh No Delo', 'House', '1', 'Rent', 10, 1, 1, 5, 5, 1, 5, 111, '2199', 'A-504 Raghuveer Heights VIP Road Vesu ', 'surat', 'Gujarat', 'images (1).jpg', 'images.jpg', 'download (1).jpg', 'download.jpg', 'Active', 'Yes', '<p>adsfghjk. QWERTYJK WRHJK srdtfygukhjl sdghjk shjk shjkl tjkb est</p>', '<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Property Age : </span>10 Years</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Parking : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Maintanace : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Type : </span>Apartment</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Security : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Wifi Plan : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">3rd Party : </span>No</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Elevator : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">CCTV : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Water Supply : </span>Ground Water / Tank</li>\r\n</ul>\r\n</div>', '2023-04-04 09:19:40', 'Success', 'Not Possible'),
+(119, 39, 'CK No Delo', 'Banglow', '1', 'Sell', 1, 2, 1, 1, 1, 1, 1, 888, '1233', '49 md park socity', 'Surat', 'Gujarat', 'image (1).jpg', 'image (3).jpg', 'download.jpg', 'download (2).jpg', 'Inactive', 'Yes', '<p>vksjdvnsdnkj dvnsdvnoivs viovvwiowwivn dviojsvwoi dvjoivjo vjsovjwo dvoivo do ofnv</p>', '<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Property Age : </span>10 Years</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Parking : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Maintanace : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Type : </span>Apartment</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Security : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Wifi Plan : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">3rd Party : </span>No</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Elevator : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">CCTV : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Water Supply : </span>Ground Water / Tank</li>\r\n</ul>\r\n</div>', '2023-04-04 11:58:19', 'Success', 'Your Listing Is Live...');
 
 -- --------------------------------------------------------
 
@@ -186,10 +197,8 @@ CREATE TABLE `tblpbooking` (
 --
 
 INSERT INTO `tblpbooking` (`bid`, `name`, `pid`, `seller_id`, `buyer_id`, `email`, `cindate`, `coutdate`, `bdate`, `status`, `details`, `reason`) VALUES
-(30, '', 111, 33, 34, 'ckcreation3112@gmail.com', '', '', '2023-03-30', 'Success', 'ertfghj trthjgm', ''),
-(31, 'Ck Creation', 111, 33, 34, 'ckcreation3112@gmail.com', '', '', '2023-03-30', 'Pending', 'sdfbgnhm', ''),
-(32, 'Ck Creation', 111, 33, 34, 'ckcreation3112@gmail.com', '', '', '2023-03-30', 'Pending', 'I Will Take This Property...', ''),
-(33, 'Harsh', 112, 35, 36, 'harshmunjapara005@gmail.com', '2023-03-30', '2023-05-26', '2023-03-30', 'Success', 'Tamaro Zapo Levo Che Apo', 'dfghjkl sadfghjk,.l dasfghj,k');
+(34, 'Chirag', 116, 37, 38, 'chiragkachhadiya000@gmail.com', '2023-04-22', '2023-05-24', '2023-04-03', 'Reject', 'Avi Jajo Tamtmare', 'xcvbnm'),
+(36, 'Chirag', 119, 39, 38, 'chiragkachhadiya000@gmail.com', '', '', '2023-04-04', 'Success', 'I Buy this property ', 'sdfgnhmj,');
 
 -- --------------------------------------------------------
 
@@ -211,8 +220,7 @@ CREATE TABLE `tblplan` (
 --
 
 INSERT INTO `tblplan` (`p_id`, `p_name`, `p_price`, `p_credit`, `p_description`, `date`) VALUES
-(1, 'Pro', 100, 1, '<p>This Is A First Plan</p>', '2023-04-01'),
-(2, 'Standard', 200, 3, '<p>This Is Second Plan</p>', '2023-04-01');
+(4, 'Gold', 500, 4, '<p>This Is Gold Plan</p>', '2023-04-01');
 
 -- --------------------------------------------------------
 
@@ -223,23 +231,33 @@ INSERT INTO `tblplan` (`p_id`, `p_name`, `p_price`, `p_credit`, `p_description`,
 CREATE TABLE `tblpmt` (
   `pmid` int(255) NOT NULL,
   `uid` int(11) NOT NULL,
+  `p_id` int(11) NOT NULL,
   `pstatus` varchar(255) NOT NULL DEFAULT 'Paid',
   `pmtid` varchar(255) NOT NULL,
   `amt` int(255) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `plan` varchar(250) NOT NULL
+  `p_name` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tblpmt`
 --
 
-INSERT INTO `tblpmt` (`pmid`, `uid`, `pstatus`, `pmtid`, `amt`, `date`, `plan`) VALUES
-(7, 34, 'Paid', 'pay_LY64blk3522TQk', 1000, '2023-03-31 10:23:02', ''),
-(8, 33, 'Paid', 'pay_LY7m5pU4zg9QVB', 100, '2023-03-31 12:02:55', 'Pro'),
-(9, 33, 'Paid', 'pay_LY82hQzJd8792a', 100, '2023-03-31 12:18:36', 'Pro'),
-(10, 33, 'Paid', 'pay_LY8cdnQotJOgpe', 100, '2023-03-31 12:52:38', 'Pro'),
-(11, 33, 'Paid', 'pay_LYSyGyQqPF5tls', 100, '2023-04-01 08:47:02', 'Pro');
+INSERT INTO `tblpmt` (`pmid`, `uid`, `p_id`, `pstatus`, `pmtid`, `amt`, `date`, `p_name`) VALUES
+(7, 34, 0, 'Paid', 'pay_LY64blk3522TQk', 1000, '2023-03-31 10:23:02', ''),
+(8, 33, 0, 'Paid', 'pay_LY7m5pU4zg9QVB', 100, '2023-03-31 12:02:55', 'Pro'),
+(9, 33, 0, 'Paid', 'pay_LY82hQzJd8792a', 100, '2023-03-31 12:18:36', 'Pro'),
+(10, 33, 0, 'Paid', 'pay_LY8cdnQotJOgpe', 100, '2023-03-31 12:52:38', 'Pro'),
+(11, 33, 0, 'Paid', 'pay_LYSyGyQqPF5tls', 100, '2023-04-01 08:47:02', 'Pro'),
+(12, 33, 0, 'Paid', 'pay_LYVVARj7SYslH8', 889, '2023-04-01 11:15:31', 'Pro'),
+(13, 33, 0, 'Paid', 'pay_LYVZD3ZrptBWfJ', 200, '2023-04-01 11:19:20', 'Standard'),
+(14, 33, 4, 'Paid', 'pay_LYVyMbDiNGS7dY', 800, '2023-04-01 11:43:08', 'Gold'),
+(15, 33, 4, 'Paid', 'pay_LYW0oPnsAGfoA4', 800, '2023-04-01 11:45:29', 'Gold'),
+(16, 37, 4, 'Paid', 'pay_LZC8Y3EZdHushW', 800, '2023-04-03 04:57:56', 'Gold'),
+(17, 37, 4, 'Paid', 'pay_LZD7z02l14AtGb', 500, '2023-04-03 05:56:05', 'Gold'),
+(18, 37, 7, 'Paid', 'pay_LZgDcSgQil7bCA', 100, '2023-04-04 10:23:31', 'Standard'),
+(19, 37, 4, 'Paid', 'pay_LZgOOu0KxdY5yt', 500, '2023-04-04 10:33:44', 'Gold'),
+(20, 38, 4, 'Paid', 'pay_La10z7J3vbWYd8', 500, '2023-04-05 06:44:09', 'Gold');
 
 -- --------------------------------------------------------
 
@@ -253,7 +271,7 @@ CREATE TABLE `user` (
   `mno` varchar(250) NOT NULL,
   `email` varchar(250) NOT NULL,
   `password` varchar(250) NOT NULL,
-  `designation` varchar(250) NOT NULL,
+  `p_img` varchar(250) NOT NULL,
   `address` varchar(250) NOT NULL,
   `instagram` varchar(250) NOT NULL,
   `facebook` varchar(250) NOT NULL,
@@ -265,11 +283,10 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`uid`, `uname`, `mno`, `email`, `password`, `designation`, `address`, `instagram`, `facebook`, `twitter`, `credit`) VALUES
-(33, 'Chirag', '8980750691', 'chiragkachhadiya000@gmail.com', '$2y$10$dwb0Z1jODG/FpQBvLLURneg/66DiEDHh0wM/If/haD3OYovFkvMSu', 'designation', '49 MD Park Socity Simada Gam', 'instagram', 'facebook', 'twitter', 3),
-(34, 'Ck Creation', '8980750691', 'ckcreation3112@gmail.com', '$2y$10$MPdrTNXl7N/5A7avzegSs.IuS8wUIFqBEb5DzOr3ZqmRo3gkIUUG.', 'designation', '', 'instagram', 'facebook', 'twitter', 4),
-(35, 'Jaimil', '8238378852', 'jaimilkanejeeya630@gmail.com', '$2y$10$19Fw0aNjfcMj/Jxh/jRHA.JQY8b0MqF8rcFVe0Rdi6QtniJWc6I.i', 'designation', '', 'instagram', 'facebook', 'twitter', 3),
-(36, 'Harsh', '8238273464', 'harshmunjapara005@gmail.com', '$2y$10$0/9hX6EkfFxJ77xQlO841uxgjFkKWXS1jQ.AnDHPnbcjQdEIpQ6O2', 'designation', '', 'instagram', 'facebook', 'twitter', 3);
+INSERT INTO `user` (`uid`, `uname`, `mno`, `email`, `password`, `p_img`, `address`, `instagram`, `facebook`, `twitter`, `credit`) VALUES
+(37, 'Harsh Munjpara', '8238273464', 'harshmunjapara005@gmail.com', '$2y$10$LfRpao6qs5my3XmtjdKiwO9xdGAb45OxyDPp.cSqiFAWAQ4A16u2O', 'designation', '', 'instagram', 'facebook', 'twitter', 14),
+(38, 'Chirag', '8980750691', 'chiragkachhadiya000@gmail.com', '$2y$10$NLvQ27JpNKNlx7JCWZzln.sWU2f3esqGrbSBpeq0GXgK.97nZR7W6', 'designation', 'sdfbgn', 'instagram', 'facebook', 'twitter', 4),
+(39, 'CK', '8980750691', 'ckcreation3112@gmail.com', '$2y$10$2XUJPxUK.J.9u6L1fELpTeuQPVKEHoJfzZR9aqW2TwQcSuuGzLSOa', 'designation', '', 'instagram', 'facebook', 'twitter', 2);
 
 --
 -- Indexes for dumped tables
@@ -355,43 +372,43 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `tblcontact`
 --
 ALTER TABLE `tblcontact`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `tblfeedback`
 --
 ALTER TABLE `tblfeedback`
-  MODIFY `fid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `fid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `tblhouse`
 --
 ALTER TABLE `tblhouse`
-  MODIFY `pid` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+  MODIFY `pid` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
 -- AUTO_INCREMENT for table `tblpbooking`
 --
 ALTER TABLE `tblpbooking`
-  MODIFY `bid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `bid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `tblplan`
 --
 ALTER TABLE `tblplan`
-  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tblpmt`
 --
 ALTER TABLE `tblpmt`
-  MODIFY `pmid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `pmid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `uid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `uid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

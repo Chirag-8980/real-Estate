@@ -85,7 +85,7 @@ if(!isset($_SESSION['auser']))
                                         <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
                                             <thead>
                                                 <tr>
-                                                    <th>P ID</th>
+                                                    <th>PID</th>
                                                     <th>Title</th>
                                                     <th>Description</th>
                                                     <th>Type</th>

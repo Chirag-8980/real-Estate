@@ -13,7 +13,7 @@ require("config.php");
                 if($res){
                     $_SESSION['msg']="Rejected Succesfully";
                     $_SESSION['status']="success";
-                    header('location:property_req.php');
+                    header('location:property_req.php?type=Reject');
                 }
             } else {
                 $_SESSION['msg']="Some Error In Reject Property";

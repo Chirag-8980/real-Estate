@@ -118,16 +118,21 @@ if (!isset($_SESSION['auser'])) {
                         <li class="submenu">
                             <a href="#"><span>View Property </span> <span class="menu-arrow"></span></a>
                             <ul style="display: none;">
-                                <li><a href="propertyview_success.php">Listed Property</a></li>
-                                <li><a href="propertyview_pending.php">Pending Property</a></li>
-                                <li><a href="propertyview_reject.php">Reject Property</a></li>
-
+                                <li><a href="view_property.php?p_type=all">All Property</a></li>
+                                <li><a href="view_property.php?p_type=House">House</a></li>
+                                <li><a href="view_property.php?p_type=Pent-House">Pent-House</a></li>
+                                <li><a href="view_property.php?p_type=Farm">Farm House</a></li>
+                                <li><a href="view_property.php?p_type=Banglow">Banglow</a></li>
+                                <li><a href="view_property.php?p_type=Flat">Flat</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
                             <a href="#"><span>Property Reqestes</span> <span class="menu-arrow"></span></a>
                             <ul style="display: none;">
-                                <li><a href="property_req.php?type=home">House Property</a></li>
+                                <li><a href="property_req.php?type=all">All</a></li>
+                                <li><a href="property_req.php?type=Pending">Pending</a></li>
+                                <li><a href="property_req.php?type=Success">Success</a></li>
+                                <li><a href="property_req.php?type=Reject">Reject</a></li>
                                 <!-- <li><a href="property_req.php?type=business">Business Property </a></li>
                                 <li><a href="property_req.php?type=occasion">Ocassion Property</a></li> -->
 
@@ -146,7 +151,6 @@ if (!isset($_SESSION['auser'])) {
                     <ul style="display: none;">
                         <li><a href="view_plan.php"> View Plan </a></li>
                         <li><a href="add_plan.php"> Add Plan </a></li>
-                        <li><a href="update_plan.php"> Update Plan </a></li>
                     </ul>
                 </li>
                 <li class="menu-title">

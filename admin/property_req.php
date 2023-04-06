@@ -9,7 +9,25 @@ error_reporting(0);
 if (!isset($_SESSION['auser'])) {
     header("location:index.php");
 }
-$get_data = (mysqli_query($con, "select * from tblhouse where qc='Pending'"));
+switch ($type) {
+    case 'all':
+        $get_data = (mysqli_query($con, "select * from tblhouse"));
+        break;
+    case 'Success':
+        $get_data = (mysqli_query($con, "select * from tblhouse where qc='Success'"));
+        break;
+    case 'Pending':
+        $get_data = (mysqli_query($con, "select * from tblhouse where qc='Pending'"));
+        break;
+    case 'Reject':
+        $get_data = (mysqli_query($con, "select * from tblhouse where qc='Reject'"));
+        break;
+    
+    default:
+        # code...
+        break;
+}
+
 
 
 // $response=$_POST['response'];
@@ -125,7 +143,9 @@ $get_data = (mysqli_query($con, "select * from tblhouse where qc='Pending'"));
                                         <th>Price</th>
                                         <th>Type</th>
                                         <th>View</th>
+                                        <?php if($type == 'Pending') {?>
                                         <th colspan="2" class="text-center">Action</th>
+                                        <?php }?>
                                     </tr>
                                 </thead>
 
@@ -143,12 +163,12 @@ $get_data = (mysqli_query($con, "select * from tblhouse where qc='Pending'"));
                                             <td><?php echo $data['ptype']; ?></td>
                                             <td><a href="property_details.php?pid=<?php echo $data['pid']; ?>&type=<?php echo $type; ?>">See
                                                     Details</a></td>
+                                            <?php if($type == 'Pending') {?>
                                             <td><a href="req_accept.php?pid=<?php echo $data['pid']; ?>&type=<?php echo $type; ?>">Accept</a>
                                             </td>
-                                            <!-- <td><button type="button" class="btn btn-danger"  data-toggle="modal"
-                                                data-target="#exampleModal1"><a href="property_reject.php?pid=<?php echo $data['pid']; ?>&response=<?php echo $response; ?>">Reject</a>
-                                            </button></td> -->
+                                            
                                             <td><a data-bs-toggle="modal" name="res" data-bs-target="#exampleModal1" href="">Reject</a></td>
+                                            <?php }?>
                                         </tr>
                                         <!-- Modal -->
                                         <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

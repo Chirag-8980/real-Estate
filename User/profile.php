@@ -73,10 +73,10 @@ $data = mysqli_fetch_array($query);
                                 <div class="card-body">
                                     <div class="d-flex flex-column align-items-center text-center">
                                         <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                                        
                                         <div class="mt-3">
                                             <h4><?php echo $data['uname'] ?></h4>
                                             <p class="text-dark mb-1"></p>
-                                            <p class="text-muted font-size-sm"><?php echo $data['designation'] ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -140,7 +140,12 @@ $data = mysqli_fetch_array($query);
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <h6 class="mb-0">Address</h6>
+                                            <h6 class="mb-0">Address
+                                            <?php if($data['address'] == null) {?>
+                        <span class="position-absolute top-80 start-80  p-1 bg-danger  rounded-circle">
+                                <span class="visually-hidden">New alerts</span>
+                        <?php }?>
+                                            </h6>
                                         </div>
                                         <div class="col-sm-9 text-dark">
                                             <?php echo $data['address'] ?>
@@ -149,7 +154,12 @@ $data = mysqli_fetch_array($query);
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <a class="btn btn-info " href="edit_profile.php">Edit</a>
+                                            <a class="btn btn-info " href="edit_profile.php">Edit
+                                            <?php if($data['address'] == null) {?>
+                        <span class="position-absolute top-80 start-80  p-1 bg-danger rounded-circle">
+                                <span class="visually-hidden">New alerts</span>
+                        <?php }?>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

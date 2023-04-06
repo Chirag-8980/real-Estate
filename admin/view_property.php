@@ -7,6 +7,30 @@ if(!isset($_SESSION['auser']))
 {
 	header("location:index.php");
 }
+    $p_type = $_GET['p_type'];
+    switch ($p_type) {
+        case 'all':
+            $query=mysqli_query($con,"select * from tblhouse");
+            break;
+        case 'Flat':
+            $query=mysqli_query($con,"select * from tblhouse where ptype='Flat'");
+            break;
+        case 'Banglow':
+            $query=mysqli_query($con,"select * from tblhouse where ptype='Banglow'");
+            break;
+        case 'Farm':
+            $query=mysqli_query($con,"select * from tblhouse where ptype=Farm-'House'");
+            break;
+        case 'Pent-House':
+            $query=mysqli_query($con,"select * from tblhouse where ptype=Pent-'House'");
+            break;
+        case 'House':
+            $query=mysqli_query($con,"select * from tblhouse where ptype='House'");
+            break;
+        default:
+            $query=mysqli_query($con,"select * from tblhouse");
+            break;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,7 +111,7 @@ if(!isset($_SESSION['auser']))
                                                 <tr>
                                                     <th>P ID</th>
                                                     <th>Title</th>
-                                                    <th>House Type</th>
+                                                    <th>Price</th>
                                                     <th>Description</th>
                                                     <th>Type</th>
                                                     <th>BHK</th>
@@ -99,7 +123,7 @@ if(!isset($_SESSION['auser']))
                                                     <th>Hall</th>
                                                     <th>Floor</th>
 													<th>Area Size</th>
-                                                    <th>Price</th>
+                                                    <th>Property Type</th>
                                                     <th>Location</th>
                                                     <th>City</th>
                                                     <th>State</th>
@@ -118,8 +142,6 @@ if(!isset($_SESSION['auser']))
                                         
                                             <tbody>
 												<?php
-													
-													$query=mysqli_query($con,"select * from tblhouse where qc='success'");
 													while($row=mysqli_fetch_row($query))
 													{
 												?>
@@ -127,9 +149,9 @@ if(!isset($_SESSION['auser']))
                                                 <tr>
                                                     <td><?php echo $row['0']; ?></td>
                                                     <td><?php echo $row['2']; ?></td>
-                                                    <td><?php echo $row['3']; ?></td>
+                                                    <td><?php echo $row['13']; ?></td>
                                                     <td><?php echo $row['24']; ?></td>
-                                                    <td><?php echo $row['3']; ?></td>
+                                                    <td><?php echo $row['5']; ?></td>
                                                     <td><?php echo $row['4']; ?></td>
                                                     <td><?php echo $row['5']; ?></td>
                                                     <td><?php echo $row['6']; ?></td>
@@ -139,7 +161,7 @@ if(!isset($_SESSION['auser']))
 													<td><?php echo $row['10']; ?></td>
                                                     <td><?php echo $row['11']; ?></td>
                                                     <td><?php echo $row['14']; ?></td>
-                                                    <td><?php echo $row['13']; ?></td>
+                                                    <td><?php echo $row['3']; ?></td>
                                                     <td><?php echo $row['15']; ?></td>
 													<td><?php echo $row['16']; ?></td>
                                                     <td><?php echo $row['17']; ?></td>

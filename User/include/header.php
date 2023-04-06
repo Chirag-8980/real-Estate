@@ -4,6 +4,7 @@
     if(isset($_SESSION['uid'])){
         $uid = $_SESSION['uid'];
         $book_property = mysqli_fetch_array(mysqli_query($con , "select count(*) as total from tblpbooking where seller_id=$uid and status = 'Pending' "));
+        $user_data = mysqli_fetch_array(mysqli_query($con , "select * from user where uid= $uid"));
     }
 ?>
 
@@ -51,7 +52,6 @@
                                  <span class="badge bg-danger rounded-circle"><?php echo $book_property['total']?></span>
                                  <?php }?>
                                 </a>
-                           
                         </div>
                     </div>
                     <?php } else{?>
@@ -63,19 +63,28 @@
                         </div>
                     </div>
                     <?php }
-                    if (isset($_SESSION['uid'])) {
-                        echo '<div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">My Account</a>
+                    if (isset($_SESSION['uid'])) { ?>
+                        <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">My Account
+                        <?php if($user_data['p_img'] == null or $user_data['address'] == null) {?>
+                        <span class="position-absolute top-80 start-80 translate-middle p-1 bg-danger  rounded-circle">
+                                <span class="visually-hidden">New alerts</span>
+                        <?php }?>
+                        </a>
                         <div class="dropdown-menu rounded-0 m-0">
-                            <a href="profile.php" class="dropdown-item">My Profile</a>
+                            <a href="profile.php" class="dropdown-item">My Profile
+                            <?php if($user_data['p_img'] == null or $user_data['address'] == null) {?>
+                        <span class="position-absolute top-80 start-80 p-1 bg-danger rounded-circle">
+                                <span class="visually-hidden">New alerts</span>
+                        <?php }?>
+                            </a>
                             <a href="user-property.php?filter=all" class="dropdown-item">My Property</a>
                             <a href="logout.php" class="dropdown-item">Logout</a>    
                         </div>
-                    </div>';
-                    } else {
-                        echo '<a href="logout.php" class="nav-item nav-link">Login</a>';
-                    }
-                    ?>
+                    </div>
+                    <?php } else { ?>
+                        <a href="logout.php" class="nav-item nav-link">Login</a>
+                    <?php } ?>
 
                 </div>
                 <a href="addhouse.php" class="btn text-black bg-tan px-3 d-none d-lg-flex">Add Property</a>
