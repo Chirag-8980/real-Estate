@@ -9,18 +9,23 @@
     if(!$property_type == null AND !$city == null ){
         $sql = " SELECT * FROM tblhouse WHERE `city`='$city' and `ptype`='$property_type'";
         $run = mysqli_query($con , $sql);
+        $total = mysqli_fetch_array(mysqli_query($con , "SELECT count(*) as total FROM tblhouse WHERE `city`='$city' and `ptype`='$property_type'"));
     }elseif(!$property_type == null AND !$query == null){
-        $sql = " SELECT * FROM tblhouse WHERE MATCH (ptitle,description,ptype,city,state) AGAINST ('$query') and `ptype`='$property_type'";
+        $sql = " SELECT * FROM tblhouse WHERE MATCH (ptitle,description,paddress,facilities) AGAINST ('$query') and `ptype`='$property_type'";
         $run = mysqli_query($con , $sql);
+        $total = mysqli_fetch_array(mysqli_query($con , "SELECT count(*) as total FROM tblhouse WHERE MATCH (ptitle,description,paddress,facilities) AGAINST ('$query') and `ptype`='$property_type'"));
     }elseif(!$city == null AND !$query == null){
-        $sql = " SELECT * FROM tblhouse WHERE MATCH (ptitle,description,ptype,city,state) AGAINST ('$query') and `city`='$city'";
+        $sql = " SELECT * FROM tblhouse WHERE MATCH (ptitle,description,paddress,facilities) AGAINST ('$query') and `city`='$city'";
         $run = mysqli_query($con , $sql);
+        $total = mysqli_fetch_array(mysqli_query($con , "SELECT count(*) as total FROM tblhouse WHERE MATCH (ptitle,description,paddress,facilities) AGAINST ('$query') and `city`='$city'"));
     }elseif(!$property_type == null){
         $sql = " SELECT * FROM tblhouse WHERE `ptype`='$property_type'";
         $run = mysqli_query($con , $sql);
+        $total = mysqli_fetch_array(mysqli_query($con , "SELECT count(*) as total FROM tblhouse WHERE `ptype`='$property_type'"));
     }elseif(!$query == null){
-        $sql = " SELECT * FROM tblhouse WHERE  MATCH (ptitle,description,ptype,city,state) AGAINST ('$query') ";
+        $sql = " SELECT * FROM tblhouse WHERE  MATCH (ptitle,description,paddress,facilities) AGAINST ('$query') ";
         $run = mysqli_query($con , $sql);
+        $total = mysqli_fetch_array(mysqli_query($con , "SELECT count(*) as total FROM tblhouse WHERE  MATCH (ptitle,description,paddress,facilities) AGAINST ('$query')"));
     }
 
     
@@ -78,7 +83,9 @@
                         <h1 class="mb-3 text-black">Your Search Result For "<em><?php echo $query?></em>" in "<em><?php echo $property_type?></em>" Category </h1>
                     </div>
                 </div>
-                
+            </div>
+            <div class="mb-4">
+                <p class="text-muted">Total <b class="text-black"><?php echo $total['total']?></b> property show here...</p>
             </div>
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane fade h-autp show p-0 active">

@@ -7,11 +7,13 @@ if (isset($_POST['submit'])) {
   $status = $_POST['status'];
   $reason = $_POST['reason'];
   $bid = $_GET['bid'];
+  echo $bid;
   if ($status == "Success") {
-    $queary = mysqli_query($con, "UPDATE `tblpbooking` SET `status`='$status',`reason`='$reason' WHERE `bid`= '$bid'");
+    $queary = mysqli_query($con, "UPDATE `tblpbooking` SET `status`='Success',`reason`='$reason' WHERE `bid`= '$bid'");
     if ($queary) {
       $pid = $_GET['pid'];
       $Status_Update = mysqli_query($con, "UPDATE `tblhouse` SET `status`='Inactive' WHERE pid = $pid");
+      $property_data = mysqli_fetch_array(mysqli_query($con, "SELECT *  From`tblhouse`  WHERE pid = $pid"));
 
       if ($Status_Update) {
         $b_email = mysqli_fetch_array(mysqli_query($con, "select * from tblpbooking where bid = $bid"));
@@ -382,7 +384,15 @@ if (isset($_POST['submit'])) {
                                                                       style="padding-left:10px;padding-right:10px;font-size:12px;display:inline-block;letter-spacing:normal;"><span
                                                                         style="font-size: 16px; margin: 0; word-break: break-word; line-height: 2; mso-line-height-alt: 32px;"><strong><span
                                                                             data-mce-style="font-size:12px;"
-                                                                            style="font-size:12px;">SOLD</span></strong></span></span>
+                                                                            style="font-size:12px;">'.$property_data['stype'].'</span></strong></span></span>
+                                                                  </div>
+                                                                  <div
+                                                                    style="text-decoration:none;display:inline-block;color:#00b074;background-color:#e5f7f1;border-radius:3px;width:auto;border-top:0px solid transparent;font-weight:undefined;border-right:0px solid transparent;border-bottom:0px solid transparent;border-left:0px solid transparent;padding-top:1px;padding-bottom:2px;font-family:Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:12px;text-align:center;mso-border-alt:none;word-break:keep-all;">
+                                                                    <span
+                                                                      style="padding-left:10px;padding-right:10px;font-size:12px;display:inline-block;letter-spacing:normal;"><span
+                                                                        style="font-size: 16px; margin: 0; word-break: break-word; line-height: 2; mso-line-height-alt: 32px;"><strong><span
+                                                                            data-mce-style="font-size:12px;"
+                                                                            style="font-size:12px;">'.$property_data['price'].' Only /-</span></strong></span></span>
                                                                   </div>
                                                                   <!--[if mso]></center></v:textbox></v:roundrect><![endif]-->
                                                                 </div>
@@ -402,8 +412,8 @@ if (isset($_POST['submit'])) {
                                                                     <p
                                                                       style="margin: 0; font-size: 16px; text-align: left; mso-line-height-alt: 19.2px;">
                                                                       <span
-                                                                        style="font-size:34px;color:#2b3940;"><strong>5
-                                                                          Bedrooms Apartment</strong></span>
+                                                                        style="font-size:34px;color:#2b3940;"><strong>'.$property_data['bedroom'].'
+                                                                          Bedrooms '.$property_data['ptype'].' </strong></span>
                                                                     </p>
                                                                   </div>
                                                                 </div>
@@ -423,8 +433,7 @@ if (isset($_POST['submit'])) {
                                                                     <p
                                                                       style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;">
                                                                       <strong><span
-                                                                          style="font-size:18px;color:#2b3940;">Springfield
-                                                                          Gardens, New York</span></strong>
+                                                                          style="font-size:18px;color:#2b3940;">'.$property_data['paddress'].'</span></strong>
                                                                     </p>
                                                                   </div>
                                                                 </div>
@@ -443,13 +452,20 @@ if (isset($_POST['submit'])) {
                                                                     style="font-size: 14px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 21px; color: #555555; line-height: 1.5;">
                                                                     <p
                                                                       style="margin: 0; font-size: 14px; mso-line-height-alt: 21px;">
-                                                                      <span style="color:#7e8989;">Quisque vitae
-                                                                        tristique sem. Nullam vulputate nisi sed
-                                                                        purus pulvinar dictum. Vestibulum ante
-                                                                        ipsum primis in faucibus orci luctus et
-                                                                        ultrices posuere cubilia Curae; Donec a
-                                                                        lorem quam. Nullam lobortis fringilla
-                                                                        varius. Nullam suscipit …</span></p>
+                                                                      <span style="color:#7e8989;">'.$property_data['decription'].'</span></p>
+                                                                  </div>
+                                                                </div>
+                                                              </td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td class="pad"
+                                                                style="padding-bottom:10px;padding-left:40px;padding-right:40px;padding-top:13px;">
+                                                                <div style="font-family: sans-serif">
+                                                                  <div class=""
+                                                                    style="font-size: 14px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 21px; color: #555555; line-height: 1.5;">
+                                                                    <p
+                                                                      style="margin: 0; font-size: 14px; mso-line-height-alt: 21px;">
+                                                                      <span style="color:#7e8989;">'.$property_data['facilities'].'</span></p>
                                                                   </div>
                                                                 </div>
                                                               </td>
@@ -532,7 +548,7 @@ if (isset($_POST['submit'])) {
                                                                     style="font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #7e8989; line-height: 1.2;">
                                                                     <p
                                                                       style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 16.8px;">
-                                                                      5 Bedrooms</p>
+                                                                      '.$property_data['bedroom'].' Bedrooms</p>
                                                                   </div>
                                                                 </div>
                                                               </td>
@@ -575,7 +591,7 @@ if (isset($_POST['submit'])) {
                                                                     style="font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #7e8989; line-height: 1.2;">
                                                                     <p
                                                                       style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 16.8px;">
-                                                                      2 Bathrooms</p>
+                                                                      '.$property_data['kitchen'].' Kitchen</p>
                                                                   </div>
                                                                 </div>
                                                               </td>
@@ -618,7 +634,7 @@ if (isset($_POST['submit'])) {
                                                                     style="font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #7e8989; line-height: 1.2;">
                                                                     <p
                                                                       style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 16.8px;">
-                                                                      1075 sq.f.</p>
+                                                                      '.$property_data['balcony'].' Balcony</p>
                                                                   </div>
                                                                 </div>
                                                               </td>
@@ -679,7 +695,7 @@ if (isset($_POST['submit'])) {
                                                                     style="font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #7e8989; line-height: 1.2;">
                                                                     <p
                                                                       style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 16.8px;">
-                                                                      5 Bedrooms</p>
+                                                                      '.$property_data['hall'].' Hall</p>
                                                                   </div>
                                                                 </div>
                                                               </td>
@@ -722,7 +738,7 @@ if (isset($_POST['submit'])) {
                                                                     style="font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #7e8989; line-height: 1.2;">
                                                                     <p
                                                                       style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 16.8px;">
-                                                                      2 Bathrooms</p>
+                                                                      '.$property_data['bathroom'].' Bathrooms</p>
                                                                   </div>
                                                                 </div>
                                                               </td>
@@ -765,7 +781,7 @@ if (isset($_POST['submit'])) {
                                                                     style="font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #7e8989; line-height: 1.2;">
                                                                     <p
                                                                       style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 16.8px;">
-                                                                      1075 sq.f.</p>
+                                                                      '.$property_data['bhk'].' BHK</p>
                                                                   </div>
                                                                 </div>
                                                               </td>
@@ -853,7 +869,7 @@ if (isset($_POST['submit'])) {
                                                                       <span style="color:#2b3940;"><span
                                                                           style="font-size:24px;"><strong>Thank
                                                                             You
-                                                                            Vising...</strong></span></span>
+                                                                            Visiting...</strong></span></span>
                                                                     </p>
                                                                   </div>
                                                                 </div>

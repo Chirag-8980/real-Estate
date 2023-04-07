@@ -38,19 +38,18 @@ $query = mysqli_query($con, "select * from tblplan");
                                 <ul class="list-unstyled mt-3 mb-4">
                                     <?php echo $data['p_description'] ?>
                                 </ul>
-                                <button type="button" class="w-100 btn btn-lg btn-primary" id="<?php echo $data['p_id'] ?>" onclick="pay_now()">Get started</button>
+                                <button type="button" class="w-100 btn btn-lg btn-primary" id="payment<?php echo $data['p_id'] ?>" onclick="pay_now<?php echo $data['p_id']?>()">Get started</button>
                             </div>
                         </div>
                         <script>
-                            function pay_now() {
+                            function <?php $pid1 = $data['p_id']; echo "pay_now$pid1"?>() {
                                 var options = {
-                                    "key": "rzp_test_WVSwVyjTamNVvO", // Enter the Key ID generated from the Dashboard
-                                    "amount": <?php echo $data['p_price']; ?> * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                                    "key": "rzp_test_WVSwVyjTamNVvO",
+                                    "amount": <?php echo $data['p_price']; ?> * 100,
                                     "currency": "INR",
                                     "name": "Locus",
                                     "description": "Test Transaction",
                                     "image": "https://example.com/your_logo",
-                                    // "order_id": "order_IluGWxBm9U8zJ8", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
                                     "handler": function(response) {
                                         console.log(response);
                                         $.ajax({
@@ -58,7 +57,7 @@ $query = mysqli_query($con, "select * from tblplan");
                                             'type': 'POST',
                                             'data': {
                                                 'pmtid': response.razorpay_payment_id,
-                                                'amt': <?php echo $data['p_price'];; ?>
+                                                'amt': <?php echo $data['p_price']; ?>
                                             },
 
                                             success: function(data) {
@@ -78,132 +77,21 @@ $query = mysqli_query($con, "select * from tblplan");
                                     alert(response.error.metadata.order_id);
                                     alert(response.error.metadata.payment_id);
                                 });
-                                document.getElementById('<?php echo $data['p_id'] ?>').onclick = function(e) {
+                                document.getElementById('payment<?php echo $data['p_id'] ?>').onclick = function(e) {
                                     rzp1.open();
                                     e.preventDefault();
                                 }
-                                // document.getElementById('rzp-button2').onclick = function(e) {
-                                //     rzp1.open();
-                                //     e.preventDefault();
-                                // }
                             };
                         </script>
                     <?php } ?>
                 </div>
-                <!-- <div class="col">
-                <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                    <div class="card-header py-3 text-bg-primary border-primary">
-                        <h4 class="my-0 fw-normal">Enterprise</h4>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="card-title pricing-card-title">$29<small
-                                class="text-body-secondary fw-light">/mo</small></h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                            <li>30 users included</li>
-                            <li>15 GB of storage</li>
-                            <li>Phone and email support</li>
-                            <li>Help center access</li>
-                        </ul>
-                        <button type="button" class="w-100 btn btn-lg btn-primary" id="rzp-button2" onclick="pay_now()">Contact us</button>
-                    </div>
-                </div>
-            </div> -->
+                
             </div>
         </div>
     </div>
 
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <script type="text/javascript">
-        //  function pay_now() {
-        //     var options = {
-        //         "key": "rzp_test_WVSwVyjTamNVvO", // Enter the Key ID generated from the Dashboard
-        //         "amount": <?php echo $amt; ?> * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-        //         "currency": "INR",
-        //         "name": "Locus",
-        //         "description": "Test Transaction",
-        //         "image": "https://example.com/your_logo",
-        //         // "order_id": "order_IluGWxBm9U8zJ8", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        //         "handler": function(response) {
-        //             console.log(response);
-        //             $.ajax({
-        //                 url: 'process_payment.php?plan=<?php echo $plan; ?>',
-        //                 'type': 'POST',
-        //                 'data': {
-        //                     'pmtid': response.razorpay_payment_id, 'amt':<?php echo $amt; ?>
-        //                 },
-
-        //                 success: function(data) {
-        //                     console.log(data);
-        //                     window.location.href = 'addhouse.php';
-        //                 }
-        //             });
-        //         },
-        //     }
-        //     var rzp1 = new Razorpay(options);
-        //     rzp1.on('payment.failed', function(response) {
-        //         alert(response.error.code);
-        //         alert(response.error.description);
-        //         alert(response.error.source);
-        //         alert(response.error.step);
-        //         alert(response.error.reason);
-        //         alert(response.error.metadata.order_id);
-        //         alert(response.error.metadata.payment_id);
-        //     });
-        //     document.getElementById('rzp-button1').onclick = function(e) {
-        //         rzp1.open();
-        //         e.preventDefault();
-        //     }
-        //     document.getElementById('rzp-button2').onclick = function(e) {
-        //         rzp1.open();
-        //         e.preventDefault();
-        //     }
-        //     };
-        //  function pay_now() {
-
-        // var options = {
-        //     "key": "rzp_test_WVSwVyjTamNVvO", // Enter the Key ID generated from the Dashboard
-        //     "amount": '<?php echo $amt; ?>' * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-        //     "currency": "INR",
-        //     "name": "Locus",
-        //     "description": "Test Transaction",
-        //     "image": "https://example.com/your_logo",
-        //     // "order_id": "order_IluGWxBm9U8zJ8", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        //     "handler": function(response) {
-        //         console.log(response);
-        //         $.ajax({
-        //             url: "process_payment.php?plan=<?php echo $plan; ?>",
-        //             'type': 'POST',
-        //             'data': {
-        //                 'pmtid': response.razorpay_payment_id, 'amt':'<?php echo $amt; ?>'
-        //             },
-
-        //             success: function(data) {
-        //                 console.log(data);
-        //                 window.location.href = 'addhouse.php';
-        //             }
-        //         });
-        //     },
-        // }
-        // var rzp1 = new Razorpay(options);
-        // rzp1.on('payment.failed', function(response) {
-        //     alert(response.error.code);
-        //     alert(response.error.description);
-        //     alert(response.error.source);
-        //     alert(response.error.step);
-        //     alert(response.error.reason);
-        //     alert(response.error.metadata.order_id);
-        //     alert(response.error.metadata.payment_id);
-        // });
-        // document.getElementById('rzp-button2').onclick = function(e) {
-        //     rzp1.open();
-        //     e.preventDefault();
-        // }
-        // };
-
-        // alert(response.razorpay_payment_id);
-        //     alert(response.razorpay_order_id);
-        //     alert(response.razorpay_signature)
-    </script>
+   
 </body>
 
 </html>

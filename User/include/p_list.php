@@ -41,7 +41,6 @@ $show = true;
                 $query = mysqli_query($con, $select_q);
                 $total = mysqli_fetch_array(mysqli_query($con , "select count(*) as total from tblhouse where  qc='success' and status='Active'"));
                         }
-                 
 
 ?>
 <!DOCTYPE html>
