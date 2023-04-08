@@ -187,7 +187,7 @@ if (isset($_POST['QC'])) {
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">BHK</label>
-                    <select id="inputState" name="bhk" class="form-select">
+                    <select id="bhk" name="bhk" class="form-select" onchange="valueadd()">
                         <option value="1">1 BHK</option>
                         <option value="2">2 BHK</option>
                         <option value="3">3 BHK</option>

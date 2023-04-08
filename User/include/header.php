@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ERROR | E_PARSE);
 
     include('./config/config.php');
     if(isset($_SESSION['uid'])){
@@ -14,12 +15,12 @@
     <div class="container-fluid nav-bar bg-transparent">
         <nav class="navbar navbar-expand-lg bg-black navbar-light py-0 px-4">
             <a href="index.php" class="navbar-brand d-flex align-items-center text-center">
-                <div class="icon p-2 me-2">
-                    <!-- <img class="img-fluid" src="../../icon-building.png" alt="Icon" style="width: 30px; height: 30px;"> -->
+                <div class="p-2 me-2">
+                    <img class="img-fluid " src="./img/logo2.png" alt="Icon" style="width: 150px; height: 60px;">
                     <!-- <i class="fa-regular text-light fa-house-building" style="width: 30px; height: 30px;" ></i> -->
-                    <i class="bi bi-house text-light " style="width: 30px; height: 30px;"></i>
+                    <!-- <i class="bi bi-house text-light " style="width: 30px; height: 30px;"></i> -->
                 </div>
-                <h1 class="m-0 text-tan">Locus</h1>
+                <!-- <h2 class="m-0 text-tan">Locus</h1> -->
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class=""><i class="bi bi-chevron-bar-contract text-white fs-3"></i></span>

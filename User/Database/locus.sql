@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2023 at 08:01 AM
+-- Generation Time: Apr 08, 2023 at 01:09 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -53,18 +53,17 @@ CREATE TABLE `admin` (
   `password` varchar(250) NOT NULL,
   `email` varchar(50) NOT NULL,
   `mno` text NOT NULL,
-  `dob` date DEFAULT NULL,
-  `profile` text NOT NULL
+  `dob` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`aid`, `name`, `password`, `email`, `mno`, `dob`, `profile`) VALUES
-(1, 'admin', 'admin123', 'admin123@gmail.com', '8980750691', '2014-03-12', ''),
-(2, 'Chirag', '$2y$10$HO.Bj23aRQs1lc8jCdy7WugluAGTiKO5Rw6jO0uswQiw5cmhE/zNq', 'chirag@gmail.com', '8980750691', '2002-12-31', ''),
-(3, 'Jaimil', '$2y$10$68/LGiLkwQaVlxCG6SK/Uu6NhiruoeOjLOC2wUMe1ecsmTAc8iud2', 'jaimilkanejeeya630@gmail.com', '8238378852', '2002-11-10', '');
+INSERT INTO `admin` (`aid`, `name`, `password`, `email`, `mno`, `dob`) VALUES
+(1, 'admin', 'admin123', 'admin123@gmail.com', '8980750691', '2014-03-12'),
+(2, 'Chirag', '$2y$10$HO.Bj23aRQs1lc8jCdy7WugluAGTiKO5Rw6jO0uswQiw5cmhE/zNq', 'chirag@gmail.com', '8980750691', '2002-12-31'),
+(3, 'Jaimil', '$2y$10$68/LGiLkwQaVlxCG6SK/Uu6NhiruoeOjLOC2wUMe1ecsmTAc8iud2', 'jaimilkanejeeya630@gmail.com', '8238378852', '2002-11-10');
 
 -- --------------------------------------------------------
 
@@ -153,7 +152,7 @@ CREATE TABLE `tblhouse` (
   `img2` varchar(250) NOT NULL,
   `img3` varchar(250) NOT NULL,
   `img4` varchar(250) NOT NULL,
-  `status` enum('Active','Inactive','','') NOT NULL DEFAULT 'Inactive',
+  `status` enum('Active','Inactive','','') NOT NULL DEFAULT 'Active',
   `featured` longtext NOT NULL,
   `description` longtext NOT NULL,
   `facilities` longtext NOT NULL,
@@ -167,9 +166,8 @@ CREATE TABLE `tblhouse` (
 --
 
 INSERT INTO `tblhouse` (`pid`, `uid`, `ptitle`, `ptype`, `bhk`, `stype`, `bedroom`, `balcony`, `bathroom`, `kitchen`, `hall`, `floor`, `tfloor`, `price`, `sqft`, `paddress`, `city`, `state`, `img1`, `img2`, `img3`, `img4`, `status`, `featured`, `description`, `facilities`, `date`, `qc`, `response`) VALUES
-(116, 37, 'Harsh No Zapo', 'Pent-House', '3', 'Rent', 10, 5, 3, 5, 5, 5, 6, 999, '2199', 'VIP Road Vesu', 'Surat', 'Gujarat', 'images (4).jpg', 'images (3).jpg', 'images (2).jpg', 'download (2).jpg', 'Active', 'Yes', '<p>asdfbgnhmj,k./ sadfghjk.l sdfghjkl/ sdrdtfhjkl dfsfrgthjkl</p>', '<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Property Age : </span>10 Years</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Parking : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Maintanace : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Type : </span>Apartment</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Security : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Wifi Plan : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">3rd Party : </span>No</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Elevator : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">CCTV : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Water Supply : </span>Ground Water / Tank</li>\r\n</ul>\r\n</div>', '2023-04-05 13:12:07', 'Reject', 'sdfgnh'),
-(117, 37, 'Harsh No Delo', 'House', '1', 'Rent', 10, 1, 1, 5, 5, 1, 5, 111, '2199', 'A-504 Raghuveer Heights VIP Road Vesu ', 'surat', 'Gujarat', 'images (1).jpg', 'images.jpg', 'download (1).jpg', 'download.jpg', 'Active', 'Yes', '<p>adsfghjk. QWERTYJK WRHJK srdtfygukhjl sdghjk shjk shjkl tjkb est</p>', '<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Property Age : </span>10 Years</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Parking : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Maintanace : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Type : </span>Apartment</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Security : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Wifi Plan : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">3rd Party : </span>No</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Elevator : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">CCTV : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Water Supply : </span>Ground Water / Tank</li>\r\n</ul>\r\n</div>', '2023-04-04 09:19:40', 'Success', 'Not Possible'),
-(119, 39, 'CK No Delo', 'Banglow', '1', 'Sell', 1, 2, 1, 1, 1, 1, 1, 888, '1233', '49 md park socity', 'Surat', 'Gujarat', 'image (1).jpg', 'image (3).jpg', 'download.jpg', 'download (2).jpg', 'Inactive', 'Yes', '<p>vksjdvnsdnkj dvnsdvnoivs viovvwiowwivn dviojsvwoi dvjoivjo vjsovjwo dvoivo do ofnv</p>', '<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Property Age : </span>10 Years</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Parking : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Maintanace : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Type : </span>Apartment</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Security : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Wifi Plan : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">3rd Party : </span>No</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Elevator : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">CCTV : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Water Supply : </span>Ground Water / Tank</li>\r\n</ul>\r\n</div>', '2023-04-04 11:58:19', 'Success', 'Your Listing Is Live...');
+(122, 40, 'New Property Near Vesu Road', 'Banglow', '3', 'Rent', 3, 4, 4, 1, 1, 2, 2, 12000, '2199', 'VIP Road Vesu', 'Surat', 'Gujarat', 'images (2).jpg', 'images (1).jpg', 'images.jpg', 'download (2).jpg', 'Inactive', 'No', '<p>sdfgh ghmj hjh g hjfj gdhfg&nbsp; &nbsp;gfh fhfh&nbsp; fg gm</p>', '<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Property Age : </span>10 Years</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Parking : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Maintanace : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Type : </span>Apartment</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Security : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Wifi Plan : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">3rd Party : </span>No</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Elevator : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">CCTV : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Water Supply : </span>Ground Water / Tank</li>\r\n</ul>\r\n</div>', '2023-04-07 06:41:11', 'Success', 'Your Listing Is Live...'),
+(123, 40, 'New Property Near Sarthana', 'Flat', '1', 'Sell', 1, 2, 2, 1, 1, 5, 24, 1210000, '123', '49 md park socity simada gam ', 'Surat', 'Gujarat', 'images.jpg', 'download.jpg', 'download (1).jpg', 'images (1).jpg', 'Inactive', 'Yes', '<p>cdfgnhmj, dfgnm dfbn&nbsp; dfbnn dffbn</p>', '<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Property Age : </span>10 Years</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Parking : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Maintanace : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Type : </span>Apartment</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Security : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Wifi Plan : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">3rd Party : </span>No</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Elevator : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">CCTV : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-black fw-bold\">Water Supply : </span>Ground Water / Tank</li>\r\n</ul>\r\n</div>', '2023-04-07 07:18:26', 'Success', 'Your Listing Is Live...');
 
 -- --------------------------------------------------------
 
@@ -197,8 +195,9 @@ CREATE TABLE `tblpbooking` (
 --
 
 INSERT INTO `tblpbooking` (`bid`, `name`, `pid`, `seller_id`, `buyer_id`, `email`, `cindate`, `coutdate`, `bdate`, `status`, `details`, `reason`) VALUES
-(34, 'Chirag', 116, 37, 38, 'chiragkachhadiya000@gmail.com', '2023-04-22', '2023-05-24', '2023-04-03', 'Reject', 'Avi Jajo Tamtmare', 'xcvbnm'),
-(36, 'Chirag', 119, 39, 38, 'chiragkachhadiya000@gmail.com', '', '', '2023-04-04', 'Success', 'I Buy this property ', 'sdfgnhmj,');
+(39, 'Kunj', 122, 40, 41, 'ckcreation3112@gmail.com', '2023-04-07', '2023-05-08', '2023-04-07', 'Success', 'I Want This Property', 'wadergh'),
+(40, 'Kunj', 123, 40, 41, 'ckcreation3112@gmail.com', '', '', '2023-04-07', 'Reject', 'I Want This Property', 'ertj'),
+(41, 'Chirag', 123, 40, 42, 'chiragkachhadiya8980@gmail.com', '', '', '2023-04-07', 'Success', 'Deal', 'dfn');
 
 -- --------------------------------------------------------
 
@@ -220,7 +219,9 @@ CREATE TABLE `tblplan` (
 --
 
 INSERT INTO `tblplan` (`p_id`, `p_name`, `p_price`, `p_credit`, `p_description`, `date`) VALUES
-(4, 'Gold', 500, 4, '<p>This Is Gold Plan</p>', '2023-04-01');
+(4, 'Gold', 500, 4, '<p>This Is Gold Plan</p>', '2023-04-01'),
+(10, 'Standard', 100, 1, '<p>This Is A Gold Plan</p>', '2023-04-07'),
+(11, 'Premium', 5000, 10, '<p>This Is Premium Plan</p>', '2023-04-07');
 
 -- --------------------------------------------------------
 
@@ -257,7 +258,11 @@ INSERT INTO `tblpmt` (`pmid`, `uid`, `p_id`, `pstatus`, `pmtid`, `amt`, `date`, 
 (17, 37, 4, 'Paid', 'pay_LZD7z02l14AtGb', 500, '2023-04-03 05:56:05', 'Gold'),
 (18, 37, 7, 'Paid', 'pay_LZgDcSgQil7bCA', 100, '2023-04-04 10:23:31', 'Standard'),
 (19, 37, 4, 'Paid', 'pay_LZgOOu0KxdY5yt', 500, '2023-04-04 10:33:44', 'Gold'),
-(20, 38, 4, 'Paid', 'pay_La10z7J3vbWYd8', 500, '2023-04-05 06:44:09', 'Gold');
+(20, 38, 4, 'Paid', 'pay_La10z7J3vbWYd8', 500, '2023-04-05 06:44:09', 'Gold'),
+(21, 40, 4, 'Paid', 'pay_LaUayeHThoQlR9', 500, '2023-04-06 11:40:20', 'Gold'),
+(22, 40, 4, 'Paid', 'pay_LapahG5tppKHMb', 500, '2023-04-07 08:12:38', 'Gold'),
+(23, 40, 11, 'Paid', 'pay_LapcOZgiJc0nLd', 5000, '2023-04-07 08:14:16', 'Premium'),
+(24, 40, 4, 'Paid', 'pay_LbGTyDEdo933Sl', 500, '2023-04-08 10:31:17', 'Gold');
 
 -- --------------------------------------------------------
 
@@ -271,7 +276,7 @@ CREATE TABLE `user` (
   `mno` varchar(250) NOT NULL,
   `email` varchar(250) NOT NULL,
   `password` varchar(250) NOT NULL,
-  `p_img` varchar(250) NOT NULL,
+  `p_img` varchar(250) NOT NULL DEFAULT 'Pending',
   `address` varchar(250) NOT NULL,
   `instagram` varchar(250) NOT NULL,
   `facebook` varchar(250) NOT NULL,
@@ -284,9 +289,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`uid`, `uname`, `mno`, `email`, `password`, `p_img`, `address`, `instagram`, `facebook`, `twitter`, `credit`) VALUES
-(37, 'Harsh Munjpara', '8238273464', 'harshmunjapara005@gmail.com', '$2y$10$LfRpao6qs5my3XmtjdKiwO9xdGAb45OxyDPp.cSqiFAWAQ4A16u2O', 'designation', '', 'instagram', 'facebook', 'twitter', 14),
-(38, 'Chirag', '8980750691', 'chiragkachhadiya000@gmail.com', '$2y$10$NLvQ27JpNKNlx7JCWZzln.sWU2f3esqGrbSBpeq0GXgK.97nZR7W6', 'designation', 'sdfbgn', 'instagram', 'facebook', 'twitter', 4),
-(39, 'CK', '8980750691', 'ckcreation3112@gmail.com', '$2y$10$2XUJPxUK.J.9u6L1fELpTeuQPVKEHoJfzZR9aqW2TwQcSuuGzLSOa', 'designation', '', 'instagram', 'facebook', 'twitter', 2);
+(40, 'Chirag', '8980750691', 'chiragkachhadiya000@gmail.com', '$2y$10$VJWIE4A.3HL2IyDoF9QLcelVb2q6z35RvXT7zUr/vxMAj22ZctI7u', 'Pending', '49 MD Park Socity Simada Gam', 'instagram', 'facebook', 'twitter', 21),
+(41, 'Kunj', '7435904428', 'ckcreation3112@gmail.com', '$2y$10$BVH2gBwLQMQSh./.olG83.eu3go.rur.86G/KX9ImZlfPDt0FX3qq', 'Pending', '49,md park', 'instagram', 'facebook', 'twitter', 3),
+(42, 'Chirag', '7435904428', 'chiragkachhadiya8980@gmail.com', '$2y$10$tFp6J8qQapb3B/e3H79bAe7mO8Lnjamd8tlTLccyzdxH9ED8f0mHS', 'Pending', '49,md park', 'instagram', 'facebook', 'twitter', 3);
 
 --
 -- Indexes for dumped tables
@@ -321,12 +326,7 @@ ALTER TABLE `tblfeedback`
 --
 ALTER TABLE `tblhouse`
   ADD PRIMARY KEY (`pid`);
-ALTER TABLE `tblhouse` ADD FULLTEXT KEY `ptitle` (`ptitle`,`ptype`,`description`);
-ALTER TABLE `tblhouse` ADD FULLTEXT KEY `ptitle_2` (`ptitle`,`description`);
-ALTER TABLE `tblhouse` ADD FULLTEXT KEY `ptitle_3` (`ptitle`,`description`,`facilities`);
-ALTER TABLE `tblhouse` ADD FULLTEXT KEY `ptitle_4` (`ptitle`,`description`,`facilities`);
-ALTER TABLE `tblhouse` ADD FULLTEXT KEY `city` (`city`,`ptype`,`state`);
-ALTER TABLE `tblhouse` ADD FULLTEXT KEY `ptitle_5` (`ptitle`,`description`,`ptype`,`city`,`state`);
+ALTER TABLE `tblhouse` ADD FULLTEXT KEY `ptitle` (`ptitle`,`paddress`,`description`,`facilities`);
 
 --
 -- Indexes for table `tblpbooking`
@@ -384,31 +384,31 @@ ALTER TABLE `tblfeedback`
 -- AUTO_INCREMENT for table `tblhouse`
 --
 ALTER TABLE `tblhouse`
-  MODIFY `pid` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+  MODIFY `pid` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
 -- AUTO_INCREMENT for table `tblpbooking`
 --
 ALTER TABLE `tblpbooking`
-  MODIFY `bid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `bid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `tblplan`
 --
 ALTER TABLE `tblplan`
-  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tblpmt`
 --
 ALTER TABLE `tblpmt`
-  MODIFY `pmid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `pmid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `uid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `uid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

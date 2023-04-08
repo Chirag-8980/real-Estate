@@ -13,12 +13,10 @@ if (!isset($_SESSION['auser'])) {
     <!-- Logo -->
     <div class="header-left text-light" >
         <a href="dashboard.php" class="logo text-light ">
-            <img src="assets/img/locus.png"  alt="Logo" > 
-            <img src="assets/img/locus1.png"  alt="Logo" class="m-2"> 
-
+            <img class="img-fluid  " src="./Img/logo.png" alt="Icon" >
         </a>
         <a href="dashboard.php" class="logo logo-small text-light">
-            <img src="assets/img/locus.png" alt="Logo" width="30" height="30">
+            <img src="./Img/logos1.png" alt="Logo" width="30" height="30">
         </a>
     </div>
     <!-- /Logo -->
