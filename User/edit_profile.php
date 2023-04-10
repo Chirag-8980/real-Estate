@@ -64,7 +64,14 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
-
+<style>
+    .upload{
+      width: 140px;
+      position: relative;
+      margin: auto;
+      text-align: center;
+      }
+</style>
 <body class=" bg-white" >
 
     <div class="bg-white p-0">
@@ -94,8 +101,8 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="d-flex flex-column align-items-center text-center">
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
-                                            class="rounded-circle" width="150">
+                                       
+                                            <img src="img/user/<?php echo $data['img']; ?>" class="upload"  id="image" >
                                         <div class="mt-3">
                                             <h4><?php echo $data['uname']?></h4>
                                             <p class="text-dark mb-1"></p>

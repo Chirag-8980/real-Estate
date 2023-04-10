@@ -54,8 +54,8 @@
                                 <option selected value="House">House</option>
                                 <option value="Flat">Flat</option>
                                 <option value="Banglow">Banglow</option>
-                                <option value="Farm House">Farm House</option>
-                                <option value="Farm House">Farm House</option>
+                                <option value="Farm-House">Farm House</option>
+                                <option value="Pent-House">Pent House</option>
                                     
                                 </select>
                             </div>

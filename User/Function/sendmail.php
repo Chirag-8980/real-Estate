@@ -59,7 +59,7 @@
             include('C:\xampp\htdocs\git-main\real-Estate\User\config\config.php');
 
             $p_data=mysqli_fetch_array(mysqli_query($con , "select * from tblhouse where pid='$pid'"));
-            $uid = $p_data['uid'];
+            $uid = $_SESSION['uid'];
             $u_data=mysqli_fetch_array(mysqli_query($con , "select * from user where uid='$uid'"));
 	
 	$content = ''; 

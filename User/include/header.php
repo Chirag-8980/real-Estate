@@ -67,14 +67,14 @@ error_reporting(E_ERROR | E_PARSE);
                     if (isset($_SESSION['uid'])) { ?>
                         <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">My Account
-                        <?php if($user_data['p_img'] == null or $user_data['address'] == null) {?>
+                        <?php if($user_data['img'] == 'user.png' or $user_data['address'] == null) {?>
                         <span class="position-absolute top-80 start-80 translate-middle p-1 bg-danger  rounded-circle">
                                 <span class="visually-hidden">New alerts</span>
                         <?php }?>
                         </a>
                         <div class="dropdown-menu rounded-0 m-0">
                             <a href="profile.php" class="dropdown-item">My Profile
-                            <?php if($user_data['p_img'] == null or $user_data['address'] == null) {?>
+                            <?php if($user_data['img'] == 'user.png' or $user_data['address'] == null) {?>
                         <span class="position-absolute top-80 start-80 p-1 bg-danger rounded-circle">
                                 <span class="visually-hidden">New alerts</span>
                         <?php }?>

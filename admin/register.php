@@ -139,20 +139,7 @@ if (isset($_POST['insert'])) {
 							</form>
 							<!-- /Form -->
 
-							<div class="login-or">
-								<span class="or-line"></span>
-								<span class="span-or">or</span>
-							</div>
-
-							<!-- Social Login -->
-							<div class="social-login">
-								<span>Register with</span>
-								<a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-								<a href="#" class="google"><i class="fa fa-google"></i></a>
-								<a href="#" class="facebook"><i class="fa fa-twitter"></i></a>
-								<a href="#" class="google"><i class="fa fa-instagram"></i></a>
-							</div>
-							<!-- /Social Login -->
+							
 
 							<div class="text-center dont-have">Already have an account? <a href="index.php">Login</a></div>
 						</div>
