@@ -32,9 +32,9 @@ $show = true;
             case 'price':
                 $tprice = $_GET['tprice'];
                 $fprice = $_GET['fprice'];
-                $select_q = "select * from tblhouse where qc='success'  AND price Between '$tprice' and '$fprice'";
+                $select_q = "select * from tblhouse where qc='success' AND status='Active'  AND price Between '$tprice' and '$fprice'";
                 $query = mysqli_query($con, $select_q);
-                $total = mysqli_fetch_array(mysqli_query($con , "select count(*) as total from tblhouse where qc='success'  AND price Between '$tprice' and '$fprice'"));
+                $total = mysqli_fetch_array(mysqli_query($con , "select count(*) as total from tblhouse where qc='success' AND status='Active'  AND price Between '$tprice' and '$fprice' "));
             break;
             default:
                 $select_q = "select * from tblhouse where qc='success' and status='Active'";

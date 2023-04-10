@@ -103,7 +103,7 @@ $query_run = mysqli_query($con , $query);
                                     <tr>
                                         <td><?php echo $row['pmid']; ?></td>
                                         <td><?php echo $row['uid']; ?></td>
-                                        <td><?php echo $row['plan']; ?></td>
+                                        <td><?php echo $row['p_name']; ?></td>
                                         <td><?php echo $row['amt']; ?></td>
                                         <td><?php echo $row['pmtid']; ?></td>
                                         <td><?php echo $row['pstatus']; ?></td>
