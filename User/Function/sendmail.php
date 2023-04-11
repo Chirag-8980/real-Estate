@@ -19,20 +19,20 @@
         
         $mail->setFrom('locus466@gmail.com');
         
-            $mail->addAddress($email);
-            
-            $mail->isHTML(true);
-            
-            $mail->Subject = $sub;
-            $mail->Body = $msg;
-    
-            $mail->send();
-            
-            // echo
-            // "<script>
-            //     alert('send success')
-            //     document.location.href = 'index.php';
-            // </script>";
+        $mail->addAddress($email);
+        
+        $mail->isHTML(true);
+        
+        $mail->Subject = $sub;
+        $mail->Body = $msg;
+
+        $mail->send();
+        
+        // echo
+        // "<script>
+        //     alert('send success')
+        //     document.location.href = 'index.php';
+        // </script>";
         }
         
         function SendMail_With_PDF($email , $sub , $msg , $pid){

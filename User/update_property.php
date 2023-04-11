@@ -28,6 +28,9 @@ $user_data = mysqli_fetch_array(mysqli_query($con, "select * from user where uid
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Sweet Alert  -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
@@ -76,7 +79,7 @@ $user_data = mysqli_fetch_array(mysqli_query($con, "select * from user where uid
 
         <!-- Add Form Start -->
         <div class="container mt-3 px-5">
-            <form class="row g-3 container" method="POST" action="upcode.php" enctype="multipart/form-data">
+            <form class="row g-3 container" method="POST" action="upcode.php?pid=<?php echo $pid ;?>" enctype="multipart/form-data">
                 <!-- Basic Information -->
                 <h2 class="animated text-black fadeIn mb-3" style="border-bottom: 2px solid var(--tan);">Basic
                     Information</h2>
@@ -278,6 +281,18 @@ $user_data = mysqli_fetch_array(mysqli_query($con, "select * from user where uid
         <!-- Back to Top -->
         <?php include('../User/include/top.php') ?>
     </div>
+    <?php if (isset($_SESSION['alert'])){?> 
+    <script>
+        Swal.fire({
+                icon: '<?php echo $_SESSION["alert"]["0"] ?>',
+                title: '<?php echo $_SESSION["alert"]["1"] ?>',
+                text: '<?php echo $_SESSION["alert"]["2"] ?>',
+                footer: '<a href="<?php echo $_SESSION["alert"]['4'] ?>"><?php echo $_SESSION["alert"]["3"] ?></a>'
+        })
+    </script>
+    <?php } 
+        unset($_SESSION['alert']);
+    ?>
 </body>
 <!-- Tinymce Lib -->
 <script src="js/tinymce/tinymce.min.js"></script>

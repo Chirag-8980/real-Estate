@@ -7,6 +7,14 @@ if(!isset($_SESSION['uid'])){
 $uid = $_SESSION['uid'];
 $user = mysqli_fetch_array(mysqli_query($con , "select credit from user where uid=$uid"));
 if($user['credit'] == 0){
+
+    $_SESSION['alert'] = array();
+    $icon = "warning";
+    $title = "Insufficient Credit";
+    $text = "You Have Not Enough Credit Please Click Below Link And Subscribe Plan";
+    $footer = "Click To Start";
+    $link = "pricing.php";
+    array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
     header("location:pricing.php");
 } else{
 if (isset($_POST['QC'])) {
@@ -71,24 +79,44 @@ if (isset($_POST['QC'])) {
             $insert_qry = "INSERT INTO `tblhouse`( `uid`, `ptitle`, `ptype`, `bhk`, `stype`, `bedroom`, `balcony`, `bathroom`, `kitchen`, `hall`, `floor`, `tfloor`, `price`, `sqft`, `paddress`, `city`, `state`, `img1`, `img2`, `img3`, `img4`, `featured`, `description`, `facilities`) VALUES ('$uid','$ptitle','$ptype','$bhk','$stype','$bedroom','$balcony','$bathroom','$kitchen','$hall','$floor','$tfloor','$price','$sqft','$paddress','$city','$state','$image1','$image2','$image3','$image4','$featured','$description','$facilities')";
             $result = mysqli_query($con, $insert_qry);
             if ($result) {
+                $_SESSION['alert'] = array();
+                $icon = "success";
+                $title = "Your property inserted succesfull..";
+                $text = "Wait 24 hours for QC Check";
+                $footer = "Help And Support";
+                $link = "index.php";
+                array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
                 $res = mysqli_query($con , "UPDATE user SET credit = credit - 1 WHERE `uid` = $uid");
                 if ($res) {
-                    $_SESSION['msg'] = "Property Insert Successful";
-                    $_SESSION['status'] = "success";
                     header('location:./user-property.php?filter=all');
                 }
 
             } else {
-                $_SESSION['msg'] = "Property Insert Failed";
-                $_SESSION['status'] = "error";
+                $_SESSION['alert'] = array();
+                $icon = "error";
+                $title = "Failed";
+                $text = "Something Wrong ...";
+                $footer = "Help And Support";
+                $link = "contact.php";
+                array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
             }
         } else {
-            $_SESSION['msg'] = "Photo Size should be Less then 2MB";
-            $_SESSION['status'] = "error";
+                 $_SESSION['alert'] = array();
+                $icon = "warning";
+                $title = "Image Image Size Related";
+                $text = "Image size should be less than 20MB";
+                $footer = "Help And Support";
+                $link = "contact.php";
+                array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
         }
     } else {
-        $_SESSION['msg'] = "File type not allowed (Only jpg, jpeg and png type file allowed)";
-        $_SESSION['status'] = "error";
+                $_SESSION['alert'] = array();
+                $icon = "error";
+                $title = "Image type Related";
+                $text = "Please insert only .JPG , .JPEG and .PNG";
+                $footer = "Help And Support";
+                $link = "contact.php";
+                array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
     }
 } else {
     // echo "Plese Enter Value";
@@ -115,6 +143,9 @@ if (isset($_POST['QC'])) {
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+<!-- Sweet Alert  -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
@@ -356,6 +387,18 @@ if (isset($_POST['QC'])) {
         <!-- Back to Top -->
         <?php include('../User/include/top.php') ?>
     </div>
+    <?php if (isset($_SESSION['alert'])){?> 
+    <script>
+        Swal.fire({
+                icon: '<?php echo $_SESSION["alert"]["0"] ?>',
+                title: '<?php echo $_SESSION["alert"]["1"] ?>',
+                text: '<?php echo $_SESSION["alert"]["2"] ?>',
+                footer: '<a href="<?php echo $_SESSION["alert"]['4'] ?>"><?php echo $_SESSION["alert"]["3"] ?></a>'
+        })
+    </script>
+    <?php } 
+        unset($_SESSION['alert']);
+    ?>
 </body>
 
 <script>

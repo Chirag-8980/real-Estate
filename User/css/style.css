@@ -1,4 +1,5 @@
-/********** Template CSS **********/
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 :root {
     --primary: #E0A96D;
     --secondary: #4e4e4e;
@@ -11,6 +12,9 @@
 }
 body{
     background-color: var(--bgcolor);
+    font-family: 'Playfair Display', serif;
+}
+.poppins{
 }
 .back-to-top {
     position: fixed;

@@ -80,20 +80,43 @@ if (isset($_POST['update'])) {
                 $result = mysqli_query($con, $query);
 
                 if ($result) {
-                    $_SESSION['msg'] = "Property Update Successful";
-			        $_SESSION['status'] = "success";
+                    $_SESSION['alert'] = array();
+                    $icon = "success";
+                    $title = "Update";
+                    $text = "Your property updated successfull...";
+                    $footer = "Help And Support";
+                    $link = "contact.php";
+                    array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
                     header('location:user-property.php?filter=all');
                 } else {
-                    $_SESSION['msg'] = "Property Update Failed";
-			        $_SESSION['status'] = "error";
+                    $_SESSION['alert'] = array();
+                $icon = "error";
+                $title = "Something Wrong...!";
+                $text = "Property update Failed";
+                $footer = "Help And Support";
+                $link = "contact.php";
+                array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
+                header("location:update_property.php?pid=$prid");
                 }
             }
         } else {
-            $_SESSION['msg'] = "Photo Size Should ";
-			$_SESSION['status'] = "error";
+            $_SESSION['alert'] = array();
+                $icon = "warning";
+                $title = "Image Image Size Related";
+                $text = "Image size should be less than 20MB";
+                $footer = "Help And Support";
+                $link = "contact.php";
+                array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
+                header("location:update_property.php?pid=$prid");
         }
     } else {
-        $_SESSION['msg'] = "Only Jpg , png , Jpeg Photo Allow";
-		$_SESSION['status'] = "error";
+                $_SESSION['alert'] = array();
+                $icon = "error";
+                $title = "Image type Related";
+                $text = "Please insert only .JPG , .JPEG and .PNG";
+                $footer = "Help And Support";
+                $link = "contact.php";
+                array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
+                header("location:update_property.php?pid=$prid");
     }
 }

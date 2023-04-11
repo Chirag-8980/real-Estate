@@ -433,20 +433,38 @@ if (isset($_POST['pbooking'])) {
                     </table>
                   </body>
                 </html>';
-        SendMail_With_PDF($email, $sub, $msg, $pid);
+        $check =SendMail_With_PDF($email, $sub, $msg, $pid);
+        if($check){
+          echo " 00";
+        }
 
-        $_SESSION['msg'] = "Booking Reqest Sent Success";
-        $_SESSION['status'] = "Success";
+        $_SESSION['alert'] = array();
+        $icon = "success";
+        $title = "Success";
+        $text = "Booking reqest sent successfull...";
+        $footer = "Help And Suppurt...";
+        $link = "contact.php";
+        array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
         header("location:book_property.php?pid=$pid");
       } else {
-        $_SESSION['msg'] = "Booking Reqest Sent Failed";  
-        $_SESSION['status'] = "error";
+        $_SESSION['alert'] = array();
+        $icon = "error";
+        $title = "Failed...!";
+        $text = "Something Wrong...!";
+        $footer = "Help And Suppurt...";
+        $link = "contact.php";
+        array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
         header("location:property_details.php?pid=$pid");
       }
     } else {
-      $_SESSION['msg'] = "Buyer And Seller Is Same";
-      $_SESSION['status'] = "error";
-      header("location:property_details.php?pid=$pid");
+      $_SESSION['alert'] = array();
+        $icon = "warning";
+        $title = "Something Wrong...!";
+        $text = "This Is Your Property So You Can Not Sell And Rent This Property...";
+        $footer = "Help And Suppurt...";
+        $link = "contact.php";
+        array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
+        header("location:property_details.php?pid=$pid");
     }
   } catch (Exception $e) {
     echo 'Message: ' . $e->getMessage();
@@ -478,6 +496,9 @@ if (isset($_POST['pbooking'])) {
   <!-- Libraries Stylesheet -->
   <link href="lib/animate/animate.min.css" rel="stylesheet">
   <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  
+  <!-- Sweet Alert  -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <!-- Customized Bootstrap Stylesheet -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -549,15 +570,19 @@ if (isset($_POST['pbooking'])) {
           </div>
         </div>
       </form>
-      <?php if (isset($_SESSION['msg'])) { ?>
-        <script>
-          swal("<?php echo  $_SESSION['status'] ?>", "<?php echo $_SESSION['msg'] ?>",
-            "<?php echo $_SESSION['status'] ?>");
-        </script>
-      <?php
-        unset($_SESSION['msg']);
-        unset($_SESSION['status']);
-      } ?>
+      <?php if (isset($_SESSION['alert'])){?> 
+    <script>
+        Swal.fire({
+                icon: '<?php echo $_SESSION["alert"]["0"] ?>',
+                title: '<?php echo $_SESSION["alert"]["1"] ?>',
+                text: '<?php echo $_SESSION["alert"]["2"] ?>',
+                footer: '<a href="<?php echo $_SESSION["alert"]['4'] ?>"><?php echo $_SESSION["alert"]["3"] ?></a>'
+        })
+    </script>
+    <?php } 
+        unset($_SESSION['alert']);
+    ?>
+
 
     </div>
 

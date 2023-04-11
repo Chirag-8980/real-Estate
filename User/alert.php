@@ -1,7 +1,12 @@
 <?php
     session_start();
-    // $_SESSION['msg'] = "Alert";
-    // $_SESSION['status'] = "error";
+    $_SESSION['alert'] = array();
+    $icon = "error";
+    $title = "Alert";
+    $text = "This Is A Alert";
+    $footer = "Click Hear";
+    $link = "Click Hear";
+    array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,18 +21,17 @@
 </head>
 
 <body>
-<?php if (isset($_SESSION['msg'])) { ?>
+<?php if (isset($_SESSION['alert'])) { ?>
         <script>
             Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Something went wrong!',
-                footer: '<a href="">Why do I have this issue?</a>'
+                icon: '<?php echo $icon ?>',
+                title: '<?php echo $title ?>',
+                text: '<?php echo $text ?>',
+                footer: '<a href="<?php echo $link ?>"><?php echo $footer ?></a>'
             })
         </script>
     <?php
-        unset($_SESSION['msg']);
-        unset($_SESSION['status']);
+        unset($_SESSION['alert']);
     } ?>
 <!-- <?php if (isset($_SESSION['msg'])) { ?>
         <script>

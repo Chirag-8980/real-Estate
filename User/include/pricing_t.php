@@ -1,6 +1,11 @@
 <?php
+session_start();
 include('./config/config.php');
 $query = mysqli_query($con, "select * from tblplan");
+if (isset($_SESSION['uname'])) {
+    $uid = $_SESSION['uid'];
+    $credit = mysqli_fetch_array(mysqli_query($con , "select * from user where uid=$uid"));
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +15,10 @@ $query = mysqli_query($con, "select * from tblplan");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    
+    <!-- Sweet Alert  -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script src="../js/sweetalert.js"></script> -->
     <title>Document</title>
 </head>
 
@@ -19,7 +28,10 @@ $query = mysqli_query($con, "select * from tblplan");
             <div class="text-center mx-auto mb-5 text-black" data-wow-delay="0.1s" style="max-width: 600px;">
                 <h1 class="mb-3 text-black pb-2" style="border-bottom: 2px solid var(--tan);">Plan Pricing</h1>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga quae sint asperiores architecto
-                    quisquam exercitationem rerum facere in iste nisi!</p>
+                    quisquam exrcitationem rerum facere in iste nisi!</p>
+                <?php if(isset($_SESSION['uname'])){?>
+                <p>You have <b><?php echo $credit['credit'];?></b> credit left..</p>
+                <?php }?>
             </div>
         </div>
         <div class="container">
@@ -60,7 +72,7 @@ $query = mysqli_query($con, "select * from tblplan");
 
                                             success: function(data) {
                                                 console.log(data);
-                                                window.location.href = 'addhouse.php';
+                                                window.location.href = 'Pricing.php';
                                             }
                                         });
                                     },
@@ -87,6 +99,19 @@ $query = mysqli_query($con, "select * from tblplan");
             </div>
         </div>
     </div>
+    
+   <?php if (isset($_SESSION['alert'])){?> 
+    <script>
+        Swal.fire({
+                icon: '<?php echo $_SESSION["alert"]["0"] ?>',
+                title: '<?php echo $_SESSION["alert"]["1"] ?>',
+                text: '<?php echo $_SESSION["alert"]["2"] ?>',
+                footer: '<a href="<?php echo $_SESSION["alert"]['4'] ?>"><?php echo $_SESSION["alert"]["3"] ?></a>'
+        })
+    </script>
+    <?php } 
+        unset($_SESSION['alert']);
+    ?>
 
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
    
