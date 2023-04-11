@@ -244,13 +244,20 @@ $oldprice = $data['price'] + $data['price'] / 2;
                             </div>
                 <?php } else {
                     $pid = $_GET['pid'];
-                    $isRent= mysqli_fetch_array(mysqli_query($con , "Select * from tblpbooking where pid=$pid and status = 'Success'"));
-                    if(!$isRent['coutdate'] == null){
+                    $isRent= mysqli_fetch_array(mysqli_query($con , "Select * from tblpbooking where pid=$pid "));
+                    if($isRent['status'] == "Success"){
                     ?>
                     <div class="container mt-4">
                                 <a class="btn  bg-beige text-black w-100 py-3 my-4">Not Available Till <?php echo $isRent['cindate']?></a>
                             </div>
-                            <?php }?>
+                            <?php }else{?>
+                                <div class="container mt-4">
+                                <a class="btn  bg-tan text-black w-100 py-3 my-4"
+                                    href="booking.php?pid=<?php echo $_GET['pid'] ?>&sellerid=<?php echo $data['uid'] ?>&stype=<?php echo $data['stype'] ?>&ptype=<?php echo $data['ptype'] ?>">Request
+                                    For
+                                    Booking</a>
+                            </div>
+                                <?php }?>
                 <?php }?>
             </div>
             
