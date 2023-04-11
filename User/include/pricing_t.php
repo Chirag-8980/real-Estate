@@ -1,6 +1,4 @@
 <?php
-$amt = 100;
-$plan = 'Pro';
 include('./config/config.php');
 $query = mysqli_query($con, "select * from tblplan");
 ?>

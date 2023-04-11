@@ -12,10 +12,15 @@ if (isset($_POST['submit'])) {
     $queary = mysqli_query($con, "UPDATE `tblpbooking` SET `status`='Success',`reason`='$reason' WHERE `bid`= '$bid'");
     if ($queary) {
       $pid = $_GET['pid'];
-      $Status_Update = mysqli_query($con, "UPDATE `tblhouse` SET `status`='Inactive' WHERE pid = $pid");
+      $isRent1 = mysqli_fetch_array(mysqli_query($con, "SELECT *  From`tblhouse`  WHERE pid = $pid"));
+      $isRent = $isRent1['stype'];
+
+      if($isRent == "Sell"){
+        $Status_Update = mysqli_query($con, "UPDATE `tblhouse` SET `status`='Inactive' WHERE pid = $pid");
+      }
       $property_data = mysqli_fetch_array(mysqli_query($con, "SELECT *  From`tblhouse`  WHERE pid = $pid"));
 
-      if ($Status_Update) {
+      // if ($Status_Update) {
         $b_email = mysqli_fetch_array(mysqli_query($con, "select * from tblpbooking where bid = $bid"));
         $email = $b_email['email'];
 
@@ -1251,7 +1256,7 @@ if (isset($_POST['submit'])) {
                                 </html>';
           $sendmail = SendMail($email, $sub, $msg);
           header('location:../property_order.php');
-        }
+        // }
       }
     }
   }elseif ($status == "Reject") {

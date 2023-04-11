@@ -9,7 +9,6 @@
 
     function SendMail($email , $sub , $msg){
         $mail = new PHPMailer(true);
-        $body = '' ;
         $mail->isSMTP();
         $mail->Host ='smtp.gmail.com';
         $mail->SMTPAuth = true;

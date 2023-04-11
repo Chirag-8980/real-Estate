@@ -439,7 +439,7 @@ if (isset($_POST['pbooking'])) {
         $_SESSION['status'] = "Success";
         header("location:book_property.php?pid=$pid");
       } else {
-        $_SESSION['msg'] = "Booking Reqest Sent Failed";
+        $_SESSION['msg'] = "Booking Reqest Sent Failed";  
         $_SESSION['status'] = "error";
         header("location:property_details.php?pid=$pid");
       }

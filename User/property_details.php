@@ -131,7 +131,15 @@ $oldprice = $data['price'] + $data['price'] / 2;
                         <div class="  product-price">
                             <h6 class="last-price"> <span>₹ <?php echo $oldprice ?></span></h6>
                             <h5 class="new-price text-black"> Price:  <span style="color: green;">₹ <?php echo $data['price']?>/- 
-                                    <small style="color: black;size:10px;"><?php if($data['stype'] == "Rent"){echo "Per Month";}elseif($data['ptype'] == "Farm-House" && $data['stype'] == 'rent'){echo 'Per Day(24 hour)';} ?></small></span></h5>
+                                    <small style="color: black;size:10px;"><?php 
+                                    if($data['stype'] == "Rent"){
+                                        if($data['ptype'] =="Farm-House"){
+                                            echo "Per Day (24 Hours)";
+                                        }else{
+                                            echo "Per Month";
+                                        }
+                                    }
+                                    ?></small></span></h5>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-bordered  text-center table-white text-black table-striped">
@@ -227,12 +235,23 @@ $oldprice = $data['price'] + $data['price'] / 2;
                         </p>
                     </div>
                 </div>
+                <?php if($data['stype'] == "Sell"){?>
                 <div class="container mt-4">
                                 <a class="btn  bg-tan text-black w-100 py-3 my-4"
-                                    href="booking.php?pid=<?php echo $_GET['pid'] ?>&sellerid=<?php echo $data['uid'] ?>&stype=<?php echo $data['stype'] ?>">Request
+                                    href="booking.php?pid=<?php echo $_GET['pid'] ?>&sellerid=<?php echo $data['uid'] ?>&stype=<?php echo $data['stype'] ?>&ptype=<?php echo $data['ptype'] ?>">Request
                                     For
                                     Booking</a>
                             </div>
+                <?php } else {
+                    $pid = $_GET['pid'];
+                    $isRent= mysqli_fetch_array(mysqli_query($con , "Select * from tblpbooking where pid=$pid and status = 'Success'"));
+                    if(!$isRent['coutdate'] == null){
+                    ?>
+                    <div class="container mt-4">
+                                <a class="btn  bg-beige text-black w-100 py-3 my-4">Not Available Till <?php echo $isRent['cindate']?></a>
+                            </div>
+                            <?php }?>
+                <?php }?>
             </div>
             
 

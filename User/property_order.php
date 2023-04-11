@@ -65,7 +65,8 @@
                 <h1 class="mb-3 text-black">Property Booking Order</h1>
             </div>
             <div class="mb-5 text-cneter  align-middle">
-                <table id="myTable" class="table  text-black align-middle text-center table-striped table-bordered" style="font-size: 0.8rem;">
+                <table id="myTable" class="table  text-black align-middle text-center table-striped table-bordered"
+                    style="font-size: 0.8rem;">
                     <thead class="text-center">
                         <tr>
                             <th scope="col">BID</th>
@@ -97,13 +98,23 @@
                             <td><?php echo $property['stype']?></td>
                             <td><?php echo $data['bdate']?></td>
 
-                            <td class="text-<?php if($data['status'] == "Pending"){echo 'warning' ;} if($data['status'] == "Success"){echo 'success';}if($data['status'] == "Reject"){echo 'danger' ;}?> fw-bold"><?php echo $data['status']?></td>
-                            <td class="text-black fw-bold " style="cursor: <?php if($data['status'] == "Success"){echo "not-allowed";} else{ echo "pointer";}?>;" data-bs-toggle="modal" data-bs-target="<?php if($data['status'] == "Success"){echo "";} else{ $id=$data['bid']; echo "#Modal$id" ;}?>">Take Action</td>
+                            <td
+                                class="text-<?php if($data['status'] == "Pending"){echo 'warning' ;} if($data['status'] == "Success"){echo 'success';}if($data['status'] == "Reject"){echo 'danger' ;}?> fw-bold">
+                                <?php echo $data['status']?></td>
+                            <td class="text-black fw-bold " style="cursor: 
+                            <?php 
+                            if($data['status'] == "Success" || $data['status'] == "Reject")
+                            {echo "not-allowed";} 
+                            else{ echo "pointer";}
+                            ?>;" data-bs-toggle="modal" data-bs-target="<?php if($data['status'] == "Success" ||$data['status'] == "Reject" )
+                            {echo "";}
+                            else{ $id=$data['bid']; echo "#Modal$id" ;}?>"><button class="btn bg-black text-tan" >Take Action</button>
+                            </td>
 
                         </tr>
                         <!-- Modal -->
-                        <div class="modal fade" id="Modal<?php echo $data['bid']?>" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
+                        <div class="modal fade" id="Modal<?php echo $data['bid']?>" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg modal-dialog-centered">
                                 <div class="modal-content ">
                                     <div class="modal-header">
@@ -114,12 +125,14 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="row g-3">
-                                                <form action="function/order.php?bid=<?php echo $data['bid'];?>&pid=<?php echo $data['pid'];?>" method="post">
+                                            <form
+                                                action="function/order.php?bid=<?php echo $data['bid'];?>&pid=<?php echo $data['pid'];?>"
+                                                method="post">
 
                                                 <div class="col-12">
                                                     <div class="form-floating">
                                                         <select name="status" id="" class="form-select">
-                        
+
                                                             <option value="Success">Success</option>
                                                             <option value="Reject">Reject</option>
                                                         </select>
@@ -140,7 +153,7 @@
                                                         Message</button>
                                                 </div>
                                             </form>
-                                            </div>
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn  bg-tan text-black"

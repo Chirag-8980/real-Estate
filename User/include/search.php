@@ -50,7 +50,7 @@
                             </div>
                             <div class="col-md-3">
                                 <select name="ptype" class="form-select border-0 py-3">
-                                <option selected value="">Noun</option>
+                                <option selected value="">Null</option>
                                 <option selected value="House">House</option>
                                 <option value="Flat">Flat</option>
                                 <option value="Banglow">Banglow</option>

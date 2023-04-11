@@ -1,10 +1,10 @@
 <?php
     include('./config/config.php');
-    $house=mysqli_fetch_array( mysqli_query($con,"select count(*) as total from tblhouse where `ptype`='House'"));
-    $Banglow=mysqli_fetch_array( mysqli_query($con,"select count(*) as total from tblhouse where `ptype`='Banglow'"));
-    $Flat=mysqli_fetch_array( mysqli_query($con,"select count(*) as total from tblhouse where `ptype`='Flat'"));
-    $PHouse=mysqli_fetch_array( mysqli_query($con,"select count(*) as total from tblhouse where `ptype`='Pent-House'"));
-    $FHouse=mysqli_fetch_array( mysqli_query($con,"select count(*) as total from tblhouse where `ptype`='Farm-House'"));
+    $house=mysqli_fetch_array( mysqli_query($con,"select count(*) as total from tblhouse where `ptype`='House' and qc='success' and status= 'Active'"));
+    $Banglow=mysqli_fetch_array( mysqli_query($con,"select count(*) as total from tblhouse where `ptype`='Banglow' and qc='success' and status= 'Active'"));
+    $Flat=mysqli_fetch_array( mysqli_query($con,"select count(*) as total from tblhouse where `ptype`='Flat' and qc='success' and status= 'Active'"));
+    $PHouse=mysqli_fetch_array( mysqli_query($con,"select count(*) as total from tblhouse where `ptype`='Pent-House' and qc='success' and status= 'Active'"));
+    $FHouse=mysqli_fetch_array( mysqli_query($con,"select count(*) as total from tblhouse where `ptype`='Farm-House' and qc='success' and status= 'Active'"));
 ?>
 <body>
 

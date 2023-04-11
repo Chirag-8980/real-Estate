@@ -1,7 +1,7 @@
 <?php
     require './function/sendmail.php';
 
-    // SendMail('chiragkachhadiya8980@gmail.com' , 'this 1st email' , 'this is a msg');
+    SendMail('chiragkachhadiya8980@gmail.com' , 'this 1st email' , 'this is a msg');
     $body = '<!DOCTYPE html>
 
     <html lang="en" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
