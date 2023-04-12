@@ -95,10 +95,6 @@ if (isset($_SESSION['uname'])) {
                         </script>
                     <?php } ?>
                 </div>
-                
-            </div>
-        </div>
-    </div>
     
    <?php if (isset($_SESSION['alert'])){?> 
     <script>
@@ -106,12 +102,16 @@ if (isset($_SESSION['uname'])) {
                 icon: '<?php echo $_SESSION["alert"]["0"] ?>',
                 title: '<?php echo $_SESSION["alert"]["1"] ?>',
                 text: '<?php echo $_SESSION["alert"]["2"] ?>',
-                footer: '<a href="<?php echo $_SESSION["alert"]['4'] ?>"><?php echo $_SESSION["alert"]["3"] ?></a>'
+                footer: '<a href="<?php echo $_SESSION["alert"]["4"] ?>"><?php echo $_SESSION["alert"]["3"] ?></a>'
         })
     </script>
     <?php } 
         unset($_SESSION['alert']);
     ?>
+                
+            </div>
+        </div>
+    </div>
 
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
    

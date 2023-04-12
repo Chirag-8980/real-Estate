@@ -12,7 +12,7 @@
 }
 body{
     background-color: var(--bgcolor);
-    font-family: 'Playfair Display', serif;
+    /* font-family: 'Playfair Display', serif; */
 }
 .poppins{
 }

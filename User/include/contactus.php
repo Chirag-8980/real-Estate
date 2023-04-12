@@ -33,6 +33,10 @@ $data = mysqli_fetch_array($query);
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
+    
+    <!-- Sweet Alert  -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
 
@@ -141,6 +145,18 @@ $data = mysqli_fetch_array($query);
                 </div>
             </div>
         </div>
+        <?php if (isset($_SESSION['alert'])){?> 
+    <script>
+        Swal.fire({
+                icon: '<?php echo $_SESSION["alert"]["0"] ?>',
+                title: '<?php echo $_SESSION["alert"]["1"] ?>',
+                text: '<?php echo $_SESSION["alert"]["2"] ?>',
+                footer: '<a href="<?php echo $_SESSION["alert"]['4'] ?>"><b><?php echo $_SESSION["alert"]["3"] ?></b></a>'
+        })
+    </script>
+    <?php } 
+        unset($_SESSION['alert']);
+    ?>
     </div>
     <script>
         function validateSubject() {

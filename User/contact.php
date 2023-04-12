@@ -4,20 +4,35 @@
 ini_set('display_errors', 0);
  
         if(isset($_POST['submit'])){
-            $uid=$_SESSION["uid"];
-            $name=$_POST['name'];
-            $email=$_POST['email'];
-            $subject=$_POST['subject'];
-            $message=$_POST['message'];
-    
-            $insert_query="INSERT INTO `tblcontact`(`uid`, `name`, `email`, `subject`, `msg`) VALUES ('$uid','$name','$email','$subject','$message')";
-            $run_q =mysqli_query($con,$insert_query);
-    
-            if($run_q){
-                // echo "Send Success";
+            if(!empty($_POST['name'])){
+
+                $uid=$_SESSION["uid"];
+                $name=$_POST['name'];
+                $email=$_POST['email'];
+                $subject=$_POST['subject'];
+                $message=$_POST['message'];
+                
+                $insert_query="INSERT INTO `tblcontact`(`uid`, `name`, `email`, `subject`, `msg`) VALUES ('$uid','$name','$email','$subject','$message')";
+                $run_q =mysqli_query($con,$insert_query);
+                
+                if($run_q){
+                $_SESSION['alert'] = array();
+                $icon = "success";
+                $title = "Your Issue Solve As Soon As Possible...";
+                $text = 'You Can Check Status Of This Ticket... Click The Click Here.. Button...';
+                $footer = "Click Here...";
+                $link = "profile.php";
+                array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
             }else{
-                // echo "Send Failed";
+                $_SESSION['alert'] = array();
+                $icon = "error";
+                $title = "Error";
+                $text = "Something Went Wrong...!";
+                $footer = "Help And Support";
+                $link = "contact.php";
+                array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
             }
+        }
         }
         
     
@@ -47,6 +62,10 @@ ini_set('display_errors', 0);
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
+    
+    <!-- Sweet Alert  -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
@@ -63,8 +82,7 @@ ini_set('display_errors', 0);
         <!-- Spinner Start -->
         <?php include('../User/include/spinner.php')?>
         <!-- Spinner End -->
-
-
+ 
         <!-- Navbar Start -->
         <?php include('../User/include/header.php')?>
         <!-- Navbar End -->
@@ -108,6 +126,19 @@ ini_set('display_errors', 0);
 
         <!-- Back to Top -->
         <?php include('../User/include/top.php')?>
+
+        <?php if (isset($_SESSION['alert'])){?> 
+    <script>
+        Swal.fire({
+                icon: '<?php echo $_SESSION["alert"]["0"] ?>',
+                title: '<?php echo $_SESSION["alert"]["1"] ?>',
+                text: '<?php echo $_SESSION["alert"]["2"] ?>',
+                footer: '<a href="<?php echo $_SESSION["alert"]['4'] ?>"><?php echo $_SESSION["alert"]["3"] ?></a>'
+        })
+    </script>
+    <?php } 
+        unset($_SESSION['alert']);
+    ?>
     </div>
 
     <!-- JavaScript Libraries -->

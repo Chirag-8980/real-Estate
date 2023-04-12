@@ -14,7 +14,13 @@ if (isset($_POST['feedback_submit'])) {
     $run_q = mysqli_query($con, $insert_query);
 
     if ($run_q) {
-        // echo "Send Success";
+        $_SESSION['alert'] = array();
+                $icon = "success";
+                $title = "Thank You For Feedback...";
+                $text = "Your Feedback Is Too Valuble...";
+                $footer = "Help And Support";
+                $link = "contact.php";
+                array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
     } else {
         // echo "Send Failed";
     }

@@ -15,18 +15,18 @@ if (isset($_POST['submit'])) {
       $isRent1 = mysqli_fetch_array(mysqli_query($con, "SELECT *  From`tblhouse`  WHERE pid = $pid"));
       $isRent = $isRent1['stype'];
 
-      if($isRent == "Sell"){
+      if ($isRent == "Sell") {
         $Status_Update = mysqli_query($con, "UPDATE `tblhouse` SET `status`='Inactive' WHERE pid = $pid");
       }
       $property_data = mysqli_fetch_array(mysqli_query($con, "SELECT *  From`tblhouse`  WHERE pid = $pid"));
 
       // if ($Status_Update) {
-        $b_email = mysqli_fetch_array(mysqli_query($con, "select * from tblpbooking where bid = $bid"));
-        $email = $b_email['email'];
+      $b_email = mysqli_fetch_array(mysqli_query($con, "select * from tblpbooking where bid = $bid"));
+      $email = $b_email['email'];
 
-        if ($status == "Success") {
-          $sub = "Congratulation You Got The Deal";
-          $msg = '<!DOCTYPE html>
+      if ($status == "Success") {
+        $sub = "Congratulation Your Deal Is Accepted From Seller...";
+        $msg = '<!DOCTYPE html>
 
                               <html lang="en" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
                                 
@@ -389,7 +389,7 @@ if (isset($_POST['submit'])) {
                                                                       style="padding-left:10px;padding-right:10px;font-size:12px;display:inline-block;letter-spacing:normal;"><span
                                                                         style="font-size: 16px; margin: 0; word-break: break-word; line-height: 2; mso-line-height-alt: 32px;"><strong><span
                                                                             data-mce-style="font-size:12px;"
-                                                                            style="font-size:12px;">'.$property_data['stype'].'</span></strong></span></span>
+                                                                            style="font-size:12px;">' . $property_data['stype'] . '</span></strong></span></span>
                                                                   </div>
                                                                   <div
                                                                     style="text-decoration:none;display:inline-block;color:#00b074;background-color:#e5f7f1;border-radius:3px;width:auto;border-top:0px solid transparent;font-weight:undefined;border-right:0px solid transparent;border-bottom:0px solid transparent;border-left:0px solid transparent;padding-top:1px;padding-bottom:2px;font-family:Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:12px;text-align:center;mso-border-alt:none;word-break:keep-all;">
@@ -397,7 +397,7 @@ if (isset($_POST['submit'])) {
                                                                       style="padding-left:10px;padding-right:10px;font-size:12px;display:inline-block;letter-spacing:normal;"><span
                                                                         style="font-size: 16px; margin: 0; word-break: break-word; line-height: 2; mso-line-height-alt: 32px;"><strong><span
                                                                             data-mce-style="font-size:12px;"
-                                                                            style="font-size:12px;">'.$property_data['price'].' Only /-</span></strong></span></span>
+                                                                            style="font-size:12px;">' . $property_data['price'] . ' Only /-</span></strong></span></span>
                                                                   </div>
                                                                   <!--[if mso]></center></v:textbox></v:roundrect><![endif]-->
                                                                 </div>
@@ -417,8 +417,8 @@ if (isset($_POST['submit'])) {
                                                                     <p
                                                                       style="margin: 0; font-size: 16px; text-align: left; mso-line-height-alt: 19.2px;">
                                                                       <span
-                                                                        style="font-size:34px;color:#2b3940;"><strong>'.$property_data['bedroom'].'
-                                                                          Bedrooms '.$property_data['ptype'].' </strong></span>
+                                                                        style="font-size:34px;color:#2b3940;"><strong>' . $property_data['bedroom'] . '
+                                                                          Bedrooms ' . $property_data['ptype'] . ' </strong></span>
                                                                     </p>
                                                                   </div>
                                                                 </div>
@@ -438,7 +438,7 @@ if (isset($_POST['submit'])) {
                                                                     <p
                                                                       style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;">
                                                                       <strong><span
-                                                                          style="font-size:18px;color:#2b3940;">'.$property_data['paddress'].'</span></strong>
+                                                                          style="font-size:18px;color:#2b3940;">' . $property_data['paddress'] . '</span></strong>
                                                                     </p>
                                                                   </div>
                                                                 </div>
@@ -457,7 +457,7 @@ if (isset($_POST['submit'])) {
                                                                     style="font-size: 14px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 21px; color: #555555; line-height: 1.5;">
                                                                     <p
                                                                       style="margin: 0; font-size: 14px; mso-line-height-alt: 21px;">
-                                                                      <span style="color:#7e8989;">'.$property_data['decription'].'</span></p>
+                                                                      <span style="color:#7e8989;">' . $property_data['decription'] . '</span></p>
                                                                   </div>
                                                                 </div>
                                                               </td>
@@ -470,7 +470,7 @@ if (isset($_POST['submit'])) {
                                                                     style="font-size: 14px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 21px; color: #555555; line-height: 1.5;">
                                                                     <p
                                                                       style="margin: 0; font-size: 14px; mso-line-height-alt: 21px;">
-                                                                      <span style="color:#7e8989;">'.$property_data['facilities'].'</span></p>
+                                                                      <span style="color:#7e8989;">' . $property_data['facilities'] . '</span></p>
                                                                   </div>
                                                                 </div>
                                                               </td>
@@ -553,7 +553,7 @@ if (isset($_POST['submit'])) {
                                                                     style="font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #7e8989; line-height: 1.2;">
                                                                     <p
                                                                       style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 16.8px;">
-                                                                      '.$property_data['bedroom'].' Bedrooms</p>
+                                                                      ' . $property_data['bedroom'] . ' Bedrooms</p>
                                                                   </div>
                                                                 </div>
                                                               </td>
@@ -596,7 +596,7 @@ if (isset($_POST['submit'])) {
                                                                     style="font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #7e8989; line-height: 1.2;">
                                                                     <p
                                                                       style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 16.8px;">
-                                                                      '.$property_data['kitchen'].' Kitchen</p>
+                                                                      ' . $property_data['kitchen'] . ' Kitchen</p>
                                                                   </div>
                                                                 </div>
                                                               </td>
@@ -639,7 +639,7 @@ if (isset($_POST['submit'])) {
                                                                     style="font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #7e8989; line-height: 1.2;">
                                                                     <p
                                                                       style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 16.8px;">
-                                                                      '.$property_data['balcony'].' Balcony</p>
+                                                                      ' . $property_data['balcony'] . ' Balcony</p>
                                                                   </div>
                                                                 </div>
                                                               </td>
@@ -700,7 +700,7 @@ if (isset($_POST['submit'])) {
                                                                     style="font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #7e8989; line-height: 1.2;">
                                                                     <p
                                                                       style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 16.8px;">
-                                                                      '.$property_data['hall'].' Hall</p>
+                                                                      ' . $property_data['hall'] . ' Hall</p>
                                                                   </div>
                                                                 </div>
                                                               </td>
@@ -743,7 +743,7 @@ if (isset($_POST['submit'])) {
                                                                     style="font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #7e8989; line-height: 1.2;">
                                                                     <p
                                                                       style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 16.8px;">
-                                                                      '.$property_data['bathroom'].' Bathrooms</p>
+                                                                      ' . $property_data['bathroom'] . ' Bathrooms</p>
                                                                   </div>
                                                                 </div>
                                                               </td>
@@ -786,7 +786,7 @@ if (isset($_POST['submit'])) {
                                                                     style="font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #7e8989; line-height: 1.2;">
                                                                     <p
                                                                       style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 16.8px;">
-                                                                      '.$property_data['bhk'].' BHK</p>
+                                                                      ' . $property_data['bhk'] . ' BHK</p>
                                                                   </div>
                                                                 </div>
                                                               </td>
@@ -1254,27 +1254,41 @@ if (isset($_POST['submit'])) {
                                 </body>
                                 
                                 </html>';
-          $sendmail = SendMail($email, $sub, $msg);
-          header('location:../property_order.php');
+        $sendmail = SendMail($email, $sub, $msg);
+        $_SESSION['alert'] = array();
+                $icon = "success";
+                $title = "Congratulation..";
+                $text = "Your Deal Is Success...";
+                $footer = "Help And Support";
+                $link = "contact.php";
+                array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
+        header('location:../property_order.php');
         // }
       }
     }
-  }elseif ($status == "Reject") {
+  } elseif ($status == "Reject") {
     $queary = mysqli_query($con, "UPDATE `tblpbooking` SET `status`='Reject',`reason`=  '$reason' WHERE `bid`= '$bid'");
     if ($queary) {
       // $pid = $_GET['pid'];
       // $Status_Update = mysqli_query($con, "UPDATE `tblhouse` SET `status`='Inactive' WHERE pid = $pid");
 
       // if ($Status_Update) {
-        $b_email = mysqli_fetch_array(mysqli_query($con, "select * from tblpbooking where bid = $bid"));
-        $email = $b_email['email'];
+      $b_email = mysqli_fetch_array(mysqli_query($con, "select * from tblpbooking where bid = $bid"));
+      $email = $b_email['email'];
 
-        if ($status == "Reject") {
-          $sub = "Reject";
-          $msg = "Your Property Reqest Has Been Rejated...";
-          $sendmail = SendMail($email, $sub, $msg);
-          header('location:../property_order.php');
-        }
+      if ($status == "Reject") {
+        $sub = "Reject";
+        $msg = "Your Property Reqest Has Been Rejated...";
+        $sendmail = SendMail($email, $sub, $msg);
+        $_SESSION['alert'] = array();
+                $icon = "success";
+                $title = "You Are Rejected This Deal...!";
+                $text = "I Hope You Got Better Deal As Soon As Possible...";
+                $footer = "Help And Support";
+                $link = "contact.php";
+                array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
+        header('location:../property_order.php');
+      }
       // }  
     }
   }

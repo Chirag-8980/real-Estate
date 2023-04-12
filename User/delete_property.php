@@ -12,7 +12,7 @@
                 $footer = "Help And Support";
                 $link = "contact.php";
                 array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
-        header('location:user-property.php?filter=""');
+        header('location:user-property.php?filter="all"');
     }
     else{
         $_SESSION['alert'] = array();

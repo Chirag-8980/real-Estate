@@ -433,38 +433,35 @@ if (isset($_POST['pbooking'])) {
                     </table>
                   </body>
                 </html>';
-        $check =SendMail_With_PDF($email, $sub, $msg, $pid);
-        if($check){
-          echo " 00";
-        }
+        SendMail_With_PDF($email, $sub, $msg, $pid);
 
         $_SESSION['alert'] = array();
-        $icon = "success";
-        $title = "Success";
-        $text = "Booking reqest sent successfull...";
-        $footer = "Help And Suppurt...";
-        $link = "contact.php";
-        array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
+                $icon = "success";
+                $title = "Your Booking  Reqest Sent To Seller...";
+                $text = "Buyer Callback As Soon As Possible..";
+                $footer = "Help And Support";
+                $link = "contact.php";
+                array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
         header("location:book_property.php?pid=$pid");
       } else {
         $_SESSION['alert'] = array();
-        $icon = "error";
-        $title = "Failed...!";
-        $text = "Something Wrong...!";
-        $footer = "Help And Suppurt...";
-        $link = "contact.php";
-        array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
+                $icon = "error";
+                $title = "Error";
+                $text = "Something Went Wrong...!";
+                $footer = "Help And Support";
+                $link = "contact.php";
+                array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
         header("location:property_details.php?pid=$pid");
       }
     } else {
       $_SESSION['alert'] = array();
-        $icon = "warning";
-        $title = "Something Wrong...!";
-        $text = "This Is Your Property So You Can Not Sell And Rent This Property...";
-        $footer = "Help And Suppurt...";
-        $link = "contact.php";
-        array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
-        header("location:property_details.php?pid=$pid");
+                $icon = "warning";
+                $title = "Something Went Wrong...!";
+                $text = "This Is Your Property You Can Not Sell or Rent This Property...!";
+                $footer = "Help And Support";
+                $link = "contact.php";
+                array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
+      header("location:property_details.php?pid=$pid");
     }
   } catch (Exception $e) {
     echo 'Message: ' . $e->getMessage();
@@ -570,19 +567,15 @@ if (isset($_POST['pbooking'])) {
           </div>
         </div>
       </form>
-      <?php if (isset($_SESSION['alert'])){?> 
-    <script>
-        Swal.fire({
-                icon: '<?php echo $_SESSION["alert"]["0"] ?>',
-                title: '<?php echo $_SESSION["alert"]["1"] ?>',
-                text: '<?php echo $_SESSION["alert"]["2"] ?>',
-                footer: '<a href="<?php echo $_SESSION["alert"]['4'] ?>"><?php echo $_SESSION["alert"]["3"] ?></a>'
-        })
-    </script>
-    <?php } 
-        unset($_SESSION['alert']);
-    ?>
-
+      <?php if (isset($_SESSION['msg'])) { ?>
+        <script>
+          swal("<?php echo  $_SESSION['status'] ?>", "<?php echo $_SESSION['msg'] ?>",
+            "<?php echo $_SESSION['status'] ?>");
+        </script>
+      <?php
+        unset($_SESSION['msg']);
+        unset($_SESSION['status']);
+      } ?>
 
     </div>
 

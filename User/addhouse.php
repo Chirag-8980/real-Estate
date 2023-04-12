@@ -7,7 +7,6 @@ if(!isset($_SESSION['uid'])){
 $uid = $_SESSION['uid'];
 $user = mysqli_fetch_array(mysqli_query($con , "select credit from user where uid=$uid"));
 if($user['credit'] == 0){
-
     $_SESSION['alert'] = array();
     $icon = "warning";
     $title = "Insufficient Credit";
@@ -15,7 +14,7 @@ if($user['credit'] == 0){
     $footer = "Click To Start";
     $link = "pricing.php";
     array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
-    header("location:pricing.php");
+    header("location:Pricing.php");
 } else{
 if (isset($_POST['QC'])) {
     $uid = $_SESSION["uid"];
@@ -79,6 +78,7 @@ if (isset($_POST['QC'])) {
             $insert_qry = "INSERT INTO `tblhouse`( `uid`, `ptitle`, `ptype`, `bhk`, `stype`, `bedroom`, `balcony`, `bathroom`, `kitchen`, `hall`, `floor`, `tfloor`, `price`, `sqft`, `paddress`, `city`, `state`, `img1`, `img2`, `img3`, `img4`, `featured`, `description`, `facilities`) VALUES ('$uid','$ptitle','$ptype','$bhk','$stype','$bedroom','$balcony','$bathroom','$kitchen','$hall','$floor','$tfloor','$price','$sqft','$paddress','$city','$state','$image1','$image2','$image3','$image4','$featured','$description','$facilities')";
             $result = mysqli_query($con, $insert_qry);
             if ($result) {
+                $res = mysqli_query($con , "UPDATE user SET credit = credit - 1 WHERE `uid` = $uid");
                 $_SESSION['alert'] = array();
                 $icon = "success";
                 $title = "Your property inserted succesfull..";
@@ -86,11 +86,7 @@ if (isset($_POST['QC'])) {
                 $footer = "Help And Support";
                 $link = "index.php";
                 array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
-                $res = mysqli_query($con , "UPDATE user SET credit = credit - 1 WHERE `uid` = $uid");
-                if ($res) {
-                    header('location:./user-property.php?filter=all');
-                }
-
+                header('location:./user-property.php?filter=all');
             } else {
                 $_SESSION['alert'] = array();
                 $icon = "error";
@@ -397,7 +393,7 @@ if (isset($_POST['QC'])) {
         })
     </script>
     <?php } 
-        unset($_SESSION['alert']);
+        // unset($_SESSION['alert']);
     ?>
 </body>
 

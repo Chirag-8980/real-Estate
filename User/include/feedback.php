@@ -39,7 +39,7 @@
 
 <body>
 
-<div class="owl-carousel testimonial-carousel wow  fadeInUp">
+<div class="container owl-carousel testimonial-carousel wow  fadeInUp">
     <?php
         $query=mysqli_query($con,"SELECT f.*, u.img FROM tblfeedback f JOIN user u ON f.email = u.email WHERE f.status='1'");
         while($row=mysqli_fetch_array($query))

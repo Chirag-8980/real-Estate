@@ -100,7 +100,7 @@
                             <td><?php echo $property['stype']?></td>
                             <td class="text-<?php if($data['status'] == "Pending"){echo 'warning' ;} if($data['status'] == "Success"){echo 'success';}if($data['status'] == "Reject"){echo 'danger' ;}?> fw-bold"><?php echo $data['status']?></td>
                             <td><?php echo $data['bdate']?></td>
-                            <td ><a href="property_view.php?pid=<?php echo $property['pid']?>" class="text-black fw-bold">View Details </a></td>
+                            <td ><a href="property_view.php?pid=<?php echo $property['pid']?>" class="text-black fw-bold"><button class="text-tan btn bg-black">View Details</button> </a></td>
 
                         </tr>
                         

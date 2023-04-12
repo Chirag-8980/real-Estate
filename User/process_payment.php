@@ -21,7 +21,7 @@ if(isset($_POST['pmtid']) && isset($_POST['amt']) )
         $_SESSION['alert'] = array();
         $icon = "success";
         $title = "Congratulation";
-        $text = "'.$p_credit.' Credit credited in your account";
+        $text = "Credit added in your account..";
         $footer = "Help And Suppurt...";
         $link = "contact.php";
         array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
