@@ -13,13 +13,14 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Locus - Find Your Dream</title>
+    <title>LOCUS | Book Property</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="../admin/assets/img/favi.png">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

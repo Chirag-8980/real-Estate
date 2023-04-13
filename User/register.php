@@ -8,14 +8,17 @@ session_start();
 
 <head>
     <meta charset="UTF-8">
-    <!--<title> Login and Registration Form in HTML & CSS | CodingLab </title>-->
+    
+
+    <!-- FavIcon -->
+    <link rel="shortcut icon" type="image/x-icon" href="../admin/assets/img/favi.png">
     <link rel="stylesheet" href="../User/css/login.css">
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <title>Connect With Us..</title>
+    <title>LOCUS | Connect With Us...</title>
 </head>
 <style>
 input.invalid {
@@ -98,7 +101,7 @@ input.invalid {
                             <div class="text-danger" id="error-cpassword"></div>
                             <br>
                             <input type="checkbox" id="terms-checkbox" oninput="validateTerms()" name="terms-checkbox">
-                            <label for="terms-checkbox" class="text-dark">I agree to the terms and conditions</label>
+                            <label  class="text-dark">I agree to the <a href="term.php"> terms and conditions </a></label>
                             <div id="error-terms" class="text-danger"></div>
 
 

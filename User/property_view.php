@@ -17,10 +17,11 @@ $oldprice = $data['price'] + $data['price'] / 2;
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Product Card/Page</title>
+    <title>LOCUS | Property Details</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="../admin/assets/img/favi.png">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

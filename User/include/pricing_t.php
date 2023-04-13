@@ -19,7 +19,7 @@ if (isset($_SESSION['uname'])) {
     <!-- Sweet Alert  -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- <script src="../js/sweetalert.js"></script> -->
-    <title>Document</title>
+    <title>LOCUS | Plan And Pricing</title>
 </head>
 
 <body>

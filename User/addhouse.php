@@ -129,7 +129,8 @@ if (isset($_POST['QC'])) {
     <meta content="" name="descriptionv">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="../admin/assets/img/favi.png">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -153,7 +154,7 @@ if (isset($_POST['QC'])) {
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    <title>List Your Property</title>
+    <title>LOCUS | Add Property</title>
 </head>
 
 <body>

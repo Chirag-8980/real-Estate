@@ -7,7 +7,8 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../User/css/login.css">
-
+    
+    <link rel="shortcut icon" type="image/x-icon" href="../admin/assets/img/favi.png">
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"

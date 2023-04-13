@@ -14,10 +14,10 @@ if(!isset($_SESSION['auser']))
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>LM Homes | About</title>
+        <title>LOCUS | About</title>
 		
 		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favi.png">
 		
 		<!-- Bootstrap CSS -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -100,7 +100,7 @@ if(!isset($_SESSION['auser']))
 													<td><?php echo $row['0']; ?></td>
 													<td><?php echo $row['1']; ?></td>
 													<td><?php echo $row['2']; ?></td>
-													<td><img src="upload/<?php echo $row['3']; ?>" height="200px" width="200px"></td>
+													<td><img src="upload/Image/<?php echo $row['3']; ?>" height="200px" width="200px"></td>
 													<td><a href="aboutedit.php?id=<?php echo $row['0']; ?>">Edit</a></td>
 													<td><a href="aboutdelete.php?id=<?php echo $row['0']; ?>">Delete</a></td>
 												</tr>

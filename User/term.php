@@ -2,7 +2,9 @@
 <html>
 
 <head>
-    <title>Terms and Conditions</title>
+    <title>LOCUS | Terms and Conditions</title>
+    
+    <link rel="shortcut icon" type="image/x-icon" href="../admin/assets/img/favi.png">
 </head>
 <style>
     .container {

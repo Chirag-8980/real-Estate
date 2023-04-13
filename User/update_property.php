@@ -60,12 +60,12 @@ $user_data = mysqli_fetch_array(mysqli_query($con, "select * from user where uid
         <div class="container-fluid header bg-white p-0">
             <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
                 <div class="col-md-6 p-5 mt-lg-5">
-                    <h1 class="display-5 animated text-black fadeIn mb-4">Add Home</h1>
+                    <h1 class="display-5 animated text-black fadeIn mb-4">Update Home</h1>
                     <nav aria-label="breadcrumb animated fadeIn">
                         <ol class="breadcrumb text-uppercase">
                             <li class="breadcrumb-item"><a class="text-tan" href="#">Home</a></li>
                             <li class="breadcrumb-item"><a class="text-tan" href="#">Select Type</a></li>
-                            <li class="breadcrumb-item text-body text-black active" aria-current="page">Add Home
+                            <li class="breadcrumb-item text-body text-black active" aria-current="page">Update Home
                             </li>
                         </ol>
                     </nav>
@@ -79,15 +79,16 @@ $user_data = mysqli_fetch_array(mysqli_query($con, "select * from user where uid
 
         <!-- Add Form Start -->
         <div class="container mt-3 px-5">
-            <form class="row g-3 container" method="POST" action="upcode.php?pid=<?php echo $pid ;?>" enctype="multipart/form-data">
+            <form class="row g-3 container" onsubmit="return validateForm()" method="POST" action="upcode.php?pid=<?php echo $pid ;?>" enctype="multipart/form-data">
                 <!-- Basic Information -->
                 <h2 class="animated text-black fadeIn mb-3" style="border-bottom: 2px solid var(--tan);">Basic
                     Information</h2>
                 <div class="col-md-12 input-group-lg">
                     <input type="hidden" name="prid" value="<?= $data['pid'] ?>">
                     <label for="inputEmail4" class="form-label  text-black">Title</label>
-                    <input type="text" name="ptitle" class="form-control" Value="<?php echo $data['ptitle'] ?>" id="inputEmail4">
+                    <input type="text" name="ptitle" id="ptitle" class="form-control" oninput="validatePtitle()" Value="<?php echo $data['ptitle'] ?>" id="inputEmail4">
                 </div>
+                <div class="text-danger mt-1" id="error-ptitle"></div>
 
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Property Type</label>
@@ -166,24 +167,31 @@ $user_data = mysqli_fetch_array(mysqli_query($con, "select * from user where uid
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Bedroom</label>
-                    <input type="text" name="bedroom" value="<?php echo $data['bedroom'] ?>" class="form-control" id="inputZip" placeholder="Enter Bedroom (Only 1 to 5)">
+                    <input type="text" name="bedroom" id="bedroom" oninput="validateBedroom()" value="<?php echo $data['bedroom'] ?>" class="form-control" id="inputZip" placeholder="Enter Bedroom (Only 1 to 5)">
+                    <div class="text-danger  mt-1" id="error-bedroom"></div>
                 </div>
 
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Balcony</label>
-                    <input type="text" name="balcony" class="form-control" value="<?php echo $data['balcony'] ?>" id="inputZip" placeholder="Enter Balcony (Only 1 to 5)">
+                    <input type="text" name="balcony" id="balcony" class="form-control"  oninput="validateBalcony()" value="<?php echo $data['balcony'] ?>" id="inputZip" placeholder="Enter Balcony (Only 1 to 5)">
+                    <div class="text-danger  mt-1" id="error-balcony"></div>
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Bathroom</label>
-                    <input type="text" name="bathroom" value="<?php echo $data['bathroom'] ?>" class="form-control" id="inputZip" placeholder="Enter Balcony (Only 1 to 5)">
+                    <input type="text" name="bathroom" id="bathroom" oninput="validateBathroom()" value="<?php echo $data['bathroom'] ?>" class="form-control" id="inputZip" placeholder="Enter Balcony (Only 1 to 5)">
+                    <div class="text-danger  mt-1" id="error-bathroom"></div>
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Kitchen</label>
-                    <input type="text" name="kitchen" value="<?php echo $data['kitchen'] ?>" class="form-control" id="inputZip" placeholder="Enter Kitchen (Only 1 to 5)">
+                    <input type="text" name="kitchen" id="kitchen" oninput="validateKitchen()"  value="<?php echo $data['kitchen'] ?>" class="form-control" id="inputZip" placeholder="Enter Kitchen (Only 1 to 5)">
+                    <div class="text-danger  mt-1" id="error-kitchen"></div>
+                
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Hall</label>
-                    <input type="text" name="hall" class="form-control" value="<?php echo $data['hall'] ?>" id="inputZip" placeholder="Enter Hall (Only 1 to 5)">
+                    <input type="text" name="hall" id="hall" oninput="validateHall()"  class="form-control" value="<?php echo $data['hall'] ?>" id="inputZip" placeholder="Enter Hall (Only 1 to 5)">
+                    <div class="text-danger  mt-1" id="error-hall"></div>
+               
                 </div>
 
                 <!-- Price & Location  -->
@@ -191,31 +199,43 @@ $user_data = mysqli_fetch_array(mysqli_query($con, "select * from user where uid
                     Price & Location</h2>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Floor</label>
-                    <input type="text" name="floor" class="form-control" value="<?php echo $data['floor'] ?>" id="inputEmail4">
+                    <input type="text" name="floor" id="floor" oninput="validateFloor()" class="form-control" value="<?php echo $data['floor'] ?>" id="inputEmail4">
+                    <div class="text-danger  mt-1" id="error-floor"></div>
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">Total Floor</label>
-                    <input type="text" name="tfloor" class="form-control" value="<?php echo $data['tfloor'] ?>" id="inputEmail4">
+                    <input type="text" name="tfloor" id="tfloor" oninput="validateTfloor()" class="form-control" value="<?php echo $data['tfloor'] ?>" >
+                    <div class="text-danger  mt-1" id="error-tfloor"></div>
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Price</label>
-                    <input type="text" class="form-control" name="price" value="<?php echo $data['price'] ?>" id="inputZip">
+                    <input type="text" class="form-control" name="price" id="price" oninput="validatePrice()" value="<?php echo $data['price'] ?>" >
+                    <div class="text-danger  mt-1" id="error-price"></div>
+                
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Area Size</label>
-                    <input type="text" class="form-control" name="sqft" value="<?php echo $data['sqft'] ?>" id="inputZip">
+                    <input type="text" class="form-control" name="sqft" id="sqft" oninput="validateSqft()" value="<?php echo $data['sqft'] ?>" >
+                    <div class="text-danger  mt-1" id="error-sqft"></div>
+                
                 </div>
                 <div class="col-md-12 input-group-lg">
                     <label for="inputEmail4" class="form-label  text-black">Address</label>
-                    <input type="text" name="paddress" class="form-control" value="<?php echo $data['paddress'] ?>" id="inputEmail4">
+                    <input type="text" name="paddress" id="paddress" class="form-control"  oninput="validatePaddress()"  value="<?php echo $data['paddress'] ?>" >
+                    <div class="text-danger  mt-1" id="error-paddress"></div>
+                
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">City</label>
-                    <input type="text" class="form-control" name="city" id="inputZip" value="<?php echo $data['city'] ?>">
+                    <input type="text" class="form-control" name="city" id="city" oninput="validateCity()"  value="<?php echo $data['city'] ?>">
+                    <div class="text-danger  mt-1" id="error-city"></div>
+                
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">State</label>
-                    <input type="text" class="form-control" name="state" id="inputZip" value="<?php echo $data['state'] ?>">
+                    <input type="text" class="form-control" name="state" id="state" oninput="validateState()"  value="<?php echo $data['state'] ?>">
+                    <div class="text-danger  mt-1" id="error-state"></div>
+                
                 </div>
                 <!-- Image & Status -->
                 <h2 class="animated text-black fadeIn mt-5 add-header" style="border-bottom: 2px solid var(--tan);">
@@ -265,7 +285,7 @@ $user_data = mysqli_fetch_array(mysqli_query($con, "select * from user where uid
                 <?php echo $data['description'] ?>
                 </textarea>
                 <div class="d-flex justify-content-end">
-                    <input type="submit" name="update" class="btn py-2 px-5 mx-1 bg-black text-tan" value="Update Property" />
+                    <input type="submit" name="update" id="submit-button" class="btn py-2 px-5 mx-1 bg-black text-tan" value="Update Property" />
                     <input type="submit" name="discard" class="btn py-2 px-5  mx-1 bg-tan text-black" value="Discard" />
                 </div>
 
@@ -290,10 +310,272 @@ $user_data = mysqli_fetch_array(mysqli_query($con, "select * from user where uid
                 footer: '<a href="<?php echo $_SESSION["alert"]['4'] ?>"><?php echo $_SESSION["alert"]["3"] ?></a>'
         })
     </script>
+   
     <?php } 
         unset($_SESSION['alert']);
     ?>
 </body>
+<script>
+ function validatePtitle() {
+        var nameInput = document.getElementById("ptitle");
+        var ptitle = nameInput.value.trim();
+        var errorMessage = document.getElementById("error-ptitle");
+
+        if (ptitle == "") {
+            errorMessage.innerHTML = "title field cannot be empty";
+            document.getElementById("ptitle").required = true;
+            return false;
+        }else if (!/^[a-zA-Z\s,'-]*$/.test(ptitle)) {
+            errorMessage.innerHTML = "title field can only contain letter";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            document.getElementById("ptitle").required = true;
+            return true;
+        }
+    }
+
+    function validateBedroom() {
+        var nameInput = document.getElementById("bedroom");
+        var bedroom = nameInput.value.trim();
+        var errorMessage = document.getElementById("error-bedroom");
+
+        if (bedroom == "") {
+            errorMessage.innerHTML = "bedroom field cannot be empty";
+            document.getElementById("bedroom").required = true;
+            return false;
+        } else if (!/^\d+$/.test(bedroom)) {
+            errorMessage.innerHTML = "bedroom field can only contain digits";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            document.getElementById("bedroom").required = true;
+            return true;
+        }
+    }
+
+    function validateBalcony() {
+        var nameInput = document.getElementById("balcony");
+        var balcony = nameInput.value.trim();
+        var errorMessage = document.getElementById("error-balcony");
+
+        if (balcony == "") {
+            errorMessage.innerHTML = "balcony field cannot be empty";
+            document.getElementById("balcony").required = true;
+            return false;
+        } else if (!/^\d+$/.test(balcony)) {
+            errorMessage.innerHTML = "balcony field can only contain digits";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            document.getElementById("balcony").required = true;
+            return true;
+        }
+    }
+
+    function validateBathroom() {
+        var nameInput = document.getElementById("bathroom");
+        var bathroom = nameInput.value.trim();
+        var errorMessage = document.getElementById("error-bathroom");
+
+        if (bathroom == "") {
+            errorMessage.innerHTML = "bathroom field cannot be empty";
+            document.getElementById("bathroom").required = true;
+            return false;
+        } else if (!/^\d+$/.test(bathroom)) {
+            errorMessage.innerHTML = "bathroom field can only contain digits";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            document.getElementById("bathroom").required = true;
+            return true;
+        }
+    }
+
+    function validateKitchen() {
+        var nameInput = document.getElementById("kitchen");
+        var kitchen = nameInput.value.trim();
+        var errorMessage = document.getElementById("error-kitchen");
+
+        if (kitchen == "") {
+            errorMessage.innerHTML = "kitchen field cannot be empty";
+            document.getElementById("kitchen").required = true;
+            return false;
+        } else if (!/^\d+$/.test(kitchen)) {
+            errorMessage.innerHTML = "kitchen field can only contain digits";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            document.getElementById("kitchen").required = true;
+            return true;
+        }
+    }
+
+    function validateHall() {
+        var nameInput = document.getElementById("hall");
+        var hall = nameInput.value.trim();
+        var errorMessage = document.getElementById("error-hall");
+
+        if (hall == "") {
+            errorMessage.innerHTML = "hall field cannot be empty";
+            document.getElementById("hall").required = true;
+            return false;
+        } else if (!/^\d+$/.test(hall)) {
+            errorMessage.innerHTML = "hall field can only contain digits";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            document.getElementById("hall").required = true;
+            return true;
+        }
+    }
+
+    function validateFloor() {
+        var nameInput = document.getElementById("floor");
+        var floor = nameInput.value.trim();
+        var errorMessage = document.getElementById("error-floor");
+
+        if (floor == "") {
+            errorMessage.innerHTML = "floor field cannot be empty";
+            document.getElementById("floor").required = true;
+            return false;
+        } else if (!/^\d+$/.test(floor)) {
+            errorMessage.innerHTML = "floor field can only contain digits";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            document.getElementById("floor").required = true;
+            return true;
+        }
+    }
+
+    function validateTfloor() {
+        var nameInput = document.getElementById("tfloor");
+        var tfloor = nameInput.value.trim();
+        var errorMessage = document.getElementById("error-tfloor");
+
+        if (tfloor == "") {
+            errorMessage.innerHTML = "total floor field cannot be empty";
+            document.getElementById("tfloor").required = true;
+            return false;
+        } else if (!/^\d+$/.test(tfloor)) {
+            errorMessage.innerHTML = "total floor field can only contain digits";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            document.getElementById("tfloor").required = true;
+            return true;
+        }
+    }
+
+    function validatePrice() {
+        var nameInput = document.getElementById("price");
+        var price = nameInput.value.trim();
+        var errorMessage = document.getElementById("error-price");
+
+        if (price == "") {
+            errorMessage.innerHTML = "price field cannot be empty";
+            document.getElementById("price").required = true;
+            return false;
+        } else if (!/^\d+$/.test(price)) {
+            errorMessage.innerHTML = "price field can only contain digits";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            document.getElementById("price").required = true;
+            return true;
+        }
+    }
+
+    function validateSqft() {
+        var nameInput = document.getElementById("sqft");
+        var sqft = nameInput.value.trim();
+        var errorMessage = document.getElementById("error-sqft");
+
+        if (sqft == "") {
+            errorMessage.innerHTML = "sqft field cannot be empty";
+            document.getElementById("sqft").required = true;
+            return false;
+        } else if (!/^\d+$/.test(sqft)) {
+            errorMessage.innerHTML = "sqft field can only contain digits";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            document.getElementById("sqft").required = true;
+            return true;
+        }
+    }
+
+    function validatePaddress() {
+        var input = document.getElementById("paddress");
+        var paddress = input.value.trim();
+        var errorMessage = document.getElementById("error-paddress");
+
+        if (paddress === "") {
+            errorMessage.innerHTML = "Address field cannot be empty";
+            return false;
+        } else if (!/^[a-zA-Z0-9\s,'-]*$/.test(paddress)) {
+            errorMessage.innerHTML = "Address contains invalid characters";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            return true;
+        }
+    }
+    
+    function validateCity() {
+        var cityInput = document.getElementById("city");
+        var city = cityInput.value.trim();
+        var errorMessage = document.getElementById("error-city");
+
+        if (city == "") {
+            errorMessage.innerHTML = "City field cannot be empty";
+            // cityInput.classList.add("invalid");
+            return false;
+        } else if (!/^[a-zA-Z ]+$/.test(city)) {
+            errorMessage.innerHTML = "City can only contain letters and spaces";
+            // cityInput.classList.add("invalid");
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            // cityInput.classList.remove("invalid");
+            return true;
+        }
+    }
+
+    function validateState() {
+        var stateInput = document.getElementById("state");
+        var state = stateInput.value.trim();
+        var errorMessage = document.getElementById("error-state");
+
+        if (state == "") {
+            errorMessage.innerHTML = "State field cannot be empty";
+            // stateInput.classList.add("invalid");
+            return false;
+        } else if (!/^[a-zA-Z ]+$/.test(state)) {
+            errorMessage.innerHTML = "State can only contain letters and spaces";
+            // stateInput.classList.add("invalid");
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            // stateInput.classList.remove("invalid");
+            return true;
+        }
+    }
+   
+    
+    function validateForm() {
+    if (validatePtitle() && validateBedroom() && validateBalcony() && validateBathroom() && validateKitchen() && validateHall() && validateFloor() && validateTfloor() && validatePrice() && validateSqft() && validatePaddress() && validateCity() && validateState()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+        
+           
+</script>
 <!-- Tinymce Lib -->
 <script src="js/tinymce/tinymce.min.js"></script>
 <script src="js/tinymce/init-tinymce.min.js"></script>

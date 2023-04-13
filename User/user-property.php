@@ -42,10 +42,11 @@ switch ($_GET['filter']) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>LOCUS | Your Property</title>
 </head>
 <!-- Favicon -->
-<link href="img/favicon.ico" rel="icon">
+
+    <link rel="shortcut icon" type="image/x-icon" href="../admin/assets/img/favi.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
