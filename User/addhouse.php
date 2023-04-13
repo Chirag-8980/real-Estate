@@ -394,7 +394,7 @@ if (isset($_POST['QC'])) {
         })
     </script>
     <?php } 
-        // unset($_SESSION['alert']);
+        unset($_SESSION['alert']);
     ?>
 </body>
 

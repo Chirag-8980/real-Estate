@@ -163,18 +163,6 @@ if (!isset($_SESSION['auser'])) {
                 </li>
 
                 <li class="menu-title">
-                    <span>State & City</span>
-                </li>
-
-                <li class="submenu">
-                    <a href="#"><i class="fe fe-home"></i></i> <span>State & City</span> <span class="menu-arrow"></span></a>
-                    <ul style="display: none;">
-                        <li><a href="stateadd.php"> State </a></li>
-                        <li><a href="cityadd.php"> City </a></li>
-                    </ul>
-                </li>
-
-                <li class="menu-title">
                     <span>Query</span>
                 </li>
                 <li class="submenu">

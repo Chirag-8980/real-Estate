@@ -8,30 +8,37 @@ switch ($_GET['filter']) {
     case 'pending':
         $select_q = "select * from tblhouse where uid='$uid' AND qc='pending'";
         $query = mysqli_query($con, $select_q);
+        $total = mysqli_fetch_array(mysqli_query($con , "select count(*) as total from tblhouse where uid='$uid' AND qc='pending'"));
         break;
     case 'success':
         $select_q = "select * from tblhouse where uid='$uid' AND qc='success'";
         $query = mysqli_query($con, $select_q);
+        $total = mysqli_fetch_array(mysqli_query($con , "select count(*) as total from tblhouse where uid='$uid' AND qc='success'"));
         break;
     case 'reject':
         $select_q = "select * from tblhouse where uid='$uid' AND qc='reject'";
         $query = mysqli_query($con, $select_q);
+        $total = mysqli_fetch_array(mysqli_query($con , "select count(*) as total from tblhouse where uid='$uid' AND qc='reject'"));
         break;
     case 'sell':
         $select_q = "select * from tblhouse where uid='$uid' AND stype='sell'";
         $query = mysqli_query($con, $select_q);
+        $total = mysqli_fetch_array(mysqli_query($con , "select count(*) as total from tblhouse where uid='$uid' AND stype='sell'"));
         break;
     case 'rent':
         $select_q = "select * from tblhouse where uid='$uid' AND stype='rent'";
         $query = mysqli_query($con, $select_q);
+        $total = mysqli_fetch_array(mysqli_query($con , "select count(*) as total from tblhouse where uid='$uid' AND stype='rent'"));
         break;
     case 'booked':
-        $select_q = "SELECT DISTINCT  tblhouse.*  FROM tblhouse INNER JOIN tblpbooking ON tblhouse.pid = tblpbooking.pid AND tblpbooking.status='success' AND tblpbooking.seller_id = $uid";
+        $select_q = "SELECT DISTINCT tblhouse.*  FROM tblhouse INNER JOIN tblpbooking ON tblhouse.pid = tblpbooking.pid AND tblpbooking.status='success' AND tblpbooking.seller_id = $uid";
         $query = mysqli_query($con, $select_q);
+        $total = mysqli_fetch_array(mysqli_query($con , "SELECT DISTINCT count(*) as total  FROM tblhouse INNER JOIN tblpbooking ON tblhouse.pid = tblpbooking.pid AND tblpbooking.status='success' AND tblpbooking.seller_id = $uid"));
         break;
     default:
         $select_q = "select * from tblhouse where uid='$uid'";
         $query = mysqli_query($con, $select_q);
+        $total = mysqli_fetch_array(mysqli_query($con , "select count(*) as total from tblhouse where uid='$uid'"));
 }
 
 ?>
@@ -154,8 +161,10 @@ switch ($_GET['filter']) {
                     </div>
                 </ul>
             </div>
-
-
+            
+            <div class="container me-5 mb-4">
+                <p class="text-muted">Total <b class="text-black"><?php echo $total['total']?></b> property show here...</p>
+            </div>
             <section style="background-color: white;" class="mb-3">
                 <?php
 

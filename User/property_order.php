@@ -112,7 +112,13 @@
                             else{ echo "pointer";}
                             ?>;" data-bs-toggle="modal" data-bs-target="<?php if($data['status'] == "Success" ||$data['status'] == "Reject" )
                             {echo "";}
-                            else{ $id=$data['bid']; echo "#Modal$id" ;}?>"><button class="btn bg-black text-tan" >Take Action</button>
+                            else{ $id=$data['bid']; echo "#Modal$id" ;}?>"><button class="btn bg-black text-tan"
+                            style="cursor: 
+                            <?php 
+                            if($data['status'] == "Success" || $data['status'] == "Reject")
+                            {echo "not-allowed";} 
+                            else{ echo "pointer";}
+                            ?>;">Take Action</button>
                             </td>
 
                         </tr>

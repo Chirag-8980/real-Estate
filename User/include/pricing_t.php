@@ -53,6 +53,11 @@ if (isset($_SESSION['uname'])) {
                         </div>
                         <script>
                             function <?php $pid1 = $data['p_id']; echo "pay_now$pid1"?>() {
+                                <?php if(!isset($_SESSION['uid'])){ 
+                                    $_SESSION['message'] = "First Login And Than Buy Credit...!";
+                                    ?>
+                                    window.location = "login.php";
+                              <?php  }?>
                                 var options = {
                                     "key": "rzp_test_WVSwVyjTamNVvO",
                                     "amount": <?php echo $data['p_price']; ?> * 100,

@@ -12,7 +12,8 @@
                 $footer = "Help And Support";
                 $link = "contact.php";
                 array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
-        header('location:user-property.php?filter="all"');
+                mysqli_query($con , "delete from tblpbooking where pid= $pid");
+                header('location:user-property.php?filter="all"');
     }
     else{
         $_SESSION['alert'] = array();
