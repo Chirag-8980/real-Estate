@@ -266,15 +266,43 @@ switch ($_GET['filter']) {
                                             </b>
                                         </span>
                                     </div>
-                                <?php  } elseif ($data['qc'] == "Success") { ?>
-                                    <div class="text-success text-center my-2 bg-white border shadow p-3 bg-body-tertiary rounded py-2 ">
+                                <?php  } elseif ($data['qc'] == "Success") {
+                                        if($data['status'] == "Active"){ 
+                                            if($book_data['status'] == "Success"){
+                                    ?>
+                                            <div class="text-danger text-center my-2 bg-white border shadow p-3 bg-body-tertiary rounded py-2 ">
+                                        <span>
+                                            <b>
+                                                <span class="mb-4 text-center"> Status : This Property is Booked..</span>
+                                            </b>
+                                        </span>
+                                    </div>
+                                            <?php } else{?>
+                                                <div class="text-success text-center my-2 bg-white border shadow p-3 bg-body-tertiary rounded py-2 ">
+                                        <span>
+                                            <b>
+                                                <span class="mb-4 text-center"> Status :  <?php echo $data['response']; ?></span>
+                                            </b>
+                                        </span>
+                                    </div>
+                                            <?php } ?>
+                                    <?php } else{?>
+                                        <div class="text-danger text-center my-2 bg-white border shadow p-3 bg-body-tertiary rounded py-2 ">
+                                        <span>
+                                            <b>
+                                                <span class="mb-4 text-center"> Status : This Property Currntly Not Available</span>
+                                            </b>
+                                        </span>
+                                    </div>
+                                    <?php } ?>
+                                    <!-- <div class="text-success text-center my-2 bg-white border shadow p-3 bg-body-tertiary rounded py-2 ">
                                         <span>
                                             <b>
                                                 <span class="mb-4 text-center"> Status :
                                                     <?php echo $data['response']; ?></span>
                                             </b>
                                         </span>
-                                    </div>
+                                    </div> -->
                                 <?php } ?>
                             </div>
                         </div>

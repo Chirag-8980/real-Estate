@@ -81,10 +81,11 @@ error_reporting(E_ERROR | E_PARSE);
                             </a>
                             <a href="user-property.php?filter=all" class="dropdown-item">My Property</a>
                             <a href="logout.php" class="dropdown-item">Logout</a>    
+                            
                         </div>
                     </div>
                     <?php } else { ?>
-                        <a href="logout.php" class="nav-item nav-link">Login</a>
+                        <a href="login.php" class="nav-item nav-link">Login</a>
                     <?php } ?>
 
                 </div>
