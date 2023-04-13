@@ -25,7 +25,8 @@ $oldprice = $data['price'] + $data['price'] / 2;
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap"
+        rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -44,12 +45,14 @@ $oldprice = $data['price'] + $data['price'] / 2;
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/styleimage.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
 </head>
 <style>
-    .max {
-        max-width: 1100px;
-    }
+.max {
+    max-width: 1100px;
+}
 </style>
 
 <body class="bg-white">
@@ -81,31 +84,39 @@ $oldprice = $data['price'] + $data['price'] / 2;
                     <div class="product-imgs" style="margin-bottom: 100px;">
                         <div class="img-display">
                             <div class="img-showcase">
-                                <img src="../admin/img/Property_image/house/<?php echo $data['img1'] ?>" height="500vh" alt="shoe image">
-                                <img src="../admin/img/Property_image/house/<?php echo $data['img2'] ?>" height="500vh" alt="shoe image">
-                                <img src="../admin/img/Property_image/house/<?php echo $data['img3'] ?>" height="500vh" alt="shoe image">
-                                <img src="../admin/img/Property_image/house/<?php echo $data['img4'] ?>" height="500vh" alt="shoe image">
+                                <img src="../admin/img/Property_image/house/<?php echo $data['img1'] ?>" height="500vh"
+                                    alt="shoe image">
+                                <img src="../admin/img/Property_image/house/<?php echo $data['img2'] ?>" height="500vh"
+                                    alt="shoe image">
+                                <img src="../admin/img/Property_image/house/<?php echo $data['img3'] ?>" height="500vh"
+                                    alt="shoe image">
+                                <img src="../admin/img/Property_image/house/<?php echo $data['img4'] ?>" height="500vh"
+                                    alt="shoe image">
                             </div>
                         </div>
                         <div class="img-select">
                             <div class="img-item">
                                 <a href="#" data-id="1">
-                                    <img src="../admin/img/Property_image/house/<?php echo $data['img1'] ?>" height="100vh" alt="shoe image">
+                                    <img src="../admin/img/Property_image/house/<?php echo $data['img1'] ?>"
+                                        height="100vh" alt="shoe image">
                                 </a>
                             </div>
                             <div class="img-item">
                                 <a href="#" data-id="2">
-                                    <img src="../admin/img/Property_image/house/<?php echo $data['img2'] ?>" height="100vh" alt="shoe image">
+                                    <img src="../admin/img/Property_image/house/<?php echo $data['img2'] ?>"
+                                        height="100vh" alt="shoe image">
                                 </a>
                             </div>
                             <div class="img-item">
                                 <a href="#" data-id="3">
-                                    <img src="../admin/img/Property_image/house/<?php echo $data['img3'] ?>" height="100vh" alt="shoe image">
+                                    <img src="../admin/img/Property_image/house/<?php echo $data['img3'] ?>"
+                                        height="100vh" alt="shoe image">
                                 </a>
                             </div>
                             <div class="img-item">
                                 <a href="#" data-id="4">
-                                    <img src="../admin/img/Property_image/house/<?php echo $data['img4'] ?>" height="100vh" alt="shoe image">
+                                    <img src="../admin/img/Property_image/house/<?php echo $data['img4'] ?>"
+                                        height="100vh" alt="shoe image">
                                 </a>
                             </div>
                         </div>
@@ -122,7 +133,8 @@ $oldprice = $data['price'] + $data['price'] / 2;
 
                         <div class="  product-price">
                             <h6 class="last-price"> <span>₹ <?php echo $oldprice ?></span></h6>
-                            <h5 class="new-price text-black"> Price: <span style="color: green;">₹ <?php echo $data['price'] ?>/-
+                            <h5 class="new-price text-black"> Price: <span style="color: green;">₹
+                                    <?php echo $data['price'] ?>/-
                                     <small style="color: black;size:10px;"><?php
                                                                             if ($data['stype'] == "Rent") {
                                                                                 if ($data['ptype'] == "Farm-House") {
@@ -144,7 +156,8 @@ $oldprice = $data['price'] + $data['price'] / 2;
 
                         <div class="row container-fuid d-flex justify-content-center ">
                             <div class="col-6" style="width: 100%;">
-                                <h4 class="animated mt-4 text-black fadeIn mb-3" style="border-bottom: 2px solid var(--tan);">
+                                <h4 class="animated mt-4 text-black fadeIn mb-3"
+                                    style="border-bottom: 2px solid var(--tan);">
                                     About House</h4>
                                 <table class="table text-center table-white text-black table-striped">
 
@@ -175,7 +188,8 @@ $oldprice = $data['price'] + $data['price'] / 2;
 
                         <div class="row container-fuild">
                             <div class="col-12 mt-4" style="width: 100%;">
-                                <h4 class="animated text-black fadeIn mb-3" style="border-bottom: 2px solid var(--tan);">Basic
+                                <h4 class="animated text-black fadeIn mb-3"
+                                    style="border-bottom: 2px solid var(--tan);">Basic
                                     Information</h4>
                                 <table class="table text-center table-white table-striped">
 
@@ -226,38 +240,41 @@ $oldprice = $data['price'] + $data['price'] / 2;
                     </div>
                 </div>
                 <?php if ($data['stype'] == "Sell") { ?>
-                    <div class="container mt-4">
-                        <a class="btn  bg-tan text-black w-100 py-3 my-4" href="booking.php?pid=<?php echo $_GET['pid'] ?>&sellerid=<?php echo $data['uid'] ?>&stype=<?php echo $data['stype'] ?>&ptype=<?php echo $data['ptype'] ?>">Request
-                            For
-                            Booking</a>
-                    </div>
-                    <?php } else {
+                <div class="container mt-4">
+                    <a class="btn  bg-tan text-black w-100 py-3 my-4"
+                        href="booking.php?pid=<?php echo $_GET['pid'] ?>&sellerid=<?php echo $data['uid'] ?>&stype=<?php echo $data['stype'] ?>&ptype=<?php echo $data['ptype'] ?>">Request
+                        For
+                        Booking</a>
+                </div>
+                <?php } else {
                     $pid = $_GET['pid'];
                     $isRent = mysqli_fetch_array(mysqli_query($con, "Select * from tblpbooking where pid=$pid "));
                     if ($isRent['status'] == "Success") {
                     ?>
-                        <div class="container mt-4">
-                            <a class="btn  bg-beige text-black w-100 py-3 my-4">Not Available Till <?php echo $isRent['cindate'] ?></a>
-                        </div>
-                    <?php } else { ?>
-                        <div class="container mt-4">
-                            <a class="btn  bg-tan text-black w-100 py-3 my-4" href="booking.php?pid=<?php echo $_GET['pid'] ?>&sellerid=<?php echo $data['uid'] ?>&stype=<?php echo $data['stype'] ?>&ptype=<?php echo $data['ptype'] ?>">Request
-                                For
-                                Booking</a>
-                        </div>
-                    <?php } ?>
+                <div class="container mt-4">
+                    <a class="btn  bg-beige text-black w-100 py-3 my-4">Not Available Till
+                        <?php echo $isRent['coutdate'] ?></a>
+                </div>
+                <?php } else { ?>
+                <div class="container mt-4">
+                    <a class="btn  bg-tan text-black w-100 py-3 my-4"
+                        href="booking.php?pid=<?php echo $_GET['pid'] ?>&sellerid=<?php echo $data['uid'] ?>&stype=<?php echo $data['stype'] ?>&ptype=<?php echo $data['ptype'] ?>">Request
+                        For
+                        Booking</a>
+                </div>
+                <?php } ?>
                 <?php } ?>
             </div>
-            <?php if (isset($_SESSION['alert'])){?> 
-        <script>
+            <?php if (isset($_SESSION['alert'])){?>
+            <script>
             Swal.fire({
-                    icon: '<?php echo $_SESSION["alert"]["0"] ?>',
-                    title: '<?php echo $_SESSION["alert"]["1"] ?>',
-                    text: '<?php echo $_SESSION["alert"]["2"] ?>',
-                    footer: '<a href="<?php echo $_SESSION["alert"]['4'] ?>"><?php echo $_SESSION["alert"]["3"] ?></a>'
+                icon: '<?php echo $_SESSION["alert"]["0"] ?>',
+                title: '<?php echo $_SESSION["alert"]["1"] ?>',
+                text: '<?php echo $_SESSION["alert"]["2"] ?>',
+                footer: '<a href="<?php echo $_SESSION["alert"]['4'] ?>"><?php echo $_SESSION["alert"]["3"] ?></a>'
             })
-        </script>
-        <?php } 
+            </script>
+            <?php } 
             unset($_SESSION['alert']);
         ?>
 

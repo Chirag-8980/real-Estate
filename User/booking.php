@@ -472,229 +472,269 @@ if (isset($_POST['pbooking'])) {
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>Property Booking</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
+    <meta charset="utf-8">
+    <title>Property Booking</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
 
-  <!-- Favicon -->
-  <link href="img/favicon.ico" rel="icon">
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
 
-  <!-- Google Web Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap"
+        rel="stylesheet">
 
-  <!-- Icon Font Stylesheet -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-  <!-- Libraries Stylesheet -->
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  
-  <!-- Sweet Alert  -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-  <!-- Customized Bootstrap Stylesheet -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- Sweet Alert  -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
-  <!-- Template Stylesheet -->
-  <link href="css/style.css" rel="stylesheet">
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body class="bg-white">
-  <div class="bg-white p-0">
-    <!-- Spinner Start -->
-    <?php include('../User/include/spinner.php') ?>
-    <!-- Spinner End -->
+    <div class="bg-white p-0">
+        <!-- Spinner Start -->
+        <?php include('../User/include/spinner.php') ?>
+        <!-- Spinner End -->
 
 
-    <!-- Navbar Start -->
-    <?php include('../User/include/header.php') ?>
-    <!-- Navbar End -->
+        <!-- Navbar Start -->
+        <?php include('../User/include/header.php') ?>
+        <!-- Navbar End -->
 
-    <div class="container mt-5 px-5">
+        <div class="container mt-5 px-5">
 
-      <form action="booking.php" method="POST" onsubmit="return validateForm()">
-        <div class="row g-3">
-          <div class="col-md-6">
-            <div class="form-floating">
-              <input type="text" class="form-control" id="name" value="<?php echo $u_data['uname'] ?>" name="name" placeholder="Your Name" oninvalid="setCustomValidity('Please enter a valid name')" onblur="setCustomValidity('')" oninput="validateName()">
-              <label for="name">Your Name</label>
-              <div class="mt-1 text-danger" id="error-name"></div>
+            <form action="booking.php" method="POST" onsubmit="return validateForm()">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="name" value="<?php echo $u_data['uname'] ?>"
+                                name="name" placeholder="Your Name"
+                                oninvalid="setCustomValidity('Please enter a valid name')"
+                                onblur="setCustomValidity('')" oninput="validateName()">
+                            <label for="name">Your Name</label>
+                            <div class="mt-1 text-danger" id="error-name"></div>
 
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-floating">
-              <input type="email" class="form-control" id="email" name="email" value="<?php echo $u_data['email'] ?>" placeholder="Your Email" oninvalid="setCustomValidity('Please enter a valid Email ID')" onblur="setCustomValidity('')" oninput="validateEmail()">
-              <label for="email">Your Email</label>
-              <div class="mt-1 text-danger" id="error-email"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="email" class="form-control" id="email" name="email"
+                                value="<?php echo $u_data['email'] ?>" placeholder="Your Email"
+                                oninvalid="setCustomValidity('Please enter a valid Email ID')"
+                                onblur="setCustomValidity('')" oninput="validateEmail()">
+                            <label for="email">Your Email</label>
+                            <div class="mt-1 text-danger" id="error-email"></div>
 
-            </div>
-          </div>
-          <?php if ($_GET['stype'] == 'Rent') { ?>
-            <div class="col-6">
-              <div class="form-floating">
-                <input type="date" class="form-control" onfocus="(this.type='date')" id="date" name="cindate" placeholder="Enter Check In Date" oninvalid="setCustomValidity('Please enter Message for Booking')" onblur="setCustomValidity('')" oninput="validateMessage()">
-                <label for="subject">Check In Date</label>
-              </div>
-              <span class="text-danger fs-6"> * If You Take A Property As A Rent So , Please Select At Least 1
-                Month </span>
-            </div>
-            <div class="col-6">
-              <div class="form-floating">
-                <input type="date" class="form-control" onfocus="(this.type='date')" id="date1" name="coutdate" placeholder="Enter Check Out Date">
-                <label for="subject">Check Out Date</label>
-              </div>
-            </div>
-          <?php } ?>
-          <div class="col-12">
-            <div class="form-floating">
-              <textarea class="form-control" placeholder="Leave a message here" name="message" id="message" style="height: 100px" oninvalid="setCustomValidity('Please enter Message for Contact Us')" onblur="setCustomValidity('')" oninput="validateMessage()"></textarea>
-              <label for="message">Message</label>
-              <div class="mt-1 text-danger" id="error-message"></div>
+                        </div>
+                    </div>
+                    <?php if ($_GET['stype'] == 'Rent') { 
+                      if($_GET['ptype'] != "Farm-House"){  
+                    ?>
+                    
+                    <div class="col-6">
+                        <div class="form-floating">
+                            <input type="date" class="form-control" onfocus="(this.type='date')" id="date"
+                                name="cindate" placeholder="Enter Check In Date"
+                                oninvalid="setCustomValidity('Please enter Message for Booking')"
+                                onblur="setCustomValidity('')" oninput="validateMessage()">
+                            <label for="subject">Check In Date</label>
+                        </div>
+                        <span class="text-danger fs-6"> * If You Take A Property As A Rent So , Please Select At Least 1
+                            Month </span>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating">
+                            <input type="date" class="form-control" onfocus="(this.type='date')" id="date1"
+                                name="coutdate" placeholder="Enter Check Out Date">
+                            <label for="subject">Check Out Date</label>
+                        </div>
+                    </div>
+                        <?php } else {?>
+                    <!-- Farm House -->
+                    <div class="col-6">
+                        <div class="form-floating">
+                            <input type="date" class="form-control" id="dateChecker1"
+                                name="cindate" placeholder="Enter Check In Date"
+                                oninvalid="setCustomValidity('Please enter Message for Booking')"
+                                onblur="setCustomValidity('')" oninput="validateMessage()">
+                            <label for="subject">Check In Date</label>
+                        </div>
+                        <span class="text-danger fs-6"> * If You Take A Property As A Rent So , Please Select At Least 1
+                            Day (24 Hours) </span>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating">
+                            <input type="date" class="form-control" id="dateChecker2"
+                                name="coutdate" placeholder="Enter Check Out Date">
+                            <label for="subject">Check Out Date</label>
+                        </div>
+                    </div>
+                    <?php }?>
+                    <?php } ?>
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a message here" name="message"
+                                id="message" style="height: 100px"
+                                oninvalid="setCustomValidity('Please enter Message for Contact Us')"
+                                onblur="setCustomValidity('')" oninput="validateMessage()"></textarea>
+                            <label for="message">Message</label>
+                            <div class="mt-1 text-danger" id="error-message"></div>
 
-            </div>
-          </div>
-          <div class="col-12">
-            <button class="btn bg-tan text-black w-100 py-3" onclick="myFunction()" name="pbooking" type="submit">Reqest For
-              Booking</button>
-          </div>
-        </div>
-      </form>
-      <?php if (isset($_SESSION['msg'])) { ?>
-        <script>
-          swal("<?php echo  $_SESSION['status'] ?>", "<?php echo $_SESSION['msg'] ?>",
-            "<?php echo $_SESSION['status'] ?>");
-        </script>
-      <?php
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn bg-tan text-black w-100 py-3" onclick="myFunction()" name="pbooking"
+                            type="submit">Reqest For
+                            Booking</button>
+                    </div>
+                </div>
+            </form>
+            <?php if (isset($_SESSION['msg'])) { ?>
+            <script>
+            swal("<?php echo  $_SESSION['status'] ?>", "<?php echo $_SESSION['msg'] ?>",
+                "<?php echo $_SESSION['status'] ?>");
+            </script>
+            <?php
         unset($_SESSION['msg']);
         unset($_SESSION['status']);
       } ?>
 
+        </div>
+
+        <!-- Back to Top -->
+        <?php include('../User/include/top.php') ?>
     </div>
 
-    <!-- Back to Top -->
-    <?php include('../User/include/top.php') ?>
-  </div>
-
-  <!-- JavaScript Libraries -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="lib/wow/wow.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/waypoints/waypoints.min.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <script>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script>
     $(document).ready(function() {
-      var dtToday = new Date();
-      var month = dtToday.getMonth() + 1;
-      var day = dtToday.getDate();
-      var year = dtToday.getFullYear();
+        var dtToday = new Date();
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
 
-      if (month < 10) {
-        month = '0' + month.toString();
-      }
-      if (day < 10) {
-        day = '0' + day.toString();
-      }
+        if (month < 10) {
+            month = '0' + month.toString();
+        }
+        if (day < 10) {
+            day = '0' + day.toString();
+        }
 
-      var maxDate = year + '-' + month + '-' + day;
-      $('#dateChecker').attr('min', maxDate);
+        var maxDate = year + '-' + month + '-' + day;
+        $('#dateChecker1').attr('min', maxDate);
+        $('#dateChecker2').attr('min', maxDate);
 
     })
-  </script>
-  <script>
+    </script>
+    <script>
     function validateName() {
-      var nameInput = document.getElementById("name");
-      var name = nameInput.value.trim();
-      var errorMessage = document.getElementById("error-name");
+        var nameInput = document.getElementById("name");
+        var name = nameInput.value.trim();
+        var errorMessage = document.getElementById("error-name");
 
-      if (name == "") {
-        errorMessage.innerHTML = "Name field cannot be empty";
-        // nameInput.classList.add("invalid");
-        nameInput.setAttribute("required", true); // Add required attribute
-        return false;
-      } else if (!/^[a-zA-Z ]+$/.test(name)) {
-        errorMessage.innerHTML = "Name can only contain letters and spaces";
-        // nameInput.classList.add("invalid");
-        nameInput.removeAttribute("required"); // Remove required attribute
-        return false;
-      } else {
-        errorMessage.innerHTML = "";
-        // nameInput.classList.remove("invalid");
-        nameInput.setAttribute("required", true); // Add required attribute
-        return true;
-      }
+        if (name == "") {
+            errorMessage.innerHTML = "Name field cannot be empty";
+            // nameInput.classList.add("invalid");
+            nameInput.setAttribute("required", true); // Add required attribute
+            return false;
+        } else if (!/^[a-zA-Z ]+$/.test(name)) {
+            errorMessage.innerHTML = "Name can only contain letters and spaces";
+            // nameInput.classList.add("invalid");
+            nameInput.removeAttribute("required"); // Remove required attribute
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            // nameInput.classList.remove("invalid");
+            nameInput.setAttribute("required", true); // Add required attribute
+            return true;
+        }
     }
 
 
     function validateEmail() {
-      var emailInput = document.getElementById("email");
-      var email = emailInput.value.trim();
-      var errorMessage = document.getElementById("error-email");
+        var emailInput = document.getElementById("email");
+        var email = emailInput.value.trim();
+        var errorMessage = document.getElementById("error-email");
 
-      if (email == "") {
-        errorMessage.innerHTML = "Email field cannot be empty";
-        // emailInput.classList.add("invalid");
-        return false;
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        errorMessage.innerHTML = "Please enter a valid email address";
-        // emailInput.classList.add("invalid");
-        return false;
-      } else {
-        errorMessage.innerHTML = "";
-        // emailInput.classList.remove("invalid");
-        return true;
-      }
+        if (email == "") {
+            errorMessage.innerHTML = "Email field cannot be empty";
+            // emailInput.classList.add("invalid");
+            return false;
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            errorMessage.innerHTML = "Please enter a valid email address";
+            // emailInput.classList.add("invalid");
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            // emailInput.classList.remove("invalid");
+            return true;
+        }
     }
 
     function validateMessage() {
-      var input = document.getElementById("message");
-      var message = input.value.trim();
-      var errorMessage = document.getElementById("error-message");
+        var input = document.getElementById("message");
+        var message = input.value.trim();
+        var errorMessage = document.getElementById("error-message");
 
-      if (message === "") {
-        errorMessage.innerHTML = "Message field cannot be empty";
-        return false;
-      } else if (!/^[a-zA-Z0-9\s,'-]*$/.test(message)) {
-        errorMessage.innerHTML = "Message contains invalid characters";
-        return false;
-      } else {
-        errorMessage.innerHTML = "";
-        return true;
-      }
+        if (message === "") {
+            errorMessage.innerHTML = "Message field cannot be empty";
+            return false;
+        } else if (!/^[a-zA-Z0-9\s,'-]*$/.test(message)) {
+            errorMessage.innerHTML = "Message contains invalid characters";
+            return false;
+        } else {
+            errorMessage.innerHTML = "";
+            return true;
+        }
     }
 
     function validateForm() {
-      // Call all validation functions
-      var isNameValid = validateName();
-      var isEmailValid = validateEmail();
-      var isMessageValid = validateMessage();
-      // Check if all validation functions returned true
-      if (isNameValid && isEmailValid && isMessageValid) {
-        // All validation functions passed, submit the form
-        return true;
-      } else {
-        // At least one validation function failed, prevent form submission
-        return false;
-      }
+        // Call all validation functions
+        var isNameValid = validateName();
+        var isEmailValid = validateEmail();
+        var isMessageValid = validateMessage();
+        // Check if all validation functions returned true
+        if (isNameValid && isEmailValid && isMessageValid) {
+            // All validation functions passed, submit the form
+            return true;
+        } else {
+            // At least one validation function failed, prevent form submission
+            return false;
+        }
     }
 
     function myFunction() {
-      document.getElementById("name").required = true;
-      document.getElementById("email").required = true;
-      document.getElementById("message").required = true;
+        document.getElementById("name").required = true;
+        document.getElementById("email").required = true;
+        document.getElementById("message").required = true;
     }
-  </script>
+    </script>
 
-  <!-- Date Validation -->
-  <script>
+    <!-- Date Validation -->
+    <script>
     const checkInDateInput = document.getElementById('date');
     const checkOutDateInput = document.getElementById('date1');
     const today = new Date().toISOString().split('T')[0]; // get today's date in ISO format
@@ -702,21 +742,21 @@ if (isset($_POST['pbooking'])) {
     checkInDateInput.min = today; // set the minimum value of the check-in date input to today's date
 
     checkInDateInput.addEventListener('change', () => {
-      const checkInDate = new Date(checkInDateInput.value);
-      const oneMonthAfterCheckInDate = new Date(checkInDate.getFullYear(), checkInDate.getMonth() + 1,
-        checkInDate.getDate() + 1);
-      checkOutDateInput.min = oneMonthAfterCheckInDate.toISOString().split('T')[0];
+        const checkInDate = new Date(checkInDateInput.value);
+        const oneMonthAfterCheckInDate = new Date(checkInDate.getFullYear(), checkInDate.getMonth() + 1,
+            checkInDate.getDate() + 1);
+        checkOutDateInput.min = oneMonthAfterCheckInDate.toISOString().split('T')[0];
     });
 
     checkOutDateInput.addEventListener('change', () => {
-      const checkOutDate = new Date(checkOutDateInput.value);
-      const oneMonthBeforeCheckOutDate = new Date(checkOutDate.getFullYear(), checkOutDate.getMonth() - 1,
-        checkOutDate.getDate());
-      checkInDateInput.max = oneMonthBeforeCheckOutDate.toISOString().split('T')[0];
+        const checkOutDate = new Date(checkOutDateInput.value);
+        const oneMonthBeforeCheckOutDate = new Date(checkOutDate.getFullYear(), checkOutDate.getMonth() - 1,
+            checkOutDate.getDate());
+        checkInDateInput.max = oneMonthBeforeCheckOutDate.toISOString().split('T')[0];
     });
-  </script>
-  <!-- Template Javascript -->
-  <script src="js/main.js"></script>
+    </script>
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
 </body>
 
 </html>

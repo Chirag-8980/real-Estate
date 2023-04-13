@@ -96,10 +96,6 @@
 
         <!-- Back to Top -->
         <?php include('../User/include/top.php')?>
-
-        <!-- alert start -->
-        <?php include('./alert.php')?>
-        <!-- alert end -->
     </div>
 
     <!-- JavaScript Libraries -->

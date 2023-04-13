@@ -30,7 +30,7 @@ if (isset($_SESSION['uname'])) {
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga quae sint asperiores architecto
                     quisquam exrcitationem rerum facere in iste nisi!</p>
                 <?php if(isset($_SESSION['uname'])){?>
-                <p>You have <b><?php echo $credit['credit'];?></b> credit left..</p>
+                <p>You have <button class="btn bg-black text-tan px-4"><?php echo $credit['credit'];?></button> credit left..</p>
                 <?php }?>
             </div>
         </div>

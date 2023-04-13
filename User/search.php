@@ -10,27 +10,27 @@
         $sql = " SELECT * FROM tblhouse WHERE `city`='$city' and `ptype`='$property_type' and `status`='Active' ";
         $run = mysqli_query($con , $sql);
         $total = mysqli_fetch_array(mysqli_query($con , "SELECT count(*) as total FROM tblhouse WHERE `city`='$city' and `ptype`='$property_type'and `status`='Active'"));
-        echo '1';
+
     }elseif(!$property_type == null AND !$query == null){
         $sql = " SELECT * FROM tblhouse WHERE MATCH (ptitle,description,paddress,facilities) AGAINST ('$query') and `ptype`='$property_type' and `status`='Active'";
         $run = mysqli_query($con , $sql);
         $total = mysqli_fetch_array(mysqli_query($con , "SELECT count(*) as total FROM tblhouse WHERE MATCH (ptitle,description,paddress,facilities) AGAINST ('$query') and `ptype`='$property_type' and `status`='Active'"));
-        echo '2';
+
     }elseif(!$city == null AND !$query == null){
         $sql = " SELECT * FROM tblhouse WHERE MATCH (ptitle,description,paddress,facilities) AGAINST ('$query') and `city`='$city' and `status`='Active'";
         $run = mysqli_query($con , $sql);
         $total = mysqli_fetch_array(mysqli_query($con , "SELECT count(*) as total FROM tblhouse WHERE MATCH (ptitle,description,paddress,facilities) AGAINST ('$query') and `city`='$city' and `status`='Active'"));
-        echo '3';
+
     }elseif(!$property_type == null){
         $sql = " SELECT * FROM tblhouse WHERE `ptype`='$property_type' and `status`='Active'";
         $run = mysqli_query($con , $sql);
         $total = mysqli_fetch_array(mysqli_query($con , "SELECT count(*) as total FROM tblhouse WHERE `ptype`='$property_type' and `status`='Active'"));
-        echo '4';
+
     }elseif(!$query == null){
         $sql = " SELECT * FROM tblhouse WHERE  MATCH (ptitle,description,paddress,facilities) AGAINST ('$query') and `status`='Active' ";
         $run = mysqli_query($con , $sql);
         $total = mysqli_fetch_array(mysqli_query($con , "SELECT count(*) as total FROM tblhouse WHERE  MATCH (ptitle,description,paddress,facilities) AGAINST ('$query') and `status`='Active'"));
-        echo '5';
+
     }
 
     
@@ -99,7 +99,7 @@
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="property-item rounded overflow-hidden" >
                                 <div class="position-relative overflow-hidden">
-                                    <a href="./property_details.php?pid='<?php echo $data['pid'] ?>'"><img style="height: 307px;" class="img-fluid" src="../admin/Img/Property_image/house/<?php echo $data['img1']; ?>" alt=""></a>
+                                    <a href="./property_details.php?pid=<?php echo $data['pid']?>"><img style="height: 307px;" class="img-fluid" src="../admin/Img/Property_image/house/<?php echo $data['img1']; ?>" alt=""></a>
                                     <div
                                         class="bg-black rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
                                         <?php echo $data['stype']; ?></div>
