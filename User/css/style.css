@@ -13,6 +13,8 @@
 body{
     background-color: var(--bgcolor);
     /* font-family: 'Playfair Display', serif; */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
 }
 .poppins{
 }

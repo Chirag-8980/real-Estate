@@ -35,18 +35,29 @@ if (!isset($_SESSION['auser'])) {
     <!-- Header Right Menu -->
     <ul class="nav user-menu">
 
-
+    <?php
+		
+        $id=$_SESSION['auser'];
+        $sql="select * from admin where name='$id'";
+        $result=mysqli_query($con,$sql);
+        while($row=mysqli_fetch_array($result))
+        {
+        ?>
         <!-- User Menu -->
         <h4 style="color:white;margin-top:13px;text-transform:capitalize;"><?php echo $_SESSION['auser']; ?></h4>
         <li class="nav-item dropdown app-dropdown">
             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                <span class="user-img"><img class="rounded-circle" src="assets/img/profiles/avatar-01.png" width="31" alt="Ryan Taylor"></span>
+                <span class="user-img">
+                    <img class="rounded-circle" src="img/admin/<?php echo $row['img']; ?>" width="31" height="34px" alt="<?php echo $_SESSION['auser'];  ?>" id="image">
+            
+            </span>
             </a>
 
             <div class="dropdown-menu">
                 <div class="user-header">
+               
                     <div class="avatar avatar-sm">
-                        <img src="assets/img/profiles/avatar-01.png" alt="User Image" class="avatar-img rounded-circle">
+                    <img src="img/admin/<?php echo $row['img']; ?>" id="image">
                     </div>
                     <div class="user-text">
                         <h6><?php echo $_SESSION['auser']; ?></h6>
@@ -57,7 +68,7 @@ if (!isset($_SESSION['auser'])) {
                 <a class="dropdown-item" href="logout.php">Logout</a>
             </div>
         </li>
-
+        <?php } ?>
         <!-- /User Menu -->
 
     </ul>
@@ -184,11 +195,27 @@ if (!isset($_SESSION['auser'])) {
                         <li><a href="aboutview.php"> View About </a></li>
                     </ul>
                 </li>
+                <li class="menu-title">
+                    <span>Report</span>
+                </li>
+                <li class="submenu">
+                    <a href="#"><i data-feather="heart"></i>
+                        <span> Report Download </span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="report.php?r_type=payment_report"> Payment Report </a></li>
+                        <li><a href="report.php?r_type=property_report"> Property Report </a></li>
+                        <li><a href="report.php?r_type=user_report"> User Report </a></li>
+                    </ul>
+                </li>
 
             </ul>
         </div>
     </div>
+    
 </div>
+
+
+
 <script src="https://unpkg.com/feather-icons"></script>
 <script>
     feather.replace()

@@ -155,6 +155,7 @@ if (isset($_POST['QC'])) {
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     <title>LOCUS | Add Property</title>
+   
 </head>
 
 <body>
