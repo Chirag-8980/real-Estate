@@ -180,8 +180,17 @@ if (!isset($_SESSION['auser'])) {
                     <a href="#"><i data-feather="mail"></i>
                         <span> Query </span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
-                        <li><a href="contactview.php"> Contact </a></li>
-                        <li><a href="contactdetails.php">Contact Details</a></li>
+                        <!-- <li><a href="contactview.php"> Contact </a></li> -->
+                        <li class="submenu">
+                            <a href="#"><span>Contact</span> <span class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                                <li><a href="contactview.php">Contact</a></li>
+                                <li><a href="contactdetails.php">Contact Details</a></li>
+                                <!-- <li><a href="property_req.php?type=business">Business Property </a></li>
+                                <li><a href="property_req.php?type=occasion">Ocassion Property</a></li> -->
+
+                            </ul>
+                        </li>
                         <li><a href="feedbackview.php"> Feedback </a></li>
                     </ul>
                 </li>
@@ -196,27 +205,11 @@ if (!isset($_SESSION['auser'])) {
                         <li><a href="aboutview.php"> View About </a></li>
                     </ul>
                 </li>
-                <li class="menu-title">
-                    <span>Report</span>
-                </li>
-                <li class="submenu">
-                    <a href="#"><i data-feather="heart"></i>
-                        <span> Report Download </span> <span class="menu-arrow"></span></a>
-                    <ul style="display: none;">
-                        <li><a href="report.php?r_type=payment_report"> Payment Report </a></li>
-                        <li><a href="report.php?r_type=property_report"> Property Report </a></li>
-                        <li><a href="report.php?r_type=user_report"> User Report </a></li>
-                    </ul>
-                </li>
 
             </ul>
         </div>
     </div>
-    
 </div>
-
-
-
 <script src="https://unpkg.com/feather-icons"></script>
 <script>
     feather.replace()

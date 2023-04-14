@@ -69,13 +69,13 @@ if (!isset($_SESSION['auser'])) {
                 <div class="col-5">
                     <div class="form-floating">
                         <label for="subject">From</label>
-                        <input type="date" class="form-control" id="dateChecker1"  max="<?php echo date('Y-m-d');?>"  name="from" placeholder="From" >
+                        <input type="date" class="form-control" id="dateChecker1" required  max="<?php echo date('Y-m-d');?>"  name="from" placeholder="From" >
                     </div>
                 </div>
                 <div class="col-5">
                     <div class="form-floating">
                         <label for="subject">To</label>
-                        <input type="date" class="form-control"  name="to" max="<?php echo date('Y-m-d');?>">
+                        <input type="date" class="form-control" required  name="to" max="<?php echo date('Y-m-d');?>">
                     </div>
                 </div>
                 <div class="col-2">
