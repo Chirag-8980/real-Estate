@@ -156,18 +156,17 @@ switch ($type) {
                                     while ($data = mysqli_fetch_array($get_data)) {
                                         $show = false; ?>
                                         <tr>
-                                            <td><?php echo $data['pid']; ?></td>
-                                            <td><img src='./Img/Property_image/house/<?php echo $data['img1']; ?>' style="height: 100px; width: 100px;" alt=""></td>
-                                            <td><?php echo $data['ptitle']; ?></td>
-                                            <td><?php echo $data['price']; ?></td>
-                                            <td><?php echo $data['ptype']; ?></td>
-                                            <td><a href="property_details.php?pid=<?php echo $data['pid']; ?>&type=<?php echo $type; ?>">See
-                                                    Details</a></td>
+                                            <td class="align-middle"><?php echo $data['pid']; ?></td>
+                                            <td class="align-middle"><img src='./Img/Property_image/house/<?php echo $data['img1']; ?>' style="height: 100px; width: 100px;" alt=""></td>
+                                            <td class="align-middle"><?php echo $data['ptitle']; ?></td>
+                                            <td class="align-middle"><?php echo $data['price']; ?></td>
+                                            <td class="align-middle"><?php echo $data['ptype']; ?></td>
+                                            <td class="align-middle"><a href="property_details.php?pid=<?php echo $data['pid']; ?>&type=<?php echo $type; ?>"><button class="btn btn-success">See Details</button></a></td>
                                             <?php if($type == 'Pending') {?>
-                                            <td><a href="req_accept.php?pid=<?php echo $data['pid']; ?>&type=<?php echo $type; ?>">Accept</a>
+                                            <td><a href="req_accept.php?pid=<?php echo $data['pid']; ?>&type=<?php echo $type; ?>"><button class="btn btn-success">Accept</button></a>
                                             </td>
                                             
-                                            <td><a data-bs-toggle="modal" name="res" data-bs-target="#exampleModal1" href="">Reject</a></td>
+                                            <td><a data-bs-toggle="modal" name="res" data-bs-target="#exampleModal1" href=""><button class="btn btn-danger">Reject</button></a></td>
                                             <?php }?>
                                         </tr>
                                         <!-- Modal -->
@@ -175,7 +174,7 @@ switch ($type) {
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Response</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">Reject Reason</h5>
                                                         <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                                                     </div>
                                                     <div class="modal-body">

@@ -257,7 +257,6 @@ $get_property_sum = mysqli_fetch_array(mysqli_query($con, "SELECT SUM(amt) AS to
 								<a href="#">
 
 									<h3 class="text-dark"><?php echo $get_property_sum['total'] / 1000 ?> k </h3>
-
 									<h6 class="text-muted"> Total Revenue </h6>
 									<div class="progress progress-sm">
 										<div class="progress-bar bg-primary w-50"></div>
@@ -267,9 +266,13 @@ $get_property_sum = mysqli_fetch_array(mysqli_query($con, "SELECT SUM(amt) AS to
 						</div>
 					</div>
 				</div>
-				<div class="col-12  d-flex bg-white">	
+				<div class="w-100 shadow  bg-body-tertiary rounded">
+					<div class="bg-white d-flex justify-content-center">
 						<?php include("propertychart.php"); ?>
+					</div>
+					<div class="bg-white d-flex justify-content-center">
 						<?php include("planchart.php"); ?>
+					</div>
 				</div>
 			</div>
 		</div>

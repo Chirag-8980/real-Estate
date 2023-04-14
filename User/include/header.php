@@ -80,6 +80,7 @@ error_reporting(E_ERROR | E_PARSE);
                         <?php }?>
                             </a>
                             <a href="user-property.php?filter=all" class="dropdown-item">My Property</a>
+                            <a href="report.php" class="dropdown-item">Report</a>
                             <a href="logout.php" class="dropdown-item">Logout</a>    
                             
                         </div>

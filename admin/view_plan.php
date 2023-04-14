@@ -123,14 +123,14 @@ if(isset($_POST['res']))
                                     <?php
 											
 												while($row = mysqli_fetch_array($query_run)) { ?>
-                                    <tr>
+                                    <tr class="align-middle">
                                         <td><?php echo $row['p_id']; ?></td>
                                         <td><?php echo $row['p_name']; ?></td>
                                         <td><?php echo $row['p_price']; ?></td>
                                         <td><?php echo $row['p_credit']; ?></td>
                                         <td><?php echo $row['p_description']; ?></td>
-                                        <td class="text-center" ><a  href="delete_plan.php?p_id=<?php echo $row['p_id']; ?>">Delete</a></td>
-                                        <td class="text-center" ><a  href="Update_plan.php?p_id=<?php echo $row['p_id']; ?>">Update</a></td>
+                                        <td class="text-center" ><a  href="delete_plan.php?p_id=<?php echo $row['p_id']; ?>"><button class="btn btn-danger">Delete</button></a></td>
+                                        <td class="text-center" ><a  href="Update_plan.php?p_id=<?php echo $row['p_id']; ?>"><button class="btn btn-success">Update</button></a></td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>

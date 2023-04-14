@@ -265,8 +265,7 @@ $msg="";
 
 
 								<div style="display: flex; justify-content: end;">
-                                <a class="btn btn-primary" href="req_accept.php?pid=<?php echo $data['pid'];?>&type=<?php echo $type;?>">Accept</a>
-									<input type="submit" value="Reject" class="btn btn-danger mx-2 py-2 px-5" name="reqest">
+                                <a class="btn btn-primary" href="req_accept.php?pid=<?php echo $data['pid'];?>&type=<?php echo $type;?>">Accept</a>  
 								</div>
 
                             </div>
@@ -274,7 +273,6 @@ $msg="";
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
     <!-- /Main Wrapper -->

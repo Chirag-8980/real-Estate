@@ -11,36 +11,43 @@ $get_property_reject = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as
 <html>
 
 <head>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
     google.charts.load('current', {
-      'packages': ['corechart']
+        'packages': ['corechart']
     });
     google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
 
-      var data = google.visualization.arrayToDataTable([
-        ['Task', 'Hours per Day'],
-        ['Listed', <?php echo $get_property_success['total'] ?>],
-        ['Reject', <?php echo $get_property_reject['total'] ?>],
-        ['Pending', <?php echo $get_property_pending['total'] ?>]
-      ]);
+        var data = google.visualization.arrayToDataTable([
+            ['Task', 'Hours per Day'],
+            ['Listed', <?php echo $get_property_success['total'] ?>],
+            ['Reject', <?php echo $get_property_reject['total'] ?>],
+            ['Pending', <?php echo $get_property_pending['total'] ?>]
+        ]);
 
-      var options = {
-        title: 'Property Details'
-      };
+        var options = {
+            title: ''
+        };
 
 
-      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-      chart.draw(data, options);
+        chart.draw(data, options);
     }
-  </script>
+    </script>
 </head>
 
 <body>
-  <div id="piechart" style="width: 900px; height: 500px;"></div>
+    <div class="bg-white text-center pt-3">
+        <div>
+            <h5 class="text-black border-bottom pb-2">Property Details</h5>
+        </div>
+        <div id="piechart" style="width: 900px; height: 500px;">
+        </div>
+
+    </div>
 </body>
 
 </html>

@@ -19,10 +19,10 @@ if(!isset($_SESSION['auser']))
             $query=mysqli_query($con,"select * from tblhouse where ptype='Banglow'");
             break;
         case 'Farm':
-            $query=mysqli_query($con,"select * from tblhouse where ptype=Farm-'House'");
+            $query=mysqli_query($con,"select * from tblhouse where ptype='Farm-House'");
             break;
         case 'Pent-House':
-            $query=mysqli_query($con,"select * from tblhouse where ptype=Pent-'House'");
+            $query=mysqli_query($con,"select * from tblhouse where ptype='Pent-House'");
             break;
         case 'House':
             $query=mysqli_query($con,"select * from tblhouse where ptype='House'");

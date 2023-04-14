@@ -4,9 +4,7 @@ if (!isset($_SESSION['auser'])) {
   header("location:index.php");
 }
 
-$get_user = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as total FROM tblpmt where p_name='Gold'"));
-$get_user1 = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as total FROM tblpmt where p_name='Standard'"));
-$get_user2 = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as total FROM tblpmt where p_name='Premium'"));
+$plan_name = mysqli_query($con , "SELECT DISTINCT  p_name FROM `tblpmt`");
 ?>
 <html>
 
@@ -22,13 +20,17 @@ $get_user2 = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as total FRO
 
       var data = google.visualization.arrayToDataTable([
         ['paln', 'User per Plan'],
-        ['Pro', <?php echo $get_user['total'] ?>],
-        ['Ultra', <?php echo $get_user1['total'] ?>],
-        ['Ultra Pro Max', <?php echo $get_user2['total'] ?>]
+        <?php while($plan = mysqli_fetch_array($plan_name)){
+            $p_name = $plan["p_name"]; 
+            $get_user = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as total FROM tblpmt where p_name='$p_name'"));
+          ?>
+        ['<?php echo $p_name?>', <?php echo $get_user['total'] ?>],
+        <?php }?>
+        
       ]);
 
       var options = {
-        title: 'Plan Details'
+        title: ''
       };
 
 
@@ -40,7 +42,14 @@ $get_user2 = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as total FRO
 </head>
 
 <body>
-  <div id="piechart1" style="width: 900px; height: 500px;"></div>
+<div class="bg-white text-center pt-3">
+        <div>
+            <h5 class="text-black border-bottom pb-2">Plan Details</h5>
+        </div>
+        <div id="piechart1" style="width: 900px; height: 500px;">
+        </div>
+
+    </div>
 </body>
 
 </html>

@@ -54,7 +54,6 @@ if (isset($_SESSION['uname'])) {
                         <script>
                             function <?php $pid1 = $data['p_id']; echo "pay_now$pid1"?>() {
                                 <?php if(!isset($_SESSION['uid'])){ 
-                                    $_SESSION['message'] = "First Login And Than Buy Credit...!";
                                     ?>
                                     window.location = "login.php";
                               <?php  }?>

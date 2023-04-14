@@ -10,9 +10,6 @@ $_SESSION['sellerid'] = $data['uid'];
 $uid = $data['uid'];
 $user_data = mysqli_fetch_array(mysqli_query($con, "select * from user where uid='$uid'"));
 $oldprice = $data['price'] + $data['price'] / 2;
-
-$date = date_create("2002-12-31");
-echo date_format($date, "d/m/Y H:i:s");
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,7 +20,6 @@ echo date_format($date, "d/m/Y H:i:s");
     <title>LOCUS | Property Details</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    
     <link rel="shortcut icon" type="image/x-icon" href="../admin/assets/img/favi.png">
 
     <!-- Google Web Fonts -->
