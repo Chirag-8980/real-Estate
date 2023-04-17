@@ -134,21 +134,31 @@ $user_data = mysqli_fetch_array(mysqli_query($con, "select * from user where uid
                             <option value="2">2BHK</option>
                             <option value="3">3BHK</option>
                             <option value="4">4BHK</option>
+                            <option value="5">5BHK</option>
                         <?php } else if ($data['bhk'] == '2') { ?>
                             <option value="1">1BHK</option>
                             <option value="2" selected>2BHK</option>
                             <option value="3">3BHK</option>
                             <option value="4">4BHK</option>
+                            <option value="5">5BHK</option>
                         <?php } else if ($data['bhk'] == '3') { ?>
                             <option value="1">1BHK</option>
                             <option value="2">2BHK</option>
                             <option value="3" selected>3BHK</option>
                             <option value="4">4BHK</option>
+                            <option value="5">5BHK</option>
                         <?php } else if ($data['bhk'] == '4') { ?>
                             <option value="1">1BHK</option>
                             <option value="2">2BHK</option>
                             <option value="3">3BHK</option>
                             <option value="4" selected>4BHK</option>
+                            <option value="5">5BHK</option>
+                        <?php } else if ($data['bhk'] == '5') { ?>
+                            <option value="1">1BHK</option>
+                            <option value="2">2BHK</option>
+                            <option value="3">3BHK</option>
+                            <option value="4">4BHK</option>
+                            <option value="5" selected>5BHK</option>
                         <?php } ?>
                     </select>
                 </div>
@@ -238,7 +248,7 @@ $user_data = mysqli_fetch_array(mysqli_query($con, "select * from user where uid
                 
                 </div>
                 <!-- Image & Status -->
-                <h2 class="animated text-black fadeIn mt-5 add-header" style="border-bottom: 2px solid var(--tan);">
+                <!-- <h2 class="animated text-black fadeIn mt-5 add-header" style="border-bottom: 2px solid var(--tan);">
                     Image & Status</h2>
                 <div class="col-md-6">
                     <label for="formFileLg" class="form-label text-black">Image 1</label>
@@ -277,7 +287,7 @@ $user_data = mysqli_fetch_array(mysqli_query($con, "select * from user where uid
                             <option value="Unsold">UnSold</option>
                         </select>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Description -->
                 <h2 class="animated text-black fadeIn mt-5 mb-4 add-header" style="border-bottom: 2px solid var(--tan);">Description</h2>

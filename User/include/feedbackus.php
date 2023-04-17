@@ -12,17 +12,18 @@ if (isset($_POST['feedback_submit'])) {
 
     $insert_query = "INSERT INTO `tblfeedback`(`uid`, `name`, `email`, `message`) VALUES ('$uid','$name','$email','$message')";
     $run_q = mysqli_query($con, $insert_query);
-
     if ($run_q) {
         $_SESSION['alert'] = array();
-                $icon = "success";
-                $title = "Thank You For Feedback...";
-                $text = "Your Feedback Is Too Valuble...";
-                $footer = "Help And Support";
-                $link = "contact.php";
-                array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
+        $icon = "success";
+        $title = "Thank You For Feedback...";
+        $text = "Your Feedback Is Too Valuble...";
+        $footer = "Help And Support";
+        $link = "contact.php";
+        array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
+        echo "1";
     } else {
         // echo "Send Failed";
+        echo "2";
     }
 }
 

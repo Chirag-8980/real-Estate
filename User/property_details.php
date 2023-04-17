@@ -234,19 +234,24 @@ $isRent = mysqli_fetch_array($q);
                             if ($isRent['cindate'] != null){ ?>
                             <h4 class="animated text-black fadeIn mt-4 mb-3" style="border-bottom: 2px solid var(--tan);">
                                 Booked Date</h4>
+                            <p>
+                                This Date is Already Booked , So Can Choose Diffrents Date In Booking Reqest...
+                            </p>
                         <?php while($b_date=mysqli_fetch_array($q1)) {    
-                        $date = date_format(date_create($b_date['coutdate']), "d/m/Y");
+                        $cindate = date_format(date_create($b_date['cindate']), "d/m/Y");
+                        $coutdate = date_format(date_create($b_date['coutdate']), "d/m/Y");
                             ?>
-                            
                             <span class="text-danger">
                                 <b>
-                                    <?php echo $date ?>
-                                </b> ,
+                                    <?php echo $cindate ?>
+                                </b> <span class="text-black"><b> To</b> </span>
+                                 <b>
+                                    <?php echo $coutdate ?>
+                                </b><br>
                             </span>
                             <?php }?>
-                            <?php }else{?>
-                                <p>fvnkjdfn</p>
                             <?php }?>
+                               
                         <?php } ?>
                     </div>
                 <?php if ($data['stype'] == "Sell") { ?>

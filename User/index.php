@@ -113,7 +113,7 @@
                                 <div class="property-item rounded overflow-hidden">
                                     <div class="position-relative overflow-hidden">
                                         <a href="./property_details.php?pid='<?php echo $data['pid'] ?>'"><img
-                                                style="height: 307px;" class="img-fluid"
+                                                style="height: 307px; width: 100%;" class="img-fluid"
                                                 src="../admin/Img/Property_image/house/<?php echo $data['img1']; ?>"
                                                 alt=""></a>
                                         <div
@@ -173,11 +173,6 @@
         <!-- Pricing Templates Start -->
         <?php include('../User/include/pricing_t.php')?>
         <!-- Pricing Templates End -->
-
-
-       
-
-       
 
         <!-- Testimonial Start -->
         <?php include('../User/include/feedback.php')?>

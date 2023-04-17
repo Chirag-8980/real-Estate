@@ -154,10 +154,7 @@ if(isset($_FILES["fileImg"]["name"])){
                                                     <input type="file" name="fileImg" id="fileImg" accept=".jpg, .jpeg, .png">
                                                     <i class="fa fa-camera"></i>
                                                 </div>
-                                             <?php if ($data['img'] == 'user.png') { ?>
-                                                <span class="position-absolute translate-middle p-1 bg-danger  rounded-circle">
-                            <span class="visually-hidden">New alerts</span>
-                            <?php } ?>
+                    
                                                 <div class="leftRound" id="cancel" style="display: none;">
                                                 
                                                     <i class="fa fa-times"></i>

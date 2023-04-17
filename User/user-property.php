@@ -189,7 +189,7 @@ switch ($_GET['filter']) {
                                                 <div class="bg-image hover-zoom ripple rounded ripple-surface">
 
                                                     <a href="property_view.php?pid=<?php echo $data['pid'] ?>">
-                                                        <img src="../admin/img/Property_image/house/<?php echo $data['img1']; ?> " class="w-100" />
+                                                        <img src="../admin/img/Property_image/house/<?php echo $data['img1']; ?> " style="height: 152px;" class="w-100" />
                                                         <div class="hover-overlay">
                                                             <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                                                         </div>

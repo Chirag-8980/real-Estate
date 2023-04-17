@@ -220,6 +220,8 @@ if (isset($_POST['QC'])) {
                         <option value="1">1 BHK</option>
                         <option value="2">2 BHK</option>
                         <option value="3">3 BHK</option>
+                        <option value="4">4 BHK</option>
+                        <option value="5">5 BHK</option>
                     </select>
                 </div>
                 <div class="col-md-6 input-group-lg">
