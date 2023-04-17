@@ -50,9 +50,8 @@ $data = mysqli_fetch_array($query);
     <div class=" py-5">
         <div class="container">
             <div class="text-center text-black mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h1 class="mb-3 text-black">How Can I Help You ??</h1>
-                <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod
-                    sit. Ipsum diam justo sed rebum vero dolor duo.</p>
+                <h1 class="mb-3 text-black" style="border-bottom: 2px solid var(--tan);">How Can I Help You ??</h1>
+                <p>We are here to help you with all of your real estate needs. Contact us today to schedule a consultation, request more information, or to ask any questions you may have. Our team is available by phone, email, or in person, and we are always happy to hear from you.</p>
             </div>
             <div class="row g-4">
                 <div class="col-12">

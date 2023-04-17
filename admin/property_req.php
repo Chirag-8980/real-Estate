@@ -163,10 +163,10 @@ switch ($type) {
                                             <td class="align-middle"><?php echo $data['ptype']; ?></td>
                                             <td class="align-middle"><a href="property_details.php?pid=<?php echo $data['pid']; ?>&type=<?php echo $type; ?>"><button class="btn btn-success">See Details</button></a></td>
                                             <?php if($type == 'Pending') {?>
-                                            <td><a href="req_accept.php?pid=<?php echo $data['pid']; ?>&type=<?php echo $type; ?>"><button class="btn btn-success">Accept</button></a>
+                                            <td class="align-middle"><a href="req_accept.php?pid=<?php echo $data['pid']; ?>&type=<?php echo $type; ?>"><button class="btn btn-success">Accept</button></a>
                                             </td>
                                             
-                                            <td><a data-bs-toggle="modal" name="res" data-bs-target="#exampleModal1" href=""><button class="btn btn-danger">Reject</button></a></td>
+                                            <td class="align-middle"><a data-bs-toggle="modal" name="res" data-bs-target="#exampleModal1" href=""><button class="btn btn-danger">Reject</button></a></td>
                                             <?php }?>
                                         </tr>
                                         <!-- Modal -->

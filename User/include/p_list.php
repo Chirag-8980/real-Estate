@@ -4,12 +4,12 @@ $show = true;
 
     switch ($_GET['filter']) {
         case 'new':
-                $select_q = "select * from tblhouse where qc='success' and status='Active' order by date";
+                $select_q = "select * from tblhouse where qc='success' and status='Active' order by date desc";
                 $query = mysqli_query($con, $select_q);
                 $total = mysqli_fetch_array(mysqli_query($con , "select count(*) as total from tblhouse where  qc='success' and status='Active'"));
             break;
             case 'old':
-                $select_q = "select * from tblhouse where qc='success' and status='Active' order by date desc";
+                $select_q = "select * from tblhouse where qc='success' and status='Active' order by date asc";
                 $query = mysqli_query($con, $select_q);
                 $total = mysqli_fetch_array(mysqli_query($con , "select count(*) as total from tblhouse where  qc='success' and status='Active'order by date desc"));
 
@@ -83,12 +83,11 @@ $show = true;
     <div class="container-xxl py-1">
         <div class="container">
             <div class="container">
-                <div class="text-center mx-auto mb-5 text-black wow fadeInUp" data-wow-delay="0.1s"
+                <div class="text-center mx-auto mb-5 text-black" data-wow-delay="0.1s"
                     style="max-width: 600px;">
                     <h1 class="mb-3 text-black pb-2 mt-5
                     " style="border-bottom: 2px solid var(--tan);">Property Listing</h1>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga quae sint asperiores architecto
-                        quisquam exercitationem rerum facere in iste nisi!</p>
+                    <p>Browse our extensive property listings to find your dream home, investment property, or vacation rental. Our listings include detailed descriptions, high-quality photos, and virtual tours to help you get a sense of each property before you schedule a viewing. Contact us to schedule a showing or to learn more about any of the properties in our listings.</p>
                 </div>
             </div>
 
@@ -108,13 +107,13 @@ $show = true;
                             <a class="btn border border-2 mx-1 rounded-pill border-dark  text-black <?php if ($_GET['filter'] == 'new') {
                                                                                                         echo "bg-tan";
                                                                                                     } ?> "
-                                style="width: 8rem;" href="property-list.php?filter=new">New Property</a>
+                                style="width: 8rem;" href="property-list.php?filter=new">New </a>
                         </li>
                         <li class=" ">
                             <a class="btn border  border-2 mx-1 rounded-pill border-dark  text-black <?php if ($_GET['filter'] == 'old') {
                                                                                                         echo "bg-tan";
                                                                                                     } ?> "
-                                style="width: 8rem;" href="property-list.php?filter=old">Old Property</a>
+                                style="width: 8rem;" href="property-list.php?filter=old">Old </a>
                         </li>
                     </div>
                     <div class="d-flex flex-row m-1 justify-content-around border border-2 rounded-pill p-2 border-dark">

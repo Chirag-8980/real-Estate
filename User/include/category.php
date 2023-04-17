@@ -12,9 +12,8 @@
         <div class="container">
             <div class="text-center mx-auto mb-5 text-black wow fadeInUp" data-wow-delay="0.1s"
                 style="max-width: 600px;">
-                <h1 class="mb-3 text-black">Property Types</h1>
-                <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit
-                    eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
+                <h1 class="mb-3 text-black" style="border-bottom: 2px solid var(--tan);">Property Types</h1>
+                <p>We have total 5 Property Types for dealing and Also Sell And Rent Property....</p>
             </div>
 
             

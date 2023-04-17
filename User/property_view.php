@@ -54,7 +54,7 @@ $oldprice = $data['price'] + $data['price'] / 2;
 }
 </style>
 
-<body>
+<body class="bg-white">
     <div class="bg-white p-0">
         <!-- Spinner Start -->
         <?php include('../User/include/spinner.php') ?>

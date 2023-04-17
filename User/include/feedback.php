@@ -35,12 +35,14 @@
 
     <!-- Template Stylesheet -->
     <link href="../css/style.css" rel="stylesheet">
-    <title>Navbar</title>
 </head>
 
 <body>
-
+<div class="text-center text-black mx-auto mb-3 mt-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h1 class="mb-3 text-black" style="border-bottom: 2px solid var(--tan);">Our User Said... </h1>
+            </div>
 <div class="container owl-carousel testimonial-carousel wow  fadeInUp">
+    
     <?php
         $query=mysqli_query($con,"SELECT f.*, u.img FROM tblfeedback f JOIN user u ON f.email = u.email WHERE f.status='1'");
         while($row=mysqli_fetch_array($query))
@@ -48,7 +50,7 @@
     ?>
     <div class="testimonial-item bg-ligh rounded p-3">
         <div class="bg-black text-white border rounded p-4">
-            <p><?php echo $row['message']; ?>
+            <p class="fonts font-weight-light"><?php echo $row['message']; ?>
             <div class="d-flex align-items-center">
                 <img class="img-fluid flex-shrink-0 rounded" src="img/user/<?php echo $row['img']; ?>"
                     style="width: 45px; height: 45px;">

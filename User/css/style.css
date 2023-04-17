@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 :root {
     --primary: #E0A96D;
     --secondary: #4e4e4e;
@@ -12,11 +17,16 @@
 }
 body{
     background-color: var(--bgcolor);
-    /* font-family: 'Playfair Display', serif; */
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    
+    font-family: "Poppins" , sans-serif;
 }
-.poppins{
+h1 , h2{
+    font-family: 'Abhaya Libre', serif;
+}
+h3 , h5{
+    font-family: "Poppins" , sans-serif;
+}
+.fonts{
+    font-family: 'Satisfy', cursive;
 }
 .back-to-top {
     position: fixed;

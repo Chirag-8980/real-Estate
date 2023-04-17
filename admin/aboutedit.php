@@ -16,7 +16,7 @@ if(isset($_POST['update']))
 	$temp_name1 = $_FILES['aimage']['tmp_name'];
 
 
-	move_uploaded_file($temp_name1,"upload/$aimage");
+	move_uploaded_file($temp_name1,"upload/Image/$aimage");
 	
 	$sql = "UPDATE about SET title = '{$title}' , content = '{$content}', image ='{$aimage}' WHERE id = {$aid}";
 	$result=mysqli_query($con,$sql);

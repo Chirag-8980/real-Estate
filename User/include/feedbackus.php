@@ -73,9 +73,8 @@ if(isset($_SESSION['uid'])) {
     <div class=" py-5">
         <div class="container">
             <div class="text-center text-black mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h1 class="mb-3 text-black">Feedback </h1>
-                <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod
-                    sit. Ipsum diam justo sed rebum vero dolor duo.</p>
+                <h1 class="mb-3 text-black" style="border-bottom: 2px solid var(--tan);">Feedback </h1>
+                <p>We value your feedback and are committed to providing the best possible service. If you have any comments, questions, or concerns, please don't hesitate to contact us. We are always looking for ways to improve our service and would love to hear from you.</p>
             </div>
             <!-- <div class="row g-4"> -->
             <?php
@@ -88,7 +87,6 @@ if(isset($_SESSION['uid'])) {
             ?>
             <div class="col-md-12">
                 <div class="wow fadeInUp" data-wow-delay="0.5s">
-                    <p class="mb-4">Feedback for us</a>.</p>
                     <form method="POST" onsubmit="return validateForm()">
                         <div class="row g-3">
                             <div class="col-md-6">

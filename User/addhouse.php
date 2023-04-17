@@ -14,7 +14,7 @@ if($user['credit'] == 0){
     $footer = "Click To Start";
     $link = "pricing.php";
     array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
-    header("location:Pricing.php");
+    header("location:./pricing.php");
 } else{
 if (isset($_POST['QC'])) {
     $uid = $_SESSION["uid"];
@@ -141,8 +141,8 @@ if (isset($_POST['QC'])) {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
     
-<!-- Sweet Alert  -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Sweet Alert  -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
@@ -153,7 +153,7 @@ if (isset($_POST['QC'])) {
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style.css?v=<?php echo time(); ?>" rel="stylesheet">
     <title>LOCUS | Add Property</title>
    
 </head>
@@ -395,7 +395,7 @@ if (isset($_POST['QC'])) {
         })
     </script>
     <?php } 
-        unset($_SESSION['alert']);
+        // unset($_SESSION['alert']);
     ?>
 </body>
 

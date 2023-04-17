@@ -1,9 +1,10 @@
 <?php
     include('./config/config.php');
     $select_q="select * from about";
-    $data=mysqli_fetch_array(mysqli_query($con,$select_q));
+    $q=mysqli_query($con,$select_q);
 ?>
 <body>
+    <?php while($data= mysqli_fetch_array($q)){?>
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-5 align-items-center">
@@ -15,10 +16,10 @@
                 <div class="col-lg-6 wow fadeIn text-black" data-wow-delay="0.5s">
                     <h1 class="mb-4 text-black"><?php echo $data['title'];?></h1>
                     <p class="mb-4"><?php echo $data['content'];?></p>
-                    <a class="btn bg-tan text-black py-3 px-5 mt-3" href="">Read More</a>
                 </div>
             </div>
         </div>
     </div>
-   
+   <?php }?>
+
 </body>

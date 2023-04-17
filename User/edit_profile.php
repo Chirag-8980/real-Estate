@@ -16,15 +16,25 @@
         $twitter = $_POST['twitter'];
         $facebook = $_POST['facebook'];
 
-        $update_q = "UPDATE `user` SET `uname`='$uname',`mno`='$mno',`address`='$address',`instagram`='$instagram',`facebook`='$facebook',`twitter`='$twitter' WHERE `uid`='$uid' ";
+        $update_q = "UPDATE `user` SET `uname`='$uname',`mno`='$mno',`address`='$address' WHERE `uid`='$uid' ";
         $update_q_run =mysqli_query($con , $update_q);
         if($update_q_run){
-            $_SESSION['msg'] = "Profile Update Successful";
-            $_SESSION['status'] = "success";
+            $_SESSION['alert'] = array();
+            $icon = "success";
+            $title = "Update";
+            $text = "Your Profile Update Success...";
+            $footer = "Help And Support";
+            $link = "contact.php";
+            array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
             header('location:profile.php');
         }else{
-            $_SESSION['msg'] = "Profile Update Failed";
-            $_SESSION['status'] = "error";
+            $_SESSION['alert'] = array();
+            $icon = "error";
+            $title = "Something Went Wrong...";
+            $text = "Profile Update Failed...";
+            $footer = "Help And Support";
+            $link = "contact.php";
+            array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
             header('location:edit_profile.php');
         }
 
@@ -53,6 +63,10 @@
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    
+    <!-- Sweet Alert  -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
@@ -111,26 +125,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card mt-3">
-                                <ul class="list-group list-group-flush">
-
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                        <h6 class="mb-0">Twitter</h6>
-                                        <span class="text-dark"><?php echo $data['twitter']?></span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                        <h6 class="mb-0">Instagram</h6>
-                                        <span class="text-dark"><?php echo $data['instagram']?></span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                        <h6 class="mb-0">Facebook</h6>
-                                        <span class="text-dark"><?php echo $data['facebook']?></span>
-                                    </li>
-                                </ul>
-                            </div>
+                            
                         </div>
                         <div class="col-lg-8">
                             <div class="card">
@@ -164,33 +159,7 @@
                                                     value="<?php echo $data['address']?>">
                                             </div>
                                         </div>
-                                        <div class="row mb-3">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0">Instagram</h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                <input type="text" class="form-control" name="instagram"
-                                                    value="<?php echo $data['instagram']?>">
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0">Twitter</h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                <input type="text" class="form-control" name="twitter"
-                                                    value="<?php echo $data['twitter']?>">
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0">Facebook</h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                <input type="text" class="form-control" name="facebook"
-                                                    value="<?php echo $data['facebook']?>">
-                                            </div>
-                                        </div>
+                                        
                                         <div class="row">
                                             <div class="col-sm-9 text-secondary">
                                                 <input type="submit" class="btn btn-primary px-4" name="edit_btn"
@@ -201,7 +170,18 @@
                                 </div>
                             </div>
                         </div>
-
+                        <?php if (isset($_SESSION['alert'])){?> 
+    <script>
+        Swal.fire({
+                icon: '<?php echo $_SESSION["alert"]["0"] ?>',
+                title: '<?php echo $_SESSION["alert"]["1"] ?>',
+                text: '<?php echo $_SESSION["alert"]["2"] ?>',
+                footer: '<a href="<?php echo $_SESSION["alert"]['4'] ?>"><?php echo $_SESSION["alert"]["3"] ?></a>'
+        })
+    </script>
+    <?php } 
+        // unset($_SESSION['alert']);
+    ?>
                     </div>
                 </div>
             </div>

@@ -45,6 +45,9 @@ if(isset($_FILES["fileImg"]["name"])){
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Sweet Alert  -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Data Table -->
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
@@ -173,23 +176,7 @@ if(isset($_FILES["fileImg"]["name"])){
                                     </div>
                                 </div>
                             </div>
-                            <div class="card mt-3">
-                                <ul class="list-group list-group-flush">
-
-                                    <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                        <h6 class="mb-0">Twitter</h6>
-                                        <span class="text-dark"><?php echo $data['twitter'] ?></span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                        <h6 class="mb-0">Instagram</h6>
-                                        <span class="text-dark"><?php echo $data['instagram'] ?></span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                        <h6 class="mb-0">Facebook</h6>
-                                        <span class="text-dark"><?php echo $data['facebook'] ?></span>
-                                    </li>
-                                </ul>
-                            </div>
+                            
                         </div>
                         <div class="col-md-8">
                             <div class="card mb-3">
@@ -309,6 +296,18 @@ if(isset($_FILES["fileImg"]["name"])){
                     </tbody>
                 </table>
             </div>
+            <?php if (isset($_SESSION['alert'])){?> 
+    <script>
+        Swal.fire({
+                icon: '<?php echo $_SESSION["alert"]["0"] ?>',
+                title: '<?php echo $_SESSION["alert"]["1"] ?>',
+                text: '<?php echo $_SESSION["alert"]["2"] ?>',
+                footer: '<a href="<?php echo $_SESSION["alert"]['4'] ?>"><?php echo $_SESSION["alert"]["3"] ?></a>'
+        })
+    </script>
+    <?php } 
+        unset($_SESSION['alert']);
+    ?>
         </div>
     </div>
 

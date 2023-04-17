@@ -20,7 +20,7 @@ if(isset($_POST['addabout']))
 	$temp_name1 = $_FILES['aimage']['tmp_name'];
 
 
-	move_uploaded_file($temp_name1,"upload/$aimage");
+	move_uploaded_file($temp_name1,"upload/Image/$aimage");
 	
 	$sql="insert into about (title,content,image) values('$title','$content','$aimage')";
 	$result=mysqli_query($con,$sql);

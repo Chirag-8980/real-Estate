@@ -48,7 +48,7 @@ if (isset($_POST['reg_btn'])) {
     } else {
         if ($password == $cpassword) {
             $password = password_hash($password, PASSWORD_BCRYPT);
-            $insert_user = "INSERT INTO `user`(`uname`, `mno`, `email`, `password`,`instagram`,`facebook`,`twitter`) VALUES ('$uname','$mno','$email','$password','instagram','facebook','twitter')";
+            $insert_user = "INSERT INTO `user`(`uname`, `mno`, `email`, `password`) VALUES ('$uname','$mno','$email','$password')";
             $check = mysqli_query($con, $insert_user);
             if ($check) {
                 $get_uid = "select * from user where email ='$email' and password='$password'";

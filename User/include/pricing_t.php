@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('./config/config.php');
+include('../config/config.php');
 $query = mysqli_query($con, "select * from tblplan");
 if (isset($_SESSION['uname'])) {
     $uid = $_SESSION['uid'];
@@ -27,8 +27,7 @@ if (isset($_SESSION['uname'])) {
         <div class="container mt-5">
             <div class="text-center mx-auto mb-5 text-black" data-wow-delay="0.1s" style="max-width: 600px;">
                 <h1 class="mb-3 text-black pb-2" style="border-bottom: 2px solid var(--tan);">Plan Pricing</h1>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga quae sint asperiores architecto
-                    quisquam exrcitationem rerum facere in iste nisi!</p>
+                <p>We offer pricing and plan options to meet your needs, including packages for sellers, renters, and i nvestors. Contact us to learn more about our pricing and subscription options and find the plan that's right for you.</p>
                 <?php if(isset($_SESSION['uname'])){?>
                 <p>You have <button class="btn bg-black text-tan px-4"><?php echo $credit['credit'];?></button> credit left..</p>
                 <?php }?>

@@ -42,14 +42,11 @@
                             </div>
                             <div class="col-lg-6 wow fadeIn text-black" data-wow-delay="0.5s">
                                 <div class="mb-4">
-                                    <h1 class="mb-3 text-black">Contact With Our Certified Agent</h1>
-                                    <p>Eirmod sed ipsum dolor sit rebum magna erat. Tempor lorem kasd vero ipsum sit sit
-                                        diam justo sed vero dolor duo.</p>
+                                    <h1 class="mb-3 text-black">Contact With Our Team Member</h1>
+                                    <p>We are here to help you with all of your real estate needs. Contact us today to schedule a consultation, request more information, or to ask any questions you may have. Our team is available by phone, email, or in person, and we are always happy to hear from you.</p>
                                 </div>
-                                <a href="" class="btn bg-tan text-black py-3 px-4 me-2"><i
-                                        class="fa fa-phone-alt me-2"></i>Make A Call</a>
-                                <a href="" class="btn bg-black text-tan  py-3 px-4"><i class="fa fa-calendar-alt me-2"></i>Get
-                                    Appoinment</a>
+                                <a href="./contact.php" class="btn bg-tan text-black py-3 px-4 me-2"><i
+                                        class="fa fa-phone-alt me-2"></i>Contact Us</a>
                             </div>
                         </div>
                     </div>

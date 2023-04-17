@@ -10,27 +10,31 @@
         $sql = " SELECT * FROM tblhouse WHERE `city`='$city' and `ptype`='$property_type' and `status`='Active' ";
         $run = mysqli_query($con , $sql);
         $total = mysqli_fetch_array(mysqli_query($con , "SELECT count(*) as total FROM tblhouse WHERE `city`='$city' and `ptype`='$property_type'and `status`='Active'"));
+        // echo "1";
 
     }elseif(!$property_type == null AND !$query == null){
-        $sql = " SELECT * FROM tblhouse WHERE MATCH (ptitle,description,paddress,facilities) AGAINST ('$query') and `ptype`='$property_type' and `status`='Active'";
+        $sql = " SELECT * FROM tblhouse WHERE MATCH (ptitle,state,city,paddress,description,facilities) AGAINST ('$query') and `ptype`='$property_type' and `status`='Active'";
         $run = mysqli_query($con , $sql);
-        $total = mysqli_fetch_array(mysqli_query($con , "SELECT count(*) as total FROM tblhouse WHERE MATCH (ptitle,description,paddress,facilities) AGAINST ('$query') and `ptype`='$property_type' and `status`='Active'"));
+        $total = mysqli_fetch_array(mysqli_query($con , "SELECT count(*) as total FROM tblhouse WHERE MATCH (ptitle,state,city,paddress,description,facilities) AGAINST ('$query') and `ptype`='$property_type' and `status`='Active'"));
+        // echo "2";
 
     }elseif(!$city == null AND !$query == null){
-        $sql = " SELECT * FROM tblhouse WHERE MATCH (ptitle,description,paddress,facilities) AGAINST ('$query') and `city`='$city' and `status`='Active'";
+        $sql = " SELECT * FROM tblhouse WHERE MATCH  (ptitle,state,city,paddress,description,facilities) AGAINST ('$query') and `city`='$city' and `status`='Active'";
         $run = mysqli_query($con , $sql);
-        $total = mysqli_fetch_array(mysqli_query($con , "SELECT count(*) as total FROM tblhouse WHERE MATCH (ptitle,description,paddress,facilities) AGAINST ('$query') and `city`='$city' and `status`='Active'"));
+        $total = mysqli_fetch_array(mysqli_query($con , "SELECT count(*) as total FROM tblhouse WHERE MATCH (ptitle,state,city,paddress,description,facilities) AGAINST ('$query') and `city`='$city' and `status`='Active'"));
+        // echo "3";
 
     }elseif(!$property_type == null){
         $sql = " SELECT * FROM tblhouse WHERE `ptype`='$property_type' and `status`='Active'";
         $run = mysqli_query($con , $sql);
         $total = mysqli_fetch_array(mysqli_query($con , "SELECT count(*) as total FROM tblhouse WHERE `ptype`='$property_type' and `status`='Active'"));
+        // echo "4";
 
     }elseif(!$query == null){
-        $sql = " SELECT * FROM tblhouse WHERE  MATCH (ptitle,description,paddress,facilities) AGAINST ('$query') and `status`='Active' ";
+        $sql = " SELECT * FROM tblhouse WHERE  MATCH (ptitle,state,city,paddress,description,facilities) AGAINST ('$query') and `status`='Active' ";
         $run = mysqli_query($con , $sql);
-        $total = mysqli_fetch_array(mysqli_query($con , "SELECT count(*) as total FROM tblhouse WHERE  MATCH (ptitle,description,paddress,facilities) AGAINST ('$query') and `status`='Active'"));
-
+        $total = mysqli_fetch_array(mysqli_query($con , "SELECT count(*) as total FROM tblhouse WHERE  MATCH (ptitle,state,city,paddress,description,facilities) AGAINST ('$query') and `status`='Active'"));
+        // echo "5";
     }
 
     

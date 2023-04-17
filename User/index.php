@@ -39,7 +39,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style.css?v=<?php echo time(); ?>" rel="stylesheet">
     <link rel="stylesheet" href="css/alert.css">
 </head>
 
@@ -61,9 +61,7 @@
                     <h1 class="display-5 animated fadeIn text-black mb-4">Find A <span class="text-tan">Perfect
                             Home</span> To
                         Live With Your Family</h1>
-                    <p class="animated fadeIn mb-4 text-black pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed
-                        stet
-                        sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
+                    <p class="animated fadeIn mb-4 text-black pb-2">List your property and get best deal for your property  and You can find your dream Property in your budget using our portal The Locus Real-Estate...</p>
                 </div>
                 <div class="col-md-6 animated fadeIn">
                     <div class="owl-carousel header-carousel">
@@ -101,8 +99,7 @@
                     <div class="col-lg-12">
                         <div class="text-center text-black mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
                             <h1 class="mb-3 text-black">Property Listing</h1>
-                            <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero
-                                ipsum sit eirmod sit diam justo sed rebum.</p>
+                            <p>Browse our extensive property listings to find your dream home, investment property, or vacation rental. Our listings include detailed descriptions, high-quality photos, and virtual tours to help you get a sense of each property before you schedule a viewing. Contact us to schedule a showing or to learn more about any of the properties in our listings.</p>
                         </div>
                     </div>
                 </div>
@@ -178,15 +175,9 @@
         <!-- Pricing Templates End -->
 
 
-        <!-- Call to Action Start -->
-        <?php include('../User/include/contact.php')?>
-        <!-- Call to Action End -->
+       
 
-
-        <!-- Team Start -->
-        <?php include('../User/include/team.php')?>
-        <!-- Team End -->
-
+       
 
         <!-- Testimonial Start -->
         <?php include('../User/include/feedback.php')?>

@@ -76,9 +76,8 @@ if (isset($_POST['update'])) {
                 move_uploaded_file($tmp_name4, $target_file4);
 
                 $query = "update tblhouse set ptitle='$ptitle', ptype='$ptype', bhk='$bhk', stype='$stype', bedroom='$bedroom', balcony='$balcony', bathroom='$bathroom', kitchen='$kitchen', hall='$hall', floor='$floor', tfloor='$tfloor', price='$price', sqft='$sqft', paddress='$paddress', city='$city', state='$state', img1='$image1', img2='$image2', img3='$image3', img4='$image4', featured='$featured', description='$description' where pid='$prid' ";
-
                 $result = mysqli_query($con, $query);
-
+                mysqli_query($con , "update tblhouse set qc='Pending' , response='Your Listing Is Live...' where pid='$prid'");
                 if ($result) {
                     $_SESSION['alert'] = array();
                     $icon = "success";
