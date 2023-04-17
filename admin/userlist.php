@@ -88,9 +88,6 @@ if(!isset($_SESSION['auser']))
                                                     <th>Name</th>
                                                     <th>Phone</th>
                                                     <th>Email</th>
-                                                    <!-- <th>Utype</th> -->
-													<!-- <th>Image</th> -->
-                                                    <th>Delete</th>
                                                 </tr>
                                             </thead>
                                         
@@ -108,7 +105,6 @@ if(!isset($_SESSION['auser']))
                                                     <td><?php echo $row['1']; ?></td>
                                                     <td><?php echo $row['2']; ?></td>
                                                     <td><?php echo $row['3']; ?></td>
-                                                    <td><a href="userdelete.php?id=<?php echo $row['0']; ?>">Delete</a></td>
                                                 </tr>
                                                 <?php
 												$cnt=$cnt+1;
