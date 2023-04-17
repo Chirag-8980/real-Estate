@@ -18,6 +18,7 @@ if (isset($_POST['pbooking'])) {
     $sellerid = $_SESSION['sellerid'];
     $pid = $_SESSION['pid'];
     $_SESSION['b_email'] = $email;
+    $mno =mysqli_fetch_array(mysqli_query($con , "select * from user where uid=$buyerid"));
 
     if ($buyerid != $sellerid) {
       $query = "INSERT INTO `tblpbooking`(`name`, `pid`, `seller_id`, `buyer_id`, `email`, `cindate`, `coutdate`,`details`) VALUES ('$name','$pid','$sellerid','$buyerid','$email','$cindate','$coutdate','$message')";
@@ -386,7 +387,7 @@ if (isset($_POST['pbooking'])) {
                                                 <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                                   <tbody>
                                                     <tr>
-                                                      <td> <a href="" target="_blank">Call To Action</a> </td>
+                                                      <td> <a href="tel:'.$mno['mno'].'" target="_blank">Call To Action</a> </td>
                                                     </tr>
                                                   </tbody>
                                                 </table>

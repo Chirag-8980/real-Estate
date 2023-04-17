@@ -41,9 +41,9 @@
                 <div class="row g-5">
                     <div class="col-lg-3 col-md-6">
                         <h5 class="text-tan mb-4">Get In Touch</h5>
-                        <p class="mb-2 text-beige"><i class="fa text-white fa-map-marker-alt me-3"></i>Mota Varachha, Gujarat, India</p>
-                        <p class="mb-2 text-beige"><i class="fa text-white fa-phone-alt me-3"></i>+91 8238273464</p>
-                        <p class="mb-2 text-beige"><i class="fa text-white fa-envelope me-3"></i>locus@gmail.com</p>
+                        <p class="mb-2 text-beige"><i class="fa text-white fa-map-marker-alt me-3"></i>Silver Bussiness Hub, Surat</p>
+                        <p class="mb-2 text-beige"><i class="fa text-white fa-phone-alt me-3"></i>+91 11111 00000</p>
+                        <p class="mb-2 text-beige"><i class="fa text-white fa-envelope me-3"></i>locus466@gmail.com</p>
                         <div class="d-flex pt-2">
                             <a class="btn btn-outline-light btn-social" href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
                             <a class="btn btn-outline-light btn-social" href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
@@ -53,9 +53,9 @@
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h5 class="text-tan mb-4">Quick Links</h5>
-                        <a class="btn btn-link text-beige" href="http://localhost/real-Estate/User/about.php">About Us</a>
-                        <a class="btn btn-link text-beige" href="http://localhost/real-Estate/User/contact.php">Contact Us</a>
-                        <a class="btn btn-link text-beige" href="">Privacy Policy</a>
+                        <a class="btn btn-link text-beige" href="./about.php">About Us</a>
+                        <a class="btn btn-link text-beige" href="./contact.php">Contact Us</a>
+                        <a class="btn btn-link text-beige" href="./term.php">Privacy Policy</a>
                         
                     </div>
                     <div class="col-lg-3 col-md-6">
@@ -93,7 +93,7 @@
                         </div>
                         <div class="col-md-6 text-center text-md-end">
                             <div class="footer-menu">
-                                <a href="http://localhost/real-Estate/User/index.php">Home</a>
+                                <a href="../index.php">Home</a>
                             </div>
                         </div>
                     </div>

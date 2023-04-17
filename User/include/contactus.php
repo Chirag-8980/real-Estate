@@ -62,7 +62,7 @@ $data = mysqli_fetch_array($query);
                                     <div class="icon icon1 me-3" style="width: 45px; height: 45px;">
                                         <i class="fa text-tan btn-social fa-map-marker-alt"></i>
                                     </div>
-                                    <span>MD Park Socity Simada Gam</span>
+                                    <span>4007 Silver Bussiness Hub, Surat</span>
                                 </div>
                             </div>
                         </div>
@@ -73,7 +73,7 @@ $data = mysqli_fetch_array($query);
                                     <div class="icon  me-3" style="width: 45px; height: 45px;">
                                         <i class="fa fa-envelope-open text-tan"></i>
                                     </div>
-                                    <span>locus_support@gmail.com</span>
+                                    <span>locus466@gmail.com</span>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +83,7 @@ $data = mysqli_fetch_array($query);
                                     <div class="icon me-3" style="width: 45px; height: 45px;">
                                         <i class="fa fa-phone-alt text-tan"></i>
                                     </div>
-                                    <span>+91 11223 34455</span>
+                                    <span>+91 11111 00000</span>
                                 </div>
                             </div>
                         </div>
@@ -94,7 +94,6 @@ $data = mysqli_fetch_array($query);
                 </div>
                 <div class="col-md-6">
                     <div class="wow fadeInUp" data-wow-delay="0.5s">
-                        <p class="mb-4">Contact Us</a>.</p>
                         <form action="contact.php" method="post">
 
                             <div class="row g-3">

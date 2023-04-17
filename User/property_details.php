@@ -10,6 +10,12 @@ $_SESSION['sellerid'] = $data['uid'];
 $uid = $data['uid'];
 $user_data = mysqli_fetch_array(mysqli_query($con, "select * from user where uid='$uid'"));
 $oldprice = $data['price'] + $data['price'] / 2;
+
+$pid = $_GET['pid'];
+$q =mysqli_query($con, "Select * from tblpbooking where pid=$pid");
+$q1 =mysqli_query($con, "Select * from tblpbooking where pid=$pid and status='Success'");
+$isRent = mysqli_fetch_array($q);
+// $cur_date = date("d/m/y");
 ?>
 <!DOCTYPE html>
 <html>
@@ -211,7 +217,7 @@ $oldprice = $data['price'] + $data['price'] / 2;
 
             </div>
 
-            <div style="height: 750px;">
+            <div>
                 <div class="row  card-wrapper  ">
                     <div class="col-12 " style="width: 100%;">
                         <h4 class="animated text-black fadeIn mb-3" style="border-bottom: 2px solid var(--tan);">
@@ -224,42 +230,42 @@ $oldprice = $data['price'] + $data['price'] / 2;
                         <p>
                             <?php echo $data['description'] ?>
                         </p>
+                        <?php if ($data['stype'] == 'Rent') {
+                            if ($isRent['cindate'] != null){ ?>
+                            <h4 class="animated text-black fadeIn mt-4 mb-3" style="border-bottom: 2px solid var(--tan);">
+                                Booked Date</h4>
+                        <?php while($b_date=mysqli_fetch_array($q1)) {    
+                        $date = date_format(date_create($b_date['coutdate']), "d/m/Y");
+                            ?>
+                            
+                            <span class="text-danger">
+                                <b>
+                                    <?php echo $date ?>
+                                </b> ,
+                            </span>
+                            <?php }?>
+                            <?php }else{?>
+                                <p>fvnkjdfn</p>
+                            <?php }?>
+                        <?php } ?>
                     </div>
-                </div>
                 <?php if ($data['stype'] == "Sell") { ?>
                     <div class="container mt-4">
                         <a class="btn  bg-tan text-black w-100 py-3 my-4" href="booking.php?pid=<?php echo $_GET['pid'] ?>&sellerid=<?php echo $data['uid'] ?>&stype=<?php echo $data['stype'] ?>&ptype=<?php echo $data['ptype'] ?>">Request
                             For
                             Booking</a>
                     </div>
-                    <?php } else {
-                    $pid = $_GET['pid'];
-                    $isRent = mysqli_fetch_array(mysqli_query($con, "Select * from tblpbooking where pid=$pid "));
-                    if ($isRent['status'] == "Success") {
-                        $cur_date = date("d/m/y");
-                        $date = date_format(date_create($isRent['coutdate']) , "d/m/Y") ;
-                        if ($cur_date > $date) { ?>
-                            <div class="container mt-4">
-                                <a class="btn  bg-tan text-black w-100 py-3 my-4" href="booking.php?pid=<?php echo $_GET['pid'] ?>&sellerid=<?php echo $data['uid'] ?>&stype=<?php echo $data['stype'] ?>&ptype=<?php echo $data['ptype'] ?>">Request
-                                    For
-                                    Booking</a>
-                            </div>
-                        <?php  } else { ?>
-                            <div class="container mt-4">
-                                <a class="btn  bg-beige text-black w-100 py-3 my-4">Not Available Till
-                                    <?php
-                                    echo $date; ?></a>
-                            </div>
-                        <?php } ?>
-
                     <?php } else { ?>
+                    
                         <div class="container mt-4">
-                            <a class="btn  bg-tan text-black w-100 py-3 my-4" href="booking.php?pid=<?php echo $_GET['pid'] ?>&sellerid=<?php echo $data['uid'] ?>&stype=<?php echo $data['stype'] ?>&ptype=<?php echo  $data['ptype'] ?>">Request
-                                For
-                                Booking</a>
-                        </div>
-                    <?php } ?>
-                <?php } ?>
+                        <a class="btn  bg-tan text-black w-100 py-3 my-4" href="booking.php?pid=<?php echo $_GET['pid'] ?>&sellerid=<?php echo $data['uid'] ?>&stype=<?php echo $data['stype'] ?>&ptype=<?php echo $data['ptype'] ?>">Request
+                            For
+                            Booking</a>
+                    </div>  
+                <?php
+                 }
+                 ?> 
+                </div>
             </div>
             <?php if (isset($_SESSION['alert'])) { ?>
                 <script>
