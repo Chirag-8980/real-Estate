@@ -151,17 +151,17 @@ $show = true;
                                     <div class="col-md-4">
                                         <input type="text" name="tprice"
                                             class=" text-center form-control border-0 rounded-3 py-3"
-                                            placeholder="To Price">
+                                            placeholder="From Price">
 
                                     </div>
                                     <div class="col-md-4">
                                         <input type="text" name="fprice"
                                             class=" text-center form-control border-0 rounded-3 py-3"
-                                            placeholder="From Price">
+                                            placeholder="To Price">
                                     </div>
                                     <input type="text" name="filter" value="price"
                                         class=" text-center form-control border-0 rounded-3 py-3"
-                                        placeholder="From Price" hidden>
+                                        placeholder="To Price" hidden>
                                     <div class="col-md-4">
                                         <button class="btn bg-tan text-black rounded-3 border-0  w-100 ">
                                             <input type="submit" name="btn_filter"

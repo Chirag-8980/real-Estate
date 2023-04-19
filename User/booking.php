@@ -32,7 +32,7 @@ if (isset($_POST['pbooking'])) {
                   <head>
                     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
                     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-                    <title>Property Booking Reqest</title>
+                    <title>Property Booking Request</title>
                     <style>
                       /* -------------------------------------
                           GLOBAL RESETS
@@ -379,7 +379,7 @@ if (isset($_POST['pbooking'])) {
                                     <tr>
                                       <td>
                                         <p>Hi there,</p>
-                                        <p>Congratulation , You Have Recevied Property Reqest From Buyer You Can Check Your Property Order Portal...</p>
+                                        <p>Congratulation , You Have Recevied Property Request From Buyer You Can Check Your Property Order Portal...</p>
                                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                                           <tbody>
                                             <tr>
@@ -438,7 +438,7 @@ if (isset($_POST['pbooking'])) {
 
         $_SESSION['alert'] = array();
                 $icon = "success";
-                $title = "Your Booking  Reqest Sent To Seller...";
+                $title = "Your Booking  Request Sent To Seller...";
                 $text = "Buyer Callback As Soon As Possible..";
                 $footer = "Help And Support";
                 $link = "contact.php";
@@ -603,7 +603,7 @@ if (isset($_POST['pbooking'])) {
                     </div>
                     <div class="col-12">
                         <button class="btn bg-tan text-black w-100 py-3" onclick="myFunction()" name="pbooking"
-                            type="submit">Reqest For
+                            type="submit">Request For
                             Booking</button>
                     </div>
                 </div>

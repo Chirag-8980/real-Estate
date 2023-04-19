@@ -70,8 +70,8 @@ input.invalid {
                                 <input type="text" name="email" id="email" placeholder="Enter your email"
                                     oninvalid="setCustomValidity('Please enter a valid Email ID')"
                                     onblur="setCustomValidity('')" oninput="validateEmail()">
-
                             </div>
+                            <span onclick="otp()">Send Otp</span>
                             
                             </div>
                             <div class="text-danger" id="error-email"></div>
@@ -123,6 +123,10 @@ input.invalid {
 
     </script>
     <script>
+    function otp(){
+        <?php echo(SendMail("chiragkachhadiya000@gmail.com", "OTP" , "OTP"));?>
+        console.log("Otp Sent")
+    }
    
     function myFunction() {
         document.getElementById("uname").required = true;

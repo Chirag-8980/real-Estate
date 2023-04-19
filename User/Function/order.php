@@ -1278,7 +1278,7 @@ if (isset($_POST['submit'])) {
 
       if ($status == "Reject") {
         $sub = "Reject";
-        $msg = "Your Property Reqest Has Been Rejated...";
+        $msg = "Your Property Request Has Been Rejated...";
         $sendmail = SendMail($email, $sub, $msg);
         $_SESSION['alert'] = array();
                 $icon = "success";

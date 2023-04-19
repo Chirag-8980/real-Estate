@@ -76,7 +76,7 @@
 
 <body>
 
-    <h2 style="text-align: center;">Booking Reqest From Buyer</h2>
+    <h2 style="text-align: center;">Booking Request From Buyer</h2>
     <div style="width: 50%; margin: auto;">
         <h4 style="text-align: center;">Buyer Information</h4>
         <table style="width:100%">

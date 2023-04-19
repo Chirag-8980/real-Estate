@@ -136,7 +136,7 @@ if (!isset($_SESSION['auser'])) {
                             </ul>
                         </li>
                         <li class="submenu">
-                            <a href="#"><span>Property Reqestes</span> <span class="menu-arrow"></span></a>
+                            <a href="#"><span>Property Requestes</span> <span class="menu-arrow"></span></a>
                             <ul style="display: none;">
                                 <li><a href="property_req.php?type=all">All</a></li>
                                 <li><a href="property_req.php?type=Pending">Pending</a></li>
@@ -147,7 +147,7 @@ if (!isset($_SESSION['auser'])) {
 
                             </ul>
                         </li>
-                        <!-- <li><a href="propertyadd.php"> Add Reqest </a></li> -->
+                        <!-- <li><a href="propertyadd.php"> Add Request </a></li> -->
 
                     </ul>
                 </li>

@@ -64,7 +64,7 @@ switch ($type) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>LOCUS | Reqest</title>
+    <title>LOCUS | Request</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favi.png">
@@ -113,7 +113,7 @@ switch ($type) {
                         <h3 class="page-title">Admin</h3>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Property Reqestes</li>
+                            <li class="breadcrumb-item active">Property Requestes</li>
                             <li class="breadcrumb-item active"><?php echo $type; ?></li>
                         </ul>
                     </div>
@@ -125,7 +125,7 @@ switch ($type) {
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Reqest List</h4>
+                            <h4 class="card-title">Request List</h4>
                             <?php
                             if (isset($_GET['msg']))
                                 echo $_GET['msg'];

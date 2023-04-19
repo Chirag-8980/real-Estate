@@ -17,8 +17,8 @@
             </div>
 
             
-            <div class="row d-flex justify-content-center g-4">
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="row d-flex justify-content-center g-4" >
+                <div class="col-lg-3 col-sm-6 wow fadeInUp"  data-wow-delay="0.1s">
                     <a class="cat-item d-block bgcolor text-center  rounded p-3" href="">
                         <div class="rounded bg-black  p-4">
                             <div class="icon mb-3">

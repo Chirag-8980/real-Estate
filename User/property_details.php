@@ -235,7 +235,7 @@ $isRent = mysqli_fetch_array($q);
                             <h4 class="animated text-black fadeIn mt-4 mb-3" style="border-bottom: 2px solid var(--tan);">
                                 Booked Date</h4>
                             <p>
-                                This Date is Already Booked , So Can Choose Diffrents Date In Booking Reqest...
+                                This Date is Already Booked , So Can Choose Diffrents Date In Booking Request...
                             </p>
                         <?php while($b_date=mysqli_fetch_array($q1)) {    
                         $cindate = date_format(date_create($b_date['cindate']), "d/m/Y");

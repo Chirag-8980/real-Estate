@@ -64,7 +64,7 @@
 
         <div class="container">
             <div class="text-center mt-5 mx-auto mb-5 text-black wow fadeInUp" style="max-width: 600px;">
-                <h1 class="mb-3 text-black">Property Booking Reqest</h1>
+                <h1 class="mb-3 text-black">Property Booking Request</h1>
             </div>
             <div class="mb-5 text-cneter  align-middle">
                 <table id="myTable" class="table text-black align-middle text-center table-striped table-bordered" style="font-size: 0.8rem;">
