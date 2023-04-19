@@ -67,6 +67,18 @@ if (isset($_POST['QC'])) {
     $img_type4 = strtolower(pathinfo($image4, PATHINFO_EXTENSION));
     $size = $_FILES['img4']['size'];
     $destination4 = "../admin/img/property_image/house/" . $image4;
+    
+    $ebill = $_FILES['ebill']['name'];
+    $tmp_name5 = $_FILES['ebill']['tmp_name'];
+    $img_type5 = strtolower(pathinfo($ebill, PATHINFO_EXTENSION));
+    $size = $_FILES['ebill']['size'];
+    $destination5 = "../admin/img/property_image/house/" . $ebill;
+
+    $tbill = $_FILES['tbill']['name'];
+    $tmp_name6 = $_FILES['tbill']['tmp_name'];
+    $img_type6 = strtolower(pathinfo($tbill, PATHINFO_EXTENSION));
+    $size = $_FILES['tbill']['size'];
+    $destination6 = "../admin/img/property_image/house/" . $tbill;
 
 
     if (in_array($img_type1 || $img_type2 || $img_type3 || $img_type4, $allow_type)) {
@@ -75,7 +87,9 @@ if (isset($_POST['QC'])) {
             move_uploaded_file($tmp_name2, $destination2);
             move_uploaded_file($tmp_name3, $destination3);
             move_uploaded_file($tmp_name4, $destination4);
-            $insert_qry = "INSERT INTO `tblhouse`( `uid`, `ptitle`, `ptype`, `bhk`, `stype`, `bedroom`, `balcony`, `bathroom`, `kitchen`, `hall`, `floor`, `tfloor`, `price`, `sqft`, `paddress`, `city`, `state`, `img1`, `img2`, `img3`, `img4`, `featured`, `description`, `facilities`) VALUES ('$uid','$ptitle','$ptype','$bhk','$stype','$bedroom','$balcony','$bathroom','$kitchen','$hall','$floor','$tfloor','$price','$sqft','$paddress','$city','$state','$image1','$image2','$image3','$image4','$featured','$description','$facilities')";
+            move_uploaded_file($tmp_name5, $destination5);
+            move_uploaded_file($tmp_name6, $destination6);
+            $insert_qry = "INSERT INTO `tblhouse`( `uid`, `ptitle`, `ptype`, `bhk`, `stype`, `bedroom`, `balcony`, `bathroom`, `kitchen`, `hall`, `floor`, `tfloor`, `price`, `sqft`, `paddress`, `city`, `state`, `img1`, `img2`, `img3`, `img4`,`ebill`,`tbill`,`featured`, `description`, `facilities`) VALUES ('$uid','$ptitle','$ptype','$bhk','$stype','$bedroom','$balcony','$bathroom','$kitchen','$hall','$floor','$tfloor','$price','$sqft','$paddress','$city','$state','$image1','$image2','$image3','$image4','$ebill','$tbill','$featured','$description','$facilities')";
             $result = mysqli_query($con, $insert_qry);
             if ($result) {
                 $res = mysqli_query($con , "UPDATE user SET credit = credit - 1 WHERE `uid` = $uid");
@@ -216,7 +230,7 @@ if (isset($_POST['QC'])) {
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputState" class="form-label  text-black">BHK</label>
-                    <select id="bhk" name="bhk" class="form-select" onchange="valueadd()">
+                    <select id="bhk" name="bhk" class="form-select">
                         <option value="1">1 BHK</option>
                         <option value="2">2 BHK</option>
                         <option value="3">3 BHK</option>
@@ -230,35 +244,34 @@ if (isset($_POST['QC'])) {
                         <option value="Rent">Rent</option>
                         <option value="Sell">Sell</option>
                     </select>
-
                 </div>
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Bedroom</label>
-                    <input type="text" name="bedroom" oninput="validateBedroom()" class="form-control" id="bedroom" placeholder="Enter Bedroom (Only 1 to 5)">
+                    <input type="text" name="bedroom" oninput="validateBedroom()" value="" class="form-control" id="bedroom" placeholder="Enter Bedroom (Only 1 to 5)">
                     <div class="text-danger  mt-1" id="error-bedroom"></div>
                 </div>
 
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Balcony</label>
-                    <input type="text" name="balcony" oninput="validateBalcony()" class="form-control" id="balcony" placeholder="Enter Balcony (Only 1 to 5)">
+                    <input type="text" name="balcony" oninput="validateBalcony()" value="" class="form-control" id="balcony" placeholder="Enter Balcony (Only 1 to 5)">
                     <div class="text-danger mt-1" id="error-balcony"></div>
                 </div>
 
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Bathroom</label>
-                    <input type="text" name="bathroom" oninput="validateBathroom()" class="form-control" id="bathroom" placeholder="Enter Bathroom (Only 1 to 5)">
+                    <input type="text" name="bathroom" oninput="validateBathroom()" value="" class="form-control" id="bathroom" placeholder="Enter Bathroom (Only 1 to 5)">
                     <div class="text-danger mt-1" id="error-bathroom"></div>
                 </div>
 
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Kitchen</label>
-                    <input type="text" name="kitchen" oninput="validateKitchen()" class="form-control" id="kitchen" placeholder="Enter Kitchen (Only 1 to 5)">
+                    <input type="text" name="kitchen" oninput="validateKitchen()" value="" class="form-control" id="kitchen" placeholder="Enter Kitchen (Only 1 to 5)">
                     <div class="text-danger mt-1" id="error-kitchen"></div>
                 </div>
 
                 <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">Hall</label>
-                    <input type="text" name="hall" oninput="validateHall()" class="form-control" id="hall" placeholder="Enter Hall (Only 1 to 5)">
+                    <input type="text" name="hall" oninput="validateHall()" value="" class="form-control" id="hall" placeholder="Enter Hall (Only 1 to 5)">
                     <div class="text-danger mt-1" id="error-hall"></div>
                 </div>
 
@@ -290,7 +303,22 @@ if (isset($_POST['QC'])) {
                     <input type="text" name="paddress" class="form-control" oninput="validatePaddress()" id="paddress">
                     <div class="text-danger mt-1" id="error-paddress"></div>
                 </div>
+                
                 <div class="col-md-6 input-group-lg">
+                    <label for="inputZip" class="form-label  text-black">State</label>
+                    <select id="state" name="state" class="form-select" id="">
+                        <option value="">Select State</option>
+                    </select>
+                    <div class="text-danger mt-1" id="error-state"></div>
+                </div>
+                <div class="col-md-6 input-group-lg">
+                    <label for="inputZip" class="form-label  text-black">City</label>
+                    <select id="city" name="city" class="form-select" id="" >
+                        <option value="">Select City</option>
+                    </select>
+                    <div class="text-danger mt-1" id="error-city"></div>
+                </div>
+                <!-- <div class="col-md-6 input-group-lg">
                     <label for="inputZip" class="form-label  text-black">City</label>
                     <input type="text" class="form-control" name="city" oninput="validateCity()" id="city">
                     <div class="text-danger mt-1" id="error-city"></div>
@@ -299,7 +327,7 @@ if (isset($_POST['QC'])) {
                     <label for="inputZip" class="form-label  text-black">State</label>
                     <input type="text" class="form-control" name="state" oninput="validateState()" id="state">
                     <div class="text-danger mt-1" id="error-state"></div>
-                </div>
+                </div> -->
                 <!-- Image & Status -->
                 <h2 class="animated text-black fadeIn mt-5 add-header" style="border-bottom: 2px solid var(--tan);">
                     Image & Status</h2>
@@ -330,12 +358,28 @@ if (isset($_POST['QC'])) {
                         <option value="No">No</option>
                     </select>
                 </div>
+
                 <div class="col-md-6 input-group-lg">
                     <select id="inputState" name="status" class="form-select" hidden>
                         <option value="Sold">Sold</option>
                         <option value="Unsold" seleceted>UnSold</option>
                     </select>
                 </div>
+
+                <!-- Verify Doc -->
+                <h2 class="animated text-black fadeIn mt-5 add-header" style="border-bottom: 2px solid var(--tan);">
+                    Property Varification Documents</h2>
+                <div class="col-md-6">
+                    <label for="formFileLg" class="form-label text-black">Eletricity Bill</label>
+                    <input class="form-control form-control-lg bg-white" name="ebill" id="image" accept=".jpg,.jpeg,.png,.gif"  type="file">
+                    <div id="image-error"></div>
+                </div>
+                <div class="col-md-6">
+                    <label for="formFileLg" class="form-label text-black">Taxes Bill</label>
+                    <input class="form-control form-control-lg bg-white" id="image" accept=".jpg,.jpeg,.png,.gif"  name="tbill" type="file">
+                    <div id="image-error"></div>
+                </div>
+                
                 <!-- Facility -->
                 <h2 class="animated text-black fadeIn mt-5 mb-2 add-header" style="border-bottom: 2px solid var(--tan);">Facilities</h2>
                 <small class="text-danger mt-1">* Important Please Do Not Remove Below Content Only Change <b>Yes</b> Or
@@ -402,6 +446,65 @@ if (isset($_POST['QC'])) {
 </body>
 
 <script>
+    // Load state and city data from JSON file
+		$.getJSON("state.json", function(data) {
+			var states = Object.keys(data);
+
+			// Populate state dropdown
+			$.each(states, function(index, value) {
+			    $('#state').append($('<option>').text(value).attr('value', value));
+			});
+
+			// Handle state selection change event
+			$('#state').change(function() {
+				var selected_state = $(this).val();
+				var selected_cities = data[selected_state];
+
+				// Clear existing options in city dropdown
+				$('#city').html('<option value="">Select City</option>');
+
+				// Add filtered cities to city dropdown
+				$.each(selected_cities, function(index, value) {
+				    $('#city').append($('<option>').text(value).attr('value', value));
+				});
+			});
+		});
+    // Auto Select BHK
+        const bhk = document.getElementById('bhk');
+        const bedroom = document.getElementById('bedroom');
+        const bathroom = document.getElementById('bathroom');
+        const kitchen = document.getElementById('kitchen');
+        const hall = document.getElementById('hall');
+        const balcony = document.getElementById('balcony');
+
+        bhk.addEventListener('change', function() {
+        if(bhk.value === '2') {
+            bedroom.value = 2;
+            bathroom.value = 3;
+            kitchen.value = 1;
+            hall.value = 1;
+            balcony.value = 3;
+        }else if(bhk.value === '3'){
+            bedroom.value = 3;
+            bathroom.value = 4;
+            kitchen.value = 1;
+            hall.value = 1;
+            balcony.value = 4;
+        }else if(bhk.value === '4'){
+            bedroom.value = 4;
+            bathroom.value = 5;
+            kitchen.value = 1;
+            hall.value = 1;
+            balcony.value = 5;
+        }else if(bhk.value === '5'){
+            bedroom.value = 5;
+            bathroom.value = 6;
+            kitchen.value = 1;
+            hall.value = 1;
+            balcony.value = 6;
+        }
+    });
+
     function validatePtitle() {
         var nameInput = document.getElementById("ptitle");
         var ptitle = nameInput.value.trim();

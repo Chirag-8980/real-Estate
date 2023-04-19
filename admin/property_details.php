@@ -261,6 +261,22 @@ $msg="";
                                         </div>
 
                                     </div>
+                                    <div class="col-xl-6">
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label">Electricity Bill</label>
+                                            <div class="col-lg-9">
+                                                <img src="./Img/Property_Image/house/<?php echo $data['ebill'];?>" style="height: 300px; width: 400px;"
+                                                    class="img-thumbnail" alt="...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label">Taxs Bill</label>
+                                            <div class="col-lg-9">
+                                                <img src="./Img/Property_Image/house/<?php echo $data['tbill'];?>" style="height: 300px; width: 400px;">
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </div>
 
 

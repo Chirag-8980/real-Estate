@@ -38,7 +38,7 @@ session_start();
               ?>
                     <div class="">
                         <div class="alert alert-warning  alert-dismissible fade show" role="alert">
-                            <strong>Oops! </strong> <?= $_SESSION['message']; ?>.
+                            <strong></strong> <?= $_SESSION['message']; ?>.
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     </div>

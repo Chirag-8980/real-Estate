@@ -72,7 +72,6 @@ if (isset($_SESSION['uname'])) {
                                                 'pmtid': response.razorpay_payment_id,
                                                 'amt': <?php echo $data['p_price']; ?>
                                             },
-
                                             success: function(data) {
                                                 console.log(data);
                                                 window.location.href = 'Pricing.php';

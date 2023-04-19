@@ -1,14 +1,14 @@
 <?php
 require './function/sendmail.php';
 session_start();
+
 ?>
 <!DOCTYPE html>
-<!-- Created by CodingLab |www.youtube.com/c/CodingLabYT-->
 <html lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- FavIcon -->
     <link rel="shortcut icon" type="image/x-icon" href="../admin/assets/img/favi.png">
@@ -71,63 +71,57 @@ input.invalid {
                                     oninvalid="setCustomValidity('Please enter a valid Email ID')"
                                     onblur="setCustomValidity('')" oninput="validateEmail()">
                             </div>
-                            <span onclick="otp()">Send Otp</span>
-                            
-                            </div>
-                            <div class="text-danger" id="error-email"></div>
-                            <div class="input-box">
-                                <i class="fa fa-phone"></i>
-                                <input type="text" name="mno" id="mno" placeholder="Enter your phone number"
-                                    oninvalid="setCustomValidity('Please enter a valid 10-digit phone number')"
-                                    onblur="setCustomValidity('')" oninput="validateMobile()">
-                            </div>
-                            <div class="text-danger" id="error-mobile"></div>
+                            <!-- <span onclick="call_php_function()">Send Otp</span> -->
 
-                            <div class="input-box"> 
-                                <i class="fas fa-lock"></i>
-                                <input type="password" name="password" id="password" minlength="8"
-                                    placeholder="Enter your password"
-                                    oninvalid="setCustomValidity('Please enter Password')"
-                                    onblur="setCustomValidity('')" oninput="validatePassword()">
-                            </div>
-                            <div class="text-danger" id="password-error"></div>
-                            <div class="input-box">
-                                <i class="fas fa-lock"></i>
-                                <input type="password" name="cpassword" minlength="8" id="cpassword"
-                                    placeholder="Enter your Confrim password"
-                                    oninvalid="setCustomValidity('Please enter Confirm Password')"
-                                    onblur="setCustomValidity('')" oninput="confirmPassword()">
-                            </div>
-                            <div class="text-danger" id="error-cpassword"></div>
-                            <br>
-                            <input type="checkbox" id="terms-checkbox" oninput="validateTerms()" name="terms-checkbox">
-                            <label  class="text-dark">I agree to the <a href="term.php"> terms and conditions </a></label>
-                            <div id="error-terms" class="text-danger"></div>
-
-
-                            <div class="button input-box">
-                                <input type="submit" onclick="myFunction()" name="reg_btn" value="Registration">
-                            </div>
-                            <div class="text sign-up-text">Already have an account? <a style="color: #E0A96D;"
-                                    href="login.php">Login Now</a>
-                            </div>
                         </div>
-                    </form>
+                        <div class="text-danger" id="error-email"></div>
+                        <div class="input-box">
+                            <i class="fa fa-phone"></i>
+                            <input type="text" name="mno" id="mno" placeholder="Enter your phone number"
+                                oninvalid="setCustomValidity('Please enter a valid 10-digit phone number')"
+                                onblur="setCustomValidity('')" oninput="validateMobile()">
+                        </div>
+                        <div class="text-danger" id="error-mobile"></div>
+
+                        <div class="input-box">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" name="password" id="password" minlength="8"
+                                placeholder="Enter your password" oninvalid="setCustomValidity('Please enter Password')"
+                                onblur="setCustomValidity('')" oninput="validatePassword()">
+                        </div>
+                        <div class="text-danger" id="password-error"></div>
+                        <div class="input-box">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" name="cpassword" minlength="8" id="cpassword"
+                                placeholder="Enter your Confrim password"
+                                oninvalid="setCustomValidity('Please enter Confirm Password')"
+                                onblur="setCustomValidity('')" oninput="confirmPassword()">
+                        </div>
+                        <div class="text-danger" id="error-cpassword"></div>
+                        <br>
+                        <input type="checkbox" id="terms-checkbox" oninput="validateTerms()" name="terms-checkbox">
+                        <label class="text-dark">I agree to the <a href="term.php"> terms and conditions </a></label>
+                        <div id="error-terms" class="text-danger"></div>
 
 
+                        <div class="button input-box">
+                            <input type="submit" onclick="myFunction()" name="reg_btn" value="Registration">
+                        </div>
+                        <div class="text sign-up-text">Already have an account? <a style="color: #E0A96D;"
+                                href="login.php">Login Now</a>
+                        </div>
                 </div>
+                </form>
+
+
             </div>
         </div>
     </div>
-    <script>
+    </div>
 
-    </script>
     <script>
-    function otp(){
-        <?php echo(SendMail("chiragkachhadiya000@gmail.com", "OTP" , "OTP"));?>
-        console.log("Otp Sent")
-    }
-   
+    
+
     function myFunction() {
         document.getElementById("uname").required = true;
         document.getElementById("email").required = true;
