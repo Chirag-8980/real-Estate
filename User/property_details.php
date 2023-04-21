@@ -264,8 +264,7 @@ $isRent = mysqli_fetch_array($q);
                     
                         <div class="container mt-4">
                         <a class="btn  bg-tan text-black w-100 py-3 my-4" href="booking.php?pid=<?php echo $_GET['pid'] ?>&sellerid=<?php echo $data['uid'] ?>&stype=<?php echo $data['stype'] ?>&ptype=<?php echo $data['ptype'] ?>">Request
-                            For
-                            Booking</a>
+                            For Booking</a>
                     </div>  
                 <?php
                  }

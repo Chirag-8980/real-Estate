@@ -529,7 +529,7 @@ if (isset($_POST['pbooking'])) {
                             <input type="text" class="form-control" id="name" value="<?php echo $u_data['uname'] ?>"
                                 name="name" placeholder="Your Name"
                                 oninvalid="setCustomValidity('Please enter a valid name')"
-                                onblur="setCustomValidity('')" oninput="validateName()">
+                                onblur="setCustomValidity('')" oninput="validateName()" >
                             <label for="name">Your Name</label>
                             <div class="mt-1 text-danger" id="error-name"></div>
 
@@ -549,13 +549,13 @@ if (isset($_POST['pbooking'])) {
                     <?php if ($_GET['stype'] == 'Rent') { 
                       if($_GET['ptype'] != "Farm-House"){  
                     ?>
-                    
                     <div class="col-6">
                         <div class="form-floating">
                             <input type="date" class="form-control" onfocus="(this.type='date')" id="date"
                                 name="cindate" placeholder="Enter Check In Date"
                                 oninvalid="setCustomValidity('Please enter Message for Booking')"
-                                onblur="setCustomValidity('')" oninput="validateMessage()">
+                                onblur="setCustomValidity('')" oninput="validateMessage()"
+                               >
                             <label for="subject">Check In Date</label>
                         </div>
                         <span class="text-danger fs-6"> * If You Take A Property As A Rent So , Please Select At Least 1

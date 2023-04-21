@@ -35,17 +35,29 @@
             </div>
         </div>";
             $sendmail = SendMail($email , $sub , $msg);
-            $_SESSION['message']= "Email Send SuccessFull...";
+            // $_SESSION['message']= "Email Send SuccessFull...";
+            $_SESSION['alert'] = array();
+            $icon = "success";
+            $title = "OTP Send Success";
+            $text = "Check Your Mail And Enter OTP...";
+            $footer = "Help And Support";
+            $link = "contact.php";
+            array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);            
             header("location: ../verify.php");
         }
         else{
-            $_SESSION['message']= "User Not Found...!";
+            // $_SESSION['message']= "User Not Found...!";
+            $_SESSION['alert'] = array();
+            $icon = "error";
+            $title = "Something Wenr Wrong...!";
+            $text = "User Not Find...!";
+            $footer = "Help And Support";
+            $link = "contact.php";
+            array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
             header("location: ../resetpass.php");
         }
 
     }
-
-   
     if(isset($_POST['btn_res'])){
         $otp = $_SESSION['otp'];
         $r_otp = $_POST['otp'];
@@ -65,10 +77,24 @@
                 if($result){
                     unset($SESSION['uid']);
                     unset($SESSION['email']);
-                    $_SESSION['message']= "Password Reset SuccessFull";
+                    // $_SESSION['message']= "Password Reset SuccessFull";
+                    $_SESSION['alert'] = array();
+                    $icon = "success";
+                    $title = "Success";
+                    $text = "Password Reset Success...";
+                    $footer = "Help And Support";
+                    $link = "contact.php";
+                    array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);    
                     header("location: ../login.php");
                 }else{
-                    $_SESSION['message']= "password is not reset";
+                    // $_SESSION['message']= "password is not reset";
+                    $_SESSION['alert'] = array();
+                    $icon = "error";
+                    $title = "Error...!";
+                    $text = "Something Went Wrong...!";
+                    $footer = "Help And Support";
+                    $link = "contact.php";
+                    array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
                     header("location: ../resetpass.php");
                 }
             }else{
@@ -77,7 +103,14 @@
             }
         }
         else{
-            $_SESSION['message']= "OTP is not match...!";
+            // $_SESSION['message']= "OTP is not match...!";
+            $_SESSION['alert'] = array();
+            $icon = "error";
+            $title = "Error...!";
+            $text = "OTP Is Not Match...!";
+            $footer = "Help And Support";
+            $link = "contact.php";
+            array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
             header("location: ../resetpass.php");
         }
     }

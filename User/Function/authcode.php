@@ -43,7 +43,14 @@ if (isset($_POST['reg_btn'])) {
     $check_email = "select uid from user where email='$email'";
     $check_email_run = mysqli_num_rows(mysqli_query($con, $check_email));
     if ($check_email_run > 0) {
-        $_SESSION['message'] = "Email Already Exist";
+        // $_SESSION['message'] = "Email Already Exist";
+        $_SESSION['alert'] = array();
+        $icon = "error";
+        $title = "This Mail Is Already Used";
+        $text = "Please Enter Another Mail ID";
+        $footer = "Help And Support";
+        $link = "contact.php";
+        array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
         header('location: ../register.php');
     } else {
         if ($password == $cpassword) {
@@ -53,12 +60,26 @@ if (isset($_POST['reg_btn'])) {
             if ($check) {
                 $get_uid = "select * from user where email ='$email' and password='$password'";
                 $uid1 = mysqli_fetch_array(mysqli_query($con, $get_uid));
-                $_SESSION['message'] = "Registration Successfully...";
+                // $_SESSION['message'] = "Registration Successfully...";
+                $_SESSION['alert'] = array();
+                $icon = "success";
+                $title = "Register Successfull...";
+                $text = "Congratulation..You Have Get 3 Free Credit For List Your Property";
+                $footer = "Help And Support";
+                $link = "contact.php";
+                array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
                 $_SESSION['uid'] = $uid1['uid'];
                 header('location: ../login.php');
             }
         } else {
-            $_SESSION['message'] = "Confirm Password Is Not Match";
+            // $_SESSION['message'] = "Confirm Password Is Not Match";
+            $_SESSION['alert'] = array();
+                $icon = "error";
+                $title = "Error...!";
+                $text = "Password And Confirm is Not Match...";
+                $footer = "Help And Support";
+                $link = "contact.php";
+                array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
             header('location: ../register.php');
         }
     }
@@ -90,13 +111,35 @@ if (isset($_POST['login_btn'])) {
             $_SESSION['uname'] = $uname1['uname'];
             $_SESSION['uid'] = $uname1['uid'];
             $_SESSION['email'] = $uname1['email'];
+
+            $_SESSION['alert'] = array();
+            $icon = "success";
+            $title = "Welcome ".$_SESSION['uname']."";
+            $text = "Login Successfull...";
+            $footer = "Help And Support";
+            $link = "contact.php";
+            array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
             header('location: ../index.php');
         } else {
-            $_SESSION['message'] = "Invalid Email Or Password";
+            // $_SESSION['message'] = "Invalid Email Or Password";
+            $_SESSION['alert'] = array();
+            $icon = "warning";
+            $title = "Error...!";
+            $text = "Something Went Wrong...!";
+            $footer = "Help And Support";
+            $link = "contact.php";
+            array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
             header('location: ../login.php');
         }
     } else {
-        $_SESSION['message'] = "Invalid Email Or Password";
+        // $_SESSION['message'] = "Invalid Email Or Password";
+        $_SESSION['alert'] = array();
+            $icon = "warning";
+            $title = "Error...!";
+            $text = "Something Went Wrong...!";
+            $footer = "Help And Support";
+            $link = "contact.php";
+            array_push($_SESSION['alert'],$icon,$title,$text,$footer,$link);
         header('location: ../login.php');
     }
 }

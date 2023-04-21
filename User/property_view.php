@@ -10,6 +10,11 @@ $_SESSION['sellerid'] = $data['uid'];
 $uid = $data['uid'];
 $user_data = mysqli_fetch_array(mysqli_query($con, "select * from user where uid='$uid'"));
 $oldprice = $data['price'] + $data['price'] / 2;
+
+$pid = $_GET['pid'];
+$q =mysqli_query($con, "Select * from tblpbooking where pid=$pid");
+$q1 =mysqli_query($con, "Select * from tblpbooking where pid=$pid and status='Success'");
+$isRent = mysqli_fetch_array($q);
 ?>
 <!DOCTYPE html>
 <html>
@@ -218,6 +223,29 @@ $oldprice = $data['price'] + $data['price'] / 2;
                         <p>
                             <?php echo $data['description'] ?>
                         </p>
+                        <?php if ($data['stype'] == 'Rent') {
+                            if ($isRent['cindate'] != null){ ?>
+                            <h4 class="animated text-black fadeIn mt-4 mb-3" style="border-bottom: 2px solid var(--tan);">
+                                Booked Date</h4>
+                            <p>
+                                This Date is Already Booked , So Can Choose Diffrents Date In Booking Request...
+                            </p>
+                        <?php while($b_date=mysqli_fetch_array($q1)) {    
+                        $cindate = date_format(date_create($b_date['cindate']), "d/m/Y");
+                        $coutdate = date_format(date_create($b_date['coutdate']), "d/m/Y");
+                            ?>
+                            <span class="text-danger pb-5">
+                                <b>
+                                    <?php echo $cindate ?>
+                                </b> <span class="text-black"><b> To</b> </span>
+                                 <b>
+                                    <?php echo $coutdate ?>
+                                </b><br>
+                            </span>
+                            <?php }?>
+                            <?php }?>
+                               
+                        <?php } ?>
                     </div>
                 </div>
             </div>

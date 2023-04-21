@@ -12,6 +12,7 @@
     <!-- FavIcon -->
     <link rel="shortcut icon" type="image/x-icon" href="../admin/assets/img/favi.png">
     <!-- Fontawesome CDN Link -->
+
     <!-- Sweet Alert  -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -72,7 +73,18 @@
                         </div>
                     </form>
                 </div>
-               
+               <?php if (isset($_SESSION['alert'])){?> 
+    <script>
+        Swal.fire({
+                icon: '<?php echo $_SESSION["alert"]["0"] ?>',
+                title: '<?php echo $_SESSION["alert"]["1"] ?>',
+                text: '<?php echo $_SESSION["alert"]["2"] ?>',
+                footer: '<a href="<?php echo $_SESSION["alert"]['4'] ?>"><?php echo $_SESSION["alert"]["3"] ?></a>'
+        })
+    </script>
+    <?php } 
+        unset($_SESSION['alert']);
+    ?>
             </div>
         </div>
         
