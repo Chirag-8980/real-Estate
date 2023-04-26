@@ -19,7 +19,7 @@
             
             <div class="row d-flex justify-content-center g-4" >
                 <div class="col-lg-3 col-sm-6 wow fadeInUp"  data-wow-delay="0.1s">
-                    <a class="cat-item d-block bgcolor text-center  rounded p-3" href="">
+                    <a class="cat-item d-block bgcolor text-center  rounded p-3" href="./search.php?query=&ptype=House&location=&btn_search=Search">
                         <div class="rounded bg-black  p-4">
                             <div class="icon mb-3">
                                 <img class="img-fluid" src="img/icon-apartment.png" alt="Icon">
@@ -30,7 +30,7 @@
                     </a>
                 </div>
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <a class="cat-item d-block bgcolor text-center rounded p-3" href="">
+                    <a class="cat-item d-block bgcolor text-center rounded p-3" href="./search.php?query=&ptype=Banglow&location=&btn_search=Search">
                         <div class="rounded p-4">
                             <div class="icon mb-3">
                                 <img class="img-fluid" src="img/icon-villa.png" alt="Icon">
@@ -41,7 +41,7 @@
                     </a>
                 </div>
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <a class="cat-item d-block bgcolor text-center rounded p-3" href="">
+                    <a class="cat-item d-block bgcolor text-center rounded p-3" href="./search.php?query=&ptype=Flat&location=&btn_search=Search">
                         <div class="rounded p-4">
                             <div class="icon mb-3">
                                 <img class="img-fluid" src="img/icon-house.png" alt="Icon">
@@ -52,7 +52,7 @@
                     </a>
                 </div>
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <a class="cat-item d-block bgcolor text-center rounded p-3" href="">
+                    <a class="cat-item d-block bgcolor text-center rounded p-3" href="./search.php?query=&ptype=Pent_house&location=&btn_search=Search">
                         <div class="rounded p-4">
                             <div class="icon mb-3">
                                 <img class="img-fluid" src="img/icon-house.png" alt="Icon">
@@ -63,7 +63,7 @@
                     </a>
                 </div>
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <a class="cat-item d-block bgcolor text-center rounded p-3" href="">
+                    <a class="cat-item d-block bgcolor text-center rounded p-3" href="./search.php?query=&ptype=Farm-House&location=&btn_search=Search">
                         <div class="rounded p-4">
                             <div class="icon mb-3">
                                 <img class="img-fluid" src="img/icon-house.png" alt="Icon">

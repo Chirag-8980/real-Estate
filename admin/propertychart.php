@@ -4,9 +4,11 @@ if (!isset($_SESSION['auser'])) {
   header("location:index.php");
 }
 
-$get_property_success = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as total FROM tblhouse where qc='success'"));
-$get_property_pending = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as total FROM tblhouse where qc='pending'"));
-$get_property_reject = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as total FROM tblhouse where qc='reject'"));
+$house_property = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as total FROM tblhouse where ptype='House'"));
+$flat_property = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as total FROM tblhouse where ptype='Flat'"));
+$banglow_property = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as total FROM tblhouse where ptype='Banglow'"));
+$farmhouse_property = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as total FROM tblhouse where ptype='Farm-House'"));
+$penthouse_property = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as total FROM tblhouse where ptype='Pent-House'"));
 ?>
 <html>
 
@@ -22,9 +24,11 @@ $get_property_reject = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) as
 
         var data = google.visualization.arrayToDataTable([
             ['Task', 'Hours per Day'],
-            ['Listed', <?php echo $get_property_success['total'] ?>],
-            ['Reject', <?php echo $get_property_reject['total'] ?>],
-            ['Pending', <?php echo $get_property_pending['total'] ?>]
+            ['House', <?php echo $house_property['total'] ?>],
+            ['Flats', <?php echo $flat_property['total'] ?>],
+            ['Banglow', <?php echo $banglow_property['total'] ?>],
+            ['Pent-House', <?php echo $penthouse_property['total'] ?>],
+            ['Farm-House', <?php echo $farmhouse_property['total'] ?>],
         ]);
 
         var options = {

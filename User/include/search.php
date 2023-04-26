@@ -50,13 +50,12 @@
                             </div>
                             <div class="col-md-3">
                                 <select name="ptype" class="form-select border-0 py-3">
-                                <option selected value="">Null</option>
-                                <option selected value="House">House</option>
+                                <option selected value="">All</option>
+                                <option value="House">House</option>
                                 <option value="Flat">Flat</option>
                                 <option value="Banglow">Banglow</option>
                                 <option value="Farm-House">Farm House</option>
-                                <option value="Pent-House">Pent House</option>
-                                    
+                                <option value="Pent-House">Pent House</option>  
                                 </select>
                             </div>
                             <div class="col-md-3">

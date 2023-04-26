@@ -154,7 +154,7 @@ $get_property_sum = mysqli_fetch_array(mysqli_query($con, "SELECT SUM(amt) AS to
 
 							</div>
 							<div class="dash-widget-info">
-								<a href="contactview.php">
+								<a href="contactdetails.php">
 
 									<h3 class="text-dark"><?php echo $get_contact['total'] ?></h3>
 
@@ -183,7 +183,7 @@ $get_property_sum = mysqli_fetch_array(mysqli_query($con, "SELECT SUM(amt) AS to
 
 							</div>
 							<div class="dash-widget-info">
-								<a href="propertyview_success.php">
+								<a href="property_req.php?type=Success">
 
 									<h3 class="text-dark"><?php echo $get_property_success['total'] ?> </h3>
 

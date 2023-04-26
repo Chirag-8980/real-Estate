@@ -279,11 +279,11 @@ $msg="";
                                     </div>
                                 </div>
 
-
+                            <?php if($_GET['type'] == 'Pending'){?>
 								<div style="display: flex; justify-content: end;">
                                 <a class="btn btn-primary" href="req_accept.php?pid=<?php echo $data['pid'];?>&type=<?php echo $type;?>">Accept</a>  
 								</div>
-
+                            <?php }?>
                             </div>
                         </form>
                     </div>

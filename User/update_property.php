@@ -236,17 +236,20 @@ $user_data = mysqli_fetch_array(mysqli_query($con, "select * from user where uid
                 
                 </div>
                 <div class="col-md-6 input-group-lg">
-                    <label for="inputZip" class="form-label  text-black">City</label>
-                    <input type="text" class="form-control" name="city" id="city" oninput="validateCity()"  value="<?php echo $data['city'] ?>">
-                    <div class="text-danger  mt-1" id="error-city"></div>
-                
+                    <label for="inputZip" class="form-label  text-black">State</label>
+                    <select id="state" name="state" class="form-select" id="">
+                        <option value="">Select State</option>
+                    </select>
+                    <div class="text-danger mt-1" id="error-state"></div>
                 </div>
                 <div class="col-md-6 input-group-lg">
-                    <label for="inputZip" class="form-label  text-black">State</label>
-                    <input type="text" class="form-control" name="state" id="state" oninput="validateState()"  value="<?php echo $data['state'] ?>">
-                    <div class="text-danger  mt-1" id="error-state"></div>
-                
+                    <label for="inputZip" class="form-label  text-black">City</label>
+                    <select id="city" name="city" class="form-select" id="" >
+                        <option value="">Select City</option>
+                    </select>
+                    <div class="text-danger mt-1" id="error-city"></div>
                 </div>
+               
                 <!-- Image & Status -->
                 <!-- <h2 class="animated text-black fadeIn mt-5 add-header" style="border-bottom: 2px solid var(--tan);">
                     Image & Status</h2>
@@ -326,6 +329,29 @@ $user_data = mysqli_fetch_array(mysqli_query($con, "select * from user where uid
     ?>
 </body>
 <script>
+    // Load state and city data from JSON file
+		$.getJSON("state.json", function(data) {
+			var states = Object.keys(data);
+
+			// Populate state dropdown
+			$.each(states, function(index, value) {
+			    $('#state').append($('<option>').text(value).attr('value', value));
+			});
+
+			// Handle state selection change event
+			$('#state').change(function() {
+				var selected_state = $(this).val();
+				var selected_cities = data[selected_state];
+
+				// Clear existing options in city dropdown
+				$('#city').html('<option value="">Select City</option>');
+
+				// Add filtered cities to city dropdown
+				$.each(selected_cities, function(index, value) {
+				    $('#city').append($('<option>').text(value).attr('value', value));
+				});
+			});
+		});
  function validatePtitle() {
         var nameInput = document.getElementById("ptitle");
         var ptitle = nameInput.value.trim();

@@ -123,14 +123,14 @@ if(isset($_POST['res']))
 											
 												while($row = mysqli_fetch_array($query_run)) { ?>
                                     <tr>
-                                        <td><?php echo $row['id']; $_SESSION['id'] = $row['id']; ?></td>
-                                        <td><?php echo $row['name']; ?></td>
-                                        <td><?php echo $row['email']; ?></td>
-                                        <td><?php echo $row['subject']; ?></td>
-                                        <td><?php echo $row['msg']; ?></td>
-                                        <td><a data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                href="contactview.php">Response</a></td>
-                                        <td><a href="contactdelete.php?id=<?php echo $row['id']; ?>">Delete</a></td>
+                                        <td class="align-middle"><?php echo $row['id']; $_SESSION['id'] = $row['id']; ?></td>
+                                        <td class="align-middle"><?php echo $row['name']; ?></td>
+                                        <td class="align-middle"><?php echo $row['email']; ?></td>
+                                        <td class="align-middle"><?php echo $row['subject']; ?></td>
+                                        <td class="align-middle"><?php echo $row['msg']; ?></td>
+                                        <td class="align-middle"><a data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                href="contactview.php"><button class="btn btn-success">Response</button></a></td>
+                                        <td class="align-middle"><a href="contactdelete.php?id=<?php echo $row['id']; ?>"><button class="btn btn-danger">Delete</button></a></td>
                                     </tr>
                                     <?php } ?>
 

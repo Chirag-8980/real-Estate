@@ -58,11 +58,11 @@ session_start();
                             </div>
                             <div class="input-box">
                                 <i class="fa-solid fa-mobile"></i>
-                                <input type="text" name="pass" placeholder="Enter New Password" required>
+                                <input type="password" name="pass" placeholder="Enter New Password" required>
                             </div>
                             <div class="input-box">
                                 <i class="fa-solid fa-mobile"></i>
-                                <input type="text" name="cpass" placeholder="Enter New Confirm Password" required>
+                                <input type="password" name="cpass" placeholder="Enter New Confirm Password" required>
                             </div>
                             <div class="button input-box">
                                 <input type="submit" name="btn_res" value="Reset Password">
